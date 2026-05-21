@@ -297,6 +297,7 @@ guideContent["packing-4000m"] = {
   publishDate: "2026-05-22",
   lastUpdated: "2026-05-22",
   author: "Ash",
+  heroImage: { src: "/guide-packing-hero.jpg", alt: "Trekker with loaded backpack walking on a high altitude Himalayan trail at 4,000m with snow-capped peaks" },
   sections: [
     {
       heading: "",
@@ -319,6 +320,55 @@ guideContent["packing-4000m"] = {
         "This three-layer system weighs less than one pair of jeans and handles temperatures from 20C on the trail to -5C at camp."
       ],
       warning: "Cotton against the skin in cold wet conditions above 3,500m is one of the faster routes to hypothermia. Always use synthetic or merino base layers.",
+      svg: `<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#fafaf8;font-family:Outfit,sans-serif">
+        <text x="360" y="30" text-anchor="middle" font-size="15" font-weight="800" fill="#111">The 3-Layer System for High Altitude</text>
+        <text x="360" y="50" text-anchor="middle" font-size="11" fill="#999">Each layer has one job. Together they handle 20C to -5C.</text>
+
+        <!-- Base Layer -->
+        <rect x="30" y="75" width="200" height="265" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+        <rect x="55" y="95" width="150" height="6" rx="3" fill="#3b82f6" opacity="0.3"/>
+        <rect x="55" y="107" width="150" height="6" rx="3" fill="#3b82f6" opacity="0.2"/>
+        <rect x="55" y="119" width="150" height="6" rx="3" fill="#3b82f6" opacity="0.1"/>
+        <text x="130" y="155" text-anchor="middle" font-size="28">💧</text>
+        <text x="130" y="185" text-anchor="middle" font-size="15" font-weight="800" fill="#1d4ed8">BASE LAYER</text>
+        <text x="130" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#3b82f6">Moisture management</text>
+        <line x1="60" y1="218" x2="200" y2="218" stroke="#bfdbfe" stroke-width="1"/>
+        <text x="55" y="238" font-size="10" fill="#555">Merino wool: Rs 2,000-3,500</text>
+        <text x="55" y="255" font-size="10" fill="#555">Synthetic: Rs 499-799</text>
+        <text x="55" y="278" font-size="10" font-weight="600" fill="#dc2626">No cotton. Ever.</text>
+        <text x="55" y="298" font-size="9" fill="#999">Moves sweat away from skin</text>
+        <text x="55" y="315" font-size="9" fill="#999">Weight: 150-200g per top</text>
+
+        <!-- Mid Layer -->
+        <rect x="260" y="75" width="200" height="265" rx="16" fill="#fef3c7" stroke="#fde68a" stroke-width="1.5"/>
+        <rect x="285" y="95" width="150" height="6" rx="3" fill="#f59e0b" opacity="0.3"/>
+        <rect x="285" y="107" width="150" height="6" rx="3" fill="#f59e0b" opacity="0.2"/>
+        <rect x="285" y="119" width="150" height="6" rx="3" fill="#f59e0b" opacity="0.1"/>
+        <text x="360" y="155" text-anchor="middle" font-size="28">🔥</text>
+        <text x="360" y="185" text-anchor="middle" font-size="15" font-weight="800" fill="#b45309">MID LAYER</text>
+        <text x="360" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">Insulation</text>
+        <line x1="290" y1="218" x2="430" y2="218" stroke="#fde68a" stroke-width="1"/>
+        <text x="285" y="238" font-size="10" fill="#555">200-weight fleece: Rs 1,499</text>
+        <text x="285" y="255" font-size="10" fill="#555">Down jacket (camp): Rs 3,999</text>
+        <text x="285" y="278" font-size="10" font-weight="600" fill="#b45309">Fleece for trail, down for camp</text>
+        <text x="285" y="298" font-size="9" fill="#999">Traps warm air close to body</text>
+        <text x="285" y="315" font-size="9" fill="#999">Weight: 450-500g fleece</text>
+
+        <!-- Outer Layer -->
+        <rect x="490" y="75" width="200" height="265" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+        <rect x="515" y="95" width="150" height="6" rx="3" fill="#22c55e" opacity="0.3"/>
+        <rect x="515" y="107" width="150" height="6" rx="3" fill="#22c55e" opacity="0.2"/>
+        <rect x="515" y="119" width="150" height="6" rx="3" fill="#22c55e" opacity="0.1"/>
+        <text x="590" y="155" text-anchor="middle" font-size="28">🛡️</text>
+        <text x="590" y="185" text-anchor="middle" font-size="15" font-weight="800" fill="#15803d">OUTER LAYER</text>
+        <text x="590" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#16a34a">Weather protection</text>
+        <line x1="520" y1="218" x2="660" y2="218" stroke="#bbf7d0" stroke-width="1"/>
+        <text x="515" y="238" font-size="10" fill="#555">Shell jacket: Rs 4,999</text>
+        <text x="515" y="255" font-size="10" fill="#555">Min 10,000mm waterproofing</text>
+        <text x="515" y="278" font-size="10" font-weight="600" fill="#15803d">Windproof + waterproof</text>
+        <text x="515" y="298" font-size="9" fill="#999">Blocks wind, rain, snow</text>
+        <text x="515" y="315" font-size="9" fill="#999">Weight: 400-600g</text>
+      </svg>`,
     },
     {
       heading: "Summer trek packing: May to June",
@@ -440,6 +490,7 @@ guideContent["packing-4000m"] = {
     },
     {
       heading: "Where to buy gear in India",
+      image: { src: "/guide-packing-decathlon.jpg", alt: "Decathlon Dehradun store on Rajpur Road - the best place to buy trekking gear before a Himalayan trek", caption: "Decathlon Dehradun, Rajpur Road - my first stop before any major trek" },
       paragraphs: [
         "You do not need to order from international gear sites or pay import prices.",
         "Decathlon Dehradun, Rajpur Road: My first stop before any major trek. Large store, usually well-stocked, covers the full Quechua and Forclaz range. Staff are often trekkers themselves. Open 10 AM to 9 PM.",
