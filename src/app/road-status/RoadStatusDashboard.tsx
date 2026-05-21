@@ -103,13 +103,22 @@ export function RoadStatusDashboard() {
         </div>
 
         {/* Header */}
-        <div className="flex items-start justify-between gap-8 mb-6">
+        <div className="flex items-start justify-between gap-8 mb-4">
           <div>
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
               <h1 className="text-3xl font-black text-gray-900 tracking-tight">Live road status</h1>
             </div>
             <p className="text-sm text-gray-400 mt-2">Updated every 30–60 minutes from PWD Uttarakhand, HP PWD, and BRO sources.</p>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="flex items-start gap-3 px-4 py-3 rounded-xl mb-6" style={{ background: "#fffbeb", border: "1px solid #fde68a" }}>
+          <span className="text-base mt-0.5">⚠️</span>
+          <div>
+            <p className="text-sm font-semibold text-amber-800">Road conditions change rapidly in the mountains</p>
+            <p className="text-xs text-amber-700/70 mt-0.5 leading-relaxed">This data is sourced from government portals and may not reflect real-time conditions. Landslides, weather, and BRO maintenance can change road status within hours. Always verify with local authorities before starting your journey. Call SDRF (1070) or BRO (1800-180-6763) for latest updates.</p>
           </div>
         </div>
 
