@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ColorPicker } from "@/components/ColorPicker";
 import { GUIDES } from "@/lib/data";
+import { guideContent } from "@/lib/guide-content";
 import Link from "next/link";
 
 const TAGS = ["All", ...Array.from(new Set(GUIDES.map(g => g.tag)))];
@@ -64,6 +65,13 @@ export function GuidesClient() {
                 style={{ background: cardBg, border: `1.5px solid ${border}` }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = accent)}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = border)}>
+                
+                {/* Hero image for featured card */}
+                {isFeature && guideContent[g.slug]?.heroImage && (
+                  <div className="w-full overflow-hidden" style={{ maxHeight: 240 }}>
+                    <img src={guideContent[g.slug].heroImage!.src} alt={guideContent[g.slug].heroImage!.alt} className="w-full h-full object-cover" />
+                  </div>
+                )}
                 
                 {/* Colored header strip */}
                 <div className="relative px-5 pt-5 pb-4" style={{ background: isFeature ? `${accent}08` : "transparent" }}>
