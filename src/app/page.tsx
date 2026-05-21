@@ -228,6 +228,16 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* ═══ DASHBOARD CTA ═══ */}
+        <Link href="/dashboard" className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl no-underline mt-10 transition-all duration-200 hover:-translate-y-0.5 group" style={{background:`linear-gradient(135deg, ${accent}08, ${accent}15)`,border:`1.5px solid ${accent}25`}}>
+          <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0" style={{background:`${accent}20`}}>🗺️</div>
+          <div className="flex-1 text-center sm:text-left">
+            <p className="text-base sm:text-lg font-extrabold text-gray-900">Create your personal trip dashboard</p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">Checklists, weather, road status, notes — all in one place. Save it, share it, take it on your trip.</p>
+          </div>
+          <span className="text-sm font-bold shrink-0 transition-colors" style={{color:accent}}>Get started →</span>
+        </Link>
+
         {/* ═══ GUIDES + GEAR ═══ */}
         <div className="flex flex-col lg:flex-row gap-5 mt-12 items-start">
           <div className="flex-1 w-full">
