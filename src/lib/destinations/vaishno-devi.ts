@@ -1,0 +1,97 @@
+import { DestinationData } from "./types";
+
+export const vaishnoDevi: DestinationData = {
+  slug: "vaishno-devi",
+  name: "Vaishno Devi",
+  tagline: "India's most visited pilgrimage shrine — 13 km trek from Katra",
+  region: "Jammu & Kashmir",
+  state: "Jammu & Kashmir",
+  type: "pilgrimage",
+  altitude: 1584,
+  temp: 18,
+  weather: "🌤️",
+  season: "Year-round",
+  duration: "2–3 days",
+  budget: { min: 3000, max: 15000 },
+  heroGradient: "linear-gradient(150deg, #5a1a1a, #7a3030 60%, #5a2020)",
+  quickStats: [
+    { label: "Altitude", value: "1,584m", icon: "🏔️" },
+    { label: "Trek distance", value: "13 km one way", icon: "🥾" },
+    { label: "Season", value: "Year-round", icon: "🗓️" },
+    { label: "Duration", value: "2–3 days", icon: "⏱️" },
+    { label: "Budget", value: "₹3K – ₹15K", icon: "💰" },
+    { label: "Visitors/year", value: "85 Lakh+", icon: "👥" },
+  ],
+  intro: `Vaishno Devi is the most visited pilgrimage destination in India, with over 85 lakh (8.5 million) visitors every year. The shrine of Mata Vaishno Devi sits inside a cave at 1,584 metres in the Trikuta Mountains near Katra, Jammu. The 13 km trek from Katra to Bhawan is well-maintained with a paved path, shelters, and food stalls throughout.
+
+Unlike Kedarnath or Amarnath, Vaishno Devi is a year-round pilgrimage — the shrine never closes. But crowds vary dramatically by season and day of week. This guide covers registration, the trek, queue management, and practical tips that most guides skip — written for the first-time visitor who wants to plan efficiently and avoid the worst crowds.`,
+  sections: [
+    { id: "how-to-reach", title: "How to reach Katra", icon: "🚗", content: `**By Train (recommended):**\nKatra Railway Station (SVDK) is the terminus of the Vaishnavi Express and several other trains from Delhi, Mumbai, and Kolkata. The station is 1 km from the trek starting point.\n\n**Delhi to Katra:** Vaishnavi Express (12919/12920) — 12 hours, departs New Delhi at 8:20 PM. Shri Shakti Express is another option. Book on IRCTC.\n\n**By Air:**\nJammu Airport (IXJ) is the nearest airport, 48 km from Katra. Taxis from airport to Katra: ₹800–1,200 (1.5 hours). Airlines: IndiGo, SpiceJet, Air India.\n\n**By Road:**\nKatra is 48 km from Jammu (1–1.5 hours on NH-44). Regular buses from Jammu bus stand. If driving from Delhi: 640 km, 10–12 hours via Jalandhar–Jammu highway.\n\n**Important:** You don't need to stay in Jammu. Go directly to Katra — everything you need is there.` },
+    { id: "registration", title: "Registration & yatra slip", icon: "📋", content: `**Registration is mandatory.** No registration = no entry to the trek.\n\n**Online (recommended):**\nVisit maavaishnodevi.org → Click "Yatra Registration" → Fill form with Aadhaar, phone, travel date, number of pilgrims → Pay ₹0 (free) → Get yatra slip with QR code.\n\n**At Katra counter:**\nRegistration counters at Katra bus stand and near the trek starting point. Carry Aadhaar. Can take 30–60 minutes during peak season.\n\n**Group registration:**\nRegister up to 6 people in one booking. One lead pilgrim's Aadhaar is sufficient.\n\n**RFID card:**\nIssued at the starting point after registration verification. Mandatory to carry. Tracks pilgrim count on the route.\n\n**Slot booking:**\nDuring Navratri and peak weekends, slot booking may be required. Check the website 2–3 days before your visit.` },
+    { id: "trek", title: "The trek: Katra to Bhawan", icon: "🥾", content: `**Total distance:** 13 km one way (old route) / 13.5 km (new route — less steep)\n**Altitude gain:** ~1,200m (Katra at 380m → Bhawan at 1,584m)\n**Time:** 5–7 hours up, 3–4 hours down\n**Difficulty:** Easy to moderate — paved path throughout\n\n**The route has two options:**\n\n**Old route (via Adhkuwari):** Steeper but shorter. Passes through Adhkuwari cave (where Mata meditated for 9 months). More historic but harder on knees.\n\n**New route (via Himkoti):** Slightly longer but gentler gradient. Better for elderly and children. Air-conditioned battery car available on this route (₹150–350).\n\n**Key stops:**\nBan Ganga (2.5 km) → Adhkuwari (6 km, cave darshan) → Sanjichhat (Helicopter pad, 9.5 km) → Bhawan (13 km, the shrine)\n\n**Transport options:**\nWalk: Free\nPony: ₹600–1,200 one way\nPalki: ₹4,000–6,000 one way\nBattery car (new route): ₹150–350 one way\nHelicopter: ₹1,800 one way (Katra to Sanjichhat, 3.5 km remaining walk)` },
+    { id: "darshan", title: "Darshan tips & queue", icon: "🙏", content: `**Queue management:**\n\nDarshan queue can be 1–6 hours depending on day and season. Tips to minimize wait:\n\n- **Weekdays are faster** than weekends. Tuesday and Saturday have the longest queues.\n- **Night yatra** (start at 8–10 PM, reach by 3–5 AM) has shorter darshan queues.\n- **Winter months** (Dec–Feb) have the shortest queues overall.\n- **Navratri** (April + October): Expect 4–8 hour queues. Avoid unless you specifically want the festival.\n\n**Inside the cave:**\nThe original shrine is inside a natural cave. You walk through a narrow, wet passage (knee-deep water in monsoon). Darshan takes 30–60 seconds — the cave is small. Keep belongings minimal.\n\n**Bhairon Baba temple:**\nAfter main darshan, trek 1.5 km up to Bhairon Baba temple. Considered incomplete without this. Ropeway available (₹100).` },
+    { id: "budget", title: "Budget breakdown", icon: "💰", content: `**Budget trip (₹3,000–5,000 per person):**\n- Train: ₹300–800 (sleeper class from Delhi)\n- Stay at Katra: ₹500–800/night (dharamshala/budget hotel)\n- Food: ₹200–400/day\n- Trek: Walk (free)\n- Prasad + misc: ₹500\n\n**Mid-range (₹7,000–10,000):**\n- Train: ₹1,200–1,800 (3AC)\n- Stay: ₹1,500–2,500/night (hotel near trek starting point)\n- Food: ₹400–600/day\n- Pony one way: ₹800–1,200\n- Prasad + misc: ₹1,000\n\n**Comfort (₹12,000–15,000):**\n- Flight to Jammu + taxi: ₹5,000–8,000\n- Stay: ₹2,500–4,000/night\n- Helicopter: ₹1,800 + battery car\n- Food: ₹600–1,000/day` },
+    { id: "best-time", title: "Best time to visit", icon: "🗓️", content: `**Year-round destination.** But experience varies:\n\n**March – May:** Pleasant weather (15–30°C). Navratri in April brings massive crowds. Weekdays are manageable.\n\n**June – August:** Hot at Katra (35°C+) but cooler on trek. Monsoon rain makes trek slippery. Umbrella essential. Fewer crowds than spring.\n\n**September – November:** Best overall. Navratri in October is crowded but weather is perfect. Post-Navratri is ideal.\n\n**December – February:** Cold (5–15°C). Snow possible above Adhkuwari. Shortest queues of the year. Carry warm clothes.\n\n**Our recommendation:** November or February — good weather, minimal crowds, best darshan experience.` },
+    { id: "safety", title: "Safety tips", icon: "⚠️", content: `**Vaishno Devi is one of the safest pilgrimages in India.** The Shrine Board manages security, medical aid, and crowd control excellently.\n\n**Medical:**\nMedical aid stations at every 2 km on the trek. PHC at Adhkuwari and Bhawan. Nearest hospital: Katra (well-equipped).\n\n**Security:**\nEntire route has CCTV. Security checkpoints at base and key points. Bags are scanned. Sharp objects, tobacco, and alcohol not allowed.\n\n**Shoes:**\nWear comfortable walking shoes (sports shoes are fine — this isn't a mountain trek). Remove shoes before entering the cave shrine.\n\n**Cloakroom:**\nAvailable at Katra base. Leave heavy luggage — carry only a small daypack with essentials.\n\n**Communication:**\nJio, Airtel, BSNL all work on the route. WiFi available at key shelters. You won't lose signal.` },
+  ],
+  weatherPoints: [
+    { location: "Jammu", altitude: 327, temp: 35, weather: "☀️" },
+    { location: "Katra", altitude: 380, temp: 32, weather: "🌤️" },
+    { location: "Adhkuwari", altitude: 975, temp: 24, weather: "⛅" },
+    { location: "Bhawan", altitude: 1584, temp: 18, weather: "🌤️" },
+  ],
+  routes: [
+    { from: "Jammu", to: "Katra", status: "open", note: "NH-44, good condition" },
+    { from: "Katra", to: "Bhawan", status: "open", note: "Trek route, normal crowd" },
+  ],
+  checklist: [
+    { category: "Clothing", items: [
+      { name: "Comfortable walking shoes", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹1,499" },
+      { name: "Light jacket / sweater", essential: true },
+      { name: "Rain poncho / umbrella", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹249" },
+      { name: "Comfortable clothes (2 sets)", essential: true },
+      { name: "Warm layer (winter months)", essential: false },
+    ]},
+    { category: "Gear", items: [
+      { name: "Small daypack (15–20L)", essential: true },
+      { name: "Water bottle 1L", essential: true },
+      { name: "Power bank", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹1,499" },
+      { name: "Torch / headlamp (night yatra)", essential: false, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹499" },
+    ]},
+    { category: "Health", items: [
+      { name: "Personal medicines (2 days)", essential: true },
+      { name: "ORS packets", essential: false },
+      { name: "Band-aids / moleskin (blisters)", essential: true },
+      { name: "Sunscreen (summer months)", essential: false },
+    ]},
+    { category: "Documents", items: [
+      { name: "Aadhaar card (original)", essential: true },
+      { name: "Yatra slip (printed/phone)", essential: true },
+      { name: "Cash ₹2,000–5,000", essential: true },
+      { name: "Train/flight tickets", essential: true },
+    ]},
+  ],
+  faq: [
+    { q: "How long does Vaishno Devi darshan take?", a: "The trek up takes 5–7 hours. Darshan queue: 1–4 hours (varies). Trek down: 3–4 hours. Total: 12–18 hours for the round trip. Most people start early morning or at night." },
+    { q: "Can elderly or disabled people visit?", a: "Yes. Pony (₹600–1,200), palki (₹4,000–6,000), battery car on new route (₹150–350), and helicopter to Sanjichhat (₹1,800) are available. The Shrine Board is very accommodating." },
+    { q: "Is night yatra safe?", a: "Yes, very safe. The entire route is lit and has CCTV. Many pilgrims prefer night yatra — cooler temperatures and shorter darshan queues at dawn." },
+    { q: "Do I need to book in advance?", a: "Registration is mandatory (free, online at maavaishnodevi.org). No advance booking needed unless visiting during Navratri. Hotels in Katra should be booked 1–2 weeks ahead during peak season." },
+    { q: "Is there food on the trek?", a: "Yes, plenty. Food stalls every 1–2 km selling chai, maggi, rice, rajma, snacks. You don't need to carry food. Water is available but carry your own bottle." },
+  ],
+  emergency: [
+    { name: "Shrine Board Helpline", number: "1800-180-1988" },
+    { name: "Katra Police", number: "01991-232500" },
+    { name: "Medical Aid (Bhawan)", number: "01991-233088" },
+    { name: "Disaster Helpline", number: "112" },
+  ],
+  subPages: [
+    { slug: "registration", title: "Registration & yatra slip", description: "Step-by-step online registration" },
+    { slug: "packing", title: "Packing checklist", description: "What to carry for the yatra" },
+    { slug: "accommodation", title: "Where to stay in Katra", description: "Hotels, dharamshalas, budget stays" },
+    { slug: "budget", title: "Budget breakdown", description: "Budget, mid-range, comfort costs" },
+    { slug: "darshan-tips", title: "Darshan & queue tips", description: "How to minimize wait time" },
+    { slug: "best-time", title: "Best time & FAQ", description: "Season guide and common questions" },
+  ],
+  metaTitle: "Vaishno Devi Guide 2026 — Registration, Trek, Darshan Tips | TravelBoa",
+  metaDescription: "Complete Vaishno Devi guide: online registration, trek route, darshan queue tips, packing list, budget, and best time to visit. Updated for 2026.",
+};
