@@ -51,63 +51,65 @@ export default function HomePage() {
         {/* ═══ HERO ═══ */}
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-14 relative min-h-[calc(100vh-100px)] py-10 lg:py-0">
           <div className="flex-1 max-w-[560px] w-full" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(24px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
-            <h1 className="text-[40px] sm:text-[52px] lg:text-[68px] font-black text-gray-900 leading-[1.0] tracking-[-2px] lg:tracking-[-3px]">Plan your next<br />journey.</h1>
+            <h1 className="text-[40px] sm:text-[52px] lg:text-[68px] font-black leading-[1.0] tracking-[-2px] lg:tracking-[-3px] transition-colors" style={{color:textPrimary}}>Plan your next<br />journey.</h1>
             <svg width="200" height="14" viewBox="0 0 300 16" className="mt-2 ml-0.5 w-[180px] sm:w-[240px] lg:w-[300px]">
               <path d="M3 9 Q60 1 130 9 T290 7" fill="none" stroke={accent} strokeWidth="2.5" strokeLinecap="round" strokeDasharray="500" className="transition-[stroke] duration-300" style={{ animation: entered ? "scribble 1.5s ease-out 0.5s forwards" : "none", strokeDashoffset: 500 }} />
             </svg>
-            <p className="text-base lg:text-lg text-gray-400 mt-4 lg:mt-5 leading-relaxed max-w-[440px]">Road conditions, altitude weather, packing lists with gear links, and travel guides. Built in Dehradun.</p>
+            <p className="text-base lg:text-lg mt-4 lg:mt-5 leading-relaxed max-w-[440px] transition-colors" style={{color:textSecondary}}>Road conditions, altitude weather, packing lists with gear links, and travel guides. Built in Dehradun.</p>
             <div className="flex gap-2 sm:gap-3 mt-6 lg:mt-8 flex-wrap">
               <Link href={`/${dest.slug}`} className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-sm sm:text-[15px] font-bold text-white no-underline transition-all duration-150" style={{background:accent,boxShadow:`0 4px 16px ${accent}40`}}>Start planning</Link>
-              <Link href="/road-status" className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-sm sm:text-[15px] font-bold text-gray-500 border-[1.5px] border-gray-200 no-underline transition-all duration-150">Road status</Link>
+              <Link href="/road-status" className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-sm sm:text-[15px] font-bold no-underline transition-all duration-150" style={{color:textSecondary,border:`1.5px solid ${border}`}}>Road status</Link>
             </div>
             <div className="flex gap-2 mt-6 lg:mt-8 flex-wrap">
               {[["📍","Dehradun-based"],["🛣️","Live data"],["📷","Photos"],["🎒","Gear links"]].map(([ic,lb])=>(
-                <div key={lb as string} className="flex items-center gap-1 px-3 py-1.5 rounded-xl border-[1.5px] border-gray-100 text-[11px] sm:text-[13px] font-semibold text-gray-400"><span className="text-xs">{ic}</span>{lb}</div>
+                <div key={lb as string} className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-[11px] sm:text-[13px] font-semibold transition-colors" style={{border:`1.5px solid ${border}`,color:textMuted}}><span className="text-xs">{ic}</span>{lb}</div>
               ))}
             </div>
           </div>
 
           {/* Search notepad */}
-          <div className="w-full lg:w-[440px] bg-[#fffef9] rounded p-5 sm:p-8 relative lg:shrink-0" style={{ boxShadow: "6px 8px 30px rgba(0,0,0,0.06)", transform: "rotate(0deg) lg:rotate(1deg)", opacity: entered ? 1 : 0, transition: "all 0.7s cubic-bezier(0.2,0,0,1) 0.15s" }}>
-            <div className="hidden lg:block absolute top-0 left-9 w-px h-full bg-red-200 opacity-30" />
-            <div className="hidden lg:block absolute -top-[7px] left-1/2 -translate-x-1/2 w-[68px] h-[15px] bg-amber-200/30 rounded-sm" />
+          <div className="w-full lg:w-[440px] rounded-xl p-5 sm:p-8 relative lg:shrink-0 transition-colors duration-300" style={{ background: dark ? "#1c1a17" : "#fffef9", boxShadow: dark ? "0 8px 30px rgba(0,0,0,0.3)" : "6px 8px 30px rgba(0,0,0,0.06)", border: dark ? `1px solid #292524` : "none", opacity: entered ? 1 : 0, transition: "all 0.7s cubic-bezier(0.2,0,0,1) 0.15s" }}>
+            {!dark && <div className="hidden lg:block absolute top-0 left-9 w-px h-full bg-red-200 opacity-30" />}
+            {!dark && <div className="hidden lg:block absolute -top-[7px] left-1/2 -translate-x-1/2 w-[68px] h-[15px] bg-amber-200/30 rounded-sm" />}
             <p className="font-caveat text-xl sm:text-[22px] mb-3 sm:mb-4 relative transition-colors duration-300" style={{color:accent}}>Where are you headed?</p>
             <div className="relative">
-              <input value={searchVal} onChange={e=>{setSearchVal(e.target.value);setShowDrop(true)}} onFocus={()=>{setSearchFocus(true);setShowDrop(true)}} onBlur={()=>{setSearchFocus(false);setTimeout(()=>setShowDrop(false),200)}} placeholder="Kedarnath, Spiti, Ladakh..." className="w-full py-3 sm:py-4 border-none outline-none font-sans text-lg sm:text-[22px] font-semibold text-gray-900 bg-transparent relative transition-[border-color] duration-300" style={{borderBottom:`2.5px solid ${searchFocus?accent:'#e8e2d8'}`}} autoComplete="off" />
+              <input value={searchVal} onChange={e=>{setSearchVal(e.target.value);setShowDrop(true)}} onFocus={()=>{setSearchFocus(true);setShowDrop(true)}} onBlur={()=>{setSearchFocus(false);setTimeout(()=>setShowDrop(false),200)}} placeholder="Kedarnath, Spiti, Ladakh..." className="w-full py-3 sm:py-4 border-none outline-none font-sans text-lg sm:text-[22px] font-semibold bg-transparent relative transition-colors duration-300" style={{borderBottom:`2.5px solid ${searchFocus?accent:(dark?'#333':'#e8e2d8')}`,color:textPrimary}} autoComplete="off" />
               {showDrop && (
-                <div className="absolute top-full left-0 right-0 lg:left-[-32px] lg:right-[-32px] mt-1.5 bg-white rounded-2xl border-[1.5px] border-gray-100 overflow-hidden z-30" style={{boxShadow:"0 8px 36px rgba(0,0,0,0.08)"}}>
+                <div className="absolute top-full left-0 right-0 lg:left-[-32px] lg:right-[-32px] mt-1.5 rounded-2xl border-[1.5px] overflow-hidden z-30 transition-colors" style={{background:cardBg,borderColor:border,boxShadow:dark?"0 8px 36px rgba(0,0,0,0.4)":"0 8px 36px rgba(0,0,0,0.08)"}}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 p-2 max-h-[240px] overflow-y-auto">
                     {filteredSearch.length === 0 ? (
-                      <div className="col-span-full py-5 text-center text-sm text-gray-300">No destinations found</div>
+                      <div className="col-span-full py-5 text-center text-sm" style={{color:textMuted}}>No destinations found</div>
                     ) : filteredSearch.map((d)=>(
-                      <Link key={d.slug} href={`/${d.slug}`} className="flex items-center gap-2 px-3 py-2.5 rounded-lg no-underline transition-all duration-100 hover:bg-gray-50 border-[1.5px] border-transparent hover:border-gray-100"
+                      <Link key={d.slug} href={`/${d.slug}`} className="flex items-center gap-2 px-3 py-2.5 rounded-lg no-underline transition-all duration-100 border-[1.5px] border-transparent" style={{}} 
+                        onMouseEnter={e=>{e.currentTarget.style.background=dark?'#292524':'#fafafa';e.currentTarget.style.borderColor=border}}
+                        onMouseLeave={e=>{e.currentTarget.style.background='';e.currentTarget.style.borderColor='transparent'}}
                         onClick={()=>{setSearchVal(d.name);setShowDrop(false);const idx=DESTINATIONS.findIndex(dd=>dd.slug===d.slug);if(idx>=0){setSelectedDest(idx);setChecks({})}}}>
                         <div className="w-2 h-2 rounded-full shrink-0" style={{background:d.color}} />
-                        <div><div className="text-[13px] font-bold text-gray-900">{d.name}</div><div className="text-[10px] text-gray-300">{d.info}</div></div>
+                        <div><div className="text-[13px] font-bold" style={{color:textPrimary}}>{d.name}</div><div className="text-[10px]" style={{color:textMuted}}>{d.info}</div></div>
                       </Link>
                     ))}
                   </div>
-                  <div className="px-4 py-1.5 bg-gray-50 border-t border-gray-100 font-caveat text-xs text-gray-300 text-center">tap to explore →</div>
+                  <div className="px-4 py-1.5 border-t font-caveat text-xs text-center" style={{background:dark?'#151413':'#fafafa',borderColor:border,color:textMuted}}>tap to explore →</div>
                 </div>
               )}
             </div>
             <div className="flex gap-2 mt-4 sm:mt-5 relative flex-wrap">
               {[["all","All"],["pilgrimage","🙏 Pilgrimage"],["adventure","🏔️ Adventure"]].map(([k,l])=>(
-                <button key={k} onClick={()=>{setSearchFilter(k);setShowDrop(true)}} className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-[1.5px] text-xs sm:text-sm font-semibold cursor-pointer font-sans transition-all duration-150" style={{borderColor:searchFilter===k?accent:'#e4ddd4',color:searchFilter===k?accent:'#bbb',background:"transparent"}}>{l}</button>
+                <button key={k} onClick={()=>{setSearchFilter(k);setShowDrop(true)}} className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-[1.5px] text-xs sm:text-sm font-semibold cursor-pointer font-sans transition-all duration-150" style={{borderColor:searchFilter===k?accent:(dark?'#333':'#e4ddd4'),color:searchFilter===k?accent:textMuted,background:"transparent"}}>{l}</button>
               ))}
             </div>
-            <div className="flex gap-0 mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100 relative">
+            <div className="flex gap-0 mt-5 sm:mt-6 pt-3 sm:pt-4 relative" style={{borderTop:`1px solid ${border}`}}>
               {[["5+","Destinations"],["24/7","Road updates"],["30+","Gear picks"]].map(([n,l],i)=>(
-                <div key={l} className="flex-1 text-center" style={{borderRight:i<2?"1px solid #f0ebe4":"none"}}>
-                  <div className="text-lg sm:text-xl font-black text-gray-900">{n}</div>
-                  <div className="font-mono text-[8px] sm:text-[9px] text-gray-300 uppercase tracking-wider mt-0.5">{l}</div>
+                <div key={l} className="flex-1 text-center" style={{borderRight:i<2?`1px solid ${border}`:"none"}}>
+                  <div className="text-lg sm:text-xl font-black transition-colors" style={{color:textPrimary}}>{n}</div>
+                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-wider mt-0.5 transition-colors" style={{color:textMuted}}>{l}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="hidden lg:block absolute bottom-4 left-1/2 -translate-x-1/2 text-center" style={{opacity:entered?1:0,transition:"opacity 1s 1.2s"}}>
-            <p className="font-caveat text-sm text-gray-300 mb-1.5">scroll to explore</p>
+            <p className="font-caveat text-sm mb-1.5" style={{color:textMuted}}>scroll to explore</p>
             <svg width="24" height="32" viewBox="0 0 24 32" className="mx-auto animate-bounce" style={{animationDuration:"1.5s"}}>
               <path d="M12 4 L12 22" stroke={accent} strokeWidth="2" fill="none" strokeLinecap="round" className="transition-[stroke] duration-300" />
               <path d="M6 17 L12 25 L18 17" stroke={accent} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="transition-[stroke] duration-300" />
