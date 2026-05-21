@@ -82,7 +82,7 @@ export const ACTIVITIES = [
 ] as const;
 
 export const GUIDES = [
-  { slug: "acclimatization", title: "How to acclimatize above 3,000m — a practical guide", tag: "Health", min: 8, rot: -1.5, href: "/guides/acclimatization", desc: "Diamox, water intake, ascent rate, warning signs. What actually works at altitude." },
+  { slug: "acclimatize-above-3000m", title: "How to acclimatize above 3,000m - AMS, Diamox and ascent rules", tag: "Health", min: 14, rot: -1.5, href: "/guides/acclimatize-above-3000m", desc: "Practical acclimatization guide for treks above 3,000m in India. Altitude sickness symptoms, Diamox dosage and timing, safe ascent rates, hydration, and when to descend. Written from Dehradun." },
   { slug: "best-time-char-dham", title: "Best time to visit Uttarakhand's Char Dham", tag: "Planning", min: 10, rot: 1, href: "/guides/best-time-char-dham", desc: "Month-by-month breakdown of weather, crowd, and road conditions for all four dhams." },
   { slug: "packing-4000m", title: "What to pack for 4,000m+ altitude treks", tag: "Packing", min: 6, rot: -0.5, href: "/guides/packing-4000m", desc: "Layer system, essentials vs nice-to-have, and where to buy gear in India under budget." },
   { slug: "trekking-shoes-under-5000", title: "Best trekking shoes under ₹5,000 — tested", tag: "Gear", min: 6, rot: 1.5, href: "/guides/trekking-shoes-under-5000", desc: "Quechua MH500 vs Wildcraft vs Decathlon. Real trail tests in Uttarakhand mud and snow." },
