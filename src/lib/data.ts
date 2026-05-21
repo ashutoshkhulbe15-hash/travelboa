@@ -82,14 +82,14 @@ export const ACTIVITIES = [
 ] as const;
 
 export const GUIDES = [
-  { title: "How to acclimatize above 3,000m — a practical guide", tag: "Health", min: 8, rot: -1.5, href: "/guides", desc: "Diamox, water intake, ascent rate, warning signs. What actually works at altitude." },
-  { title: "Best time to visit Uttarakhand's Char Dham", tag: "Planning", min: 10, rot: 1, href: "/guides", desc: "Month-by-month breakdown of weather, crowd, and road conditions for all four dhams." },
-  { title: "What to pack for 4,000m+ altitude treks", tag: "Packing", min: 6, rot: -0.5, href: "/guides", desc: "Layer system, essentials vs nice-to-have, and where to buy gear in India under budget." },
-  { title: "Best trekking shoes under ₹5,000 — tested", tag: "Gear", min: 6, rot: 1.5, href: "/gear", desc: "Quechua MH500 vs Wildcraft vs Decathlon. Real trail tests in Uttarakhand mud and snow." },
-  { title: "Monsoon travel: which mountain routes to avoid", tag: "Safety", min: 4, rot: -1, href: "/road-status", desc: "Landslide-prone zones, BRO repair schedules, and safe alternatives during July–September." },
-  { title: "ATM & cash guide for remote Himalayan towns", tag: "Money", min: 5, rot: 0.8, href: "/guides", desc: "Where ATMs work, where they don't, UPI coverage, and how much cash to carry per destination." },
-  { title: "How to get the Char Dham e-pass and permits", tag: "Documents", min: 7, rot: -0.8, href: "/guides", desc: "Step-by-step registration for Kedarnath, Badrinath, ILP for Spiti, and Rohtang permit." },
-  { title: "Budget breakdown: Kedarnath trip under ₹8,000", tag: "Budget", min: 6, rot: 1.2, href: "/kedarnath", desc: "Transport, food, stay, helicopter vs trek cost comparison. Real numbers from 2025 trips." },
+  { slug: "acclimatization", title: "How to acclimatize above 3,000m — a practical guide", tag: "Health", min: 8, rot: -1.5, href: "/guides/acclimatization", desc: "Diamox, water intake, ascent rate, warning signs. What actually works at altitude." },
+  { slug: "best-time-char-dham", title: "Best time to visit Uttarakhand's Char Dham", tag: "Planning", min: 10, rot: 1, href: "/guides/best-time-char-dham", desc: "Month-by-month breakdown of weather, crowd, and road conditions for all four dhams." },
+  { slug: "packing-4000m", title: "What to pack for 4,000m+ altitude treks", tag: "Packing", min: 6, rot: -0.5, href: "/guides/packing-4000m", desc: "Layer system, essentials vs nice-to-have, and where to buy gear in India under budget." },
+  { slug: "trekking-shoes-under-5000", title: "Best trekking shoes under ₹5,000 — tested", tag: "Gear", min: 6, rot: 1.5, href: "/guides/trekking-shoes-under-5000", desc: "Quechua MH500 vs Wildcraft vs Decathlon. Real trail tests in Uttarakhand mud and snow." },
+  { slug: "monsoon-routes", title: "Monsoon travel: which mountain routes to avoid", tag: "Safety", min: 4, rot: -1, href: "/guides/monsoon-routes", desc: "Landslide-prone zones, BRO repair schedules, and safe alternatives during July–September." },
+  { slug: "atm-cash-guide", title: "ATM & cash guide for remote Himalayan towns", tag: "Money", min: 5, rot: 0.8, href: "/guides/atm-cash-guide", desc: "Where ATMs work, where they don't, UPI coverage, and how much cash to carry per destination." },
+  { slug: "char-dham-epass", title: "How to get the Char Dham e-pass and permits", tag: "Documents", min: 7, rot: -0.8, href: "/guides/char-dham-epass", desc: "Step-by-step registration for Kedarnath, Badrinath, ILP for Spiti, and Rohtang permit." },
+  { slug: "kedarnath-budget", title: "Budget breakdown: Kedarnath trip under ₹8,000", tag: "Budget", min: 6, rot: 1.2, href: "/guides/kedarnath-budget", desc: "Transport, food, stay, helicopter vs trek cost comparison. Real numbers from 2025 trips." },
 ] as const;
 
 export const GEAR = [
