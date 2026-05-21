@@ -48,11 +48,11 @@ export function Footer({ accent }: FooterProps) {
           </div>
           <div className="flex gap-3 sm:gap-4 text-[11px] text-gray-300 flex-wrap">
             {[
-              { label: "Privacy", href: "#" },
-              { label: "Terms", href: "#" },
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms", href: "/terms" },
               { label: "Affiliate disclosure", href: "/about" },
               { label: "About", href: "/about" },
-              { label: "Contact", href: "/about" },
+              { label: "Contact", href: "/contact" },
             ].map((l) => (
               <Link key={l.label} href={l.href} className="hover:text-gray-900 transition-colors no-underline text-gray-300">{l.label}</Link>
             ))}

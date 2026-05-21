@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 import { DESTINATIONS, SEARCH_DESTINATIONS, GUIDES, GEAR } from "@/lib/data";
 
 export default function HomePage() {
-  const { themeKey, theme, setTheme, accent, mounted } = useTheme();
+  const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [entered, setEntered] = useState(false);
   const [checks, setChecks] = useState<Record<number, boolean>>({});
   const [hovGuide, setHovGuide] = useState<number | null>(null);
@@ -32,10 +32,19 @@ export default function HomePage() {
   const dest = DESTINATIONS[selectedDest];
   const w = dest.wx;
 
+  // Dark mode colors
+  const bg = dark ? "#0c0a09" : "white";
+  const cardBg = dark ? "#1c1a17" : "white";
+  const textPrimary = dark ? "#f5f5f4" : "#111";
+  const textSecondary = dark ? "#a8a29e" : "#999";
+  const textMuted = dark ? "#57534e" : "#ccc";
+  const border = dark ? "#292524" : "#f0f0f0";
+  const borderLight = dark ? "#1c1a17" : "#f8f8f8";
+
   return (
-    <div className="relative min-h-screen bg-white font-sans overflow-x-hidden">
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} />
-      <Navbar accent={accent} />
+    <div className="relative min-h-screen font-sans overflow-x-hidden transition-colors duration-300" style={{ background: bg, color: textPrimary }}>
+      <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
+      <Navbar accent={accent} dark={dark} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-11 pb-20">
 
