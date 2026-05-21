@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: "Road status", href: "/road-status" },
   { label: "Guides", href: "/guides" },
   { label: "Gear", href: "/gear" },
+  { label: "My trip", href: "/dashboard" },
 ];
 
 export function Navbar({ accent, dark }: NavbarProps) {
