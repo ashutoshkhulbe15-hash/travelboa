@@ -118,7 +118,7 @@ export default function HomePage() {
         </div>
 
         {/* ═══ CARDS + WEATHER ═══ */}
-        <div id="destinations" className="flex flex-col lg:flex-row gap-5 mt-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-5 mt-4 items-start">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 flex-1 w-full">
             {DESTINATIONS.map((d,i)=>(
               <Polaroid key={d.slug} {...d} accent={accent} selected={selectedDest===i} onClick={()=>{setSelectedDest(i);setChecks({})}} />
@@ -229,7 +229,7 @@ export default function HomePage() {
         </div>
 
         {/* ═══ GUIDES + GEAR ═══ */}
-        <div id="guides" className="flex flex-col lg:flex-row gap-5 mt-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-5 mt-12 items-start">
           <div className="flex-1 w-full">
             <div className="flex items-baseline gap-2 mb-4">
               <span className="text-lg sm:text-xl font-extrabold text-gray-900">Guides</span>
@@ -249,7 +249,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div id="gear" className="w-full lg:w-[220px] flex flex-col gap-3">
+          <div className="w-full lg:w-[220px] flex flex-col gap-3">
             <p className="font-caveat text-base mb-0.5 transition-colors duration-300" style={{color:accent}}>gear essentials ↓</p>
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
             {GEAR.map((g,i)=>(
