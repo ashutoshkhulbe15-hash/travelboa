@@ -62,8 +62,23 @@ export function GearArticle({ slug, meta }: Props) {
         {/* Content */}
         {content ? (
           <div className="space-y-8">
+            {/* Hero image */}
+            {content.heroImage && (
+              <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: "21/9" }}>
+                <img src={content.heroImage.src} alt={content.heroImage.alt} className="w-full h-full object-cover" />
+              </div>
+            )}
+
             {/* Intro */}
             <p className="text-sm sm:text-[15px] leading-relaxed" style={{ color: textSecondary }}>{content.intro}</p>
+
+            {/* Image after intro */}
+            {content.sectionImages?.afterIntro && (
+              <div className="rounded-xl overflow-hidden">
+                <img src={content.sectionImages.afterIntro.src} alt={content.sectionImages.afterIntro.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                {content.sectionImages.afterIntro.caption && <p className="text-xs text-center py-2 italic" style={{ color: textMuted, background: dark ? "#1c1a17" : "#fafafa" }}>{content.sectionImages.afterIntro.caption}</p>}
+              </div>
+            )}
 
             {/* Buying guide sections */}
             {content.buyingGuide.map((section, i) => (
@@ -82,6 +97,13 @@ export function GearArticle({ slug, meta }: Props) {
             ))}
 
             {/* Product reviews */}
+            {/* Image after buying guide */}
+            {content.sectionImages?.afterBuyingGuide && (
+              <div className="rounded-xl overflow-hidden">
+                <img src={content.sectionImages.afterBuyingGuide.src} alt={content.sectionImages.afterBuyingGuide.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                {content.sectionImages.afterBuyingGuide.caption && <p className="text-xs text-center py-2 italic" style={{ color: textMuted, background: dark ? "#1c1a17" : "#fafafa" }}>{content.sectionImages.afterBuyingGuide.caption}</p>}
+              </div>
+            )}
             <h2 className="text-lg sm:text-xl font-extrabold" style={{ color: textPrimary }}>Our picks</h2>
             <div className="space-y-4">
               {content.products.map((product, i) => (
@@ -122,6 +144,14 @@ export function GearArticle({ slug, meta }: Props) {
                 </div>
               ))}
             </div>
+
+            {/* Image after products */}
+            {content.sectionImages?.afterProducts && (
+              <div className="rounded-xl overflow-hidden">
+                <img src={content.sectionImages.afterProducts.src} alt={content.sectionImages.afterProducts.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                {content.sectionImages.afterProducts.caption && <p className="text-xs text-center py-2 italic" style={{ color: textMuted, background: dark ? "#1c1a17" : "#fafafa" }}>{content.sectionImages.afterProducts.caption}</p>}
+              </div>
+            )}
 
             {/* Conclusion */}
             <div className="p-5 rounded-xl" style={{ background: `${accent}08`, border: `1px solid ${accent}20` }}>
