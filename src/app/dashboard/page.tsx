@@ -126,10 +126,22 @@ export default function DashboardPage() {
     // URL param takes priority
     const params = new URLSearchParams(window.location.search);
     const destParam = params.get("dest");
+    const stateParam = params.get("s");
+
     if (destParam) {
       const idx = DESTINATIONS.findIndex(d => d.slug === destParam);
       if (idx >= 0) {
         setDestIndex(idx);
+        // If shared state exists in URL, decode it
+        if (stateParam) {
+          try {
+            const decoded = JSON.parse(atob(stateParam));
+            setState(decoded);
+            setLoaded(true);
+            return;
+          } catch {}
+        }
+        // Otherwise load from localStorage
         setState(loadState(destParam));
         setLoaded(true);
         return;
@@ -184,7 +196,8 @@ export default function DashboardPage() {
   };
 
   const shareUrl = () => {
-    const url = `https://www.travelboa.com/dashboard?dest=${DESTINATIONS[destIndex].slug}`;
+    const encoded = btoa(JSON.stringify(state));
+    const url = `https://www.travelboa.com/dashboard?dest=${DESTINATIONS[destIndex].slug}&s=${encoded}`;
     navigator.clipboard.writeText(url);
     setShareMsg(true);
     setTimeout(() => setShareMsg(false), 2000);
