@@ -49,7 +49,7 @@ export function Polaroid({ name, slug, info, note, temp, image, grad, rot, accen
         {image && (
           <Image
             src={image}
-            alt={name}
+            alt={`${name} destination photo - TravelBoa`}
             fill
             className="object-cover"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"

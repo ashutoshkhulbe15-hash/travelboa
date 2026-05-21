@@ -55,7 +55,7 @@ export function DestinationGuide({ destination: d }: Props) {
             style={{ background: d.heroGradient, aspectRatio: "21/8" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/${d.slug}.jpg`} alt={d.name} className="absolute inset-0 w-full h-full object-cover" />
+            <img src={`/${d.slug}.jpg`} alt={`${d.name} - travel destination in India`} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
             <div className="absolute bottom-5 left-6 right-6">
               <div
