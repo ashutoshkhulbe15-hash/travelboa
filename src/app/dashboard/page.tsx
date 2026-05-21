@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -9,10 +9,9 @@ import { DESTINATIONS } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 
-const STORAGE_KEY = "travelboa-dashboard";
+const STORAGE_PREFIX = "travelboa-dash-";
 
 interface DashboardState {
-  destIndex: number;
   checks: Record<string, boolean>;
   notes: string;
   tripDate: string;
@@ -20,24 +19,27 @@ interface DashboardState {
 }
 
 function getDefaultState(): DashboardState {
-  return { destIndex: -1, checks: {}, notes: "", tripDate: "", travelers: "1" };
+  return { checks: {}, notes: "", tripDate: "", travelers: "1" };
 }
 
-function loadState(): DashboardState {
+function loadState(slug: string): DashboardState {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_PREFIX + slug);
     if (raw) return JSON.parse(raw);
   } catch {}
   return getDefaultState();
 }
 
-function saveState(state: DashboardState) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+function saveState(slug: string, state: DashboardState) {
+  try { localStorage.setItem(STORAGE_PREFIX + slug, JSON.stringify(state)); } catch {}
 }
 
-/* ═══ DESTINATION SELECTOR — full page ═══ */
+/* ═══ DESTINATION SELECTOR ═══ */
 function DestSelector({ accent, dark, onSelect }: { accent: string; dark: boolean; onSelect: (i: number) => void }) {
   const [hov, setHov] = useState<number | null>(null);
+  const [search, setSearch] = useState("");
+  const [searchFocus, setSearchFocus] = useState(false);
+
   const bg = dark ? "#0c0a09" : "white";
   const textPrimary = dark ? "#f5f5f4" : "#111";
   const textSecondary = dark ? "#a8a29e" : "#666";
@@ -45,37 +47,69 @@ function DestSelector({ accent, dark, onSelect }: { accent: string; dark: boolea
   const border = dark ? "#292524" : "#f0f0f0";
   const cardBg = dark ? "#1c1a17" : "white";
 
+  const filtered = DESTINATIONS.filter(d =>
+    search.length === 0 || d.name.toLowerCase().includes(search.toLowerCase()) || d.info.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 py-12" style={{ background: bg }}>
+    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center px-4 py-12" style={{ background: bg }}>
       <div className="text-4xl mb-4">🗺️</div>
       <h1 className="text-2xl sm:text-3xl font-black text-center tracking-tight mb-2" style={{ color: textPrimary }}>Create your trip dashboard</h1>
-      <p className="text-sm text-center max-w-md mb-10" style={{ color: textSecondary }}>Select a destination and we&apos;ll build a personalized dashboard with weather, packing checklist, road status, emergency info, and space for your notes.</p>
+      <p className="text-sm text-center max-w-md mb-8" style={{ color: textSecondary }}>Select a destination and we&apos;ll build a personalized dashboard with checklists, weather, road status, and more.</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[800px] w-full">
-        {DESTINATIONS.map((d, i) => (
-          <button key={d.slug} onClick={() => onSelect(i)}
-            onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
-            className="text-left rounded-xl overflow-hidden transition-all duration-200 cursor-pointer"
-            style={{
-              background: cardBg, border: `1.5px solid ${hov === i ? accent : border}`,
-              transform: hov === i ? "translateY(-4px)" : "none",
-              boxShadow: hov === i ? `0 8px 24px ${accent}20` : "none",
-            }}>
-            <div className="aspect-[16/9] relative" style={{ background: d.grad }}>
-              {d.image && <Image src={d.image} alt={d.name} fill className="object-cover" sizes="260px" />}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-3 left-4">
-                <div className="text-lg font-extrabold text-white">{d.name}</div>
-                <div className="text-xs text-white/60">{d.info}</div>
-              </div>
-            </div>
-            <div className="p-3 flex items-center justify-between">
-              <span className="font-caveat text-sm" style={{ color: accent }}>{d.note}</span>
-              <span className="text-xs font-bold" style={{ color: accent }}>Select →</span>
-            </div>
-          </button>
-        ))}
+      {/* Search bar */}
+      <div className="relative w-full max-w-[500px] mb-8">
+        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
+        <input
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          onFocus={() => setSearchFocus(true)}
+          onBlur={() => setSearchFocus(false)}
+          placeholder="Search destinations..."
+          className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
+          style={{ background: dark ? "#1c1a17" : "#fafafa", color: textPrimary, border: `1.5px solid ${searchFocus ? accent : border}`, boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none" }}
+          autoComplete="off"
+        />
+        {search && (
+          <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
+        )}
       </div>
+
+      {filtered.length === 0 ? (
+        <div className="text-center py-10">
+          <p className="text-base font-bold" style={{ color: textPrimary }}>No destinations found</p>
+          <p className="text-sm mt-1" style={{ color: textMuted }}>Try a different search</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[800px] w-full">
+          {filtered.map((d, i) => {
+            const realIndex = DESTINATIONS.findIndex(dd => dd.slug === d.slug);
+            return (
+              <button key={d.slug} onClick={() => onSelect(realIndex)}
+                onMouseEnter={() => setHov(realIndex)} onMouseLeave={() => setHov(null)}
+                className="text-left rounded-xl overflow-hidden transition-all duration-200 cursor-pointer"
+                style={{
+                  background: cardBg, border: `1.5px solid ${hov === realIndex ? accent : border}`,
+                  transform: hov === realIndex ? "translateY(-4px)" : "none",
+                  boxShadow: hov === realIndex ? `0 8px 24px ${accent}20` : "none",
+                }}>
+                <div className="aspect-[16/9] relative" style={{ background: d.grad }}>
+                  {d.image && <Image src={d.image} alt={d.name} fill className="object-cover" sizes="260px" />}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-3 left-4">
+                    <div className="text-lg font-extrabold text-white">{d.name}</div>
+                    <div className="text-xs text-white/60">{d.info}</div>
+                  </div>
+                </div>
+                <div className="p-3 flex items-center justify-between">
+                  <span className="font-caveat text-sm" style={{ color: accent }}>{d.note}</span>
+                  <span className="text-xs font-bold" style={{ color: accent }}>Select →</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -83,26 +117,44 @@ function DestSelector({ accent, dark, onSelect }: { accent: string; dark: boolea
 /* ═══ MAIN DASHBOARD ═══ */
 export default function DashboardPage() {
   const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
+  const [destIndex, setDestIndex] = useState<number>(-1);
   const [state, setState] = useState<DashboardState>(getDefaultState());
   const [loaded, setLoaded] = useState(false);
   const [shareMsg, setShareMsg] = useState(false);
 
   useEffect(() => {
-    const s = loadState();
-    // Check URL param
+    // URL param takes priority
     const params = new URLSearchParams(window.location.search);
     const destParam = params.get("dest");
     if (destParam) {
       const idx = DESTINATIONS.findIndex(d => d.slug === destParam);
-      if (idx >= 0) { s.destIndex = idx; }
+      if (idx >= 0) {
+        setDestIndex(idx);
+        setState(loadState(destParam));
+        setLoaded(true);
+        return;
+      }
     }
-    setState(s);
+    // Otherwise check if user had a saved destination
+    const lastDest = localStorage.getItem("travelboa-dash-last");
+    if (lastDest) {
+      const idx = DESTINATIONS.findIndex(d => d.slug === lastDest);
+      if (idx >= 0) {
+        setDestIndex(idx);
+        setState(loadState(lastDest));
+      }
+    }
     setLoaded(true);
   }, []);
 
+  // Save state whenever it changes
   useEffect(() => {
-    if (loaded && state.destIndex >= 0) saveState(state);
-  }, [state, loaded]);
+    if (loaded && destIndex >= 0) {
+      const slug = DESTINATIONS[destIndex].slug;
+      saveState(slug, state);
+      localStorage.setItem("travelboa-dash-last", slug);
+    }
+  }, [state, loaded, destIndex]);
 
   if (!mounted || !loaded) return null;
 
@@ -114,13 +166,16 @@ export default function DashboardPage() {
   const border = dark ? "#292524" : "#f0f0f0";
 
   const selectDest = (i: number) => {
-    setState({ ...getDefaultState(), destIndex: i });
-    window.history.replaceState({}, "", `/dashboard?dest=${DESTINATIONS[i].slug}`);
+    const slug = DESTINATIONS[i].slug;
+    setDestIndex(i);
+    setState(loadState(slug));
+    window.history.replaceState({}, "", `/dashboard?dest=${slug}`);
   };
 
   const resetDash = () => {
+    setDestIndex(-1);
     setState(getDefaultState());
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem("travelboa-dash-last");
     window.history.replaceState({}, "", "/dashboard");
   };
 
@@ -129,14 +184,14 @@ export default function DashboardPage() {
   };
 
   const shareUrl = () => {
-    const url = `https://www.travelboa.com/dashboard?dest=${DESTINATIONS[state.destIndex].slug}`;
+    const url = `https://www.travelboa.com/dashboard?dest=${DESTINATIONS[destIndex].slug}`;
     navigator.clipboard.writeText(url);
     setShareMsg(true);
     setTimeout(() => setShareMsg(false), 2000);
   };
 
-  // Show selector if no destination chosen
-  if (state.destIndex < 0) {
+  // Selector screen
+  if (destIndex < 0) {
     return (
       <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
         <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
@@ -147,10 +202,9 @@ export default function DashboardPage() {
     );
   }
 
-  const dest = DESTINATIONS[state.destIndex];
+  const dest = DESTINATIONS[destIndex];
   const w = dest.wx;
 
-  // Build checklist sections
   const checkSections = [
     { title: "📋 Registration & docs", items: dest.slug === "spiti" ? ["Inner Line Permit (ILP)", "Rohtang permit", "Vehicle documents", "ID proof ×2", "Travel insurance"] : dest.slug === "ladakh" ? ["ILP permit", "Vehicle documents", "ID proof ×2", "Travel insurance", "Bike fitness certificate"] : ["Char Dham e-pass", "ID proof ×2", "Aadhaar / voter ID", "Travel insurance"] },
     { title: "🎒 Packing", items: dest.packItems },
@@ -169,24 +223,32 @@ export default function DashboardPage() {
       <Navbar accent={accent} dark={dark} />
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8 pb-20">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6 mb-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs mb-3" style={{ color: textMuted }}>
-              <Link href="/" className="hover:opacity-70" style={{ color: textMuted }}>Home</Link>
-              <span>→</span>
-              <span className="font-semibold" style={{ color: textPrimary }}>Dashboard</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight transition-colors" style={{ color: textPrimary }}>Your {dest.name} trip</h1>
-            <p className="text-sm mt-1" style={{ color: textSecondary }}>Personal dashboard — everything saves automatically to your browser.</p>
+        {/* Hero banner with image */}
+        <div className="relative rounded-2xl overflow-hidden mt-4 mb-6" style={{ aspectRatio: "21/6" }}>
+          <div className="absolute inset-0" style={{ background: dest.grad }}>
+            {dest.image && <Image src={dest.image} alt={dest.name} fill className="object-cover" sizes="1100px" />}
           </div>
-          <div className="flex gap-2 flex-wrap">
-            <button onClick={shareUrl} className="px-4 py-2 rounded-xl text-xs font-bold transition-all" style={{ background: `${accent}15`, color: accent, border: `1.5px solid ${accent}30` }}>
-              {shareMsg ? "✓ Link copied!" : "📤 Share"}
-            </button>
-            <button onClick={resetDash} className="px-4 py-2 rounded-xl text-xs font-bold transition-all" style={{ background: dark ? "#292524" : "#f5f5f5", color: textMuted, border: `1.5px solid ${border}` }}>
-              🔄 Change destination
-            </button>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2 text-xs text-white/50 mb-1">
+                  <Link href="/" className="hover:text-white/80 text-white/50 no-underline">Home</Link>
+                  <span>→</span>
+                  <span className="text-white/80 font-semibold">My trip</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Your {dest.name} trip</h1>
+                <p className="text-xs sm:text-sm text-white/50 mt-1">Personal dashboard — saves automatically to your browser</p>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={shareUrl} className="px-4 py-2 rounded-xl text-xs font-bold bg-white/15 text-white border border-white/20 backdrop-blur-sm transition-all hover:bg-white/25">
+                  {shareMsg ? "✓ Copied!" : "📤 Share"}
+                </button>
+                <button onClick={resetDash} className="px-4 py-2 rounded-xl text-xs font-bold text-white border-2 border-white/40 backdrop-blur-sm transition-all hover:bg-white/15 hover:border-white/60">
+                  🔄 Change destination
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -199,10 +261,10 @@ export default function DashboardPage() {
           <div className="w-full h-2.5 rounded-full overflow-hidden" style={{ background: dark ? "#292524" : "#f0f0f0" }}>
             <div className="h-full rounded-full transition-all duration-500" style={{ width: `${progress}%`, background: progress === 100 ? "#22c55e" : accent }} />
           </div>
-          <p className="text-xs mt-2" style={{ color: textMuted }}>{doneChecks} of {totalChecks} items done</p>
+          <p className="text-xs mt-2" style={{ color: textMuted }}>{doneChecks} of {totalChecks} items checked</p>
         </div>
 
-        {/* Trip details row */}
+        {/* Trip details */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
           <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
             <label className="text-xs font-semibold block mb-2" style={{ color: textMuted }}>📅 Trip date</label>
@@ -216,16 +278,16 @@ export default function DashboardPage() {
 
         {/* Main grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
-          {/* Left — checklists */}
+          {/* Checklists */}
           <div className="flex flex-col gap-4">
             {checkSections.map((sec, si) => (
               <div key={si} className="p-4 sm:p-5 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-                <h3 className="text-sm font-extrabold mb-3 transition-colors" style={{ color: textPrimary }}>{sec.title}</h3>
+                <h3 className="text-sm font-extrabold mb-3" style={{ color: textPrimary }}>{sec.title}</h3>
                 {sec.items.map((item, ii) => {
                   const key = `${si}-${ii}`;
                   const done = !!state.checks[key];
                   return (
-                    <div key={key} onClick={() => toggleCheck(key)} className="flex items-center gap-3 py-2 cursor-pointer rounded-lg px-2 -mx-2 transition-colors hover:bg-black/[0.02]">
+                    <div key={key} onClick={() => toggleCheck(key)} className="flex items-center gap-3 py-2 cursor-pointer rounded-lg px-2 -mx-2 transition-colors" style={{}} onMouseEnter={e=>e.currentTarget.style.background=dark?'rgba(255,255,255,0.02)':'rgba(0,0,0,0.01)'} onMouseLeave={e=>e.currentTarget.style.background=''}>
                       <div className="w-5 h-5 rounded-md flex items-center justify-center text-xs text-white font-bold shrink-0 transition-all" style={{ border: `2px solid ${done ? "#22c55e" : border}`, background: done ? "#22c55e" : "transparent" }}>{done ? "✓" : ""}</div>
                       <span className="text-sm transition-all" style={{ color: done ? textMuted : textPrimary, textDecoration: done ? "line-through" : "none" }}>{item}</span>
                     </div>
@@ -235,7 +297,7 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          {/* Right — info cards */}
+          {/* Sidebar */}
           <div className="flex flex-col gap-4">
             {/* Weather */}
             <div className="p-4 rounded-xl text-center" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
@@ -296,20 +358,20 @@ export default function DashboardPage() {
               <textarea
                 value={state.notes}
                 onChange={e => setState(p => ({ ...p, notes: e.target.value }))}
-                placeholder="Hotel names, contact numbers, travel agent details, reminders..."
+                placeholder="Hotel names, contacts, reminders..."
                 rows={6}
                 className="w-full p-3 rounded-lg text-sm outline-none resize-none"
                 style={{ background: dark ? "#0c0a09" : "#fafafa", color: textPrimary, border: `1px solid ${border}` }}
               />
-              <p className="text-[10px] mt-2" style={{ color: textMuted }}>Saves automatically to your browser ✓</p>
+              <p className="text-[10px] mt-2" style={{ color: textMuted }}>Auto-saved ✓</p>
             </div>
 
-            {/* Full guide link */}
+            {/* Guide link */}
             <Link href={`/${dest.slug}`} className="flex items-center gap-3 p-4 rounded-xl no-underline transition-all hover:-translate-y-0.5" style={{ border: `2px solid ${accent}` }}>
               <span className="text-xl">📖</span>
               <div>
                 <div className="text-sm font-extrabold" style={{ color: textPrimary }}>Full {dest.name} guide</div>
-                <div className="text-[11px]" style={{ color: textMuted }}>Detailed trek info, stay, food, safety →</div>
+                <div className="text-[11px]" style={{ color: textMuted }}>Trek info, stay, food, safety →</div>
               </div>
             </Link>
           </div>
