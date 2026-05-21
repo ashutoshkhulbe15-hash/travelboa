@@ -7,83 +7,62 @@ import { Footer } from "@/components/Footer";
 import { ColorPicker } from "@/components/ColorPicker";
 import Link from "next/link";
 
-const CATEGORIES = [
+const GEAR_CATEGORIES = [
+  { key: "all", label: "All gear", icon: "🎒" },
+  { key: "jackets", label: "Jackets", icon: "🧥" },
+  { key: "shoes", label: "Shoes", icon: "🥾" },
+  { key: "bags", label: "Backpacks", icon: "🎒" },
+  { key: "electronics", label: "Electronics", icon: "🔋" },
+  { key: "accessories", label: "Accessories", icon: "🧤" },
+  { key: "sleep", label: "Sleep gear", icon: "🛏️" },
+];
+
+const GEAR_GUIDES = [
+  // Hills / North India
   {
-    name: "Footwear",
-    icon: "🥾",
-    items: [
-      { name: "Quechua MH500", desc: "All-terrain, ankle support, great grip on wet rock", price: "₹3,999", store: "Decathlon", best: "Best overall" },
-      { name: "Wildcraft Hypagrip 2.0", desc: "Budget-friendly, decent waterproofing", price: "₹2,499", store: "Amazon", best: "" },
-      { name: "Woodland OGC 4263122", desc: "Heavy-duty leather, overkill for light treks", price: "₹4,995", store: "Amazon", best: "" },
-      { name: "Decathlon sandals NH500", desc: "Camp shoes, river crossings, rest days", price: "₹1,299", store: "Decathlon", best: "Camp essential" },
+    region: "Hills & North India",
+    regionIcon: "🏔️",
+    regionDesc: "Cold weather, altitude, unpredictable rain — gear that actually works above 2,000m.",
+    guides: [
+      { title: "Best jackets for Kedarnath trek", desc: "Windproof vs down vs rain shell — which layers you need for 3,500m+ altitude in June", category: "jackets", dest: "Kedarnath", href: "/gear", items: 8, status: "coming" },
+      { title: "Best trekking shoes under ₹5,000", desc: "Quechua MH500 vs Wildcraft vs Woodland — real trail tests on Uttarakhand mud and snow", category: "shoes", dest: "All treks", href: "/gear", items: 6, status: "coming" },
+      { title: "Best jackets for Ladakh bike trip", desc: "Riding jackets that handle Khardung La wind chill and Manali–Leh dust", category: "jackets", dest: "Ladakh", href: "/gear", items: 7, status: "coming" },
+      { title: "Best sleeping bags for Spiti camping", desc: "Budget options that survive -10°C nights in Chandratal and Kaza", category: "sleep", dest: "Spiti", href: "/gear", items: 5, status: "coming" },
+      { title: "Best power banks for multi-day treks", desc: "20K vs 30K mAh, solar options, what lasts 5 days without a charge point", category: "electronics", dest: "All treks", href: "/gear", items: 6, status: "coming" },
+      { title: "Best backpacks for Chopta–Tungnath", desc: "30L vs 50L — day pack vs multi-day, rain covers, hip belt essentials", category: "bags", dest: "Chopta", href: "/gear", items: 5, status: "coming" },
+      { title: "Best thermals for high-altitude treks", desc: "Merino vs synthetic, layering for -5°C to 15°C range, budget picks", category: "accessories", dest: "All treks", href: "/gear", items: 7, status: "coming" },
+      { title: "Best riding gloves for Ladakh", desc: "Wind, cold, grip — from Rynox to budget options for Manali–Leh", category: "accessories", dest: "Ladakh", href: "/gear", items: 5, status: "coming" },
     ],
   },
+  // Pilgrimage
   {
-    name: "Jackets & layers",
-    icon: "🧥",
-    items: [
-      { name: "Forclaz MT500 windproof", desc: "Blocks wind at passes, packable, 300g", price: "₹4,999", store: "Decathlon", best: "Best value" },
-      { name: "Quechua Trek 100 down", desc: "Lightweight down, -5°C comfort, packs into pocket", price: "₹3,999", store: "Decathlon", best: "" },
-      { name: "Decathlon rain jacket NH500", desc: "Waterproof, seam-sealed, essential for monsoon", price: "₹1,999", store: "Decathlon", best: "" },
-      { name: "Merino wool base layer", desc: "Anti-odor, moisture-wicking, wear for days", price: "₹2,499", store: "Amazon", best: "Worth the spend" },
+    region: "Pilgrimage essentials",
+    regionIcon: "🙏",
+    regionDesc: "Comfort on long walks, queue-ready gear, monsoon protection for temple visits.",
+    guides: [
+      { title: "Best shoes for Vaishno Devi trek", desc: "13 km uphill on paved + rough path — comfort + grip without breaking the bank", category: "shoes", dest: "Vaishno Devi", href: "/gear", items: 6, status: "coming" },
+      { title: "Best rain ponchos for Char Dham yatra", desc: "Monsoon-proof options that pack small and dry fast between temples", category: "accessories", dest: "Char Dham", href: "/gear", items: 5, status: "coming" },
+      { title: "Best daypack for pilgrimage trips", desc: "Light, anti-theft, water-resistant — carry essentials in temple queues", category: "bags", dest: "All pilgrimages", href: "/gear", items: 5, status: "coming" },
     ],
   },
+  // General / All trips
   {
-    name: "Bags & packs",
-    icon: "🎒",
-    items: [
-      { name: "Quechua NH500 30L", desc: "Day pack, rain cover included, padded hip belt", price: "₹2,499", store: "Decathlon", best: "Best day pack" },
-      { name: "Forclaz MT500 50L", desc: "Multi-day treks, adjustable torso, ventilated back", price: "₹5,999", store: "Decathlon", best: "" },
-      { name: "Dry bags 10L + 20L set", desc: "Keep electronics and clothes dry in rain", price: "₹799", store: "Amazon", best: "" },
-    ],
-  },
-  {
-    name: "Sleep & shelter",
-    icon: "🛏️",
-    items: [
-      { name: "Naturehike UL sleeping bag", desc: "Comfort -5°C, 800g, compresses small", price: "₹3,499", store: "Amazon", best: "Best budget" },
-      { name: "Forclaz Trek 500 0°C", desc: "Mummy shape, hood, warmer but heavier", price: "₹4,999", store: "Decathlon", best: "" },
-      { name: "Sea to Summit liner", desc: "Adds 8°C warmth, keeps sleeping bag clean", price: "₹1,999", store: "Amazon", best: "" },
-    ],
-  },
-  {
-    name: "Electronics",
-    icon: "🔋",
-    items: [
-      { name: "Mi 20000mAh power bank", desc: "Charges phone 4x, fast charge, reliable", price: "₹1,499", store: "Amazon", best: "Must-carry" },
-      { name: "Forclaz HL100 headlamp", desc: "80 lumens, 30hr battery, red night mode", price: "₹499", store: "Decathlon", best: "" },
-      { name: "Nitecore NU25 headlamp", desc: "Premium, USB-C, 400 lumens, 28g", price: "₹3,299", store: "Amazon", best: "" },
-      { name: "Solar charger 21W", desc: "Backup on multi-day treks without power", price: "₹2,999", store: "Amazon", best: "" },
-    ],
-  },
-  {
-    name: "Protection & health",
-    icon: "🧴",
-    items: [
-      { name: "Sunscreen SPF50 PA+++", desc: "UV is brutal above 3,000m, reapply every 2hr", price: "₹499", store: "Amazon", best: "Non-negotiable" },
-      { name: "UV400 sunglasses", desc: "Polarized, wraparound, snow glare protection", price: "₹899", store: "Amazon", best: "" },
-      { name: "First aid kit (pre-built)", desc: "Bandages, Dettol, ORS, Diamox, painkillers", price: "₹599", store: "Amazon", best: "" },
-      { name: "Trekking poles (pair)", desc: "Carbon, foldable, saves knees on descent", price: "₹1,999", store: "Decathlon", best: "" },
-    ],
-  },
-  {
-    name: "Clothing essentials",
-    icon: "👕",
-    items: [
-      { name: "Quick-dry t-shirts ×3", desc: "Polyester, moisture-wicking, not cotton", price: "₹999", store: "Decathlon", best: "" },
-      { name: "Trek pants convertible", desc: "Zip-off legs, stretch, multiple pockets", price: "₹1,799", store: "Decathlon", best: "Best versatility" },
-      { name: "Thermal set (top + bottom)", desc: "Fleece-lined, wear under everything above 3,000m", price: "₹1,499", store: "Amazon", best: "" },
-      { name: "Buff/neck gaiter", desc: "Sun protection, dust, cold — one item, 10 uses", price: "₹399", store: "Amazon", best: "" },
-      { name: "Riding gloves", desc: "Rynox Air GT — wind, cold, grip for bike trips", price: "₹1,799", store: "Amazon", best: "" },
+    region: "Every trip essentials",
+    regionIcon: "✈️",
+    regionDesc: "Gear that belongs in your bag regardless of destination.",
+    guides: [
+      { title: "Best headlamps under ₹1,000", desc: "Forclaz HL100 vs Nitecore — brightness, battery life, red mode for camping", category: "electronics", dest: "All trips", href: "/gear", items: 5, status: "coming" },
+      { title: "Best sunscreen for mountain UV", desc: "SPF50 PA+++ options that don't feel greasy at altitude — Indian brands included", category: "accessories", dest: "All trips", href: "/gear", items: 5, status: "coming" },
+      { title: "Best first aid kits for travel", desc: "Pre-built vs DIY, Diamox, ORS, altitude essentials — what pharmacies miss", category: "accessories", dest: "All trips", href: "/gear", items: 6, status: "coming" },
     ],
   },
 ];
 
-const CATEGORY_NAMES = ["All", ...CATEGORIES.map(c => c.name)];
-
 export default function GearPage() {
   const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
-  const [filter, setFilter] = useState("All");
+  const [searchVal, setSearchVal] = useState("");
+  const [searchFocus, setSearchFocus] = useState(false);
+  const [filter, setFilter] = useState("all");
 
   if (!mounted) return null;
 
@@ -93,9 +72,18 @@ export default function GearPage() {
   const textSecondary = dark ? "#a8a29e" : "#666";
   const textMuted = dark ? "#57534e" : "#ccc";
   const border = dark ? "#292524" : "#f0f0f0";
-  const sectionBg = dark ? "#151413" : "#fafaf8";
 
-  const filtered = filter === "All" ? CATEGORIES : CATEGORIES.filter(c => c.name === filter);
+  // Filter guides
+  const filteredRegions = GEAR_GUIDES.map(region => ({
+    ...region,
+    guides: region.guides.filter(g => {
+      const matchCat = filter === "all" || g.category === filter;
+      const matchSearch = searchVal.length === 0 || g.title.toLowerCase().includes(searchVal.toLowerCase()) || g.dest.toLowerCase().includes(searchVal.toLowerCase());
+      return matchCat && matchSearch;
+    }),
+  })).filter(r => r.guides.length > 0);
+
+  const totalGuides = filteredRegions.reduce((s, r) => s + r.guides.length, 0);
 
   return (
     <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
@@ -109,54 +97,100 @@ export default function GearPage() {
           <span className="font-semibold" style={{ color: textPrimary }}>Gear</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2 transition-colors" style={{ color: textPrimary }}>Gear essentials</h1>
-        <p className="text-sm mb-2 transition-colors" style={{ color: textSecondary }}>Tested picks for mountain travel. Every item is something we&apos;d actually carry.</p>
-        <p className="text-xs mb-8" style={{ color: textMuted }}>Affiliate links help keep the site free. Prices as of May 2026 — may vary.</p>
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2 transition-colors" style={{ color: textPrimary }}>Gear guides</h1>
+        <p className="text-sm mb-6 transition-colors" style={{ color: textSecondary }}>Destination-specific gear recommendations. Tested picks, real prices, affiliate links that keep the site free.</p>
 
-        {/* Category filter */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
-          {CATEGORY_NAMES.map(cat => (
-            <button key={cat} onClick={() => setFilter(cat)} className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer transition-all duration-150 whitespace-nowrap shrink-0" style={{ background: filter === cat ? accent : "transparent", color: filter === cat ? "white" : textMuted, border: `1.5px solid ${filter === cat ? accent : border}` }}>
-              {cat === "All" ? "All categories" : `${CATEGORIES.find(c=>c.name===cat)?.icon} ${cat}`}
-            </button>
-          ))}
+        {/* Search + filter */}
+        <div className="rounded-2xl p-4 sm:p-6 mb-8 transition-colors duration-300" style={{ background: dark ? "#1c1a17" : "#fafaf8", border: `1.5px solid ${border}` }}>
+          {/* Search */}
+          <div className="relative">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
+            <input
+              value={searchVal}
+              onChange={e => setSearchVal(e.target.value)}
+              onFocus={() => setSearchFocus(true)}
+              onBlur={() => setSearchFocus(false)}
+              placeholder="Which gear are you looking for?"
+              className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
+              style={{ background: dark ? "#0c0a09" : "white", color: textPrimary, border: `1.5px solid ${searchFocus ? accent : border}`, boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none" }}
+              autoComplete="off"
+            />
+            {searchVal && (
+              <button onClick={() => setSearchVal("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
+            )}
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 my-5">
+            <div className="flex-1 h-px" style={{ background: border }} />
+            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: textMuted }}>or filter by type</span>
+            <div className="flex-1 h-px" style={{ background: border }} />
+          </div>
+
+          {/* Category filters */}
+          <div className="flex gap-2 flex-wrap">
+            {GEAR_CATEGORIES.map(c => (
+              <button key={c.key} onClick={() => setFilter(filter === c.key ? "all" : c.key)} className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer transition-all duration-150"
+                style={{ background: filter === c.key ? accent : "transparent", color: filter === c.key ? "white" : textMuted, border: `1.5px solid ${filter === c.key ? accent : border}` }}>
+                {c.icon} {c.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Categories */}
-        {filtered.map((cat) => (
-          <div key={cat.name} className="mb-10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl">{cat.icon}</span>
-              <h2 className="text-lg font-extrabold transition-colors" style={{ color: textPrimary }}>{cat.name}</h2>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-lg" style={{ background: `${accent}15`, color: accent }}>{cat.items.length} items</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {cat.items.map((item, j) => (
-                <div key={j} className="p-4 rounded-xl transition-all duration-150 hover:-translate-y-0.5" style={{ background: cardBg, border: `1.5px solid ${border}` }}
-                  onMouseEnter={e => (e.currentTarget.style.borderColor = accent)}
-                  onMouseLeave={e => (e.currentTarget.style.borderColor = border)}>
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <p className="text-sm font-bold transition-colors" style={{ color: textPrimary }}>{item.name}</p>
-                        {item.best && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ background: `${accent}18`, color: accent }}>{item.best}</span>}
-                      </div>
-                      <p className="text-xs mt-1 leading-relaxed" style={{ color: textSecondary }}>{item.desc}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-base font-extrabold transition-colors" style={{ color: textPrimary }}>{item.price}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between mt-3 pt-3" style={{ borderTop: `1px dashed ${border}` }}>
-                    <span className="text-[10px]" style={{ color: textMuted }}>Buy on {item.store}</span>
-                    <span className="text-xs font-semibold cursor-pointer" style={{ color: accent }}>{item.store} →</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Result count */}
+        {(searchVal || filter !== "all") && (
+          <div className="flex items-center gap-2 mb-5">
+            <span className="text-sm font-bold" style={{ color: textPrimary }}>{totalGuides} guide{totalGuides !== 1 ? "s" : ""}</span>
+            {filter !== "all" && (
+              <span className="text-xs px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1" style={{ background: `${accent}15`, color: accent }}>
+                {GEAR_CATEGORIES.find(c => c.key === filter)?.icon} {GEAR_CATEGORIES.find(c => c.key === filter)?.label}
+                <button onClick={() => setFilter("all")} className="ml-1 font-bold">✕</button>
+              </span>
+            )}
           </div>
-        ))}
+        )}
+
+        {/* Gear guide regions */}
+        {filteredRegions.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="text-4xl mb-3">🎒</div>
+            <p className="text-base font-bold" style={{ color: textPrimary }}>No gear guides found</p>
+            <p className="text-sm mt-1" style={{ color: textMuted }}>Try a different search or filter</p>
+          </div>
+        ) : (
+          filteredRegions.map((region) => (
+            <div key={region.region} className="mb-10">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">{region.regionIcon}</span>
+                <h2 className="text-lg font-extrabold transition-colors" style={{ color: textPrimary }}>{region.region}</h2>
+              </div>
+              <p className="text-sm mb-5 ml-10" style={{ color: textSecondary }}>{region.regionDesc}</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {region.guides.map((g, j) => (
+                  <Link key={j} href={g.href} className="block p-4 sm:p-5 rounded-xl no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ background: cardBg, border: `1.5px solid ${border}` }}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = accent)}
+                    onMouseLeave={e => (e.currentTarget.style.borderColor = border)}>
+                    <div className="flex items-center gap-2 mb-2 flex-wrap">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider" style={{ background: `${accent}15`, color: accent }}>
+                        {GEAR_CATEGORIES.find(c => c.key === g.category)?.icon} {g.category}
+                      </span>
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md" style={{ background: dark ? "#292524" : "#f5f5f5", color: textMuted }}>📍 {g.dest}</span>
+                      {g.status === "coming" && <span className="text-[9px] font-semibold" style={{ color: textMuted }}>Coming soon</span>}
+                    </div>
+                    <p className="text-sm sm:text-base font-bold leading-snug transition-colors" style={{ color: textPrimary }}>{g.title}</p>
+                    <p className="text-xs mt-2 leading-relaxed" style={{ color: textSecondary }}>{g.desc}</p>
+                    <div className="flex items-center justify-between mt-3 pt-3" style={{ borderTop: `1px solid ${border}` }}>
+                      <span className="text-[10px] font-semibold" style={{ color: textMuted }}>{g.items} products compared</span>
+                      <span className="text-xs font-semibold" style={{ color: accent }}>Read guide →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))
+        )}
       </div>
       <Footer accent={accent} />
     </div>
