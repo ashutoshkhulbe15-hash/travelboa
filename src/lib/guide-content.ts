@@ -291,3 +291,184 @@ export const guideContent: Record<string, GuideContent> = {
 },
 
 };
+
+// ═══ PACKING 4000M ═══
+guideContent["packing-4000m"] = {
+  publishDate: "2026-05-22",
+  lastUpdated: "2026-05-22",
+  author: "Ash",
+  sections: [
+    {
+      heading: "",
+      paragraphs: [
+        "The heaviest bag I ever watched someone haul to Kedarnath belonged to a man from Hyderabad who had packed for every possible disaster. A full blanket, four changes of jeans, two umbrellas, a portable speaker, a pillow, and enough dry food to survive a week if the dhabas vanished. His bag was around 22 kg and he had never trekked before. I passed him near the 5 km mark, just past Jungle Chatti, where he had stopped to reorganize at the side of the trail. He looked at my 7.5 kg daypack with an expression somewhere between disbelief and fury.",
+        "He made it to the temple eventually, but I watched him suffer the entire way up. Not from altitude, not from the cold - from dead weight on his back. He paid for every gram of that blanket and every pair of those jeans with his knees.",
+        "That image has become my working definition of a packing mistake: not forgetting something critical, but bringing too much of the wrong things. At 4,000m, every kilogram costs more than it does at sea level. Your cardiovascular system is already running at reduced capacity. Your breathing is labored. The last thing your body needs is an extra 5 kg of stuff it will never use.",
+        "This guide covers what actually works above 4,000m - treks like Kedarnath, Chopta, the Spiti Valley, and Ladakh - based on what I have carried and tested across multiple seasons. The goal is a moving pack weight under 8 kg for a 3-day trek. That number is achievable without spending a fortune, and it transforms the experience."
+      ],
+    },
+    {
+      heading: "Why cotton kills and synthetic saves: the 3-layer system",
+      paragraphs: [
+        "Before the gear list, the concept. Most packing failures at altitude trace back to not understanding the layering system - or understanding it in theory but ignoring it in practice.",
+        "Your body regulates temperature by managing heat gain and heat loss. On a trek, you generate significant body heat during exertion, then lose it rapidly the moment you stop. At altitude, this swing is more extreme because temperatures drop faster and the wind cuts harder.",
+        "Base layer: moisture management. The layer touching your skin has one job - move sweat away from your body before it cools and chills you. Cotton cannot do this. Cotton absorbs moisture, holds it against your skin, and turns into a cold wet compress the moment you stop moving. Above 3,500m, especially in October, this is genuinely dangerous.",
+        "What works: merino wool or synthetic polyester. Merino wool is the premium option - it manages moisture, resists odor, and stays warm even when slightly damp. Decent merino base layers start around Rs 2,000-3,500 at Decathlon on Rajpur Road in Dehradun. Synthetic polyester is the budget-friendly alternative. The Quechua synthetic base layers at Decathlon are Rs 499-799 and I have used them on multiple treks without complaint.",
+        "Mid layer: insulation. The middle layer traps warm air close to your body. A 200-weight fleece is the sweet spot for most high-altitude trekking. The Quechua MH100 fleece at Decathlon is Rs 1,499 and has been in my pack for three seasons. Down jackets are excellent for camp but too warm and too slow-drying for active hiking.",
+        "Outer layer: weather protection. The shell jacket should be waterproof and windproof. Minimum 10,000mm hydrostatic head for Himalayan conditions. The Forclaz MT500 jacket at Decathlon is Rs 4,999 and meets this threshold.",
+        "This three-layer system weighs less than one pair of jeans and handles temperatures from 20C on the trail to -5C at camp."
+      ],
+      warning: "Cotton against the skin in cold wet conditions above 3,500m is one of the faster routes to hypothermia. Always use synthetic or merino base layers.",
+    },
+    {
+      heading: "Summer trek packing: May to June",
+      paragraphs: [
+        "May and June are the primary trekking months in Uttarakhand. Daytime temperatures on the trail are around 12-18C at 3,500m. Mornings and evenings drop to 2-5C. Rain arrives in spurts rather than monsoon sheets."
+      ],
+      items: [
+        "2 synthetic or merino base layer tops (one to wear, one to dry) - 400g combined",
+        "1 x 200-weight fleece mid layer - 450-500g",
+        "1 waterproof shell jacket - 400-600g",
+        "2 pairs quick-dry trekking trousers (no jeans - a single pair weighs 700-900g and takes forever to dry) - 400-560g",
+        "1 pair thermal leggings for camp - 150g",
+        "3 pairs moisture-wicking socks + 1 pair liner socks for blister prevention",
+        "Lightweight sun hat and buff or neck gaiter",
+        "Lightweight liner gloves",
+        "UV400 sunglasses (snow blindness is a risk even in summer)",
+        "Total clothing weight target: 1.5-1.8 kg"
+      ],
+    },
+    {
+      heading: "Summer gear essentials",
+      paragraphs: [
+        "Mid-cut trekking shoes, broken in for at least 5-7 days before the trek. Camp sandals - 200g, significant comfort.",
+        "Daypack 25-35L with rain cover and hip belt. Trekking poles - optional but recommended for knee issues or significant descent.",
+        "Headlamp 200+ lumens. Pulse oximeter Rs 800-1,500 - non-negotiable above 3,500m. See the acclimatization guide for how to interpret readings.",
+        "Power bank 20,000 mAh - phones at altitude drain faster searching for signal. Mi 20000 mAh is Rs 1,499, weighs 440g.",
+        "Water bottles or hydration bladder: minimum 2L capacity. Water purification: iodine tablets or Sawyer Squeeze filter."
+      ],
+      tip: "The Kedarnath route has dhabas the entire way to the temple. You do not need to carry 2 days of food. Carry 1-2 snack bars per day, buy meals at dhabas. This saves 500-700g of food weight that most people carry unnecessarily.",
+    },
+    {
+      heading: "Late season trek packing: October to November",
+      paragraphs: [
+        "October and November are my favorite months to trek in Uttarakhand. The crowds thin dramatically, the air is clear after the monsoon, and you get views that June rarely delivers. But the temperature window closes fast. By late October, nights at 3,500m are regularly -5C to -8C. Snow is possible at 4,000m+. Wind speeds increase.",
+        "Everything in the summer list remains. The late-season additions:"
+      ],
+      items: [
+        "Down jacket for camp and mornings - 300-500 fill power, 250-400g. Do not compromise on this.",
+        "Heavier mid layer - 300-weight fleece or synthetic insulated mid layer (Quechua Trek 900, Rs 3,999)",
+        "Thermal leggings - mandatory for October onwards",
+        "Balaclava or warm beanie - wind chill at 4,000m+ in October is significant",
+        "Heavier insulated gloves with waterproof shell",
+        "Low gaiters for potential snow - 200g, prevents miserable wet feet",
+        "Sleeping bag rated to -5C comfort minimum, ideally -10C for Spiti or Chandrashila",
+        "Sleeping bag liner for extra 5C warmth - Rs 500-800",
+        "Sleeping pad R-value 2+ if camping",
+        "Total added late-season weight: approximately 1-1.5 kg over summer baseline"
+      ],
+      warning: "Late season on the Kedarnath and Badrinath circuits means most dhabas and tea stalls are closed. Assume no food available above 2,500m and carry accordingly. Budget 400-500g of food per day per person.",
+    },
+    {
+      heading: "Summer vs late season comparison",
+      paragraphs: [],
+      table: {
+        headers: ["Item", "Summer (May-Jun)", "Late Season (Oct-Nov)", "Notes"],
+        rows: [
+          ["Base layer tops", "2 x synthetic/merino", "2 x merino (thicker)", "Merino preferred in cold"],
+          ["Mid layer", "200-weight fleece", "300-weight fleece or insulated", "Add or upgrade"],
+          ["Down jacket", "Optional (camp use)", "Mandatory", "Minimum 500g fill"],
+          ["Shell jacket", "Waterproof, 10,000mm", "Waterproof + wind-resistant", "Same shell works"],
+          ["Trekking trousers", "2 x lightweight", "2 x mid-weight or 1 + thermal", "Layering adds flexibility"],
+          ["Thermal leggings", "Optional", "Mandatory", "-5C nights"],
+          ["Head cover", "Lightweight sun hat", "Full beanie + balaclava", "Wind chill factor"],
+          ["Gloves", "Liner gloves", "Insulated + shell gloves", "Frostbite risk in Nov"],
+          ["Sleeping bag", "-5C comfort", "-10C comfort minimum", "Spiti: -15C recommended"],
+          ["Food to carry", "Snacks only (dhabas open)", "Full day rations (dhabas closed)", "Route-dependent"],
+          ["Total clothing weight", "1.5-1.8 kg", "2-2.5 kg", "Down jacket adds most"],
+        ],
+      },
+    },
+    {
+      heading: "Weight targets: the 8 kg pack",
+      paragraphs: [
+        "The 8 kg total for a 3-day moving pack is achievable if you are deliberate about each category."
+      ],
+      table: {
+        headers: ["Category", "Target Weight", "Notes"],
+        rows: [
+          ["Clothing (full system)", "1.5-2.0 kg", "Summer; add 500g for late season"],
+          ["Footwear (worn, not packed)", "0.5-0.8 kg", "Mid-cut trekking shoe"],
+          ["Shelter / sleeping", "1.0-1.5 kg", "Sleeping bag + liner. Tent adds 1-1.5 kg"],
+          ["Electronics", "0.4-0.6 kg", "Phone, power bank, headlamp, pulse ox"],
+          ["Water", "0.5-1.0 kg", "2L capacity; varies with route"],
+          ["Food", "0.5-1.5 kg", "Snacks for Kedarnath; full rations for Spiti"],
+          ["First aid / personal care", "0.3-0.5 kg", "First aid kit, sunscreen, toiletries"],
+          ["Pack itself", "1.0-1.5 kg", "30L quality pack with hip belt"],
+          ["Total moving weight", "5.8-9.4 kg", "Target under 8 kg for 3-day trek"],
+        ],
+      },
+      tip: "The difference between a 6 kg and an 11 kg pack on the Kedarnath trail is approximately 2,000m of additional cumulative effort over the 16 km round trip. That difference shows up as extra hours, more breaks, and either a knee problem or extreme fatigue by the end of the descent.",
+    },
+    {
+      heading: "Non-negotiables above 4,000m",
+      paragraphs: [
+        "Some items appear optional until they are not."
+      ],
+      items: [
+        "First aid kit: Diamox 250mg, ORS sachets x5 minimum, ibuprofen, blister plasters x8-10, elastic bandage, anti-diarrheal tablets, antiseptic wipes, personal medications",
+        "Navigation: Phone with offline maps (OsmAnd or Maps.me) downloaded before departure. Phone signal drops out frequently above 3,500m",
+        "Pack liner bag or dry bags for electronics, sleeping bag, and clothing. Rain gets inside packs even with a rain cover",
+        "Sun protection: Sunscreen SPF 50+ and lip balm with SPF. UV increases roughly 4% per 300m of elevation gain"
+      ],
+    },
+    {
+      heading: "Things to leave home",
+      paragraphs: [
+        "The anti-list is as important as the list."
+      ],
+      items: [
+        "Jeans or cotton trousers - heavy, slow to dry, no insulation when wet",
+        "Cotton t-shirts as base layers - save them for Haridwar",
+        "Full-sized towel - a microfiber travel towel weighs 60-80g vs 400-600g for cotton",
+        "More than 2 pairs of trekking trousers - you will wear the same two in rotation",
+        "Heavy mountaineering boots unless you specifically need them (1.2-1.8 kg vs 600-800g for trekking shoes)",
+        "Laptop - leave it in Dehradun",
+        "More than one book - one per trip, donated at the last guesthouse if finished",
+        "Drone without permits - banned near temples like Kedarnath, fine risk outweighs the shots"
+      ],
+    },
+    {
+      heading: "Where to buy gear in India",
+      paragraphs: [
+        "You do not need to order from international gear sites or pay import prices.",
+        "Decathlon Dehradun, Rajpur Road: My first stop before any major trek. Large store, usually well-stocked, covers the full Quechua and Forclaz range. Staff are often trekkers themselves. Open 10 AM to 9 PM.",
+        "Decathlon Rishikesh: Smaller store, useful if driving through on the way to the char dham circuit.",
+        "Local hiking shops, Rishikesh Laxman Jhula area: A stretch of outdoor gear shops sells everything from trekking poles to sleeping bags. Quality is variable - inspect items carefully before buying.",
+        "A note on buying decisions: buy new for sleeping bags (compression degrades with washing), trekking shoes (unknown wear patterns), and shell jackets (waterproofing degrades). Trekking poles, headlamps, and most clothing are fine used."
+      ],
+    },
+  ],
+  faq: [
+    { question: "Do I need a sleeping bag if I am staying in guesthouses on the Kedarnath route?", answer: "Guesthouses on the Kedarnath trail provide blankets. Carrying a lightweight sleeping bag liner (silk or fleece, around 150g) adds meaningful warmth. For October onwards, a full sleeping bag rated to -5C is strongly recommended even in guesthouses because heating is limited." },
+    { question: "Can I rent gear in Rishikesh instead of buying?", answer: "Sleeping bags, trekking poles, and gaiters can be rented from shops in Rishikesh. Quality is unpredictable and rental sleeping bags often have comfort ratings that do not match reality after heavy use. For trekkers who go twice a year or more, buying pays for itself quickly." },
+    { question: "Is a down jacket a good mid layer for high-altitude trekking?", answer: "Down is excellent at camp but insulates poorly when wet and traps too much heat during active hiking. Fleece or synthetic insulated mid layers are better for the trail. Carry both if camping: fleece for hiking, down for mornings and evenings." },
+    { question: "How do I manage the weight of carrying 3-4L of water per day?", answer: "For routes with reliable streams, carry a Sawyer Squeeze filter (85g) and top up from water sources. On the Kedarnath route, chai stalls at regular intervals mean you rarely need more than 2L at a time." },
+    { question: "Should I bring a tent or plan on guesthouses?", answer: "For the char dham circuit, guesthouses are available at all overnight points and a tent adds 1-1.5 kg for no benefit. For Hampta Pass, Chandrashila summit nights, or Spiti camping, a tent is required. Ultralight one-person tents weigh 1.2-1.4 kg." },
+    { question: "What is the weight target for a 3-day high altitude trek pack?", answer: "Under 8 kg moving weight. This breaks down as roughly 1.5-2 kg clothing, 1-1.5 kg sleeping system, 0.4-0.6 kg electronics, 0.5-1.5 kg food, 0.3-0.5 kg first aid, and 1-1.5 kg for the pack itself." },
+    { question: "Where can I buy trekking gear in Dehradun?", answer: "Decathlon on Rajpur Road is the most comprehensive option, carrying the full Quechua and Forclaz range. Open 10 AM to 9 PM. The Rishikesh Decathlon is smaller but useful if passing through. Local shops near Laxman Jhula cover last-minute items." },
+  ],
+  schemaJson: [
+    { "@context": "https://schema.org", "@type": "Article", "headline": "What to Pack for 4,000m+ Altitude Treks in India", "description": "Practical packing guide for high-altitude treks above 4,000m in India. Layering system, summer vs late-season gear, weight targets, and where to buy in Dehradun.", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/packing-4000m" } },
+    { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "Do I need a sleeping bag for Kedarnath guesthouses?", "acceptedAnswer": { "@type": "Answer", "text": "Guesthouses provide blankets. A lightweight sleeping bag liner adds warmth. For October onwards, a full sleeping bag rated to -5C is recommended." } },
+      { "@type": "Question", "name": "Can I rent trekking gear in Rishikesh?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but quality is unpredictable. Rental sleeping bags often underperform. For regular trekkers, buying pays for itself." } },
+      { "@type": "Question", "name": "What is the weight target for a 3-day trek pack?", "acceptedAnswer": { "@type": "Answer", "text": "Under 8 kg moving weight, broken down across clothing, sleeping, electronics, food, first aid, and the pack itself." } },
+      { "@type": "Question", "name": "Where to buy trekking gear in Dehradun?", "acceptedAnswer": { "@type": "Answer", "text": "Decathlon on Rajpur Road carries the full Quechua and Forclaz range. Local shops near Laxman Jhula in Rishikesh cover last-minute items." } },
+    ] },
+  ],
+  outboundLinks: [
+    { label: "Decathlon India", url: "https://www.decathlon.in" },
+    { label: "Leave No Trace India", url: "https://lntindia.org" },
+  ],
+};
