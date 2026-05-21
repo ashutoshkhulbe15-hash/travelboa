@@ -49,13 +49,14 @@ export function DestinationGuide({ destination: d }: Props) {
             <span className="text-gray-700 font-semibold">{d.name}</span>
           </div>
 
-          {/* Hero image placeholder */}
+          {/* Hero image */}
           <div
             className="w-full rounded-2xl relative overflow-hidden"
             style={{ background: d.heroGradient, aspectRatio: "21/8" }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/${d.slug}.jpg`} alt={d.name} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs text-white/60" style={{ background: "rgba(0,0,0,0.3)" }}>📷 Your photo here</div>
             <div className="absolute bottom-5 left-6 right-6">
               <div
                 className="inline-block px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest mb-2"

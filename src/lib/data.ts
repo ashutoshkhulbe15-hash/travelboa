@@ -1,5 +1,5 @@
 export const DESTINATIONS = [
-  { name: "Kedarnath", slug: "kedarnath", info: "3,583m · Uttarakhand", note: "16 km trek to the Jyotirlinga", temp: "4°⛅", grad: "linear-gradient(150deg,#2d1b60,#5a3d7a 60%,#8a6a4a)", rot: -2, color: "#7c3aed", type: "pilgrimage" as const,
+  { name: "Kedarnath", slug: "kedarnath", info: "3,583m · Uttarakhand", note: "16 km trek to the Jyotirlinga", temp: "4°⛅", image: "/kedarnath.jpg", grad: "linear-gradient(150deg,#2d1b60,#5a3d7a 60%,#8a6a4a)", rot: -2, color: "#7c3aed", type: "pilgrimage" as const,
     wx: { icon: "⛅", temp: 4, feels: 1, hum: 55, wind: 22, aqi: 32, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Partly cloudy", alt: "3,583m", sunrise: "5:42 AM", sunset: "6:58 PM",
       forecast: [{ day: "Tomorrow", icon: "☀️", hi: 8, lo: 0 },{ day: "Thursday", icon: "⛅", hi: 6, lo: -2 },{ day: "Friday", icon: "🌧️", hi: 4, lo: -3 }] },
     routes: [
@@ -12,7 +12,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "SDRF Uttarakhand", number: "1070" }, { name: "Rudraprayag Police", number: "01364-233512" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🥾", label: "Trek distance", value: "16 km" }, { icon: "⏱️", label: "Duration", value: "4–6 days" }, { icon: "💰", label: "Budget", value: "₹5K–35K" }, { icon: "📋", label: "Registration", value: "Mandatory" }],
   },
-  { name: "Spiti Valley", slug: "spiti", info: "3,650m · Himachal", note: "cold desert, ancient monasteries", temp: "10°☀️", grad: "linear-gradient(150deg,#3a3020,#5a5030 60%,#3a5040)", rot: 1.5, color: "#b45309", type: "adventure" as const,
+  { name: "Spiti Valley", slug: "spiti", info: "3,650m · Himachal", note: "cold desert, ancient monasteries", temp: "10°☀️", image: "/spiti.jpg", grad: "linear-gradient(150deg,#3a3020,#5a5030 60%,#3a5040)", rot: 1.5, color: "#b45309", type: "adventure" as const,
     wx: { icon: "☀️", temp: 10, feels: 7, hum: 25, wind: 8, aqi: 28, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Clear sky", alt: "3,650m", sunrise: "5:38 AM", sunset: "7:12 PM",
       forecast: [{ day: "Tomorrow", icon: "☀️", hi: 18, lo: 2 },{ day: "Thursday", icon: "☀️", hi: 17, lo: 1 },{ day: "Friday", icon: "⛅", hi: 14, lo: 0 }] },
     routes: [
@@ -25,7 +25,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "Kaza PHC", number: "01906-222340" }, { name: "BRO Helpline", number: "1800-180-6763" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🛣️", label: "Circuit", value: "~630 km" }, { icon: "⏱️", label: "Duration", value: "8–12 days" }, { icon: "⛽", label: "Fuel warning", value: "No pump Batal–Kaza" }, { icon: "🏧", label: "ATM warning", value: "Unreliable in Kaza" }],
   },
-  { name: "Vaishno Devi", slug: "vaishno-devi", info: "1,584m · J&K", note: "India's most visited shrine", temp: "18°🌤️", grad: "linear-gradient(150deg,#5a1a1a,#7a3030 60%,#5a2020)", rot: -1, color: "#be123c", type: "pilgrimage" as const,
+  { name: "Vaishno Devi", slug: "vaishno-devi", info: "1,584m · J&K", note: "India's most visited shrine", temp: "18°🌤️", image: "/vaishno-devi.jpg", grad: "linear-gradient(150deg,#5a1a1a,#7a3030 60%,#5a2020)", rot: -1, color: "#be123c", type: "pilgrimage" as const,
     wx: { icon: "🌤️", temp: 18, feels: 17, hum: 65, wind: 8, aqi: 45, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Pleasant", alt: "1,584m", sunrise: "5:35 AM", sunset: "7:20 PM",
       forecast: [{ day: "Tomorrow", icon: "🌤️", hi: 24, lo: 14 },{ day: "Thursday", icon: "☀️", hi: 26, lo: 15 },{ day: "Friday", icon: "⛅", hi: 22, lo: 13 }] },
     routes: [
@@ -36,7 +36,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "Shrine Board", number: "1800-180-1988" }, { name: "Katra Police", number: "01991-232500" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🥾", label: "Trek distance", value: "13 km" }, { icon: "⏱️", label: "Duration", value: "2–3 days" }, { icon: "💰", label: "Budget", value: "₹3K–15K" }, { icon: "📋", label: "Registration", value: "Mandatory" }],
   },
-  { name: "Ladakh", slug: "ladakh", info: "3,524m · Ladakh", note: "Khardung La, Pangong, the ride", temp: "12°☀️", grad: "linear-gradient(150deg,#1a2a4a,#2a5a7a 60%,#3a3a2a)", rot: 2, color: "#0369a1", type: "adventure" as const,
+  { name: "Ladakh", slug: "ladakh", info: "3,524m · Ladakh", note: "Khardung La, Pangong, the ride", temp: "12°☀️", image: "/ladakh.jpg", grad: "linear-gradient(150deg,#1a2a4a,#2a5a7a 60%,#3a3a2a)", rot: 2, color: "#0369a1", type: "adventure" as const,
     wx: { icon: "☀️", temp: 12, feels: 9, hum: 20, wind: 10, aqi: 22, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Clear sky", alt: "3,524m", sunrise: "5:25 AM", sunset: "7:35 PM",
       forecast: [{ day: "Tomorrow", icon: "☀️", hi: 20, lo: 3 },{ day: "Thursday", icon: "☀️", hi: 19, lo: 2 },{ day: "Friday", icon: "⛅", hi: 16, lo: 1 }] },
     routes: [
@@ -49,7 +49,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "Leh Hospital", number: "01982-252014" }, { name: "BRO Helpline", number: "1800-180-6763" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🛣️", label: "Manali–Leh", value: "479 km" }, { icon: "⏱️", label: "Duration", value: "10–15 days" }, { icon: "🏔️", label: "Highest pass", value: "Khardung La 5,359m" }, { icon: "⛽", label: "Last fuel", value: "Tandi / Upshi" }],
   },
-  { name: "Chopta", slug: "chopta", info: "3,680m · Uttarakhand", note: "gentle trek to highest Shiva temple", temp: "6°⛅", grad: "linear-gradient(150deg,#1a3a2a,#3a6a4a 60%,#2a5a1a)", rot: -0.5, color: "#15803d", type: "adventure" as const,
+  { name: "Chopta", slug: "chopta", info: "3,680m · Uttarakhand", note: "gentle trek to highest Shiva temple", temp: "6°⛅", image: "/chopta.jpg", grad: "linear-gradient(150deg,#1a3a2a,#3a6a4a 60%,#2a5a1a)", rot: -0.5, color: "#15803d", type: "adventure" as const,
     wx: { icon: "⛅", temp: 6, feels: 3, hum: 50, wind: 15, aqi: 35, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Misty", alt: "3,680m", sunrise: "5:40 AM", sunset: "7:00 PM",
       forecast: [{ day: "Tomorrow", icon: "⛅", hi: 12, lo: 1 },{ day: "Thursday", icon: "🌧️", hi: 8, lo: -1 },{ day: "Friday", icon: "⛅", hi: 10, lo: 0 }] },
     routes: [
