@@ -121,6 +121,30 @@ export const DESTINATIONS = [
     emergency: [{ name: "IGMC Hospital", number: "0177-2804251" }, { name: "Shimla Police", number: "0177-2812344" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🚂", label: "Toy train", value: "Kalka-Shimla" }, { icon: "🛣️", label: "To Kaza", value: "415 km" }, { icon: "💰", label: "Budget", value: "₹2.5K-12K" }, { icon: "📅", label: "Best months", value: "Sep-Oct" }],
   },
+  { name: "Dharamshala & McLeodganj", slug: "dharamshala", info: "1,457m · Himachal Pradesh", note: "Triund trek and Tibetan quarter", temp: "18°🌤️", image: "/dharamshala.jpg", grad: "linear-gradient(150deg,#1f3a2d,#3a6a4a 60%,#5a8a6a)", rot: -1, color: "#16a34a", type: "adventure" as const, activities: ["trekking", "camping", "yoga", "nature"] as string[],
+    wx: { icon: "🌤️", temp: 18, feels: 16, hum: 60, wind: 8, aqi: 35, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Pleasant", alt: "1,457m", sunrise: "5:42 AM", sunset: "7:05 PM",
+      forecast: [{ day: "Tomorrow", icon: "☀️", hi: 22, lo: 10 },{ day: "Thursday", icon: "⛅", hi: 20, lo: 9 },{ day: "Friday", icon: "🌧️", hi: 16, lo: 8 }] },
+    routes: [
+      { route: "Dehradun → Dharamshala", status: "open" as const, note: "270 km, 6-7 hrs" },
+      { route: "Dharamshala → McLeodganj", status: "open" as const, note: "10 km uphill" },
+      { route: "McLeodganj → Triund", status: "open" as const, note: "9 km trek, 4-5 hrs" },
+    ],
+    packItems: ["Trekking shoes", "Headlamp", "Fleece mid-layer", "Rain shell", "Trekking poles", "Cash ₹3K+", "Tent (for overnight)"],
+    emergency: [{ name: "Dharamshala Hospital", number: "01892-222037" }, { name: "McLeodganj Police", number: "01892-221483" }, { name: "Disaster Helpline", number: "112" }],
+    quickFacts: [{ icon: "🥾", label: "Triund trek", value: "9 km" }, { icon: "⛰️", label: "Triund altitude", value: "2,842m" }, { icon: "💰", label: "Budget", value: "₹2K-12K" }, { icon: "📅", label: "Best months", value: "Sep-Nov" }],
+  },
+  { name: "Hemkund Sahib", slug: "hemkund-sahib", info: "4,329m · Uttarakhand", note: "world's highest Gurudwara", temp: "4°🌨️", image: "/hemkund-sahib.jpg", grad: "linear-gradient(150deg,#1a2540,#3a5a8a 60%,#5a8aaa)", rot: 2, color: "#1d4ed8", type: "pilgrimage" as const, activities: ["pilgrimage", "trekking"] as string[],
+    wx: { icon: "🌨️", temp: 4, feels: 0, hum: 70, wind: 18, aqi: 25, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Cold", alt: "4,329m", sunrise: "5:38 AM", sunset: "7:00 PM",
+      forecast: [{ day: "Tomorrow", icon: "⛅", hi: 8, lo: 0 },{ day: "Thursday", icon: "🌨️", hi: 5, lo: -2 },{ day: "Friday", icon: "❄️", hi: 4, lo: -3 }] },
+    routes: [
+      { route: "Dehradun → Govindghat", status: "open" as const, note: "290 km, 8-9 hrs" },
+      { route: "Govindghat → Ghangaria", status: "open" as const, note: "13 km trek / pony / helicopter" },
+      { route: "Ghangaria → Hemkund Sahib", status: "open" as const, note: "6 km, 3-4 hrs trek" },
+    ],
+    packItems: ["Headlamp", "Down jacket", "Trekking poles", "Cash ₹5K+", "Sunscreen SPF 50+", "Gaiters (Jun snow)", "2L water"],
+    emergency: [{ name: "SDRF Uttarakhand", number: "1070" }, { name: "Joshimath Hospital", number: "01389-222019" }, { name: "Disaster Helpline", number: "112" }],
+    quickFacts: [{ icon: "🏔️", label: "Altitude", value: "4,329m" }, { icon: "🥾", label: "Trek", value: "6 km from Ghangaria" }, { icon: "📅", label: "Season", value: "Late May-Oct" }, { icon: "🆓", label: "Permit", value: "None required" }],
+  },
 ];
 
 export const SEARCH_DESTINATIONS = [
