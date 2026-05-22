@@ -167,6 +167,8 @@ const TRIPS = [
 export function GearClient() {
   const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [openTrip, setOpenTrip] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [searchFocus, setSearchFocus] = useState(false);
 
   if (!mounted) return null;
 
@@ -190,11 +192,33 @@ export function GearClient() {
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2" style={{ color: textPrimary }}>What gear do you need?</h1>
-        <p className="text-sm mb-8" style={{ color: textSecondary }}>Pick your trip. We will show you exactly what to pack with links to our tested product reviews.</p>
+        <p className="text-sm mb-5" style={{ color: textSecondary }}>Pick your trip or search for specific gear. Links to our tested product reviews.</p>
+
+        {/* Search bar */}
+        <div className="relative mb-6">
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            onFocus={() => setSearchFocus(true)}
+            onBlur={() => setSearchFocus(false)}
+            placeholder="Search gear... jackets, shoes, power bank, sleeping bag"
+            className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
+            style={{ background: dark ? "#1c1a17" : "#fafaf8", color: textPrimary, border: `1.5px solid ${searchFocus ? accent : border}`, boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none" }}
+            autoComplete="off"
+          />
+          {search && (
+            <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
+          )}
+        </div>
 
         {/* Trip cards */}
         <div className="space-y-3">
-          {TRIPS.map(trip => {
+          {TRIPS.filter(trip => {
+            if (!search) return true;
+            const s = search.toLowerCase();
+            return trip.name.toLowerCase().includes(s) || trip.desc.toLowerCase().includes(s) || trip.gear.some(c => c.items.some(item => item.name.toLowerCase().includes(s) || item.linkLabel.toLowerCase().includes(s) || item.why.toLowerCase().includes(s)));
+          }).map(trip => {
             const isOpen = openTrip === trip.id;
             const totalItems = trip.gear.reduce((s, c) => s + c.items.length, 0);
             return (
