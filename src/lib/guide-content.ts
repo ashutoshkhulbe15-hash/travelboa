@@ -818,6 +818,7 @@ guideContent["monsoon-routes"] = {
 
 // ═══ ATM CASH GUIDE ═══
 guideContent["atm-cash-guide"] = {
+  heroImage: { src: "/guide-atm-hero.jpg", alt: "SBI ATM at Joshimath branch with Himalayan mountains in the background" },
   publishDate: "2026-05-22",
   lastUpdated: "2026-05-22",
   author: "Ash",
@@ -827,7 +828,8 @@ guideContent["atm-cash-guide"] = {
       "That is not a hypothetical. I have watched it happen - to others, and once, uncomfortably, to myself. I was driving from Dehradun to Kedarnath via Rudraprayag on a May morning in 2024, fully confident I had enough in my account and a working Jio SIM. I had withdrawn Rs 3,000 in Rishikesh \"just in case\" and figured I would use UPI for the rest. The ATM at Sonprayag was out of cash. The network at Gaurikund was too weak for UPI to process. The ponywala wanted Rs 1,800 upfront in cash.",
       "This guide covers every major town on the four routes I know well: the Char Dham corridor in Uttarakhand, the Spiti Valley circuit in Himachal Pradesh, the Leh-Ladakh route, and the Vaishno Devi route. Every town section has specific numbers - ATM count, bank names, withdrawal limits, distance to the next reliable machine, and network signal quality by operator."
     ] },
-    { heading: "Why mountain ATMs are different", paragraphs: [
+    { heading: "Why mountain ATMs are different",
+      image: { src: "/guide-atm-cash.jpg", alt: "Hand holding Indian currency notes in front of a Cash Only No UPI sign at a mountain dhaba", caption: "Cash Only, No UPI - a common sight at dhabas above 3,000m" }, paragraphs: [
       "City ATMs get refilled daily through commercial cash vans. Mountain ATMs - the ones run by SBI or Bank of Baroda in towns like Guptkashi or Tabo - get refilled when a vehicle can actually reach them. During peak pilgrimage season (May-June for Kedarnath), demand can spike from a few hundred withdrawals a week to several thousand.",
       "Beyond cash supply, mountain ATMs face unique hardware problems: power cuts, hardware failures in cold temperatures, and connectivity issues with the bank servers over weak mobile signals. A machine can show \"out of service\" for reasons entirely unrelated to cash - and it might stay that way for 3 to 5 days before a technician arrives.",
       "Jio has the best 4G coverage in the lower and mid-Himalayan zones (up to roughly 2,500 to 3,000m on most routes). Airtel is second for data. Above those thresholds, expect voice calls only, and sometimes not even that. UPI requires an active data connection to process, so no signal means no UPI."
@@ -867,7 +869,8 @@ guideContent["atm-cash-guide"] = {
     },
       tip: "The single most important financial preparation for any mountain trip: withdraw your full cash budget at the last major city before the hills. For Char Dham that is Rishikesh. For Spiti that is Shimla or Manali. For Ladakh that is Leh. Everything after that is a bonus if it works.",
     },
-    { heading: "Carrying cash safely on mountain routes", paragraphs: [
+    { heading: "Carrying cash safely on mountain routes",
+      image: { src: "/guide-atm-oos.jpg", alt: "SBI ATM in Leh Ladakh showing Out of Service screen with mountains behind", caption: "Out of Service - the screen you do not want to see with Rs 400 in your wallet" }, paragraphs: [
       "Carrying Rs 15,000 to Rs 25,000 in cash on a trek or road trip creates a legitimate concern. Split your cash: keep Rs 2,000 to Rs 3,000 in your pocket or daypack for daily spending. Keep the bulk in a money belt worn under clothing or in a zippered internal compartment of your main bag. Keep Rs 1,000 separately as absolute emergency reserve.",
       "Use small denominations: Rs 100 and Rs 200 notes are more useful than Rs 500 at dhabas and small shops. Many places above 3,000m cannot make change for Rs 500.",
     ] },
@@ -894,6 +897,7 @@ guideContent["atm-cash-guide"] = {
 
 // ═══ CHAR DHAM EPASS ═══
 guideContent["char-dham-epass"] = {
+  heroImage: { src: "/guide-epass-hero.jpg", alt: "Uttarakhand Police checkpost on Char Dham route with pilgrims showing documents for verification" },
   publishDate: "2026-05-22",
   lastUpdated: "2026-05-22",
   author: "Ash",
@@ -915,7 +919,8 @@ guideContent["char-dham-epass"] = {
         "For foreign nationals: passport number and Indian visa details"
       ],
     },
-    { heading: "How the registration actually works", paragraphs: [
+    { heading: "How the registration actually works",
+      image: { src: "/guide-epass-portal.jpg", alt: "Official Char Dham registration portal showing the registration form for Indian and foreign pilgrims", caption: "The official registration portal at registrationandtouristcare.uk.gov.in" }, paragraphs: [
       "Step 1: Go to registrationandtouristcare.uk.gov.in. Select \"New Registration\" on the homepage.",
       "Step 2: Select your destination(s). You can register for all four dhams in a single registration. Select the specific dates you plan to visit each temple.",
       "Step 3: Enter personal details for each traveler in your group. Aadhaar number is mandatory for each person. Upload a photo for each traveler.",
@@ -955,7 +960,8 @@ guideContent["char-dham-epass"] = {
         ["Ladakh PAP", "Nubra, Pangong, Hanle, Tso Moriri", "Rs 600", "laikiangpermit.in", "Same day", "7 days"],
       ],
     } },
-    { heading: "Common rejection reasons", paragraphs: [
+    { heading: "Common rejection reasons",
+      image: { src: "/guide-epass-check.jpg", alt: "Pilgrim showing printed QR-coded e-pass and Aadhaar card to Uttarakhand Police officer at a mountain checkpost", caption: "Print your e-pass - phone signal is weak at most checkpoints" }, paragraphs: [
       "Date mismatch: Your e-pass date does not match your actual travel date. The checkpost will not let you through. Solution: register for the correct date or re-register if plans change.",
       "Wrong Aadhaar number: A single digit wrong means the pass is invalid. Triple-check before submitting.",
       "Daily cap reached: Peak season dates fill up. Register early or adjust your date by 1 to 2 days.",
@@ -994,6 +1000,7 @@ guideContent["char-dham-epass"] = {
 
 // ═══ KEDARNATH BUDGET ═══
 guideContent["kedarnath-budget"] = {
+  heroImage: { src: "/guide-budget-hero.jpg", alt: "Budget guesthouse in the Uttarakhand mountains with Himalayan peaks in the background" },
   publishDate: "2026-05-22",
   lastUpdated: "2026-05-22",
   author: "Ash",
@@ -1014,7 +1021,8 @@ guideContent["kedarnath-budget"] = {
         ["Total budget", "Rs 7,500 to Rs 8,500"],
       ],
     } },
-    { heading: "Day 1: Rishikesh to Guptkashi", paragraphs: [
+    { heading: "Day 1: Rishikesh to Guptkashi",
+      image: { src: "/guide-budget-jeep.jpg", alt: "Shared Bolero jeep packed with pilgrims at Sonprayag stand with Gaurikund and Kedarnath distance signs", caption: "Shared jeep at Sonprayag - Rs 120 per seat to Gaurikund, Rs 1,500 full vehicle" }, paragraphs: [
       "The 200 km drive from Rishikesh to Guptkashi takes 8 to 10 hours by shared transport, depending on road conditions and stops.",
     ],
       items: [
@@ -1086,7 +1094,8 @@ guideContent["kedarnath-budget"] = {
         ["Physical effort", "High", "Moderate", "Low-moderate", "Minimal"],
       ],
     } },
-    { heading: "Money-saving decisions that actually work", paragraphs: [], items: [
+    { heading: "Money-saving decisions that actually work",
+      image: { src: "/guide-budget-dhaba.jpg", alt: "Budget dhaba thali with rice dal roti and price list showing Rs 120 for veg thali on a mountain highway", caption: "Dhaba thali at Rs 120 - the budget traveler standard on the Kedarnath route" }, paragraphs: [], items: [
       "Take the UPSRTC bus from Rishikesh to Rudraprayag instead of a private Sumo. Saves Rs 400 to Rs 600 per person.",
       "Stay in dharamshalas at Guptkashi and Kedarnath instead of guesthouses. Saves Rs 500 to Rs 1,500 per night.",
       "Carry trail snacks from Rishikesh: energy bars, dry fruits, biscuits. Trail dhaba prices are 2x to 3x city rates.",
