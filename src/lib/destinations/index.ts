@@ -6,6 +6,8 @@ import { chopta } from "./chopta";
 import { badrinath } from "./badrinath";
 import { rishikesh } from "./rishikesh";
 import { valleyOfFlowers } from "./valley-of-flowers";
+import { manali } from "./manali";
+import { shimla } from "./shimla";
 import type { DestinationData } from "./types";
 
 export type { DestinationData } from "./types";
@@ -19,6 +21,8 @@ export const destinations: Record<string, DestinationData> = {
   badrinath,
   rishikesh,
   "valley-of-flowers": valleyOfFlowers,
+  manali,
+  shimla,
 };
 
 export function getDestination(slug: string): DestinationData | undefined {

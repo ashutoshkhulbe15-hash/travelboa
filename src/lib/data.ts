@@ -97,6 +97,30 @@ export const DESTINATIONS = [
     emergency: [{ name: "Joshimath Hospital", number: "01389-222215" }, { name: "SDRF Uttarakhand", number: "1070" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🌸", label: "Species", value: "500+" }, { icon: "📅", label: "Best month", value: "August" }, { icon: "🎫", label: "Entry fee", value: "₹750" }, { icon: "🥾", label: "Trek", value: "17 km" }],
   },
+  { name: "Manali", slug: "manali", info: "2,050m · Himachal Pradesh", note: "gateway to Ladakh and Spiti", temp: "18°🌤️", image: "/manali.jpg", grad: "linear-gradient(150deg,#1a3a5a,#2a6a4a 60%,#3a4a2a)", rot: -0.5, color: "#2563eb", type: "adventure" as const, activities: ["road-trip", "rafting", "biking", "camping"] as string[],
+    wx: { icon: "🌤️", temp: 18, feels: 16, hum: 50, wind: 10, aqi: 30, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Pleasant", alt: "2,050m", sunrise: "5:40 AM", sunset: "7:10 PM",
+      forecast: [{ day: "Tomorrow", icon: "☀️", hi: 22, lo: 8 },{ day: "Thursday", icon: "⛅", hi: 20, lo: 7 },{ day: "Friday", icon: "🌧️", hi: 16, lo: 6 }] },
+    routes: [
+      { route: "Dehradun → Manali", status: "open" as const, note: "530 km, 10-12 hrs" },
+      { route: "Manali → Leh", status: "open" as const, note: "479 km (Jun-Oct)" },
+      { route: "Manali → Rohtang", status: "open" as const, note: "51 km" },
+    ],
+    packItems: ["Warm jacket", "Rain gear", "Fuel cans (if biking north)", "Cash ₹15K+", "Power bank", "Offline maps", "First aid kit"],
+    emergency: [{ name: "Manali Hospital", number: "01902-252375" }, { name: "Manali Police", number: "01902-252126" }, { name: "Disaster Helpline", number: "112" }],
+    quickFacts: [{ icon: "🏍️", label: "To Leh", value: "479 km" }, { icon: "🎿", label: "Solang Valley", value: "14 km" }, { icon: "💰", label: "Budget", value: "₹3K-15K" }, { icon: "📅", label: "Best month", value: "September" }],
+  },
+  { name: "Shimla", slug: "shimla", info: "2,206m · Himachal Pradesh", note: "colonial hill station, Spiti gateway", temp: "15°🌤️", image: "/shimla.jpg", grad: "linear-gradient(150deg,#4a2020,#8a4040 60%,#6a3030)", rot: 1, color: "#dc2626", type: "adventure" as const, activities: ["road-trip", "nature"] as string[],
+    wx: { icon: "🌤️", temp: 15, feels: 13, hum: 55, wind: 12, aqi: 40, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Pleasant", alt: "2,206m", sunrise: "5:38 AM", sunset: "7:08 PM",
+      forecast: [{ day: "Tomorrow", icon: "☀️", hi: 20, lo: 8 },{ day: "Thursday", icon: "⛅", hi: 18, lo: 7 },{ day: "Friday", icon: "🌧️", hi: 14, lo: 6 }] },
+    routes: [
+      { route: "Dehradun → Shimla", status: "open" as const, note: "245 km, 5.5 hrs" },
+      { route: "Shimla → Reckong Peo", status: "open" as const, note: "220 km, NH-5" },
+      { route: "Shimla → Kaza (Spiti)", status: "open" as const, note: "415 km, 2 days" },
+    ],
+    packItems: ["Warm jacket", "Rain gear", "Cash ₹20K+ for Spiti", "Fuel for onward", "Offline maps", "Diamox", "Dry snacks"],
+    emergency: [{ name: "IGMC Hospital", number: "0177-2804251" }, { name: "Shimla Police", number: "0177-2812344" }, { name: "Disaster Helpline", number: "112" }],
+    quickFacts: [{ icon: "🚂", label: "Toy train", value: "Kalka-Shimla" }, { icon: "🛣️", label: "To Kaza", value: "415 km" }, { icon: "💰", label: "Budget", value: "₹2.5K-12K" }, { icon: "📅", label: "Best months", value: "Sep-Oct" }],
+  },
 ];
 
 export const SEARCH_DESTINATIONS = [
