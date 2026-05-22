@@ -61,7 +61,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "SDRF Uttarakhand", number: "1070" }, { name: "Ukhimath PHC", number: "01364-240235" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🥾", label: "Trek distance", value: "3.5 km" }, { icon: "⏱️", label: "Duration", value: "3–4 days" }, { icon: "💰", label: "Budget", value: "₹4K–12K" }, { icon: "🏔️", label: "Tungnath alt.", value: "3,680m" }],
   },
-  { name: "Badrinath", slug: "badrinath", info: "3,133m · Uttarakhand", note: "easiest Char Dham, drive-to temple", temp: "10°⛅", image: "", grad: "linear-gradient(150deg,#2d1060,#4a2080 60%,#6a3060)", rot: 1, color: "#6d28d9", type: "pilgrimage" as const, activities: ["pilgrimage", "road-trip"] as string[],
+  { name: "Badrinath", slug: "badrinath", info: "3,133m · Uttarakhand", note: "easiest Char Dham, drive-to temple", temp: "10°⛅", image: "/badrinath.jpg", grad: "linear-gradient(150deg,#2d1060,#4a2080 60%,#6a3060)", rot: 1, color: "#6d28d9", type: "pilgrimage" as const, activities: ["pilgrimage", "road-trip"] as string[],
     wx: { icon: "⛅", temp: 10, feels: 7, hum: 45, wind: 15, aqi: 28, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Partly cloudy", alt: "3,133m", sunrise: "5:38 AM", sunset: "7:02 PM",
       forecast: [{ day: "Tomorrow", icon: "☀️", hi: 14, lo: 3 },{ day: "Thursday", icon: "⛅", hi: 12, lo: 2 },{ day: "Friday", icon: "🌧️", hi: 9, lo: 1 }] },
     routes: [
@@ -73,7 +73,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "Badrinath PHC", number: "01381-222226" }, { name: "SDRF Uttarakhand", number: "1070" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🛕", label: "Temple type", value: "Char Dham" }, { icon: "🚗", label: "From Rishikesh", value: "295 km" }, { icon: "💰", label: "Budget", value: "₹3K–20K" }, { icon: "📋", label: "Registration", value: "Mandatory" }],
   },
-  { name: "Rishikesh", slug: "rishikesh", info: "372m · Uttarakhand", note: "gateway to the Himalayas", temp: "28°☀️", image: "", grad: "linear-gradient(150deg,#064e3b,#059669 60%,#0d9488)", rot: -1.5, color: "#059669", type: "adventure" as const, activities: ["rafting", "camping", "yoga"] as string[],
+  { name: "Rishikesh", slug: "rishikesh", info: "372m · Uttarakhand", note: "gateway to the Himalayas", temp: "28°☀️", image: "/rishikesh.jpg", grad: "linear-gradient(150deg,#064e3b,#059669 60%,#0d9488)", rot: -1.5, color: "#059669", type: "adventure" as const, activities: ["rafting", "camping", "yoga"] as string[],
     wx: { icon: "☀️", temp: 28, feels: 30, hum: 60, wind: 8, aqi: 55, aqiLabel: "Moderate", aqiColor: "#f59e0b", cond: "Sunny", alt: "372m", sunrise: "5:35 AM", sunset: "7:05 PM",
       forecast: [{ day: "Tomorrow", icon: "☀️", hi: 32, lo: 22 },{ day: "Thursday", icon: "⛅", hi: 30, lo: 21 },{ day: "Friday", icon: "☀️", hi: 33, lo: 23 }] },
     routes: [
@@ -85,7 +85,7 @@ export const DESTINATIONS = [
     emergency: [{ name: "AIIMS Rishikesh", number: "0135-2462930" }, { name: "Rishikesh Police", number: "0135-2430245" }, { name: "Disaster Helpline", number: "112" }],
     quickFacts: [{ icon: "🏧", label: "ATMs", value: "20+ reliable" }, { icon: "🚣", label: "Rafting", value: "₹800–1,500" }, { icon: "🧘", label: "Yoga", value: "Ashrams available" }, { icon: "🛣️", label: "To Kedarnath", value: "248 km" }],
   },
-  { name: "Valley of Flowers", slug: "valley-of-flowers", info: "3,658m · Uttarakhand", note: "UNESCO trek, 500+ wildflower species", temp: "10°🌧️", image: "", grad: "linear-gradient(150deg,#4a1060,#86198f 60%,#c026d3)", rot: 0.5, color: "#86198f", type: "adventure" as const, activities: ["trekking", "nature"] as string[],
+  { name: "Valley of Flowers", slug: "valley-of-flowers", info: "3,658m · Uttarakhand", note: "UNESCO trek, 500+ wildflower species", temp: "10°🌧️", image: "/valley-of-flowers.jpg", grad: "linear-gradient(150deg,#4a1060,#86198f 60%,#c026d3)", rot: 0.5, color: "#86198f", type: "adventure" as const, activities: ["trekking", "nature"] as string[],
     wx: { icon: "🌧️", temp: 10, feels: 7, hum: 85, wind: 10, aqi: 22, aqiLabel: "Good", aqiColor: "#22c55e", cond: "Monsoon bloom", alt: "3,658m", sunrise: "5:40 AM", sunset: "7:00 PM",
       forecast: [{ day: "Tomorrow", icon: "🌧️", hi: 12, lo: 5 },{ day: "Thursday", icon: "⛅", hi: 14, lo: 4 },{ day: "Friday", icon: "🌧️", hi: 10, lo: 3 }] },
     routes: [
