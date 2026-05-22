@@ -21,6 +21,18 @@ export function PackingChecklist({ destination: d }: Props) {
   const [shareMsg, setShareMsg] = useState("");
 
   useEffect(() => {
+    // Check URL for shared state first
+    const params = new URLSearchParams(window.location.search);
+    const stateParam = params.get("s");
+    if (stateParam) {
+      try {
+        const decoded = JSON.parse(atob(stateParam));
+        setChecks(decoded);
+        setLoaded(true);
+        return;
+      } catch {}
+    }
+    // Otherwise load from localStorage
     try {
       const saved = localStorage.getItem(STORAGE_PREFIX + d.slug);
       if (saved) setChecks(JSON.parse(saved));
@@ -49,17 +61,21 @@ export function PackingChecklist({ destination: d }: Props) {
   const toggle = (key: string) => setChecks(p => ({ ...p, [key]: !p[key] }));
   const resetAll = () => setChecks({});
 
-  const pageUrl = `https://www.travelboa.com/${d.slug}/packing`;
-  const shareText = `${d.name} gear checklist with buy links - ${pageUrl}`;
+  const getShareUrl = () => {
+    const encoded = btoa(JSON.stringify(checks));
+    return `https://www.travelboa.com/${d.slug}/packing?s=${encoded}`;
+  };
 
   const copyLink = () => {
-    navigator.clipboard.writeText(pageUrl);
+    navigator.clipboard.writeText(getShareUrl());
     setShareMsg("Copied!");
     setTimeout(() => setShareMsg(""), 2000);
   };
 
   const shareWhatsApp = () => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
+    const url = getShareUrl();
+    const text = `${d.name} gear checklist (${pct}% ready) - ${url}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   return (
