@@ -219,6 +219,7 @@ gearGuideContent["trekking-shoes-under-5000"] = {
 
 // ═══ JACKETS KEDARNATH ═══
 gearGuideContent["jackets-kedarnath"] = {
+  heroImage: { src: "/gear-jackets-kedarnath-hero.jpg", alt: "Trekker in layered jacket with backpack facing snow-covered Himalayan peaks" },
   intro: "The Kedarnath trail in June does not give you a single weather problem. It gives you three. By 7 am at Gaurikund, you are walking in 12C with a light wind and thinking the fleece you packed is too warm. By 11 am at Jungle Chatti you are in cloud, the temperature has dropped four degrees in twenty minutes, and the trail surface has gone from dust to wet mud. By 2 pm - if you push past Bheembali - you might be walking into sleet at 3,200m with the wind coming directly off the glacier.\n\nI have done this route twice and got the layering wrong the first time in a way that still annoys me. That first trip I had a good fleece, decent thermals, and a cheap waterproof I bought off a roadside stall in Rishikesh. The \"waterproof\" failed around Rambara. By the time I reached the Bheembali dhaba at roughly 3,200m, I was soaked through to my base layer. It was not dangerous that day, but it made me understand exactly what a proper shell layer is for.\n\nThis article covers the specific jacket problem on the Kedarnath route: what the weather actually looks like at 3,583m in June, and which jackets at Indian price points actually solve it. I have tested or used four of the five jackets reviewed here on Uttarakhand routes. All prices are current at the Decathlon on Rajpur Road in Dehradun or Amazon India.",
   buyingGuide: [
     {
@@ -344,6 +345,7 @@ gearGuideContent["jackets-kedarnath"] = {
 
 // ═══ JACKETS LADAKH ═══
 gearGuideContent["jackets-ladakh"] = {
+  heroImage: { src: "/gear-jackets-ladakh-hero.jpg", alt: "Trekker in red jacket standing on mountain summit overlooking vast valley" },
   intro: "Here is the problem with packing for a Ladakh bike trip: at 7:30 in the morning on top of Khardung La at 5,359m, the ambient temperature is around -5C. At 80 kmph - which is a moderate speed on the descent - wind chill brings the felt temperature to somewhere between -15C and -18C. That is a different kind of cold from what you feel standing on a viewpoint.\n\nBy 2:00 in the afternoon the same day, after dropping into the Nubra Valley via Khardungla Road, you are at around 3,100m altitude and 35C. The sun is direct. The landscape is open. You are looking for a shady spot to take your jacket off.\n\nThis is the actual dual-problem of a Ladakh bike trip: the same ride demands serious cold protection in the morning and serious ventilation by afternoon. No single jacket solves it perfectly. I ride out of Dehradun, and most of my Ladakh trips start with two or three days on the Dehradun-Chandigarh-Manali corridor before hitting the Rohtang La entry.",
   buyingGuide: [
     {
@@ -449,6 +451,7 @@ gearGuideContent["jackets-ladakh"] = {
 
 // ═══ SLEEPING BAGS SPITI ═══
 gearGuideContent["sleeping-bags-spiti"] = {
+  heroImage: { src: "/gear-sleeping-bags-hero.jpg", alt: "Colorful camping tents at high altitude with snow-capped Himalayan peaks and clouds" },
   intro: "It was 3 AM at Chandratal Lake, 4,250m, early September. I was inside a sleeping bag that had a prominent \"-10C\" label sewn onto the zipper pull. I was also shivering badly enough that I had to sit up, pull on my fleece jacket and rain shell, and spend twenty minutes doing isometric exercises inside my tent to stop my legs from cramping. The air temperature outside was approximately -9C. My bag should have been fine.\n\nIt was not fine. The \"-10C\" rating was the extreme rating - the EN 13537 survival threshold, the number at which a standard woman would not die of hypothermia. Not the comfort rating. The comfort rating on that bag was +3C. I had been scammed by a number on a label.\n\nIf you are shopping for a sleeping bag for Spiti Valley, for Chandratal, for any camp above 4,000m - this article is the one I wish I had read before that September night.",
   buyingGuide: [
     {
@@ -571,6 +574,7 @@ gearGuideContent["sleeping-bags-spiti"] = {
 
 // ═══ POWER BANKS TREKS ═══
 gearGuideContent["power-banks-treks"] = {
+  heroImage: { src: "/gear-power-banks-hero.jpg", alt: "Power bank charging smartphone on a rock at sunset during a mountain trek" },
   intro: "Here is the exact situation you are about to be in: day four of a multi-day trek, no charging points since the guesthouse three nights ago, cold enough at night that your sleeping bag is the warmest thing in camp, and your phone is at 8%. You have GPS tracks you have not downloaded offline. You have photos you have not backed up. You have a headlamp that stopped responding to the power button this morning.\n\nThe problem has three layers. First: no charging infrastructure. From Spiti Valley village guesthouses to the high camps on the Kedarnath approach, you can go four to five days without a working socket. Second: cold temperatures reduce lithium battery capacity significantly. Third: altitude means continuous GPS use.\n\nI have been figuring this out across several trips from Dehradun. This article covers six power banks reviewed against the specific demands of multi-day Himalayan trekking, with real calculations for how long each will actually last.",
   buyingGuide: [
     {
@@ -711,6 +715,7 @@ gearGuideContent["power-banks-treks"] = {
 
 // ═══ BACKPACKS CHOPTA ═══
 gearGuideContent["backpacks-chopta"] = {
+  heroImage: { src: "/gear-backpacks-hero.jpg", alt: "Trekkers with loaded backpacks walking through alpine wildflower meadow with mountains" },
   intro: "The real packing question for a 3-4 day trip to Chopta is not which brand or which features - it is which size to use when, because the answer changes depending on what part of the trip you are doing. You need something large enough to carry a sleeping bag, thermals, and three days of supplies on the drive up and the walk to camp. You also need something small and controlled on the actual Tungnath approach, which is a steep 3.5 km climb to 3,680m with loose soil and stone steps where a flopping, half-empty pack becomes its own physical problem.\n\nI am based in Dehradun, which puts Chopta at roughly 218 km via Ukhimath - a drive of five to six hours. I have done the Chopta-Tungnath-Chandrashila route in three separate seasons and made at least one significant packing mistake on each.",
   buyingGuide: [
     {
@@ -846,6 +851,7 @@ gearGuideContent["backpacks-chopta"] = {
 
 // ═══ THERMALS ALTITUDE ═══
 gearGuideContent["thermals-altitude"] = {
+  heroImage: { src: "/gear-thermals-hero.jpg", alt: "Trekking thermal base layers and gear laid out flat with backpack boots and down jacket" },
   intro: "Somewhere around 2,800m on the Kedarnath trail, about two hours out of Jungle Chatti, it started raining. Not a mountain drizzle - a full monsoon downpour. I was wearing a cotton T-shirt under a mid-weight fleece jacket, which felt like a reasonable layering system when I left Gaurikund that morning. Within 20 minutes, I understood exactly why experienced trekkers talk about cotton the way they do.\n\nThe cotton absorbed the moisture - from rain, from my own sweat - and sat against my skin like a cold compress. The fleece above it was useless. My core temperature dropped. My hands shook. I cut the day short and spent that evening reading fabric science in a dhaba in Sonprayag.\n\nThat afternoon is the reason I now own four different base layers and care more about what I wear against my skin than almost anything else in my gear setup.",
   buyingGuide: [
     {
@@ -986,6 +992,7 @@ gearGuideContent["thermals-altitude"] = {
 
 // ═══ RAIN PONCHOS CHAR DHAM ═══
 gearGuideContent["rain-ponchos-char-dham"] = {
+  heroImage: { src: "/gear-ponchos-hero.jpg", alt: "Pilgrims in rain ponchos queuing at Kedarnath temple during monsoon rain" },
   intro: "Here is the situation nobody warns you about before your first Char Dham yatra: you are standing in a temple queue at Badrinath or Gangotri, two hours in, the clouds have opened up, and you are watching the rain hit your backpack at a flat angle. Your rain jacket is doing its job - on you. Your bag, however, is soaked through. The extra fleece you packed for the cold temple interior is wet. Your documents pouch is wet. The person next to you with a poncho is fine. Their bag is covered. They look like a large shapeless mushroom, but they are dry.\n\nThat is the argument for a poncho on a pilgrimage. A poncho covers both you and whatever pack you are carrying. A rain jacket covers only you. For Badrinath, Gangotri, and Yamunotri - where the pilgrimage involves more queuing and short walks than sustained trekking - a poncho is the more practical piece of gear.",
   buyingGuide: [
     {
@@ -1056,6 +1063,7 @@ gearGuideContent["rain-ponchos-char-dham"] = {
 
 // ═══ RIDING GLOVES LADAKH ═══
 gearGuideContent["riding-gloves-ladakh"] = {
+  heroImage: { src: "/gear-gloves-hero.jpg", alt: "Rider putting on motorcycle gloves next to bike handlebars before a mountain ride" },
   intro: "There is a specific kind of misery that hits you on the descent from Baralacha La. The pass sits at 4,890m on the Manali-Leh highway, and if you cross it in the morning the temperature at the top is reliably between 2C and 6C. By afternoon in Nubra valley, you are looking at 28-32C.\n\nI learned this the hard way on my first Ladakh ride. I crossed Baralacha La in a pair of Rs 800 mesh gloves I had grabbed off Amazon. By the bottom of the descent, my fingers were numb enough that when I reached for my phone I fumbled it out of the holder entirely. Watched it bounce across the tarmac.\n\nThis guide is about solving that specific problem: hands that work at 5,000m passes and hands that do not overheat in valley heat. The short answer is that one glove cannot do both well, and the right approach is two gloves and a swap at the base of the climb.",
   buyingGuide: [
     {
@@ -1126,6 +1134,7 @@ gearGuideContent["riding-gloves-ladakh"] = {
 
 // ═══ SHOES VAISHNO DEVI ═══
 gearGuideContent["shoes-vaishno-devi"] = {
+  heroImage: { src: "/gear-shoes-vd-hero.jpg", alt: "Quechua trekking shoe on a rocky mountain ledge with snow-capped Himalayan peaks behind" },
   intro: "The Vaishno Devi yatra is not a wilderness trek. From Katra at 1,584m up to the Bhawan, the trail is paved - concrete paths, cut stone steps, and near the shrine itself, polished marble. You pass chai stalls, crowd control barriers, loudspeakers, and tens of thousands of other pilgrims. Thinking about this trip the same way you would think about a Kedarnath or Chopta trek leads to the wrong shoe choices.\n\nAnd yet, footwear still matters enormously on this trail. I was standing near the inner sanctum steps on a morning when the marble was wet from overnight cleaning, watching a man in rubber slippers attempt the steps. He went down on the third step. His knee hit the marble. A few meters away, a woman in low-cut trail runners moved through the same stretch without a second thought, her outsole gripping the slick surface.\n\nThat image - rubber slipper on wet marble versus trail runner on wet marble - is the entire footwear argument for Vaishno Devi condensed into about eight seconds.",
   buyingGuide: [
     {
@@ -1206,6 +1215,7 @@ gearGuideContent["shoes-vaishno-devi"] = {
 
 // ═══ DAYPACK PILGRIMAGE ═══
 gearGuideContent["daypack-pilgrimage"] = {
+  heroImage: { src: "/gear-daypack-hero.jpg", alt: "Orange daypack with water bottle resting on rocks near a mountain stream" },
   intro: "A pilgrimage pack is not a trek pack. This distinction matters more than most gear articles acknowledge. When you are walking to Kedarnath or Vaishno Devi, you will spend time on trails - but you will also spend two to four hours standing in queues that barely move. You are shuffling forward in dense crowds, removing your shoes at the gate, managing offerings in one hand, holding prasad you do not want to crush, and often doing all of this in rain.\n\nOn my first Kedarnath trip, I made it to the temple complex with my full 45L pack on. For three hours in the crowd outside the sanctum, I was that person. The pack stuck out behind me, people kept walking into it, and every time someone bumped the bag I reflexively grabbed for the hip belt. It was a simple planning failure, and it made the best part of the trip more stressful than it needed to be.",
   buyingGuide: [
     {
@@ -1284,6 +1294,7 @@ gearGuideContent["daypack-pilgrimage"] = {
 
 // ═══ FIRST AID KITS ═══
 gearGuideContent["first-aid-kits"] = {
+  heroImage: { src: "/gear-firstaid-hero.jpg", alt: "Open first aid kit with bandages antiseptic and medical supplies for mountain travel" },
   intro: "Here is the honest situation in small-town Himalayan pharmacies: if you arrive in Kaza, Keylong, or Guptkashi with a half-empty kit and a problem, you will find cotton wool, regular bandages, paracetamol, Dettol, and ORS sachets. What you will not reliably find: Diamox, blister plasters, elastic crepe bandages, sterile non-stick gauze pads, or waterproof adhesive bandages.\n\nI learned this the hard way in Recong Peo. I wanted Diamox as a precaution. The first pharmacy looked at me blankly. The second said he did not stock it. The third was unsure about the dosage. Four shops, forty minutes, and a headache that was making me impatient. I had been planning to pick it up in Shimla but had skipped the pharmacy there. That was the mistake.\n\nThis guide covers what to pack in a first aid kit for mountain travel in India - pre-built kits vs DIY, altitude-specific additions, and the specific items that small-town pharmacies consistently lack.",
   buyingGuide: [
     {
@@ -1333,6 +1344,7 @@ gearGuideContent["first-aid-kits"] = {
 
 // ═══ HEADLAMPS UNDER 1000 ═══
 gearGuideContent["headlamps-under-1000"] = {
+  heroImage: { src: "/gear-headlamps-hero.jpg", alt: "Trekker with headlamp illuminating a mountain trail at night with tent and Himalayan peaks" },
   intro: "At 3:45 AM in Gaurikund, the parking lot is full of headlamps. Porters, pilgrims, and trekkers assembling their packs in the dark before the 16 km climb to Kedarnath temple. I was there last September, and I was the one standing at the edge of the lot with my phone flashlight on, watching everyone else move efficiently up the trail while I tried to balance my pack straps and keep the phone pointed somewhere useful with a third hand I do not have.\n\nBy the time I reached Jungle Chatti - roughly 3 km in - my phone was at 25% charge, down from 60% at the start. The flashlight had run for less than two hours and it had taken a sixth of my battery. I borrowed a friend's Decathlon headlamp and my phone sat at 25% for the rest of the day.\n\nThat experience is why I wrote this article. The phone flashlight argument sounds reasonable until you are on a pre-dawn start with 11 km still to go, your hands full, and your navigation, camera, and emergency communication device slowly going dark.",
   buyingGuide: [
     {
@@ -1402,6 +1414,7 @@ gearGuideContent["headlamps-under-1000"] = {
 
 // ═══ SUNSCREEN MOUNTAIN ═══
 gearGuideContent["sunscreen-mountain"] = {
+  heroImage: { src: "/gear-sunscreen-hero.jpg", alt: "Sunscreen bottle on a mountain rock with water glistening in the background" },
   intro: "UV radiation increases roughly 8-10% for every 1,000m of altitude gain. At 3,500m, you are receiving approximately 30-35% more UV than at sea level. Less atmosphere means less filtering. Snow and light-colored granite reflect UV back at you from below. A full overcast day above 3,000m can still burn you through cloud cover because UVA passes through clouds far more readily than UVB.\n\nSunburn on the Kedarnath trail is one of the most reliably underestimated hazards. I have seen people leave Gaurikund at 6 AM with sunscreen applied, trek six hours up and four hours back, and arrive at Sonprayag looking like they spent the afternoon on a beach in Goa - which, in UV terms, they effectively did.\n\nThis article covers sunscreen specifically for mountain UV in India: what SPF and PA ratings actually mean at altitude, which Indian brands hold up under sweat and altitude, and the reapplication schedule that most people skip.",
   buyingGuide: [
     {
