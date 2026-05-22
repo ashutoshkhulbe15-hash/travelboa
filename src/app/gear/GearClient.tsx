@@ -24,14 +24,14 @@ const GEAR_GUIDES = [
     regionIcon: "🏔️",
     regionDesc: "Cold weather, altitude, unpredictable rain — gear that actually works above 2,000m.",
     guides: [
-      { title: "Best jackets for Kedarnath trek", desc: "Windproof vs down vs rain shell — which layers you need for 3,500m+ altitude in June", category: "jackets", dest: "Kedarnath", href: "/gear/jackets-kedarnath", items: 8, status: "coming" },
-      { title: "Best trekking shoes under ₹5,000", desc: "Quechua MH500 vs Wildcraft vs Woodland — real trail tests on Uttarakhand mud and snow", category: "shoes", dest: "All treks", href: "/gear/trekking-shoes-under-5000", items: 6, status: "coming" },
-      { title: "Best jackets for Ladakh bike trip", desc: "Riding jackets that handle Khardung La wind chill and Manali–Leh dust", category: "jackets", dest: "Ladakh", href: "/gear/jackets-ladakh", items: 7, status: "coming" },
-      { title: "Best sleeping bags for Spiti camping", desc: "Budget options that survive -10°C nights in Chandratal and Kaza", category: "sleep", dest: "Spiti", href: "/gear/sleeping-bags-spiti", items: 5, status: "coming" },
-      { title: "Best power banks for multi-day treks", desc: "20K vs 30K mAh, solar options, what lasts 5 days without a charge point", category: "electronics", dest: "All treks", href: "/gear/power-banks-treks", items: 6, status: "coming" },
-      { title: "Best backpacks for Chopta–Tungnath", desc: "30L vs 50L — day pack vs multi-day, rain covers, hip belt essentials", category: "bags", dest: "Chopta", href: "/gear/backpacks-chopta", items: 5, status: "coming" },
-      { title: "Best thermals for high-altitude treks", desc: "Merino vs synthetic, layering for -5°C to 15°C range, budget picks", category: "accessories", dest: "All treks", href: "/gear/thermals-altitude", items: 7, status: "coming" },
-      { title: "Best riding gloves for Ladakh", desc: "Wind, cold, grip — from Rynox to budget options for Manali–Leh", category: "accessories", dest: "Ladakh", href: "/gear/riding-gloves-ladakh", items: 5, status: "coming" },
+      { title: "Best jackets for Kedarnath trek", desc: "Windproof vs down vs rain shell — which layers you need for 3,500m+ altitude in June", category: "jackets", dest: "Kedarnath", href: "/gear/jackets-kedarnath", items: 8 },
+      { title: "Best trekking shoes under ₹5,000", desc: "Quechua MH500 vs Wildcraft vs Woodland — real trail tests on Uttarakhand mud and snow", category: "shoes", dest: "All treks", href: "/gear/trekking-shoes-under-5000", items: 6 },
+      { title: "Best jackets for Ladakh bike trip", desc: "Riding jackets that handle Khardung La wind chill and Manali–Leh dust", category: "jackets", dest: "Ladakh", href: "/gear/jackets-ladakh", items: 7 },
+      { title: "Best sleeping bags for Spiti camping", desc: "Budget options that survive -10°C nights in Chandratal and Kaza", category: "sleep", dest: "Spiti", href: "/gear/sleeping-bags-spiti", items: 5 },
+      { title: "Best power banks for multi-day treks", desc: "20K vs 30K mAh, solar options, what lasts 5 days without a charge point", category: "electronics", dest: "All treks", href: "/gear/power-banks-treks", items: 6 },
+      { title: "Best backpacks for Chopta–Tungnath", desc: "30L vs 50L — day pack vs multi-day, rain covers, hip belt essentials", category: "bags", dest: "Chopta", href: "/gear/backpacks-chopta", items: 5 },
+      { title: "Best thermals for high-altitude treks", desc: "Merino vs synthetic, layering for -5°C to 15°C range, budget picks", category: "accessories", dest: "All treks", href: "/gear/thermals-altitude", items: 7 },
+      { title: "Best riding gloves for Ladakh", desc: "Wind, cold, grip — from Rynox to budget options for Manali–Leh", category: "accessories", dest: "Ladakh", href: "/gear/riding-gloves-ladakh", items: 5 },
     ],
   },
   // Pilgrimage
@@ -40,9 +40,9 @@ const GEAR_GUIDES = [
     regionIcon: "🙏",
     regionDesc: "Comfort on long walks, queue-ready gear, monsoon protection for temple visits.",
     guides: [
-      { title: "Best shoes for Vaishno Devi trek", desc: "13 km uphill on paved + rough path — comfort + grip without breaking the bank", category: "shoes", dest: "Vaishno Devi", href: "/gear/shoes-vaishno-devi", items: 6, status: "coming" },
-      { title: "Best rain ponchos for Char Dham yatra", desc: "Monsoon-proof options that pack small and dry fast between temples", category: "accessories", dest: "Char Dham", href: "/gear/rain-ponchos-char-dham", items: 5, status: "coming" },
-      { title: "Best daypack for pilgrimage trips", desc: "Light, anti-theft, water-resistant — carry essentials in temple queues", category: "bags", dest: "All pilgrimages", href: "/gear/daypack-pilgrimage", items: 5, status: "coming" },
+      { title: "Best shoes for Vaishno Devi trek", desc: "13 km uphill on paved + rough path — comfort + grip without breaking the bank", category: "shoes", dest: "Vaishno Devi", href: "/gear/shoes-vaishno-devi", items: 6 },
+      { title: "Best rain ponchos for Char Dham yatra", desc: "Monsoon-proof options that pack small and dry fast between temples", category: "accessories", dest: "Char Dham", href: "/gear/rain-ponchos-char-dham", items: 5 },
+      { title: "Best daypack for pilgrimage trips", desc: "Light, anti-theft, water-resistant — carry essentials in temple queues", category: "bags", dest: "All pilgrimages", href: "/gear/daypack-pilgrimage", items: 5 },
     ],
   },
   // General / All trips
@@ -51,9 +51,9 @@ const GEAR_GUIDES = [
     regionIcon: "✈️",
     regionDesc: "Gear that belongs in your bag regardless of destination.",
     guides: [
-      { title: "Best headlamps under ₹1,000", desc: "Forclaz HL100 vs Nitecore — brightness, battery life, red mode for camping", category: "electronics", dest: "All trips", href: "/gear/headlamps-under-1000", items: 5, status: "coming" },
-      { title: "Best sunscreen for mountain UV", desc: "SPF50 PA+++ options that don't feel greasy at altitude — Indian brands included", category: "accessories", dest: "All trips", href: "/gear/sunscreen-mountain", items: 5, status: "coming" },
-      { title: "Best first aid kits for travel", desc: "Pre-built vs DIY, Diamox, ORS, altitude essentials — what pharmacies miss", category: "accessories", dest: "All trips", href: "/gear/first-aid-kits", items: 6, status: "coming" },
+      { title: "Best headlamps under ₹1,000", desc: "Forclaz HL100 vs Nitecore — brightness, battery life, red mode for camping", category: "electronics", dest: "All trips", href: "/gear/headlamps-under-1000", items: 5 },
+      { title: "Best sunscreen for mountain UV", desc: "SPF50 PA+++ options that don't feel greasy at altitude — Indian brands included", category: "accessories", dest: "All trips", href: "/gear/sunscreen-mountain", items: 5 },
+      { title: "Best first aid kits for travel", desc: "Pre-built vs DIY, Diamox, ORS, altitude essentials — what pharmacies miss", category: "accessories", dest: "All trips", href: "/gear/first-aid-kits", items: 6 },
     ],
   },
 ];
@@ -177,7 +177,6 @@ export function GearClient() {
                         {GEAR_CATEGORIES.find(c => c.key === g.category)?.icon} {g.category}
                       </span>
                       <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md" style={{ background: dark ? "#292524" : "#f5f5f5", color: textMuted }}>📍 {g.dest}</span>
-                      {g.status === "coming" && <span className="text-[9px] font-semibold" style={{ color: textMuted }}>Coming soon</span>}
                     </div>
                     <p className="text-sm sm:text-base font-bold leading-snug transition-colors" style={{ color: textPrimary }}>{g.title}</p>
                     <p className="text-xs mt-2 leading-relaxed" style={{ color: textSecondary }}>{g.desc}</p>
