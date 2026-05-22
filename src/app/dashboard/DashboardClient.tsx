@@ -387,6 +387,14 @@ export function DashboardClient() {
                 <div className="text-[11px]" style={{ color: textMuted }}>Trek info, stay, food, safety →</div>
               </div>
             </Link>
+
+            <Link href={`/${dest.slug}/packing`} className="flex items-center gap-3 p-4 rounded-xl no-underline transition-all hover:-translate-y-0.5" style={{ background: `${accent}08`, border: `1.5px solid ${accent}25` }}>
+              <span className="text-xl">🛒</span>
+              <div>
+                <div className="text-sm font-extrabold" style={{ color: textPrimary }}>Gear buy list for {dest.name}</div>
+                <div className="text-[11px]" style={{ color: textMuted }}>What to buy with store links →</div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

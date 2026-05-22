@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dest = getDestination(slug);
   if (!dest) return {};
   return {
-    title: `${dest.name} Packing Checklist 2026 — What to Pack | TravelBoa`,
-    description: `Complete packing list for ${dest.name} at ${dest.altitude.toLocaleString()}m. Altitude-specific gear with Amazon and Decathlon buy links. Interactive checklist you can tick off.`,
+    title: `What to Buy for ${dest.name} - Gear Checklist with Buy Links | TravelBoa`,
+    description: `Complete gear checklist for ${dest.name} at ${dest.altitude.toLocaleString()}m. Every item with buy links to Amazon and Decathlon. Interactive checklist that saves your progress.`,
   };
 }
 
