@@ -69,6 +69,21 @@ export function GearArticle({ slug, meta }: Props) {
               </div>
             )}
 
+            {/* Quick pick list */}
+            {content.products.length > 0 && (
+              <div className="p-4 sm:p-5 rounded-xl" style={{ background: dark ? "#1c1a17" : "#fafaf8", border: `1.5px solid ${border}` }}>
+                <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>Quick picks</p>
+                {content.products.map((product, i) => (
+                  <div key={i} className="flex items-center gap-3 py-2" style={{ borderBottom: i < content.products.length - 1 ? `1px solid ${border}` : "none" }}>
+                    <span className="text-xs font-black w-5 text-center" style={{ color: accent }}>{i + 1}</span>
+                    <span className="text-sm font-bold flex-1" style={{ color: textPrimary }}>{product.name}</span>
+                    {product.badge && <span className="text-[9px] font-bold px-2 py-0.5 rounded text-white shrink-0" style={{ background: accent }}>{product.badge}</span>}
+                    <span className="text-xs font-bold shrink-0" style={{ color: textSecondary }}>{product.price}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Intro */}
             <p className="text-sm sm:text-[15px] leading-relaxed" style={{ color: textSecondary }}>{content.intro}</p>
 
@@ -80,23 +95,7 @@ export function GearArticle({ slug, meta }: Props) {
               </div>
             )}
 
-            {/* Buying guide sections */}
-            {content.buyingGuide.map((section, i) => (
-              <div key={i}>
-                <h2 className="text-lg sm:text-xl font-extrabold mb-3" style={{ color: textPrimary }}>{section.heading}</h2>
-                {section.paragraphs.map((p, j) => (
-                  <p key={j} className="text-sm sm:text-[15px] leading-relaxed mb-3" style={{ color: textSecondary }}>{p}</p>
-                ))}
-                {section.tip && (
-                  <div className="flex items-start gap-3 p-4 rounded-xl mt-3" style={{ background: `${accent}08`, border: `1px solid ${accent}20` }}>
-                    <span className="text-base mt-0.5">💡</span>
-                    <p className="text-sm leading-relaxed" style={{ color: textPrimary }}>{section.tip}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            {/* Product reviews */}
+            {/* Product reviews - FULL DETAILS */}
             {/* Image after buying guide */}
             {content.sectionImages?.afterBuyingGuide && (
               <div className="rounded-xl overflow-hidden">
@@ -104,7 +103,7 @@ export function GearArticle({ slug, meta }: Props) {
                 {content.sectionImages.afterBuyingGuide.caption && <p className="text-xs text-center py-2 italic" style={{ color: textMuted, background: dark ? "#1c1a17" : "#fafafa" }}>{content.sectionImages.afterBuyingGuide.caption}</p>}
               </div>
             )}
-            <h2 className="text-lg sm:text-xl font-extrabold" style={{ color: textPrimary }}>Our picks</h2>
+            <h2 className="text-lg sm:text-xl font-extrabold" style={{ color: textPrimary }}>Detailed reviews</h2>
             <div className="space-y-4">
               {content.products.map((product, i) => (
                 <div key={i} className="p-5 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
@@ -151,6 +150,27 @@ export function GearArticle({ slug, meta }: Props) {
                 <img src={content.sectionImages.afterProducts.src} alt={content.sectionImages.afterProducts.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
                 {content.sectionImages.afterProducts.caption && <p className="text-xs text-center py-2 italic" style={{ color: textMuted, background: dark ? "#1c1a17" : "#fafafa" }}>{content.sectionImages.afterProducts.caption}</p>}
               </div>
+            )}
+
+            {/* Buying guide - detailed context */}
+            {content.buyingGuide.length > 0 && (
+              <>
+                <h2 className="text-lg sm:text-xl font-extrabold" style={{ color: textPrimary }}>Buying guide</h2>
+                {content.buyingGuide.map((section, i) => (
+                  <div key={i}>
+                    <h3 className="text-base font-bold mb-2" style={{ color: textPrimary }}>{section.heading}</h3>
+                    {section.paragraphs.map((p, j) => (
+                      <p key={j} className="text-sm sm:text-[15px] leading-relaxed mb-3" style={{ color: textSecondary }}>{p}</p>
+                    ))}
+                    {section.tip && (
+                      <div className="flex items-start gap-3 p-4 rounded-xl mt-3" style={{ background: `${accent}08`, border: `1px solid ${accent}20` }}>
+                        <span className="text-base mt-0.5">💡</span>
+                        <p className="text-sm leading-relaxed" style={{ color: textPrimary }}>{section.tip}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </>
             )}
 
             {/* Conclusion */}
