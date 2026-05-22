@@ -2,6 +2,10 @@ import { kedarnath } from "./kedarnath";
 import { spiti } from "./spiti";
 import { vaishnoDevi } from "./vaishno-devi";
 import { ladakh } from "./ladakh";
+import { chopta } from "./chopta";
+import { badrinath } from "./badrinath";
+import { rishikesh } from "./rishikesh";
+import { valleyOfFlowers } from "./valley-of-flowers";
 import type { DestinationData } from "./types";
 
 export type { DestinationData } from "./types";
@@ -11,6 +15,10 @@ export const destinations: Record<string, DestinationData> = {
   spiti,
   "vaishno-devi": vaishnoDevi,
   ladakh,
+  chopta,
+  badrinath,
+  rishikesh,
+  "valley-of-flowers": valleyOfFlowers,
 };
 
 export function getDestination(slug: string): DestinationData | undefined {
