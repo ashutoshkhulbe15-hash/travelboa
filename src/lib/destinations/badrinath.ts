@@ -46,9 +46,9 @@ export const badrinath: DestinationData = {
       content: "Valley of Flowers National Park is accessible from Govindghat, which is 25 km before Badrinath on the same road. The park opens July to September (peak bloom: August).\n\nCombination itinerary: Joshimath base, Day 1 drive to Govindghat and trek to Ghangaria (14 km). Day 2 Valley of Flowers (round trip from Ghangaria). Day 3 optional Hemkund Sahib. Day 4 return to Joshimath, drive to Badrinath. Day 5 Badrinath darshan + Mana village.\n\nThis combination works best in August-September when both Valley of Flowers is in bloom and Badrinath is open with lower crowds." },
   ],
   weatherPoints: [
-    { location: "Badrinath", altitude: 3133, temp: 10, weather: "Clear" },
-    { location: "Joshimath", altitude: 1890, temp: 18, weather: "Pleasant" },
-    { location: "Mana Village", altitude: 3200, temp: 8, weather: "Windy" },
+    { location: "Badrinath", altitude: 3133, temp: 10, weather: "☀️" },
+    { location: "Joshimath", altitude: 1890, temp: 18, weather: "🌤️" },
+    { location: "Mana Village", altitude: 3200, temp: 8, weather: "💨" },
   ],
   routes: [
     { from: "Rishikesh", to: "Badrinath", status: "open", note: "295 km, NH-7" },

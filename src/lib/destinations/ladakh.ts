@@ -82,10 +82,10 @@ export const ladakh: DestinationData = {
     },
   ],
   weatherPoints: [
-    { location: "Leh", altitude: 3524, temp: 12, weather: "Clear" },
-    { location: "Khardung La", altitude: 5359, temp: 2, weather: "Windy" },
-    { location: "Nubra Valley", altitude: 3050, temp: 28, weather: "Hot" },
-    { location: "Pangong Tso", altitude: 4350, temp: 8, weather: "Clear" },
+    { location: "Leh", altitude: 3524, temp: 12, weather: "☀️" },
+    { location: "Khardung La", altitude: 5359, temp: 2, weather: "💨" },
+    { location: "Nubra Valley", altitude: 3050, temp: 28, weather: "🌡️" },
+    { location: "Pangong Tso", altitude: 4350, temp: 8, weather: "☀️" },
   ],
   routes: [
     { from: "Manali", to: "Leh (NH-3)", status: "open", note: "479 km, 2 days" },

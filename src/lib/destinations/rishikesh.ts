@@ -44,8 +44,8 @@ export const rishikesh: DestinationData = {
       content: "Cash: Full trip budget withdrawn from ATM. Diamox: Bought from chemist. E-pass: Registered and printed. Gear: Any missing items from Laxman Jhula shops. Phone: Offline maps downloaded. Power bank: Fully charged. Transport: Morning taxi or bus confirmed at ISBT. Emergency numbers: SDRF 1070, Disaster Helpline 112 saved in phone.\n\nOnce you leave Rishikesh heading toward Rudraprayag, your ability to fix forgotten items drops to near zero. The 43 km between Dehradun and Rishikesh is the last easy shopping stretch." },
   ],
   weatherPoints: [
-    { location: "Rishikesh", altitude: 372, temp: 28, weather: "Warm" },
-    { location: "Laxman Jhula", altitude: 390, temp: 27, weather: "Warm" },
+    { location: "Rishikesh", altitude: 372, temp: 28, weather: "☀️" },
+    { location: "Laxman Jhula", altitude: 390, temp: 27, weather: "☀️" },
   ],
   routes: [
     { from: "Dehradun", to: "Rishikesh", status: "open", note: "43 km, 1 hr" },

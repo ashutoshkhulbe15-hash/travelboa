@@ -42,9 +42,9 @@ export const chopta: DestinationData = {
       content: "Chopta at 2,680m is below the altitude where most people experience AMS. Tungnath at 3,680m is borderline. Chandrashila at 4,130m is altitude territory.\n\nIf this is your first time above 3,000m: drink water consistently on the trek, eat before you feel hungry, and do not push through headache or nausea on the Chandrashila section. The temple at Tungnath is the primary destination - Chandrashila is optional and weather-dependent.\n\nAcclimatization: if you drive from Dehradun (682m) to Chopta (2,680m) and trek to 4,130m in the same day, that is a 3,448m altitude gain. Go slowly. Rest at Tungnath before the Chandrashila push.\n\nSee /guides/acclimatize-above-3000m for the full protocol." },
   ],
   weatherPoints: [
-    { location: "Chopta", altitude: 2680, temp: 10, weather: "Clear" },
-    { location: "Tungnath", altitude: 3680, temp: 5, weather: "Windy" },
-    { location: "Chandrashila", altitude: 4130, temp: 2, weather: "Cold" },
+    { location: "Chopta", altitude: 2680, temp: 10, weather: "☀️" },
+    { location: "Tungnath", altitude: 3680, temp: 5, weather: "💨" },
+    { location: "Chandrashila", altitude: 4130, temp: 2, weather: "❄️" },
   ],
   routes: [
     { from: "Dehradun", to: "Chopta", status: "open", note: "218 km, 5-6 hrs" },

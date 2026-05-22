@@ -46,10 +46,10 @@ export const valleyOfFlowers: DestinationData = {
       content: "Govindghat is 25 km before Badrinath on the same road. The combination itinerary:\n\nDay 1: Joshimath to Govindghat, trek to Ghangaria (14 km).\nDay 2: Valley of Flowers (full day).\nDay 3: Hemkund Sahib (optional) or second Valley day.\nDay 4: Return to Govindghat, drive to Badrinath (25 km).\nDay 5: Badrinath darshan + Mana village.\nDay 6: Return to Joshimath or continue to Kedarnath via Rudraprayag.\n\nThis works best in August-September when the valley is in bloom and Badrinath has lower crowds. See /badrinath for the full Badrinath guide." },
   ],
   weatherPoints: [
-    { location: "Govindghat", altitude: 1828, temp: 20, weather: "Warm rain" },
-    { location: "Ghangaria", altitude: 3049, temp: 12, weather: "Cool rain" },
-    { location: "Valley floor", altitude: 3658, temp: 8, weather: "Cloud and rain" },
-    { location: "Hemkund Sahib", altitude: 4632, temp: 3, weather: "Cold" },
+    { location: "Govindghat", altitude: 1828, temp: 20, weather: "🌧️" },
+    { location: "Ghangaria", altitude: 3049, temp: 12, weather: "🌧️" },
+    { location: "Valley floor", altitude: 3658, temp: 8, weather: "🌧️" },
+    { location: "Hemkund Sahib", altitude: 4632, temp: 3, weather: "❄️" },
   ],
   routes: [
     { from: "Rishikesh", to: "Govindghat", status: "open", note: "270 km, 9-10 hrs" },
