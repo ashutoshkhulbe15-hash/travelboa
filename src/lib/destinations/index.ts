@@ -18,6 +18,9 @@ import { auli } from "./auli";
 import { harKiDun } from "./har-ki-dun";
 import { roopkund } from "./roopkund";
 import { sandakphu } from "./sandakphu";
+import { kasol } from "./kasol";
+import { tirthanValley } from "./tirthan-valley";
+import { lachung } from "./lachung";
 import type { DestinationData } from "./types";
 
 export type { DestinationData } from "./types";
@@ -43,6 +46,9 @@ export const destinations: Record<string, DestinationData> = {
   "har-ki-dun": harKiDun,
   roopkund,
   sandakphu,
+  kasol,
+  "tirthan-valley": tirthanValley,
+  lachung,
 };
 
 export function getDestination(slug: string): DestinationData | undefined {
