@@ -14,6 +14,10 @@ import { gangotri } from "./gangotri";
 import { yamunotri } from "./yamunotri";
 import { amarnath } from "./amarnath";
 import { nainital } from "./nainital";
+import { auli } from "./auli";
+import { harKiDun } from "./har-ki-dun";
+import { roopkund } from "./roopkund";
+import { sandakphu } from "./sandakphu";
 import type { DestinationData } from "./types";
 
 export type { DestinationData } from "./types";
@@ -35,6 +39,10 @@ export const destinations: Record<string, DestinationData> = {
   yamunotri,
   amarnath,
   nainital,
+  auli,
+  "har-ki-dun": harKiDun,
+  roopkund,
+  sandakphu,
 };
 
 export function getDestination(slug: string): DestinationData | undefined {
