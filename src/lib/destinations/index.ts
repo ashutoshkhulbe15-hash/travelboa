@@ -10,6 +10,10 @@ import { manali } from "./manali";
 import { shimla } from "./shimla";
 import { dharamshala } from "./dharamshala";
 import { hemkundSahib } from "./hemkund-sahib";
+import { gangotri } from "./gangotri";
+import { yamunotri } from "./yamunotri";
+import { amarnath } from "./amarnath";
+import { nainital } from "./nainital";
 import type { DestinationData } from "./types";
 
 export type { DestinationData } from "./types";
@@ -27,6 +31,10 @@ export const destinations: Record<string, DestinationData> = {
   shimla,
   dharamshala,
   "hemkund-sahib": hemkundSahib,
+  gangotri,
+  yamunotri,
+  amarnath,
+  nainital,
 };
 
 export function getDestination(slug: string): DestinationData | undefined {
