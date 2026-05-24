@@ -119,10 +119,17 @@ export default function HomePage() {
 
         {/* ═══ CARDS + WEATHER ═══ */}
         <div className="flex flex-col lg:flex-row gap-5 mt-4 items-start">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 flex-1 w-full">
-            {DESTINATIONS.map((d,i)=>(
-              <Polaroid key={d.slug} {...d} accent={accent} selected={selectedDest===i} onClick={()=>{setSelectedDest(i);setChecks({})}} />
-            ))}
+          <div className="flex-1 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              {DESTINATIONS.slice(0, 6).map((d,i)=>(
+                <Polaroid key={d.slug} {...d} accent={accent} selected={selectedDest===i} onClick={()=>{setSelectedDest(i);setChecks({})}} />
+              ))}
+            </div>
+            <div className="flex justify-center mt-5 sm:mt-6">
+              <Link href="/destinations" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-[1.5px] no-underline text-sm font-bold transition-colors duration-200" style={{borderColor: accent, color: accent}}>
+                View all {DESTINATIONS.length} destinations <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
           <div className="w-full lg:w-[280px] lg:shrink-0 bg-white rounded-2xl border-[1.5px] border-gray-100 overflow-hidden" style={{boxShadow:"4px 6px 22px rgba(0,0,0,0.04)"}}>
             <div className="p-4 sm:p-5 text-center">
