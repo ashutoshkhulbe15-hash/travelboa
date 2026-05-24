@@ -74,12 +74,23 @@ export function GearArticle({ slug, meta }: Props) {
               <div className="p-4 sm:p-5 rounded-xl" style={{ background: dark ? "#1c1a17" : "#fafaf8", border: `1.5px solid ${border}` }}>
                 <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>Quick picks</p>
                 {content.products.map((product, i) => (
-                  <div key={i} className="flex items-center gap-3 py-2" style={{ borderBottom: i < content.products.length - 1 ? `1px solid ${border}` : "none" }}>
+                  <a
+                    key={i}
+                    href={product.storeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="flex items-center gap-3 py-2 no-underline transition-colors duration-150 -mx-2 px-2 rounded-md hover:opacity-80"
+                    style={{
+                      borderBottom: i < content.products.length - 1 ? `1px solid ${border}` : "none",
+                      cursor: "pointer",
+                    }}
+                  >
                     <span className="text-xs font-black w-5 text-center" style={{ color: accent }}>{i + 1}</span>
-                    <span className="text-sm font-bold flex-1" style={{ color: textPrimary }}>{product.name}</span>
+                    <span className="text-sm font-bold flex-1 hover:underline" style={{ color: textPrimary, textDecorationColor: accent }}>{product.name}</span>
                     {product.badge && <span className="text-[9px] font-bold px-2 py-0.5 rounded text-white shrink-0" style={{ background: accent }}>{product.badge}</span>}
                     <span className="text-xs font-bold shrink-0" style={{ color: textSecondary }}>{product.price}</span>
-                  </div>
+                    <span className="text-xs shrink-0" style={{ color: accent }} aria-hidden="true">→</span>
+                  </a>
                 ))}
               </div>
             )}
