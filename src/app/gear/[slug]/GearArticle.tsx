@@ -84,6 +84,11 @@ export function GearArticle({ slug, meta }: Props) {
               </div>
             )}
 
+            {/* Affiliate disclosure - required by Amazon Associates */}
+            <div className="text-xs px-4 py-3 rounded-lg leading-relaxed border-l-4" style={{ background: dark ? "#1c1a17" : "#fef3e2", borderColor: accent, color: textSecondary }}>
+              <span className="font-semibold" style={{ color: accent }}>Affiliate disclosure:</span> Some links on this page are affiliate links. We earn a small commission when you buy through them, at no extra cost to you. This helps keep TravelBoa free. We only recommend gear we believe is genuinely useful.
+            </div>
+
             {/* Intro */}
             <p className="text-sm sm:text-[15px] leading-relaxed" style={{ color: textSecondary }}>{content.intro}</p>
 

@@ -46,17 +46,17 @@ Unlike Kedarnath or Amarnath, Vaishno Devi is a year-round pilgrimage — the sh
   ],
   checklist: [
     { category: "Clothing", items: [
-      { name: "Comfortable walking shoes", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹1,499" },
+      { name: "Comfortable walking shoes", essential: true, affiliateLink: "https://www.amazon.in/s?k=Comfortable+walking+shoes&tag=travelboa-21", affiliateStore: "Amazon", price: "₹1,499" },
       { name: "Light jacket / sweater", essential: true },
-      { name: "Rain poncho / umbrella", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹249" },
+      { name: "Rain poncho / umbrella", essential: true, affiliateLink: "https://www.amazon.in/s?k=Rain+poncho+++umbrella&tag=travelboa-21", affiliateStore: "Amazon", price: "₹249" },
       { name: "Comfortable clothes (2 sets)", essential: true },
       { name: "Warm layer (winter months)", essential: false },
     ]},
     { category: "Gear", items: [
       { name: "Small daypack (15–20L)", essential: true },
       { name: "Water bottle 1L", essential: true },
-      { name: "Power bank", essential: true, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹1,499" },
-      { name: "Torch / headlamp (night yatra)", essential: false, affiliateLink: "https://amazon.in", affiliateStore: "Amazon", price: "₹499" },
+      { name: "Power bank", essential: true, affiliateLink: "https://www.amazon.in/s?k=Power+bank&tag=travelboa-21", affiliateStore: "Amazon", price: "₹1,499" },
+      { name: "Torch / headlamp (night yatra)", essential: false, affiliateLink: "https://www.amazon.in/s?k=Torch+++headlamp+(night+yatra)&tag=travelboa-21", affiliateStore: "Amazon", price: "₹499" },
     ]},
     { category: "Health", items: [
       { name: "Personal medicines (2 days)", essential: true },

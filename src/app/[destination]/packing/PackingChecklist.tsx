@@ -119,6 +119,11 @@ export function PackingChecklist({ destination: d }: Props) {
           <p className="text-[10px] mt-2" style={{ color: textMuted }}>{pct === 100 ? "All sorted!" : pct > 70 ? "Almost there!" : pct > 30 ? "Good progress" : "Let's start"}</p>
         </div>
 
+        {/* Affiliate disclosure - required by Amazon Associates */}
+        <div className="text-xs px-4 py-3 rounded-lg leading-relaxed mb-6 border-l-4" style={{ background: dark ? "#1c1a17" : "#fef3e2", borderColor: accent, color: textSecondary }}>
+          <span className="font-semibold" style={{ color: accent }}>Affiliate disclosure:</span> Some links below are affiliate links. We earn a small commission when you buy through them, at no extra cost to you. This helps keep TravelBoa free.
+        </div>
+
         {/* Dashboard CTA */}
         <Link href={`/dashboard?dest=${d.slug}`} className="flex items-center gap-3 p-4 rounded-xl no-underline mb-6 transition-all hover:-translate-y-0.5" style={{ background: `${accent}08`, border: `1.5px solid ${accent}25` }}>
           <span className="text-xl">🗺️</span>
