@@ -1126,3 +1126,220 @@ guideContent["kedarnath-budget"] = {
     { label: "GMVN accommodation booking", url: "https://gmvnl.in" },
   ],
 };
+
+// ═══ DEHRADUN TO KEDARNATH ═══
+guideContent["dehradun-to-kedarnath"] = {
+    heroImage: { src: "/kedarnath.jpg", alt: "Kedarnath temple with snow-capped peaks behind" },
+    author: "Ash",
+    publishDate: "2026-05-22",
+    lastUpdated: "May 2026",
+    disclosure: undefined,
+    sections: [
+      { heading: "Quick answer", paragraphs: [
+        "Dehradun to Gaurikund (road head): 245 km, 8-10 hours by car in normal conditions. Gaurikund to Kedarnath temple: 18 km trek, 6-8 hours up for average fitness. Total journey: minimum 2 days (one day drive, one day trek). Helicopter option: fly from Phata/Sirsi (near Guptkashi) to Kedarnath in 7-8 minutes after a 6-hour drive from Dehradun.",
+        "There is no shortcut that compresses this into a single day from Dehradun. Budget two full days minimum and do it right."
+      ] },
+      { heading: "Segment 1: Dehradun to Rishikesh (42 km, ~1 hour)", paragraphs: [
+        "This is the easiest stretch. The highway out of Dehradun is broad and well-maintained. Leave Dehradun by 4:00 AM to clear the city before traffic builds. Rishikesh is where Dehradun locals top up fuel, grab tea, and check tyre pressure before the real climb begins. Fuel up here as petrol pumps get sparse beyond Devprayag."
+      ] },
+      { heading: "Segment 2: Rishikesh to Rudraprayag (113 km, ~3.5 hours)", paragraphs: [
+        "This segment follows the Ganga/Alaknanda valley on NH-7. It is a decent highway by Uttarakhand standards: two lanes in most places, some widening work underway by BRO as of 2026.",
+        "Devprayag (95 km from Dehradun) is the sacred confluence of the Alaknanda and Bhagirathi rivers where the Ganga officially begins. Rudraprayag (155 km from Dehradun, ~4.5 hours) is where the road forks: left for Badrinath, right for Kedarnath."
+      ] },
+      { heading: "Segment 3: Rudraprayag to Guptkashi (40 km, ~1.5 hours)", paragraphs: [
+        "The road narrows to a state highway with twisty single-lane stretches and sheer drops on one side. Pilgrimage traffic in May and June can jam this corridor completely.",
+        "Guptkashi (195 km, ~6 hours total) is the best overnight stop before Gaurikund. The town has guesthouses (Rs 600-2,500/night), decent restaurants, functional ATMs (SBI and PNB), and sits at around 1,300 metres. Book accommodation in advance for May-June."
+      ] },
+      { heading: "Segment 4: Guptkashi to Gaurikund (50 km, ~2 hours)", paragraphs: [
+        "Sonprayag (225 km from Dehradun): during peak season (May-June, September), private vehicles are barred from proceeding beyond Sonprayag. Your car parks in the designated lot (Rs 150-200 per day). Government shared jeeps ferry passengers the remaining 8 km to Gaurikund for Rs 100 per person.",
+        "Gaurikund (245 km, 1,982 metres): The road head. There is a famous hot spring here called Surya Kund. Small lockers are available near the trailhead (Rs 50-100) for bags you don't want to carry up."
+      ] },
+      { heading: "The trek: Gaurikund to Kedarnath temple", paragraphs: [
+        "The trek is 18 km on the traditional route (or 16 km on the newer concrete path, steeper but marginally shorter). The altitude gain is 1,601 metres from 1,982m at Gaurikund to 3,583m at the temple."
+      ], table: {
+        headers: ["Checkpoint", "Distance", "Altitude", "Notes"],
+        rows: [
+          ["Jungle Chatti", "4 km", "~2,450m", "First tea shops, rest point"],
+          ["Bheembali", "6 km", "~2,850m", "Last reliable food and water"],
+          ["Lincholi", "9 km", "~3,100m", "Rest rooms, small guest rooms"],
+          ["Kedarnath base", "18 km", "3,583m", "Temple complex, guesthouses"],
+        ]
+      } },
+      { heading: "Alternatives to walking", paragraphs: [
+        "Pony/mule: Rs 2,500-4,500 one way from Gaurikund. Book early in the morning as mules sell out by 8 AM in peak season. Palanquin (doli): Rs 6,000-12,000 one way, the main option for elderly or mobility-limited pilgrims. Helicopter: Departs from Phata, Sirsi, Guptkashi, and Agastyamuni (not from Gaurikund itself). Rs 5,500-7,000 per seat."
+      ] },
+      { heading: "All transport options compared", paragraphs: [], table: {
+        headers: ["Mode", "Route", "Cost (one way)", "Best for"],
+        rows: [
+          ["Own car", "8-10 hrs to Gaurikund", "Rs 1,400-1,800 fuel + Rs 150/day parking", "Families, groups"],
+          ["Shared taxi", "9-11 hrs total", "Rs 600-800/seat", "Solo travellers, budget"],
+          ["GMOU/UPSRTC bus", "10-13 hrs", "Rs 200-300", "Extreme budget"],
+          ["Helicopter + drive", "6 hrs drive + 8 min flight", "Rs 5,500-7,000 + fuel", "Speed, limited mobility"],
+        ]
+      } },
+    ],
+    faq: [
+      { question: "How far is Dehradun to Kedarnath?", answer: "The road distance from Dehradun to Gaurikund (the trek start point) is 245 km. From Gaurikund to the Kedarnath temple it is 18 km by trek." },
+      { question: "Can I drive directly to Kedarnath?", answer: "No road reaches Kedarnath. The nearest a vehicle can get during peak season is Sonprayag (237 km from Dehradun), where private vehicles are stopped. A government shuttle covers the remaining 8 km to Gaurikund." },
+      { question: "How long does the Kedarnath trek take?", answer: "The 18 km trek from Gaurikund to Kedarnath takes 6-8 hours going up for a person of average fitness. Descent takes 4-5 hours." },
+      { question: "Is helicopter available from Dehradun to Kedarnath?", answer: "No direct helicopter operates from Dehradun. You drive to Phata, Sirsi, or Guptkashi (about 6 hours from Dehradun) and take the helicopter from there. The flight is 7-8 minutes." },
+      { question: "Can I do Kedarnath in one day from Dehradun?", answer: "Not comfortably and not safely. Even leaving at 3 AM, you reach Gaurikund by 1 PM at earliest. Starting the 18 km, 1,600m-climb trek at 1 PM puts you at Kedarnath at 9 PM in the dark. Budget two days minimum." },
+      { question: "What is the Sonprayag barrier?", answer: "A traffic restriction checkpoint where private vehicles are stopped from proceeding to Gaurikund during peak pilgrimage season. Government shared jeeps handle the 8 km shuttle for Rs 100/person." },
+    ],
+    outboundLinks: [
+      { label: "Char Dham Yatra registration portal", url: "https://registrationandtouristcare.uk.gov.in" },
+      { label: "IRCTC HeliYatra helicopter booking", url: "https://heliyatra.irctc.co.in" },
+    ],
+    schemaJson: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Dehradun to Kedarnath: Distance, Route & Travel Time 2026", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/dehradun-to-kedarnath" } },
+      { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "How far is Dehradun to Kedarnath?", "acceptedAnswer": { "@type": "Answer", "text": "The road distance from Dehradun to Gaurikund is 245 km. From Gaurikund to Kedarnath temple it is 18 km by trek." } },
+        { "@type": "Question", "name": "Can I drive directly to Kedarnath?", "acceptedAnswer": { "@type": "Answer", "text": "No. The nearest a vehicle can get during peak season is Sonprayag (237 km from Dehradun). Government shared jeeps handle the remaining 8 km to Gaurikund." } },
+        { "@type": "Question", "name": "How long does the Kedarnath trek take?", "acceptedAnswer": { "@type": "Answer", "text": "The 18 km trek takes 6-8 hours going up and 4-5 hours coming down for average fitness." } },
+        { "@type": "Question", "name": "Can I do Kedarnath in one day from Dehradun?", "acceptedAnswer": { "@type": "Answer", "text": "Not safely. Budget two full days minimum: one day driving, one day trekking." } },
+      ] },
+    ],
+};
+
+// ═══ KEDARNATH OPENING DATE 2026 ═══
+guideContent["kedarnath-opening-date-2026"] = {
+    heroImage: { src: "/kedarnath.jpg", alt: "Kedarnath temple on opening day with snow" },
+    author: "Ash",
+    publishDate: "2026-05-22",
+    lastUpdated: "May 2026",
+    disclosure: undefined,
+    sections: [
+      { heading: "Kedarnath Opening Date 2026", paragraphs: [
+        "The Kedarnath temple opens on April 30, 2026. That is Akshaya Tritiya on the Hindu calendar, the auspicious date that determines the opening of the Kedarnath shrine every year. The Badri Kedar Temple Committee (BKTC) confirmed the date in early 2026.",
+        "The closing date for 2026 is on or around October 20, 2026 (Bhai Dooj), after which the shrine remains locked and under snow for approximately six months.",
+        "Both dates are official but always worth double-checking on the BKTC website (badrinath-kedarnath.gov.in) or Uttarakhand Tourism a few weeks before you travel."
+      ] },
+      { heading: "Why the opening date changes every year", paragraphs: [
+        "The Kedarnath opening date follows the Hindu lunar calendar and specifically falls on Akshaya Tritiya, the third day of the bright fortnight of the month of Vaishakha. In practice, Akshaya Tritiya lands somewhere between late April and mid-May. The BKTC announces the official date, usually in February or March."
+      ] },
+      { heading: "Year-by-year opening and closing dates", paragraphs: [], table: {
+        headers: ["Year", "Opening", "Closing", "Best Month", "Snow at Opening"],
+        rows: [
+          ["2026", "April 30", "~Oct 20", "September", "High (40-60 cm above 3,200m)"],
+          ["2025", "May 2", "~Oct 22", "September", "Moderate-High"],
+          ["2024", "May 10", "~Nov 3", "Sep-Oct", "Moderate"],
+          ["2023", "April 25", "~Nov 14", "September", "High"],
+          ["2022", "May 6", "~Oct 27", "September", "Moderate"],
+          ["2021", "May 17", "~Nov 6", "September", "Low-Moderate"],
+          ["2020", "COVID-19", "--", "--", "--"],
+          ["2019", "May 9", "~Nov 1", "September", "Moderate"],
+        ]
+      } },
+      { heading: "The opening ceremony: what happens on April 30", paragraphs: [
+        "3-4 days before opening, the Utsav Murti procession begins from the Sri Omkareshwar temple in Ukhimath back to Kedarnath. The opening puja happens between 5 AM and 8 AM. By opening day, approximately 10,000-15,000 pilgrims will be present. Queue times for darshan on April 30 itself are typically 4 to 8 hours.",
+        "If your priority is the ceremony and the energy of opening day, go but plan to queue. If your priority is spending a quiet moment inside the sanctum, go in September."
+      ] },
+      { heading: "Temple timings at Kedarnath", paragraphs: [], table: {
+        headers: ["Timeslot", "Type", "Notes"],
+        rows: [
+          ["4:00-6:00 AM", "Abhishek", "Advance booking required, Rs 1,100-3,500"],
+          ["6:00 AM-3:00 PM", "Morning darshan", "General entry, queue-based"],
+          ["3:00-5:00 PM", "Evening aarti", "Viewing inside sabha mandap"],
+          ["5:00-9:00 PM", "Evening darshan", "General entry"],
+        ]
+      } },
+      { heading: "Where does the deity go in winter?", paragraphs: [
+        "The Utsav Murti (processional idol) is relocated to the Sri Omkareshwar temple at Ukhimath in Rudraprayag district at approximately 1,311m. Prayers continue through the winter. The main Jyotirlinga stays in place at Kedarnath under snow with the doors sealed after the closing puja."
+      ] },
+      { heading: "Month-by-month guide for 2026", paragraphs: [
+        "Late April/Early May: Opening week. Snow above 3,200m, 4-8 hour darshan queues, all accommodation full. May-June: Peak crowds, best weather, 15,000-25,000 daily pilgrims. Book everything weeks ahead. July-August: Monsoon. Trail is slippery, leeches above Rambara. Crowds drop 60-70%. September: Post-monsoon clarity. Best weather, 40-50% of peak crowds. My recommended window. October: Temple closing approaches. Cold nights (0 to -5C), thin crowds, dramatic light."
+      ] },
+      { heading: "How to plan your visit", paragraphs: [
+        "For the full route breakdown from Dehradun to Kedarnath, see the Dehradun to Kedarnath route guide. For packing, see what to pack for 4,000m altitude. For registration, see the Char Dham e-pass guide."
+      ] },
+    ],
+    faq: [
+      { question: "When does Kedarnath open in 2026?", answer: "Kedarnath temple opens on April 30, 2026, coinciding with Akshaya Tritiya on the Hindu lunar calendar." },
+      { question: "When does Kedarnath close in 2026?", answer: "The expected closing date is October 20, 2026 (Bhai Dooj), two days after Diwali." },
+      { question: "How is the opening date decided?", answer: "It follows Akshaya Tritiya on the Hindu Panchang (lunar calendar), which shifts between late April and mid-May each year." },
+      { question: "Is it good to visit on opening day?", answer: "Extraordinary atmosphere but 4-8 hour darshan queues, significant snow above 3,200m, and all accommodation completely full. Book months in advance." },
+      { question: "What are temple timings at Kedarnath?", answer: "Morning darshan 6 AM to 3 PM. Evening aarti 3-5 PM. Evening darshan 5-9 PM. Abhishek slot 4-6 AM (advance booking required)." },
+      { question: "Where does the idol go in winter?", answer: "The Utsav Murti goes to the Sri Omkareshwar temple in Ukhimath, Rudraprayag district. The main Shivalingam stays at Kedarnath under snow." },
+      { question: "What is the best month to avoid crowds?", answer: "September. Post-monsoon clarity, dry trail, temperatures 3-14C, and crowds at roughly 40-50% of the May peak." },
+    ],
+    outboundLinks: [
+      { label: "Badri Kedar Temple Committee (BKTC)", url: "https://badrinath-kedarnath.gov.in" },
+      { label: "Char Dham Yatra registration", url: "https://registrationandtouristcare.uk.gov.in" },
+      { label: "Uttarakhand Tourism", url: "https://uttarakhandtourism.gov.in" },
+    ],
+    schemaJson: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Kedarnath Opening Date 2026: When Does the Temple Open & Close?", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/kedarnath-opening-date-2026" } },
+      { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "When does Kedarnath open in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "April 30, 2026 (Akshaya Tritiya)." } },
+        { "@type": "Question", "name": "When does Kedarnath close in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "October 20, 2026 (Bhai Dooj)." } },
+        { "@type": "Question", "name": "What are the temple timings?", "acceptedAnswer": { "@type": "Answer", "text": "Morning darshan 6 AM-3 PM. Evening aarti 3-5 PM. Evening darshan 5-9 PM. Abhishek 4-6 AM (advance booking)." } },
+        { "@type": "Question", "name": "What is the best month to visit Kedarnath?", "acceptedAnswer": { "@type": "Answer", "text": "September. Post-monsoon clarity, dry trail, and crowds at 40-50% of peak." } },
+      ] },
+    ],
+};
+
+// ═══ MANALI TO SPITI VALLEY ═══
+guideContent["manali-to-spiti-valley"] = {
+    heroImage: { src: "/spiti.jpg", alt: "Spiti Valley road with barren mountains" },
+    author: "Ash",
+    publishDate: "2026-05-22",
+    lastUpdated: "May 2026",
+    disclosure: undefined,
+    sections: [
+      { heading: "Quick route stats", paragraphs: [
+        "Manali to Kaza (main town, Spiti Valley): 190-200 km via Atal Tunnel and Batal. Altitude range: Manali 2,050m to Kunzum Pass 4,590m to Kaza 3,800m. Road surface: paved from Manali to Gramphoo, gravel and rough dirt from Gramphoo to Losar, mostly paved from Losar to Kaza. Season: June to October. Kunzum Pass closes after first heavy snowfall.",
+        "Fuel: last reliable pump is Manali (or Keylong). Next is Kaza. No fuel at Batal. ATMs: zero between Manali and Kaza. Carry Rs 5,000 to Rs 8,000 cash per person minimum."
+      ], warning: "No fuel station and no ATM exist between Manali and Kaza. Fill your tank and withdraw cash before leaving Manali." },
+      { heading: "Rohtang Pass or Atal Tunnel?", paragraphs: [
+        "Rohtang Pass (3,978m) is the old route over the mountains. Atal Tunnel (8.9 km, opened October 2020) bypasses it entirely. Both get you to Gramphoo junction where the Spiti road turns left.",
+        "Rohtang: permit required for non-HP vehicles (Rs 200, apply 3 days ahead at rohtangpermit.nic.in). Diesel vehicles only beyond Marhi. BRO opens the road usually in late May or early June. July-August can mean 4-5 hours for the 51 km crossing.",
+        "Atal Tunnel: no permit, 15-20 minutes through, open year-round, all vehicle types allowed. Saves 46 km and at least 1-1.5 hours. For the Spiti run, the tunnel is the practical choice."
+      ] },
+      { heading: "Stage 1: Manali to Gramphoo Junction (35 km, 1 hour)", paragraphs: [
+        "Fill your fuel tank completely in Manali. Withdraw all the cash you need. Download offline maps for Lahaul and Spiti. Drive to the Atal Tunnel South Portal (20 km), through the 8.9 km tunnel, then 5 km to Gramphoo (3,290m).",
+        "At Gramphoo the road forks: left (NH-505) for Spiti Valley, right for Keylong and Leh-Ladakh highway. The sign is small. I nearly missed it on my 350cc bike in September."
+      ], tip: "The Gramphoo junction sign is modest. Slow down and watch for the left fork to Spiti." },
+      { heading: "Stage 2: Gramphoo to Batal (55 km, 3-4 hours)", paragraphs: [
+        "This is where Spiti reveals what it is. The road follows the Chandra River and the surface goes from tarmac to gravel to rocks within 10 km. Plan 3-4 hours for this 55 km section.",
+        "You will pass Chhatru (3,310m) with a basic bridge and sometimes a dhaba. In late July and August, river crossings near Chhatru can be knee-deep from glacial melt. No fuel, no medical facilities, no phone signal once you leave Gramphoo."
+      ] },
+      { heading: "Stage 3: Batal (3,960m)", paragraphs: [
+        "Batal is not a town. It is a handful of tents and one permanent structure: Chacha Chachi dhaba. The dal is Rs 60 for a full plate. The dhaba operators will tell you how many bikes came through today and whether the road to Kunzum is clear.",
+        "No fuel at Batal. No ATM. Your tank needs to carry you from Manali to Kaza (200 km). Most 150-200cc bikes with standard tanks can do this; very small-tank bikes should carry a 3-5 litre spare can from Manali."
+      ] },
+      { heading: "The Chandrataal detour (worth it)", paragraphs: [
+        "The turnoff to Chandrataal (Moon Lake) is about 6 km before Kunzum Pass, at Batal. The lake sits at 4,300m, roughly 14 km from the main road on a narrow track. Camping is available at the lake perimeter (Rs 800-1,500 per tent including meals).",
+        "I strongly recommend an overnight at Chandrataal if your schedule allows. Breaking the Manali-Kaza drive into two days, with Chandrataal as the midpoint, is better for altitude acclimatization and the lake itself is one of the most beautiful sights in the entire Himalaya."
+      ] },
+      { heading: "Stage 4: Kunzum Pass (4,590m)", paragraphs: [
+        "The 20 km from Batal to Kunzum Pass is the roughest section of the entire route, unpaved and rocky. Allow 1.5 to 2 hours. The Kunzum Mata temple sits at the summit. Stop, rest, hydrate, and do not rush the descent.",
+        "From Kunzum, it is 28 km down to Losar (the first Spiti village, 4,079m) and then 60 km on mostly paved road to Kaza. The descent from Kunzum into Spiti Valley, when the wide grey valley opens up below you, is the moment the entire drive was building toward."
+      ] },
+      { heading: "Stage 5: Losar to Kaza (60 km, 1.5-2 hours)", paragraphs: [
+        "From Losar the road improves significantly. Kaza (3,800m) is the district headquarters of Spiti with the only reliable ATM and fuel station in the valley. Fill fuel, withdraw cash, and use the internet while it works."
+      ] },
+    ],
+    faq: [
+      { question: "How far is Manali to Spiti Valley (Kaza)?", answer: "Approximately 190-200 km via the Atal Tunnel route. The drive takes 8-10 hours in a single push." },
+      { question: "Is the Manali to Spiti road open in June?", answer: "Yes, in most years. Kunzum Pass typically opens in late May or first week of June. Check BRO announcements for confirmed dates." },
+      { question: "Do I need a permit for Manali to Kaza?", answer: "No permit needed via Atal Tunnel. Rohtang Pass route requires an online permit (Rs 200 for non-HP vehicles). No separate Spiti permit for Indian nationals on the Manali side." },
+      { question: "Is there fuel between Manali and Kaza?", answer: "No confirmed fuel station exists between Manali (or Keylong) and Kaza. Fill your tank fully in Manali." },
+      { question: "What is the altitude of Kunzum Pass?", answer: "4,590m above sea level. It is the highest point on the Manali to Kaza route." },
+      { question: "Can I do Manali to Kaza in one day?", answer: "Yes, starting by 5-6 AM and skipping Chandrataal, arriving Kaza between 4-6 PM. But the two-day plan with a Chandrataal overnight is better for most people." },
+      { question: "What is the best time for the Manali-Spiti route?", answer: "September: dry roads, rivers at lowest, clear skies, 12-18C at Kaza." },
+    ],
+    outboundLinks: [
+      { label: "Rohtang Pass permit booking", url: "https://rohtangpermit.nic.in" },
+      { label: "Himachal Pradesh Tourism", url: "https://himachaltourism.gov.in" },
+      { label: "BRO road status updates", url: "https://bro.gov.in" },
+    ],
+    schemaJson: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Manali to Spiti Valley: Complete Route Guide 2026", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/manali-to-spiti-valley" } },
+      { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "How far is Manali to Spiti Valley?", "acceptedAnswer": { "@type": "Answer", "text": "Approximately 190-200 km from Manali to Kaza via the Atal Tunnel route. 8-10 hours driving." } },
+        { "@type": "Question", "name": "Is there fuel between Manali and Kaza?", "acceptedAnswer": { "@type": "Answer", "text": "No. Fill your tank fully in Manali. Next fuel station is Kaza." } },
+        { "@type": "Question", "name": "What is the altitude of Kunzum Pass?", "acceptedAnswer": { "@type": "Answer", "text": "4,590m. It is the highest point on the Manali-Kaza route." } },
+        { "@type": "Question", "name": "What is the best time for this route?", "acceptedAnswer": { "@type": "Answer", "text": "September: dry roads, clear skies, rivers at lowest level." } },
+      ] },
+    ],
+};
