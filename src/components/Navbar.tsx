@@ -20,13 +20,18 @@ export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
   return (
     <nav className="sticky top-0 z-50 border-b" style={{ background: "rgba(12,26,35,0.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", borderColor: "rgba(255,255,255,0.07)" }}>
       <div className="max-w-[1180px] mx-auto px-5 sm:px-6 flex items-center justify-between" style={{ height: 64 }}>
-        <Link href="/" className="flex flex-col leading-none no-underline" aria-label="TravelBoa home">
-          <span className="text-white font-extrabold text-[22px] tracking-tight">
-            travel<span style={{ color: "var(--terra-bright)" }}>boa</span>
-          </span>
-          <svg width="82" height="6" viewBox="0 0 92 7" fill="none" aria-hidden="true" className="mt-0.5">
-            <path d="M1 4 C 14 -1, 24 8, 38 4 S 64 0, 78 4 90 4 91 4" stroke="var(--terra-bright)" strokeWidth="2.4" strokeLinecap="round" />
-          </svg>
+        <Link href="/" className="flex items-center gap-2.5 no-underline" aria-label="TravelBoa home">
+          <div className="w-8 h-8 rounded-[9px] flex items-center justify-center overflow-hidden" style={{ background: "var(--terra)", boxShadow: "0 2px 8px rgba(194,102,45,0.4)" }}>
+            <svg width="18" height="18" viewBox="0 0 120 120" fill="none"><path d="M35 90 Q35 60 55 55 Q75 50 75 35 Q75 20 60 20 Q45 20 45 35 Q45 50 60 55 Q80 62 80 80 Q80 95 65 95 Q50 95 50 80" stroke="white" strokeWidth="6" strokeLinecap="round" fill="none"/><path d="M55 20 L60 12 L65 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="text-white font-extrabold text-[22px] tracking-tight">
+              travel<span style={{ color: "var(--terra-bright)" }}>boa</span>
+            </span>
+            <svg width="82" height="6" viewBox="0 0 92 7" fill="none" aria-hidden="true" className="mt-0.5">
+              <path d="M1 4 C 14 -1, 24 8, 38 4 S 64 0, 78 4 90 4 91 4" stroke="var(--terra-bright)" strokeWidth="2.4" strokeLinecap="round" />
+            </svg>
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-7">

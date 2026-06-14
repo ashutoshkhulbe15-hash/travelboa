@@ -1,28 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import { DESTINATIONS, SEARCH_DESTINATIONS, ACTIVITIES } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 
 export function DestinationsClient() {
-  const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [searchVal, setSearchVal] = useState("");
   const [searchFocus, setSearchFocus] = useState(false);
   const [activity, setActivity] = useState<string | null>(null);
 
-  if (!mounted) return null;
-
-  const bg = dark ? "#0c0a09" : "white";
-  const cardBg = dark ? "#1c1a17" : "white";
-  const textPrimary = dark ? "#f5f5f4" : "#111";
-  const textSecondary = dark ? "#a8a29e" : "#666";
-  const textMuted = dark ? "#57534e" : "#ccc";
-  const border = dark ? "#292524" : "#f0f0f0";
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    }), { threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) els.forEach(el => el.classList.add("on"));
+    return () => io.disconnect();
+  }, []);
 
   const allDests = [
     ...DESTINATIONS.map(d => ({ ...d, hasPage: true })),
@@ -38,130 +36,114 @@ export function DestinationsClient() {
   });
 
   return (
-    <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
-      <Navbar accent={accent} dark={dark} />
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
 
-      <div className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-8 pb-20">
-        <div className="flex items-center gap-2 mt-6 mb-6 text-xs" style={{ color: textMuted }}>
-          <Link href="/" className="transition-colors hover:opacity-70" style={{ color: textMuted }}>Home</Link>
-          <span>→</span>
-          <span className="font-semibold" style={{ color: textPrimary }}>Destinations</span>
+      {/* Breadcrumb */}
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
+          <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <span style={{ color: "var(--ink)" }}>Destinations</span>
         </div>
+      </div>
 
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2 transition-colors" style={{ color: textPrimary }}>All destinations</h1>
-        <p className="text-sm mb-6 transition-colors" style={{ color: textSecondary }}>Pilgrimages and adventures we cover with full guides, packing lists, and road status.</p>
+      {/* Header */}
+      <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
+          <p className="kicker mb-3">23 destinations</p>
+          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Every trip we cover, all in one place.</h1>
+          <p className="text-[17px] font-light leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pilgrimages and adventures across the Indian Himalaya with full guides, packing lists, gear links and road status. Each one written first person from Dehradun.</p>
 
-        {/* Search + Activity browse */}
-        <div className="rounded-2xl p-4 sm:p-6 mb-8 transition-colors duration-300" style={{ background: dark ? "#1c1a17" : "#fafaf8", border: `1.5px solid ${border}` }}>
-          {/* Search input */}
-          <div className="relative">
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
-            <input
-              value={searchVal}
-              onChange={e => { setSearchVal(e.target.value); setActivity(null); }}
-              onFocus={() => setSearchFocus(true)}
-              onBlur={() => setSearchFocus(false)}
-              placeholder="Search destinations — Kedarnath, Spiti, Ladakh..."
-              className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
-              style={{
-                background: dark ? "#0c0a09" : "white",
-                color: textPrimary,
-                border: `1.5px solid ${searchFocus ? accent : border}`,
-                boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none",
-              }}
-              autoComplete="off"
-            />
-            {searchVal && (
-              <button onClick={() => setSearchVal("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
-            )}
+          {/* Search */}
+          <div className="mt-8 relative" style={{ maxWidth: 540 }}>
+            <div className="flex items-center rounded-full px-5 py-1" style={{ background: "#fff", border: `2px solid ${searchFocus ? "var(--terra)" : "#e3e9e6"}`, boxShadow: searchFocus ? "0 0 0 4px rgba(194,102,45,0.1)" : "0 4px 20px -8px rgba(28,43,51,0.15)", transition: "border-color 0.2s, box-shadow 0.2s" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+              <input value={searchVal} onChange={e => { setSearchVal(e.target.value); setActivity(null); }} onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
+                placeholder="Search by name, state, altitude..." className="flex-1 border-0 bg-transparent font-sans text-[16px] py-3 px-3 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" />
+              {searchVal && (
+                <button onClick={() => setSearchVal("")} className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold border-0 cursor-pointer" style={{ background: "#eef2ef", color: "var(--ink-soft)" }}>✕</button>
+              )}
+            </div>
           </div>
 
-          {/* Divider — or browse by activity */}
-          <div className="flex items-center gap-4 my-5">
-            <div className="flex-1 h-px" style={{ background: border }} />
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: textMuted }}>or browse by activity</span>
-            <div className="flex-1 h-px" style={{ background: border }} />
-          </div>
-
-          {/* Activity cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+          {/* Activity filters */}
+          <div className="flex gap-2.5 flex-wrap mt-6">
             {ACTIVITIES.map(a => {
               const isActive = activity === a.key;
               const count = allDests.filter(d => d.activities.includes(a.key)).length;
               return (
-                <button
-                  key={a.key}
-                  onClick={() => { setActivity(isActive ? null : a.key); setSearchVal(""); }}
-                  className="flex flex-col items-center gap-1.5 py-4 sm:py-5 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
+                <button key={a.key} onClick={() => { setActivity(isActive ? null : a.key); setSearchVal(""); }}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold border-0 cursor-pointer transition-all duration-200"
                   style={{
-                    background: isActive ? accent : (dark ? "#0c0a09" : "white"),
-                    border: `1.5px solid ${isActive ? accent : border}`,
-                    boxShadow: isActive ? `0 4px 16px ${accent}30` : "none",
-                  }}
-                >
-                  <span className="text-2xl">{a.icon}</span>
-                  <span className="text-xs font-bold" style={{ color: isActive ? "white" : textPrimary }}>{a.label}</span>
-                  <span className="text-[10px] font-semibold" style={{ color: isActive ? "rgba(255,255,255,0.6)" : textMuted }}>{count} {count === 1 ? "place" : "places"}</span>
+                    background: isActive ? "var(--terra)" : "#fff",
+                    color: isActive ? "#fff" : "var(--ink-soft)",
+                    border: `1.5px solid ${isActive ? "var(--terra)" : "#e3e9e6"}`,
+                    boxShadow: isActive ? "0 4px 14px rgba(194,102,45,0.3)" : "none",
+                  }}>
+                  <span>{a.icon}</span> {a.label}
+                  <span className="ml-0.5 text-[11px] opacity-70">{count}</span>
                 </button>
               );
             })}
           </div>
         </div>
+      </div>
 
-        {/* Active filter indicator */}
+      {/* Results */}
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
         {(searchVal || activity) && (
-          <div className="flex items-center gap-2 mb-5">
-            <span className="text-sm font-bold" style={{ color: textPrimary }}>{filtered.length} destination{filtered.length !== 1 ? "s" : ""}</span>
+          <div className="flex items-center gap-2.5 mb-6">
+            <span className="text-[15px] font-bold" style={{ color: "var(--ink)" }}>{filtered.length} destination{filtered.length !== 1 ? "s" : ""}</span>
             {activity && (
-              <span className="text-xs px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1" style={{ background: `${accent}15`, color: accent }}>
+              <span className="text-[12px] font-semibold px-3 py-1 rounded-full flex items-center gap-1" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>
                 {ACTIVITIES.find(a => a.key === activity)?.icon} {ACTIVITIES.find(a => a.key === activity)?.label}
-                <button onClick={() => setActivity(null)} className="ml-1 font-bold">✕</button>
+                <button onClick={() => setActivity(null)} className="ml-1 font-bold border-0 bg-transparent cursor-pointer" style={{ color: "var(--terra)" }}>✕</button>
               </span>
-            )}
-            {searchVal && (
-              <span className="text-xs" style={{ color: textMuted }}>for &quot;{searchVal}&quot;</span>
             )}
           </div>
         )}
 
-        {/* Results */}
         {filtered.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="text-4xl mb-3">🏔️</div>
-            <p className="text-base font-bold" style={{ color: textPrimary }}>No destinations found</p>
-            <p className="text-sm mt-1" style={{ color: textMuted }}>Try a different search or activity</p>
+          <div className="text-center py-20">
+            <div className="text-5xl mb-4">🏔️</div>
+            <p className="text-[18px] font-bold" style={{ color: "var(--ink)" }}>No destinations found</p>
+            <p className="text-[15px] font-light mt-2" style={{ color: "var(--ink-soft)" }}>Try a different search or clear the filter</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map(d => (
-              <Link key={d.slug} href={d.hasPage ? `/${d.slug}` : "#"} className="group block rounded-xl overflow-hidden no-underline transition-all duration-200 hover:shadow-lg hover:-translate-y-1" style={{ border: `1.5px solid ${border}`, background: cardBg }}>
-                <div className="aspect-[16/9] relative" style={{ background: d.grad }}>
-                  {d.image && <Image src={d.image} alt={`${d.name} - travel guide destination`} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-3 left-4">
-                    <div className="text-lg font-extrabold text-white">{d.name}</div>
-                    <div className="text-xs text-white/60">{d.info}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((d, i) => (
+              <Link key={d.slug} href={d.hasPage ? `/${d.slug}` : "#"}
+                className={`reveal group block rounded-[18px] overflow-hidden no-underline transition-all duration-300 hover:-translate-y-[6px] hover:shadow-2xl ${!d.hasPage ? "opacity-70" : ""}`}
+                style={{ border: "1px solid #e3e9e6", background: "#fff" }}>
+                <div className="aspect-[16/10] relative overflow-hidden" style={{ background: d.grad }}>
+                  {d.image && <Image src={d.image} alt={`${d.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 33vw" />}
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.55))" }} />
+                  <span className="absolute top-3 left-3 font-mono text-[10.5px] tracking-wide uppercase px-2.5 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.92)", color: "var(--ink)" }}>{d.type}</span>
+                  {d.temp && <span className="absolute top-3 right-3 font-mono text-[11px] px-2.5 py-1 rounded-full" style={{ background: "rgba(12,26,35,0.78)", color: "#fff", backdropFilter: "blur(4px)" }}>{d.temp}</span>}
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <div className="text-[20px] font-extrabold text-white tracking-tight">{d.name}</div>
+                    <div className="text-[12px] text-white/65 font-mono mt-0.5">{d.info}</div>
                   </div>
-                  {d.temp && <div className="absolute top-3 right-3 px-2 py-0.5 rounded bg-black/30 text-[11px] font-bold text-white">{d.temp}</div>}
                 </div>
                 <div className="p-4">
-                  {d.note && <p className="font-caveat text-sm" style={{ color: accent }}>{d.note}</p>}
-                  <div className="flex gap-1.5 mt-2 flex-wrap">
+                  {d.note && <p className="font-caveat text-[15px] mb-2" style={{ color: "var(--terra)" }}>{d.note}</p>}
+                  <div className="flex gap-1.5 flex-wrap">
                     {d.activities.map(a => (
-                      <span key={a} className="text-[9px] font-semibold px-2 py-0.5 rounded-md" style={{ background: dark ? "#292524" : "#f5f5f5", color: textMuted }}>
-                        {ACTIVITIES.find(act => act.key === a)?.icon} {a}
+                      <span key={a} className="text-[10px] font-semibold px-2 py-0.5 rounded-md font-mono" style={{ background: "var(--snowfield)", color: "var(--ink-soft)" }}>
+                        {ACTIVITIES.find(act => act.key === a)?.icon} {a.toUpperCase()}
                       </span>
                     ))}
                   </div>
-                  {!d.hasPage && <p className="text-[10px] mt-2" style={{ color: textMuted }}>Guide coming soon</p>}
+                  {!d.hasPage && <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>GUIDE COMING SOON</p>}
                 </div>
               </Link>
             ))}
           </div>
         )}
       </div>
-      <Footer accent={accent} />
+
+      <Footer />
     </div>
   );
 }

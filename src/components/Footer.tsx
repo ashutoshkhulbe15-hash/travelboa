@@ -19,7 +19,10 @@ export function Footer({ accent: _accent }: FooterProps) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12 mb-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="no-underline inline-block mb-3">
+            <Link href="/" className="no-underline inline-flex items-center gap-2.5 mb-3">
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center overflow-hidden" style={{ background: "var(--terra)" }}>
+                <svg width="16" height="16" viewBox="0 0 120 120" fill="none"><path d="M35 90 Q35 60 55 55 Q75 50 75 35 Q75 20 60 20 Q45 20 45 35 Q45 50 60 55 Q80 62 80 80 Q80 95 65 95 Q50 95 50 80" stroke="white" strokeWidth="6" strokeLinecap="round" fill="none"/><path d="M55 20 L60 12 L65 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+              </div>
               <span className="text-white font-extrabold text-[24px] tracking-tight">
                 travel<span style={{ color: "var(--terra-bright)" }}>boa</span>
               </span>

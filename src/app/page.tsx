@@ -27,12 +27,12 @@ const ALTI_DATA = [
 
 /* ─── featured destinations for cards ─── */
 const FEATURED = [
-  { slug: "kedarnath", hook: "The 16 km climb to the Jyotirlinga. I cover the route, the ponies, the weather windows and the exact shoes that survive the stone path." },
-  { slug: "spiti", hook: "India's cold desert. Monasteries, moonscapes and roads that demand respect. My circuit, fuel stops and permit notes inside." },
-  { slug: "ladakh", hook: "Leh, Nubra and the high passes. How I plan acclimatization days so Khardung La is a celebration, not a headache." },
-  { slug: "valley-of-flowers", hook: "A UNESCO meadow that blooms for eight weeks a year. I keep a bloom calendar so you land in peak colour, not after it." },
-  { slug: "chopta", hook: "My favourite weekend escape from Dehradun. The world's highest Shiva temple, a 3.5 km trail and sunrises worth the alarm." },
-  { slug: "rishikesh", hook: "Rafting, cafes and the Ganga at dusk. Where I send everyone for their first taste of the hills, one hour from my home." },
+  { slug: "kedarnath", season: "May-Oct", dur: "4-6 days", hook: "The 16 km climb to the Jyotirlinga. I cover the route, the ponies, the weather windows and the exact shoes that survive the stone path." },
+  { slug: "spiti", season: "Jun-Oct", dur: "8-12 days", hook: "India's cold desert. Monasteries, moonscapes and roads that demand respect. My circuit, fuel stops and permit notes inside." },
+  { slug: "ladakh", season: "Jun-Sep", dur: "10-15 days", hook: "Leh, Nubra and the high passes. How I plan acclimatization days so Khardung La is a celebration, not a headache." },
+  { slug: "valley-of-flowers", season: "Jul-Sep", dur: "4-5 days", hook: "A UNESCO meadow that blooms for eight weeks a year. I keep a bloom calendar so you land in peak colour, not after it." },
+  { slug: "chopta", season: "Year-round", dur: "2-3 days", hook: "My favourite weekend escape from Dehradun. The world's highest Shiva temple, a 3.5 km trail and sunrises worth the alarm." },
+  { slug: "rishikesh", season: "Sep-Jun", dur: "2-4 days", hook: "Rafting, cafes and the Ganga at dusk. Where I send everyone for their first taste of the hills, one hour from my home." },
 ];
 
 const GUIDES_LIST = [
@@ -118,7 +118,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <header className="relative overflow-hidden flex items-center" style={{ minHeight: "92vh", background: "linear-gradient(180deg,#0a1620 0%,#10222e 38%,#27414e 64%,#5d4a3c 86%,#7a4a2c 100%)" }}>
+      <header className="relative overflow-hidden flex items-start" style={{ minHeight: "94vh", background: "linear-gradient(180deg,#0a1620 0%,#10222e 38%,#27414e 64%,#5d4a3c 86%,#7a4a2c 100%)" }}>
         {/* Scene */}
         <div className="absolute inset-0 z-[1]" aria-hidden="true">
           <svg viewBox="0 0 1440 810" preserveAspectRatio="xMidYMax slice" className="w-full h-full">
@@ -138,13 +138,16 @@ export default function HomePage() {
           </svg>
         </div>
 
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg, rgba(10,22,32,0.85) 0%, rgba(10,22,32,0.6) 35%, rgba(10,22,32,0.15) 55%, transparent 70%)" }} />
+
         {/* Handwritten note */}
         <div className="absolute right-[6%] bottom-[17%] z-[3] font-caveat text-[25px] text-center hidden lg:block" style={{ color: "#ffe9d6", maxWidth: 240, transform: "rotate(-4deg)" }}>
           yes, I check the roads<br />every single morning
           <svg width="54" height="40" viewBox="0 0 54 40" fill="none" className="mx-auto mt-1.5"><path d="M44 4C30 14 22 22 12 34M12 34l11-4M12 34l2-12" stroke="#ffe9d6" strokeWidth="2.2" strokeLinecap="round" /></svg>
         </div>
 
-        <div className="relative z-[2] w-full max-w-[1180px] mx-auto px-5 sm:px-6 py-20 lg:py-0" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
+        <div className="relative z-[2] w-full max-w-[1180px] mx-auto px-5 sm:px-6 pt-16 sm:pt-20 lg:pt-24 pb-32 sm:pb-40" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
           <p className="font-mono text-[12px] tracking-[0.22em] uppercase mb-5" style={{ color: "var(--terra-soft)" }}>A trip companion for the Indian Himalaya</p>
           <h1 className="text-white text-[clamp(40px,6.4vw,76px)] font-extrabold tracking-tighter leading-[1.04]" style={{ maxWidth: "13ch" }}>
             Know the <span style={{ color: "var(--terra-bright)" }}>mountain</span> before you meet it.
@@ -238,8 +241,8 @@ export default function HomePage() {
                     <h3 className="text-[21px] font-bold tracking-tight" style={{ color: "var(--ink)" }}>{d.name}</h3>
                     <p className="text-[14.5px] font-light leading-relaxed flex-1" style={{ color: "var(--ink-soft)" }}>{f.hook}</p>
                     <div className="flex gap-4 font-mono text-[11.5px] pt-3 border-t border-dashed" style={{ color: "var(--ink-soft)", borderColor: "#e3e9e6" }}>
-                      <span>{d.quickFacts?.[1]?.value || d.info.split("·")[0].trim()}</span>
-                      <span>{d.quickFacts?.[0]?.value || ""}</span>
+                      <span>{f.season}</span>
+                      <span>{f.dur}</span>
                     </div>
                     <span className="text-[14px] font-semibold mt-1 inline-flex items-center gap-1.5 transition-[gap] duration-200 group-hover:gap-3" style={{ color: "var(--terra)" }}>
                       Read the guide <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
