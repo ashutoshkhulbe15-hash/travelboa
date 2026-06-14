@@ -1,42 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "@/hooks/useTheme";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import type { DestinationData } from "@/lib/destinations/types";
 import Link from "next/link";
 
 const STORAGE_PREFIX = "travelboa-pack-";
 
-interface Props {
-  destination: DestinationData;
-}
+interface Props { destination: DestinationData; }
 
 export function PackingChecklist({ destination: d }: Props) {
-  const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [checks, setChecks] = useState<Record<string, boolean>>({});
   const [loaded, setLoaded] = useState(false);
   const [shareMsg, setShareMsg] = useState("");
 
   useEffect(() => {
-    // Check URL for shared state first
     const params = new URLSearchParams(window.location.search);
     const stateParam = params.get("s");
-    if (stateParam) {
-      try {
-        const decoded = JSON.parse(atob(stateParam));
-        setChecks(decoded);
-        setLoaded(true);
-        return;
-      } catch {}
-    }
-    // Otherwise load from localStorage
-    try {
-      const saved = localStorage.getItem(STORAGE_PREFIX + d.slug);
-      if (saved) setChecks(JSON.parse(saved));
-    } catch {}
+    if (stateParam) { try { setChecks(JSON.parse(atob(stateParam))); setLoaded(true); return; } catch {} }
+    try { const saved = localStorage.getItem(STORAGE_PREFIX + d.slug); if (saved) setChecks(JSON.parse(saved)); } catch {}
     setLoaded(true);
   }, [d.slug]);
 
@@ -45,14 +28,7 @@ export function PackingChecklist({ destination: d }: Props) {
     try { localStorage.setItem(STORAGE_PREFIX + d.slug, JSON.stringify(checks)); } catch {}
   }, [checks, loaded, d.slug]);
 
-  if (!mounted || !loaded) return null;
-
-  const bg = dark ? "#0c0a09" : "white";
-  const cardBg = dark ? "#1c1a17" : "white";
-  const textPrimary = dark ? "#f5f5f4" : "#111";
-  const textSecondary = dark ? "#a8a29e" : "#666";
-  const textMuted = dark ? "#57534e" : "#ccc";
-  const border = dark ? "#292524" : "#f0f0f0";
+  if (!loaded) return null;
 
   const totalItems = d.checklist.reduce((s, c) => s + c.items.length, 0);
   const checkedCount = Object.values(checks).filter(Boolean).length;
@@ -79,89 +55,88 @@ export function PackingChecklist({ destination: d }: Props) {
   };
 
   return (
-    <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
-      <Navbar accent={accent} dark={dark} />
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
 
-      <div className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-8 pb-20">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mt-6 mb-6 text-xs" style={{ color: textMuted }}>
-          <Link href="/" className="hover:opacity-70" style={{ color: textMuted }}>Home</Link>
-          <span>→</span>
-          <Link href={`/${d.slug}`} className="hover:opacity-70" style={{ color: textMuted }}>{d.name}</Link>
-          <span>→</span>
-          <span className="font-semibold" style={{ color: textPrimary }}>Gear checklist</span>
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[900px] mx-auto px-5 sm:px-6">
+          <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <Link href={`/${d.slug}`} className="no-underline" style={{ color: "var(--terra)" }}>{d.name}</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <span style={{ color: "var(--ink)" }}>Packing checklist</span>
         </div>
+      </div>
 
-        {/* Header */}
+      <div className="max-w-[900px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
         <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight" style={{ color: textPrimary }}>What to buy for {d.name}</h1>
-            <p className="text-sm mt-2 max-w-[500px]" style={{ color: textSecondary }}>
+            <h1 className="text-[clamp(26px,4vw,36px)] font-extrabold tracking-tight leading-[1.1]" style={{ color: "var(--ink)" }}>What to buy for {d.name}</h1>
+            <p className="text-[16px] font-normal mt-2" style={{ color: "var(--ink-soft)", maxWidth: 500 }}>
               Gear checklist for {d.altitude.toLocaleString()}m with buy links. Tap items to mark as bought. Progress saves automatically.
             </p>
           </div>
-          <button onClick={resetAll} className="text-xs px-3 py-1.5 rounded-lg shrink-0 transition-colors" style={{ color: textMuted, border: `1px solid ${border}` }}>Reset all</button>
+          <button onClick={resetAll} className="font-mono text-[12px] px-3 py-1.5 rounded-full shrink-0 cursor-pointer border-0 transition-colors" style={{ color: "var(--ink-soft)", background: "var(--snowfield)", border: "1px solid #e3e9e6" }}>Reset all</button>
         </div>
 
-        {/* Progress bar */}
-        <div className="p-4 sm:p-5 rounded-xl mb-6" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
+        {/* Progress */}
+        <div className="p-5 sm:p-6 rounded-[18px] bg-white border mb-6" style={{ borderColor: "#e3e9e6", boxShadow: "0 8px 30px -16px rgba(28,43,51,0.2)" }}>
           <div className="flex items-center justify-between mb-2">
             <div>
-              <span className="text-2xl font-black" style={{ color: textPrimary }}>{pct}%</span>
-              <span className="text-sm ml-2" style={{ color: textMuted }}>ready</span>
+              <span className="text-[28px] font-extrabold" style={{ color: "var(--ink)" }}>{pct}%</span>
+              <span className="text-[15px] ml-2" style={{ color: "var(--ink-soft)" }}>ready</span>
             </div>
-            <span className="text-sm font-bold" style={{ color: textPrimary }}>{checkedCount}/{totalItems}</span>
+            <span className="font-mono text-[14px] font-bold" style={{ color: "var(--ink)" }}>{checkedCount}/{totalItems}</span>
           </div>
-          <div className="w-full h-2.5 rounded-full overflow-hidden" style={{ background: dark ? "#292524" : "#f0f0f0" }}>
-            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: pct === 100 ? "#22c55e" : accent }} />
+          <div className="w-full h-3 rounded-full overflow-hidden" style={{ background: "var(--snowfield)" }}>
+            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: pct === 100 ? "var(--meadow)" : "var(--terra)" }} />
           </div>
-          <p className="text-[10px] mt-2" style={{ color: textMuted }}>{pct === 100 ? "All sorted!" : pct > 70 ? "Almost there!" : pct > 30 ? "Good progress" : "Let's start"}</p>
+          <p className="font-mono text-[12px] mt-2" style={{ color: "var(--ink-soft)" }}>{pct === 100 ? "All sorted!" : pct > 70 ? "Almost there!" : pct > 30 ? "Good progress" : "Let's start"}</p>
         </div>
 
-        {/* Affiliate disclosure - required by Amazon Associates */}
-        <div className="text-xs px-4 py-3 rounded-lg leading-relaxed mb-6 border-l-4" style={{ background: dark ? "#1c1a17" : "#fef3e2", borderColor: accent, color: textSecondary }}>
-          <span className="font-semibold" style={{ color: accent }}>Affiliate disclosure:</span> Some links below are affiliate links. We earn a small commission when you buy through them, at no extra cost to you. This helps keep TravelBoa free.
+        {/* Affiliate disclosure */}
+        <div className="text-[14px] px-5 py-3.5 rounded-[14px] leading-relaxed mb-6 border-l-4" style={{ background: "#fef3e2", borderColor: "var(--terra)", color: "var(--ink-soft)" }}>
+          <span className="font-semibold" style={{ color: "var(--terra)" }}>Affiliate disclosure:</span> Some links below are affiliate links. I earn a small commission when you buy through them, at no extra cost to you.
         </div>
 
         {/* Dashboard CTA */}
-        <Link href={`/dashboard?dest=${d.slug}`} className="flex items-center gap-3 p-4 rounded-xl no-underline mb-6 transition-all hover:-translate-y-0.5" style={{ background: `${accent}08`, border: `1.5px solid ${accent}25` }}>
+        <Link href={`/dashboard?dest=${d.slug}`} className="flex items-center gap-3 p-4 rounded-[18px] no-underline mb-8 transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.06)", border: "1.5px solid rgba(194,102,45,0.15)" }}>
           <span className="text-xl">🗺️</span>
           <div className="flex-1">
-            <p className="text-sm font-bold" style={{ color: textPrimary }}>Already bought everything?</p>
-            <p className="text-xs" style={{ color: textSecondary }}>Track your packing on your personal trip dashboard →</p>
+            <p className="text-[15px] font-bold" style={{ color: "var(--ink)" }}>Already bought everything?</p>
+            <p className="text-[13px]" style={{ color: "var(--ink-soft)" }}>Track your packing on your personal trip dashboard &rarr;</p>
           </div>
         </Link>
 
         {/* Main content */}
-        <div className="flex gap-6 items-start">
+        <div className="flex gap-8 items-start">
           <div className="flex-1 min-w-0">
             {d.checklist.map((cat) => {
               const catChecked = cat.items.filter(i => checks[`${cat.category}-${i.name}`]).length;
               return (
-                <div key={cat.category} className="mb-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <h2 className="text-lg font-extrabold" style={{ color: textPrimary }}>{cat.category}</h2>
-                    <span className="text-xs" style={{ color: textMuted }}>{catChecked}/{cat.items.length}</span>
+                <div key={cat.category} className="mb-10">
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <h2 className="text-[20px] font-extrabold" style={{ color: "var(--ink)" }}>{cat.category}</h2>
+                    <span className="font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>{catChecked}/{cat.items.length}</span>
                   </div>
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-2">
                     {cat.items.map((item) => {
                       const key = `${cat.category}-${item.name}`;
                       const done = checks[key];
                       return (
-                        <div key={key} className="flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all duration-150"
-                          style={{ background: done ? (dark ? "#0a1a0a" : "#f0fdf4") : cardBg, border: `1.5px solid ${done ? "#22c55e40" : border}` }}
+                        <div key={key} className="flex items-center gap-3 p-3.5 rounded-[14px] cursor-pointer transition-all duration-150"
+                          style={{ background: done ? "#f0fdf4" : "#fff", border: `1.5px solid ${done ? "rgba(90,138,94,0.3)" : "#e3e9e6"}` }}
                           onClick={() => toggle(key)}>
-                          <div className="w-5 h-5 rounded-md flex items-center justify-center text-xs text-white font-bold shrink-0 transition-all"
-                            style={{ border: `2px solid ${done ? "#22c55e" : border}`, background: done ? "#22c55e" : "transparent" }}>
+                          <div className="w-5.5 h-5.5 rounded-md flex items-center justify-center text-[11px] text-white font-bold shrink-0 transition-all"
+                            style={{ width: 22, height: 22, border: `2px solid ${done ? "var(--meadow)" : "#e3e9e6"}`, background: done ? "var(--meadow)" : "transparent" }}>
                             {done ? "✓" : ""}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <span className="text-sm font-semibold transition-all" style={{ color: done ? textMuted : textPrimary, textDecoration: done ? "line-through" : "none" }}>{item.name}</span>
-                            {item.essential && <span className="text-[9px] font-bold ml-2 px-1.5 py-0.5 rounded" style={{ background: `${accent}15`, color: accent }}>Essential</span>}
+                            <span className="text-[15px] font-semibold transition-all" style={{ color: done ? "var(--ink-soft)" : "var(--ink)", textDecoration: done ? "line-through" : "none" }}>{item.name}</span>
+                            {item.essential && <span className="font-mono text-[10px] font-bold ml-2 px-2 py-0.5 rounded-full" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>Essential</span>}
                           </div>
                           {item.affiliateLink && (
-                            <a href={item.affiliateLink} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold px-2 py-1 rounded-lg no-underline shrink-0" style={{ background: `${accent}12`, color: accent }}
+                            <a href={item.affiliateLink} target="_blank" rel="noopener noreferrer sponsored" className="font-mono text-[12px] font-semibold px-3 py-1.5 rounded-xl no-underline shrink-0 transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}
                               onClick={e => e.stopPropagation()}>
                               {item.price ? `${item.price} →` : "Buy →"}
                             </a>
@@ -176,35 +151,28 @@ export function PackingChecklist({ destination: d }: Props) {
           </div>
 
           {/* Sidebar */}
-          <div className="w-[240px] shrink-0 hidden lg:block">
-            <div className="sticky top-16 flex flex-col gap-4">
-              {/* Score card */}
-              <div className="p-5 rounded-xl text-center" style={{ border: `2px solid ${accent}`, background: `${accent}08` }}>
-                <div className="text-4xl font-black" style={{ color: textPrimary }}>{pct}<span className="text-lg">%</span></div>
-                <p className="font-caveat text-sm mt-1" style={{ color: accent }}>gear ready</p>
+          <div className="w-[260px] shrink-0 hidden lg:block">
+            <div className="sticky flex flex-col gap-4" style={{ top: 80 }}>
+              <div className="p-5 rounded-[18px] text-center border-2" style={{ borderColor: "var(--terra)", background: "rgba(194,102,45,0.04)" }}>
+                <div className="text-[42px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{pct}<span className="text-[18px]">%</span></div>
+                <p className="font-caveat text-[16px] mt-1" style={{ color: "var(--terra)" }}>gear ready</p>
               </div>
-
-              {/* Quick links */}
-              <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-                <p className="text-[9px] font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>Also for {d.name}</p>
+              <div className="bg-white p-4 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+                <p className="kicker mb-3">Also for {d.name}</p>
                 {[
                   { label: "Full destination guide", href: `/${d.slug}` },
                   { label: "Trip dashboard", href: `/dashboard?dest=${d.slug}` },
                   { label: "Road status", href: "/road-status" },
                   { label: "All gear reviews", href: "/gear" },
                 ].map(l => (
-                  <Link key={l.label} href={l.href} className="block text-xs font-semibold py-1.5 no-underline transition-colors hover:opacity-70" style={{ color: textSecondary, borderBottom: `1px solid ${border}` }}>
-                    {l.label} →
-                  </Link>
+                  <Link key={l.label} href={l.href} className="block text-[14px] font-medium py-2 no-underline transition-colors hover:pl-1" style={{ color: "var(--ink-soft)", borderBottom: "1px solid #f0f3f1" }}>{l.label} &rarr;</Link>
                 ))}
               </div>
-
-              {/* Share */}
-              <div className="p-4 rounded-xl text-center" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-                <p className="text-xs mb-3" style={{ color: textMuted }}>Share this checklist</p>
+              <div className="bg-white p-4 rounded-[18px] text-center border" style={{ borderColor: "#e3e9e6" }}>
+                <p className="text-[13px] mb-3" style={{ color: "var(--ink-soft)" }}>Share this checklist</p>
                 <div className="flex gap-2 justify-center">
-                  <button onClick={shareWhatsApp} className="px-4 py-2 rounded-lg text-xs font-bold text-white cursor-pointer" style={{ background: "#25D366" }}>WhatsApp</button>
-                  <button onClick={copyLink} className="px-4 py-2 rounded-lg text-xs font-bold cursor-pointer" style={{ background: dark ? "#292524" : "#f0f0f0", color: textPrimary }}>
+                  <button onClick={shareWhatsApp} className="px-4 py-2 rounded-xl text-[13px] font-bold text-white cursor-pointer border-0" style={{ background: "#25D366" }}>WhatsApp</button>
+                  <button onClick={copyLink} className="px-4 py-2 rounded-xl text-[13px] font-bold cursor-pointer border-0" style={{ background: "var(--snowfield)", color: "var(--ink)" }}>
                     {shareMsg || "Copy link"}
                   </button>
                 </div>
@@ -213,15 +181,15 @@ export function PackingChecklist({ destination: d }: Props) {
           </div>
         </div>
 
-        {/* Mobile share bar */}
-        <div className="lg:hidden flex gap-2 mt-6">
-          <button onClick={shareWhatsApp} className="flex-1 px-4 py-3 rounded-xl text-sm font-bold text-white cursor-pointer" style={{ background: "#25D366" }}>Share on WhatsApp</button>
-          <button onClick={copyLink} className="flex-1 px-4 py-3 rounded-xl text-sm font-bold cursor-pointer" style={{ background: dark ? "#292524" : "#f0f0f0", color: textPrimary }}>
+        {/* Mobile share */}
+        <div className="lg:hidden flex gap-2 mt-8">
+          <button onClick={shareWhatsApp} className="flex-1 px-4 py-3.5 rounded-[14px] text-[15px] font-bold text-white cursor-pointer border-0" style={{ background: "#25D366" }}>Share on WhatsApp</button>
+          <button onClick={copyLink} className="flex-1 px-4 py-3.5 rounded-[14px] text-[15px] font-bold cursor-pointer border-0" style={{ background: "var(--snowfield)", color: "var(--ink)" }}>
             {shareMsg || "Copy link"}
           </button>
         </div>
       </div>
-      <Footer accent={accent} />
+      <Footer />
     </div>
   );
 }
