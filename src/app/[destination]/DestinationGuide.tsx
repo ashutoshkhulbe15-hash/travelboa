@@ -1,308 +1,333 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import type { DestinationData } from "@/lib/destinations/types";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   destination: DestinationData;
 }
 
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function getMonthStatus(season: string, month: string): "closed" | "shoulder" | "peak" | "best" {
+  const s = season.toLowerCase();
+  const mi = MONTHS.indexOf(month);
+  // Parse season string like "April – November" or "Year-round"
+  if (s.includes("year-round") || s.includes("year round")) return mi >= 3 && mi <= 5 ? "best" : "peak";
+  const monthNames = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+  const shortNames = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+  let startMonth = -1, endMonth = -1;
+  for (let i = 0; i < 12; i++) {
+    if (s.includes(monthNames[i]) || s.includes(shortNames[i])) {
+      if (startMonth === -1) startMonth = i;
+      endMonth = i;
+    }
+  }
+  if (startMonth === -1) return "closed";
+  const inRange = startMonth <= endMonth ? (mi >= startMonth && mi <= endMonth) : (mi >= startMonth || mi <= endMonth);
+  if (!inRange) return "closed";
+  // Best: 2nd and 3rd month; shoulder: first and last
+  if (mi === startMonth || mi === endMonth) return "shoulder";
+  if (mi === startMonth + 1 || mi === startMonth + 2) return "best";
+  return "peak";
+}
+
+const statusColors: Record<string, { bg: string; text: string }> = {
+  closed: { bg: "#f0e6e6", text: "#9a6060" },
+  shoulder: { bg: "#f3e6cf", text: "#8a6a30" },
+  peak: { bg: "#dcebe2", text: "#2a5a3a" },
+  best: { bg: "var(--meadow)", text: "#fff" },
+};
+
+const routeStatusColor: Record<string, string> = { open: "#7be3a2", partial: "#e3b04b", closed: "#ef4444" };
+
 export function DestinationGuide({ destination: d }: Props) {
-  const { themeKey, theme, setTheme, accent, mounted } = useTheme();
-  const [openSection, setOpenSection] = useState<string | null>(d.sections[0]?.id ?? null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [checks, setChecks] = useState<Record<string, boolean>>({});
 
-  if (!mounted) return null;
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    }), { threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) els.forEach(el => el.classList.add("on"));
+    return () => io.disconnect();
+  }, []);
 
   const totalItems = d.checklist.reduce((s, c) => s + c.items.length, 0);
   const checkedCount = Object.values(checks).filter(Boolean).length;
 
+  // Related destinations (same type, different slug)
+  const related = [
+    d.type === "pilgrimage" ? "badrinath" : "spiti",
+    "chopta",
+    "valley-of-flowers",
+  ].filter(s => s !== d.slug).slice(0, 3);
+
   return (
-    <div className="relative min-h-screen bg-white font-sans">
-      {/* Grid texture */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <svg width="100%" height="100%" className="opacity-[0.016]">
-          <defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0L0 0 0 48" fill="none" stroke="#888" strokeWidth="0.5" /></pattern></defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
+
+      {/* Breadcrumb */}
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
+          <Link href="/" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <Link href="/destinations" style={{ color: "var(--terra)" }}>Destinations</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <span style={{ color: "var(--ink)" }}>{d.name}</span>
+        </div>
       </div>
 
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} />
-      <Navbar accent={accent} />
-
-      <div className="relative z-10 max-w-[900px] mx-auto px-8 pb-20">
-
-        {/* ═══ HERO ═══ */}
-        <div className="mt-8 mb-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">
-            <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-            <span>→</span>
-            <span className="capitalize">{d.type === "pilgrimage" ? "Pilgrimages" : "Adventures"}</span>
-            <span>→</span>
-            <span className="text-gray-700 font-semibold">{d.name}</span>
+      {/* ═══ HERO ═══ */}
+      <header className="relative overflow-hidden flex items-end" style={{ minHeight: 480, background: d.heroGradient }}>
+        <Image src={`/${d.slug}.jpg`} alt={d.name} fill className="object-cover" priority onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg,rgba(10,22,32,0.2) 0%,rgba(10,22,32,0.7) 60%,rgba(10,22,32,0.92) 100%)" }} />
+        <div className="relative z-[2] w-full max-w-[1100px] mx-auto px-5 sm:px-6 pb-10">
+          <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-4 font-mono text-[11.5px] tracking-wide uppercase text-white" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", backdropFilter: "blur(4px)" }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: "#7be3a2", animation: "pulse-dot 2s ease-in-out infinite" }} />
+            {d.type === "pilgrimage" ? "PILGRIMAGE" : "ADVENTURE"} &middot; {d.state.toUpperCase()}
           </div>
+          <h1 className="text-white text-[clamp(38px,6vw,64px)] font-black tracking-tighter leading-[1.02]">{d.name}</h1>
+          <p className="text-[clamp(16px,2vw,20px)] font-light mt-2" style={{ color: "var(--terra-soft)" }}>{d.tagline}</p>
 
-          {/* Hero image */}
-          <div
-            className="w-full rounded-2xl relative overflow-hidden"
-            style={{ background: d.heroGradient, aspectRatio: "21/8" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/${d.slug}.jpg`} alt={`${d.name} - travel destination in India`} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
-            <div className="absolute bottom-5 left-6 right-6">
-              <div
-                className="inline-block px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest mb-2"
-                style={{ background: `${accent}30`, color: "white" }}
-              >
-                {d.type}
-              </div>
-              <h1 className="text-4xl font-black text-white leading-tight">{d.name}</h1>
-              <p className="text-sm text-white/70 mt-1 font-caveat text-lg">{d.tagline}</p>
-            </div>
-          </div>
-
-          {/* Quick stats */}
-          <div className="flex gap-3 mt-5 overflow-x-auto pb-1">
-            {d.quickStats.map((s) => (
-              <div key={s.label} className="flex-shrink-0 px-4 py-3 bg-white rounded-xl border border-gray-100 text-center min-w-[100px]" style={{ boxShadow: "2px 3px 10px rgba(0,0,0,0.03)" }}>
-                <div className="text-lg">{s.icon}</div>
-                <div className="text-sm font-bold text-gray-900 mt-0.5">{s.value}</div>
-                <div className="text-[10px] text-gray-400 font-mono uppercase tracking-wider">{s.label}</div>
+          {/* Stat strip */}
+          <div className="flex mt-7 rounded-2xl overflow-hidden" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", backdropFilter: "blur(6px)" }}>
+            {[
+              { v: `${d.altitude.toLocaleString()} m`, l: "Altitude" },
+              { v: d.season.replace("–", "-"), l: "Season" },
+              { v: d.duration, l: "Duration" },
+              { v: `${(d.budget.min/1000).toFixed(0)}-${(d.budget.max/1000).toFixed(0)}K`, l: "Budget (INR)" },
+            ].map((s, i, arr) => (
+              <div key={s.l} className="flex-1 py-4 px-3 sm:px-5 text-center text-white" style={{ borderRight: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                <span className="block text-[clamp(18px,2.5vw,22px)] font-extrabold tracking-tight">{s.v}</span>
+                <span className="block font-mono text-[10.5px] uppercase tracking-widest mt-1" style={{ color: "var(--mist)" }}>{s.l}</span>
               </div>
             ))}
           </div>
-
-          {/* Author + date */}
-          <div className="flex items-center gap-3 mt-5 text-xs text-gray-400">
-            <span>✍️ Written from Dehradun</span>
-            <span>·</span>
-            <span>📅 Updated May 2026</span>
-            <span>·</span>
-            <span>⏱️ 12 min read</span>
-          </div>
         </div>
+      </header>
 
-        {/* ═══ MAIN CONTENT LAYOUT ═══ */}
-        <div className="flex gap-8 items-start">
+      {/* ═══ BODY ═══ */}
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-6 py-12 sm:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-14 items-start">
 
-          {/* Left: Guide content */}
-          <div className="flex-1 min-w-0">
-
-            {/* Introduction */}
-            <div className="mb-8">
+          {/* MAIN CONTENT */}
+          <main>
+            {/* Intro */}
+            <div className="reveal">
               {d.intro.split("\n\n").map((p, i) => (
-                <p key={i} className="text-[15px] text-gray-600 leading-relaxed mb-4">{p}</p>
+                <p key={i} className="text-[16.5px] font-light leading-[1.8] mb-4" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
+                  {p.split(/(\*\*.*?\*\*)/g).map((part, j) =>
+                    part.startsWith("**") && part.endsWith("**")
+                      ? <b key={j} className="font-semibold">{part.replace(/\*\*/g, "")}</b>
+                      : <span key={j}>{part}</span>
+                  )}
+                </p>
               ))}
             </div>
 
-            {/* Guide sections — accordion */}
-            <div className="mb-10">
-              {d.sections.map((section) => {
-                const isOpen = openSection === section.id;
-                return (
-                  <div key={section.id} className="mb-2">
-                    <button
-                      onClick={() => setOpenSection(isOpen ? null : section.id)}
-                      className="w-full flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 cursor-pointer transition-all duration-200 hover:border-gray-200 text-left"
-                      style={{ boxShadow: isOpen ? "2px 4px 16px rgba(0,0,0,0.04)" : "none" }}
-                    >
-                      <span className="text-xl">{section.icon}</span>
-                      <span className="flex-1 text-[15px] font-bold text-gray-900">{section.title}</span>
-                      <span className="text-gray-300 text-lg transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "none" }}>▾</span>
-                    </button>
-                    {isOpen && (
-                      <div className="px-5 py-4 bg-white border border-t-0 border-gray-100 rounded-b-xl -mt-1">
-                        {section.content.split("\n\n").map((block, i) => {
-                          if (block.startsWith("**") && block.endsWith("**")) {
-                            return <h3 key={i} className="text-sm font-bold text-gray-900 mt-4 mb-2">{block.replace(/\*\*/g, "")}</h3>;
-                          }
-                          // Handle bold markers within text
-                          const parts = block.split(/(\*\*.*?\*\*)/g);
-                          return (
-                            <p key={i} className="text-[14px] text-gray-600 leading-relaxed mb-3">
-                              {parts.map((part, j) => {
-                                if (part.startsWith("**") && part.endsWith("**")) {
-                                  return <strong key={j} className="font-bold text-gray-900">{part.replace(/\*\*/g, "")}</strong>;
-                                }
-                                return <span key={j}>{part}</span>;
-                              })}
-                            </p>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            {/* Sections */}
+            {d.sections.map((section, si) => (
+              <div key={section.id} id={section.id} className="reveal mt-12">
+                <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.15] mb-4" style={{ color: "var(--ink)" }}>
+                  {section.icon} {section.title}
+                </h2>
+                {section.content.split("\n\n").map((block, bi) => {
+                  if (block.startsWith("**") && block.endsWith("**")) {
+                    return <h3 key={bi} className="text-[16px] font-bold mt-5 mb-2" style={{ color: "var(--ink)" }}>{block.replace(/\*\*/g, "")}</h3>;
+                  }
+                  const parts = block.split(/(\*\*.*?\*\*)/g);
+                  return (
+                    <p key={bi} className="text-[15.5px] font-light leading-[1.75] mb-3" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
+                      {parts.map((part, j) =>
+                        part.startsWith("**") && part.endsWith("**")
+                          ? <b key={j} className="font-semibold">{part.replace(/\*\*/g, "")}</b>
+                          : <span key={j}>{part}</span>
+                      )}
+                    </p>
+                  );
+                })}
+              </div>
+            ))}
+
+            {/* Season calendar */}
+            <div className="reveal mt-12" id="season">
+              <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.15] mb-4" style={{ color: "var(--ink)" }}>When to Go</h2>
+              <div className="grid grid-cols-6 sm:grid-cols-12 gap-1 my-5">
+                {MONTHS.map(m => {
+                  const st = getMonthStatus(d.season, m);
+                  return (
+                    <div key={m} className="text-center py-2.5 rounded-lg font-mono text-[11px] font-medium" style={{ background: statusColors[st].bg, color: statusColors[st].text, fontWeight: st === "best" ? 700 : 500 }}>{m}</div>
+                  );
+                })}
+              </div>
+              <div className="flex gap-4 flex-wrap font-mono text-[11.5px]" style={{ color: "var(--ink-soft)" }}>
+                {[["var(--meadow)","BEST"],["#dcebe2","OPEN"],["#f3e6cf","SHOULDER"],["#f0e6e6","CLOSED"]].map(([c,l])=>(
+                  <span key={l} className="flex items-center gap-1.5"><span className="w-3.5 h-3.5 rounded" style={{ background: c }} />{l}</span>
+                ))}
+              </div>
             </div>
 
-            {/* FAQ accordion */}
-            <div className="mb-10">
-              <h2 className="text-xl font-extrabold text-gray-900 mb-4">Frequently asked questions</h2>
+            {/* Packing essentials */}
+            <div className="reveal mt-12" id="packing">
+              <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.15] mb-2" style={{ color: "var(--ink)" }}>What to Pack</h2>
+              <p className="text-[15.5px] font-light leading-[1.75] mb-5" style={{ color: "var(--ink)", maxWidth: "68ch" }}>I maintain a full packing checklist you can tick off and share. Here are the essentials from my list:</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {d.checklist.slice(0, 2).flatMap(cat => cat.items.filter(it => it.essential).slice(0, 3)).map(item => (
+                  <Link key={item.name} href={item.affiliateLink || `/gear`} target={item.affiliateLink ? "_blank" : undefined} rel={item.affiliateLink ? "noopener noreferrer sponsored" : undefined}
+                    className="bg-white border rounded-2xl p-4 text-center no-underline transition-all duration-200 hover:-translate-y-1 hover:shadow-lg" style={{ borderColor: "#e3e9e6" }}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--terra)")} onMouseLeave={e => (e.currentTarget.style.borderColor = "#e3e9e6")}>
+                    <span className="block text-[13.5px] font-semibold" style={{ color: "var(--ink)" }}>{item.name}</span>
+                    {item.price && <span className="block font-mono text-[10.5px] mt-1" style={{ color: "var(--ink-soft)" }}>{item.price}</span>}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* FAQ */}
+            <div className="reveal mt-12" id="faq">
+              <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.15] mb-5" style={{ color: "var(--ink)" }}>Frequently Asked Questions</h2>
               {d.faq.map((f, i) => (
                 <div key={i} className="mb-2">
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center gap-3 p-3.5 rounded-lg bg-white border border-gray-100 cursor-pointer transition-all text-left"
-                  >
-                    <span className="flex-1 text-sm font-semibold text-gray-900">{f.q}</span>
-                    <span className="text-gray-300 transition-transform duration-200" style={{ transform: openFaq === i ? "rotate(180deg)" : "none" }}>▾</span>
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center gap-3 p-4 rounded-xl bg-white border cursor-pointer transition-all text-left" style={{ borderColor: "#e3e9e6", boxShadow: openFaq === i ? "2px 4px 16px rgba(0,0,0,0.04)" : "none" }}>
+                    <span className="flex-1 text-[15px] font-semibold" style={{ color: "var(--ink)" }}>{f.q}</span>
+                    <span className="text-lg transition-transform duration-200" style={{ color: "#ccc", transform: openFaq === i ? "rotate(180deg)" : "none" }}>&#9662;</span>
                   </button>
                   {openFaq === i && (
-                    <div className="px-4 py-3 bg-gray-50 border border-t-0 border-gray-100 rounded-b-lg -mt-1">
-                      <p className="text-sm text-gray-600 leading-relaxed">{f.a}</p>
+                    <div className="px-5 py-4 bg-white border border-t-0 rounded-b-xl -mt-1" style={{ borderColor: "#e3e9e6" }}>
+                      <p className="text-[14.5px] font-light leading-relaxed" style={{ color: "var(--ink-soft)" }}>{f.a}</p>
                     </div>
                   )}
                 </div>
               ))}
             </div>
-          </div>
+          </main>
 
-          {/* Right sidebar — sticky */}
-          <div className="w-[260px] flex-shrink-0 hidden lg:block">
-            <div className="sticky top-16 flex flex-col gap-4">
+          {/* SIDEBAR */}
+          <aside className="hidden lg:block">
+            <div className="sticky flex flex-col gap-5" style={{ top: 80 }}>
 
-              {/* Weather along route */}
-              <div className="bg-white p-4 rounded-xl border border-gray-100" style={{ boxShadow: "2px 4px 12px rgba(0,0,0,0.03)" }}>
-                <p className="font-mono text-[9px] font-semibold uppercase tracking-widest mb-3 transition-colors duration-300" style={{ color: accent }}>Weather along route</p>
-                {d.weatherPoints.map((w, i) => (
-                  <div key={i} className="flex items-center gap-2 py-1.5" style={{ borderBottom: i < d.weatherPoints.length - 1 ? "1px solid #f5f5f5" : "none" }}>
-                    <span className="text-base">{w.weather}</span>
-                    <div className="flex-1">
-                      <div className="text-xs font-bold text-gray-900">{w.location}</div>
-                      <div className="font-mono text-[8px] text-gray-300">{w.altitude.toLocaleString()}m</div>
-                    </div>
-                    <div className="text-sm font-black text-gray-900">{w.temp}°</div>
-                  </div>
+              {/* TOC */}
+              <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
+                <h3 className="text-[16px] font-bold flex items-center gap-2 mb-3" style={{ color: "var(--ink)" }}>&#128209; In this guide</h3>
+                {d.sections.map((s, i) => (
+                  <a key={s.id} href={`#${s.id}`} className="flex items-center gap-2.5 py-2 text-[14.5px] no-underline border-b transition-colors hover:pl-1.5" style={{ borderColor: "#f0f3f1", color: "var(--ink-soft)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--terra)")} onMouseLeave={e => (e.currentTarget.style.color = "var(--ink-soft)")}>
+                    <span className="font-mono text-[11px] w-5 shrink-0" style={{ color: "var(--terra)" }}>0{i + 1}</span>
+                    {s.title}
+                  </a>
                 ))}
+                <a href="#season" className="flex items-center gap-2.5 py-2 text-[14.5px] no-underline border-b transition-colors hover:pl-1.5" style={{ borderColor: "#f0f3f1", color: "var(--ink-soft)" }}>
+                  <span className="font-mono text-[11px] w-5 shrink-0" style={{ color: "var(--terra)" }}>0{d.sections.length + 1}</span>When to Go
+                </a>
+                <a href="#packing" className="flex items-center gap-2.5 py-2 text-[14.5px] no-underline border-b transition-colors hover:pl-1.5" style={{ borderColor: "#f0f3f1", color: "var(--ink-soft)" }}>
+                  <span className="font-mono text-[11px] w-5 shrink-0" style={{ color: "var(--terra)" }}>0{d.sections.length + 2}</span>What to Pack
+                </a>
+                <a href="#faq" className="flex items-center gap-2.5 py-2 text-[14.5px] no-underline transition-colors hover:pl-1.5" style={{ color: "var(--ink-soft)" }}>
+                  <span className="font-mono text-[11px] w-5 shrink-0" style={{ color: "var(--terra)" }}>0{d.sections.length + 3}</span>FAQ
+                </a>
               </div>
 
-              {/* Route status */}
-              <div className="bg-white p-4 rounded-xl border border-gray-100" style={{ boxShadow: "2px 4px 12px rgba(0,0,0,0.03)" }}>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  <p className="font-mono text-[9px] font-semibold uppercase tracking-widest" style={{ color: accent }}>Road status</p>
-                </div>
+              {/* Road status */}
+              <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
+                <h3 className="text-[16px] font-bold flex items-center gap-2 mb-3" style={{ color: "var(--ink)" }}>&#128739;&#65039; Road Status</h3>
                 {d.routes.map((r, i) => (
-                  <div key={i} className="flex items-center gap-2 py-1.5 text-xs" style={{ borderBottom: i < d.routes.length - 1 ? "1px solid #f5f5f5" : "none" }}>
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: r.status === "open" ? "#22c55e" : r.status === "partial" ? "#f59e0b" : "#ef4444" }} />
-                    <span className="font-semibold text-gray-900 flex-1">{r.from} → {r.to}</span>
+                  <div key={i} className="flex items-center gap-2.5 py-3" style={{ borderBottom: i < d.routes.length - 1 ? "1px solid #f0f3f1" : "none" }}>
+                    <span className="w-3 h-3 rounded-full shrink-0" style={{ background: routeStatusColor[r.status] || "#ccc", boxShadow: r.status === "open" ? "0 0 8px rgba(123,227,162,0.5)" : "none", animation: r.status === "open" ? "pulse-dot 2s ease-in-out infinite" : "none" }} />
+                    <div>
+                      <div className="text-[14px] font-medium" style={{ color: "var(--ink)" }}>{r.from} &rarr; {r.to}</div>
+                      <div className="font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>{r.note}</div>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* Packing progress */}
-              <div className="p-4 rounded-xl transition-colors duration-300" style={{ background: theme.sticky, boxShadow: "2px 4px 12px rgba(0,0,0,0.03)" }}>
-                <p className="font-caveat text-sm font-bold mb-1 transition-colors duration-300" style={{ color: theme.stickyText }}>Pack check ✓</p>
-                <p className="text-[10px] text-gray-400 mb-2">{checkedCount}/{totalItems} items</p>
-                <div className="w-full h-1.5 bg-white/50 rounded-full overflow-hidden mb-3">
-                  <div className="h-full bg-green-500 rounded-full transition-all duration-300" style={{ width: `${totalItems > 0 ? (checkedCount / totalItems) * 100 : 0}%` }} />
+              {/* Weather */}
+              <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
+                <h3 className="text-[16px] font-bold flex items-center gap-2 mb-3" style={{ color: "var(--ink)" }}>{d.weather} Weather</h3>
+                <div className="flex items-center gap-4 pb-3 mb-3 border-b border-dashed" style={{ borderColor: "#e3e9e6" }}>
+                  <span className="text-[42px] font-extrabold tracking-tight leading-none" style={{ color: "var(--ink)" }}>{d.temp}&deg;</span>
+                  <div>
+                    <span className="block text-[15px] font-semibold" style={{ color: "var(--ink)" }}>At {d.altitude.toLocaleString()}m</span>
+                    <span className="text-[14px] font-light" style={{ color: "var(--ink-soft)" }}>{d.name} base</span>
+                  </div>
                 </div>
-                {d.checklist.slice(0, 2).map((cat) => (
-                  <div key={cat.category} className="mb-2">
-                    <p className="font-mono text-[8px] uppercase tracking-wider text-gray-400 mb-1">{cat.category}</p>
-                    {cat.items.slice(0, 3).map((item) => {
-                      const key = `${cat.category}-${item.name}`;
-                      return (
-                        <div key={key} onClick={() => setChecks(p => ({...p, [key]: !p[key]}))} className="flex items-center gap-2 py-0.5 cursor-pointer">
-                          <div className="w-3 h-3 rounded-sm flex items-center justify-center text-[8px] text-white font-bold shrink-0 transition-all" style={{ border: `1.5px solid ${checks[key] ? '#15803d' : '#d4a574'}`, background: checks[key] ? "#15803d" : "transparent" }}>{checks[key] ? "✓" : ""}</div>
-                          <span className="font-caveat text-xs transition-all" style={{ color: checks[key] ? "#a8a29e" : theme.stickyText, textDecoration: checks[key] ? "line-through" : "none" }}>{item.name}</span>
-                        </div>
-                      );
-                    })}
+                {d.weatherPoints.slice(0, 4).map((w, i) => (
+                  <div key={i} className="flex justify-between items-center py-1.5 font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>
+                    <span>{w.location}</span>
+                    <span className="font-semibold" style={{ color: "var(--ink)" }}>{w.temp}&deg; {w.weather}</span>
                   </div>
                 ))}
-                <Link href={`/${d.slug}/packing`} className="font-caveat text-[11px] block text-right mt-1 transition-colors" style={{ color: accent }}>→ full checklist</Link>
+              </div>
+
+              {/* Packing CTA */}
+              <Link href={`/${d.slug}/packing`} className="block text-center rounded-[20px] p-5 no-underline transition-all duration-200 hover:-translate-y-0.5" style={{ background: "var(--terra)", color: "#fff" }}>
+                <span className="block text-[15px] font-bold">Open the {d.name} Checklist</span>
+                <span className="block text-[13px] font-light opacity-80 mt-1">Tick items, share with your group</span>
+                {totalItems > 0 && (
+                  <div className="mt-3">
+                    <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.2)" }}>
+                      <div className="h-full rounded-full transition-all" style={{ width: `${(checkedCount / totalItems) * 100}%`, background: "#fff" }} />
+                    </div>
+                    <span className="text-[11px] opacity-70 mt-1.5 block">{checkedCount}/{totalItems} packed</span>
+                  </div>
+                )}
+              </Link>
+
+              {/* Author card */}
+              <div className="rounded-[20px] p-5 border" style={{ background: "#fdf5ed", borderColor: "#e8d8c4" }}>
+                <div className="flex gap-3.5 items-start">
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
+                  <div>
+                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Written by Ash</span>
+                    <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN &middot; FIRST-HAND GUIDE</span>
+                    <p className="text-[14px] font-light leading-relaxed mt-2.5" style={{ color: "var(--ink-soft)" }}>I live at the foot of these hills. Everything in this guide comes from walking this path, not reading about it.</p>
+                    <a href="mailto:hello@travelboa.com" className="text-[13px] font-semibold mt-1.5 inline-block no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com &rarr;</a>
+                  </div>
+                </div>
               </div>
 
               {/* Emergency */}
-              <div className="bg-white p-4 rounded-xl border-[1.5px] border-red-100" style={{ boxShadow: "2px 4px 10px rgba(0,0,0,0.03)" }}>
-                <p className="font-mono text-[9px] font-semibold text-red-500 uppercase tracking-widest mb-2">Emergency</p>
-                {d.emergency.slice(0, 3).map((e) => (
-                  <div key={e.number} className="flex justify-between py-1 text-[11px]">
-                    <span className="text-gray-400">{e.name}</span>
-                    <span className="font-mono font-semibold text-gray-900">{e.number}</span>
+              <div className="bg-white rounded-[20px] p-5 border-[1.5px]" style={{ borderColor: "#f0d0d0" }}>
+                <h3 className="font-mono text-[11px] font-semibold uppercase tracking-widest mb-3 text-red-500">Emergency</h3>
+                {d.emergency.slice(0, 3).map(e => (
+                  <div key={e.number} className="flex justify-between py-1.5 text-[12px]">
+                    <span style={{ color: "var(--ink-soft)" }}>{e.name}</span>
+                    <span className="font-mono font-semibold" style={{ color: "var(--ink)" }}>{e.number}</span>
                   </div>
                 ))}
               </div>
-
-              {/* Sub-pages */}
-              <div className="bg-white p-4 rounded-xl border border-gray-100" style={{ boxShadow: "2px 4px 12px rgba(0,0,0,0.03)" }}>
-                <p className="font-mono text-[9px] font-semibold uppercase tracking-widest mb-3 transition-colors duration-300" style={{ color: accent }}>More on {d.name}</p>
-                {d.subPages.map((sp) => (
-                  <Link
-                    key={sp.slug}
-                    href={`/${d.slug}/${sp.slug}`}
-                    className="flex items-center justify-between py-2 text-xs group"
-                    style={{ borderBottom: "1px solid #f8f8f8" }}
-                  >
-                    <div>
-                      <span className="font-semibold text-gray-900 group-hover:transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = accent)} onMouseLeave={(e) => (e.currentTarget.style.color = "")}>{sp.title}</span>
-                    </div>
-                    <span className="text-gray-300">→</span>
-                  </Link>
-                ))}
-              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
 
-      <Footer accent={accent} />
+      <Footer />
 
-      {/* JSON-LD structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TravelGuide",
-            name: d.metaTitle,
-            description: d.metaDescription,
-            about: {
-              "@type": "TouristDestination",
-              name: d.name,
-              description: d.tagline,
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: d.faq.map((f) => ({
-              "@type": "Question",
-              name: f.q,
-              acceptedAnswer: { "@type": "Answer", text: f.a },
-            })),
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
-              { "@type": "ListItem", position: 2, name: d.type === "pilgrimage" ? "Pilgrimages" : "Adventures", item: `https://www.travelboa.com/${d.type}` },
-              { "@type": "ListItem", position: 3, name: d.name, item: `https://www.travelboa.com/${d.slug}` },
-            ],
-          }),
-        }}
-      />
+      {/* JSON-LD */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "TravelGuide", name: d.metaTitle, description: d.metaDescription,
+        about: { "@type": "TouristDestination", name: d.name, description: d.tagline },
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: d.faq.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
+          { "@type": "ListItem", position: 2, name: "Destinations", item: "https://www.travelboa.com/destinations" },
+          { "@type": "ListItem", position: 3, name: d.name, item: `https://www.travelboa.com/${d.slug}` },
+        ],
+      }) }} />
     </div>
   );
 }

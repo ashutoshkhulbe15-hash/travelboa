@@ -5,14 +5,57 @@
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
+/* ═══ DESIGN SYSTEM ═══ */
+:root {
+  --dusk-deep: #0c1a23;
+  --dusk: #13242f;
+  --dusk-mid: #1d3340;
+  --pine: #1e4537;
+  --pine-deep: #143126;
+  --terra: #c2662d;
+  --terra-bright: #e0824a;
+  --terra-soft: #e8a878;
+  --snow: #f4f7f6;
+  --snowfield: #eef2ef;
+  --paper: #f7f9f7;
+  --ink: #1c2b33;
+  --ink-soft: #48606c;
+  --mist: #9fb8c2;
+  --gold: #e3b04b;
+  --meadow: #5a8a5e;
+  --radius: 18px;
+  --maxw: 1180px;
+}
+
 @keyframes scribble {
   from { stroke-dashoffset: 500; }
   to { stroke-dashoffset: 0; }
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes tick {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes drift {
+  from { transform: translateX(-40px); }
+  to { transform: translateX(60px); }
+}
+
 body {
   font-family: var(--font-sans);
-  background: white;
+  background: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -22,4 +65,35 @@ body {
 
 .font-mono {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* Contour texture background */
+.contour-bg {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cg fill='none' stroke='%231c2b33' stroke-opacity='0.05' stroke-width='1.2'%3E%3Cpath d='M0 90Q105 40 210 90T420 90'/%3E%3Cpath d='M0 150Q105 100 210 150T420 150'/%3E%3Cpath d='M0 210Q105 160 210 210T420 210'/%3E%3Cpath d='M0 270Q105 220 210 270T420 270'/%3E%3Cpath d='M0 330Q105 280 210 330T420 330'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Kicker label style */
+.kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.on {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
