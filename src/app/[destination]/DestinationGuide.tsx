@@ -122,7 +122,7 @@ export function DestinationGuide({ destination: d }: Props) {
             {/* Intro */}
             <div className="reveal">
               {d.intro.split("\n\n").map((p, i) => (
-                <p key={i} className="text-[16.5px] font-light leading-[1.8] mb-4" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
+                <p key={i} className="text-[18px] font-normal leading-[1.8] mb-4" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
                   {p.split(/(\*\*.*?\*\*)/g).map((part, j) =>
                     part.startsWith("**") && part.endsWith("**")
                       ? <b key={j} className="font-semibold">{part.replace(/\*\*/g, "")}</b>
@@ -144,7 +144,7 @@ export function DestinationGuide({ destination: d }: Props) {
                   }
                   const parts = block.split(/(\*\*.*?\*\*)/g);
                   return (
-                    <p key={bi} className="text-[15.5px] font-light leading-[1.75] mb-3" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
+                    <p key={bi} className="text-[18px] font-normal leading-[1.75] mb-3" style={{ color: "var(--ink)", maxWidth: "68ch" }}>
                       {parts.map((part, j) =>
                         part.startsWith("**") && part.endsWith("**")
                           ? <b key={j} className="font-semibold">{part.replace(/\*\*/g, "")}</b>
@@ -177,7 +177,7 @@ export function DestinationGuide({ destination: d }: Props) {
             {/* Packing essentials */}
             <div className="reveal mt-12" id="packing">
               <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.15] mb-2" style={{ color: "var(--ink)" }}>What to Pack</h2>
-              <p className="text-[15.5px] font-light leading-[1.75] mb-5" style={{ color: "var(--ink)", maxWidth: "68ch" }}>I maintain a full packing checklist you can tick off and share. Here are the essentials from my list:</p>
+              <p className="text-[18px] font-normal leading-[1.75] mb-5" style={{ color: "var(--ink)", maxWidth: "68ch" }}>I maintain a full packing checklist you can tick off and share. Here are the essentials from my list:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {d.checklist.slice(0, 2).flatMap(cat => cat.items.filter(it => it.essential).slice(0, 3)).map(item => (
                   <Link key={item.name} href={item.affiliateLink || `/gear`} target={item.affiliateLink ? "_blank" : undefined} rel={item.affiliateLink ? "noopener noreferrer sponsored" : undefined}
@@ -197,12 +197,12 @@ export function DestinationGuide({ destination: d }: Props) {
                 <div key={i} className="mb-2">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     className="w-full flex items-center gap-3 p-4 rounded-xl bg-white border cursor-pointer transition-all text-left" style={{ borderColor: "#e3e9e6", boxShadow: openFaq === i ? "2px 4px 16px rgba(0,0,0,0.04)" : "none" }}>
-                    <span className="flex-1 text-[15px] font-semibold" style={{ color: "var(--ink)" }}>{f.q}</span>
+                    <span className="flex-1 text-[16px] font-semibold" style={{ color: "var(--ink)" }}>{f.q}</span>
                     <span className="text-lg transition-transform duration-200" style={{ color: "#ccc", transform: openFaq === i ? "rotate(180deg)" : "none" }}>&#9662;</span>
                   </button>
                   {openFaq === i && (
                     <div className="px-5 py-4 bg-white border border-t-0 rounded-b-xl -mt-1" style={{ borderColor: "#e3e9e6" }}>
-                      <p className="text-[14.5px] font-light leading-relaxed" style={{ color: "var(--ink-soft)" }}>{f.a}</p>
+                      <p className="text-[16px] font-normal leading-relaxed" style={{ color: "var(--ink-soft)" }}>{f.a}</p>
                     </div>
                   )}
                 </div>
@@ -255,7 +255,7 @@ export function DestinationGuide({ destination: d }: Props) {
                 <div className="flex items-center gap-4 pb-3 mb-3 border-b border-dashed" style={{ borderColor: "#e3e9e6" }}>
                   <span className="text-[42px] font-extrabold tracking-tight leading-none" style={{ color: "var(--ink)" }}>{d.temp}&deg;</span>
                   <div>
-                    <span className="block text-[15px] font-semibold" style={{ color: "var(--ink)" }}>At {d.altitude.toLocaleString()}m</span>
+                    <span className="block text-[16px] font-semibold" style={{ color: "var(--ink)" }}>At {d.altitude.toLocaleString()}m</span>
                     <span className="text-[14px] font-light" style={{ color: "var(--ink-soft)" }}>{d.name} base</span>
                   </div>
                 </div>

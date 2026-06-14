@@ -53,7 +53,7 @@ export function DestinationsClient() {
         <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
           <p className="kicker mb-3">23 destinations</p>
           <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Every trip we cover, all in one place.</h1>
-          <p className="text-[17px] font-light leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pilgrimages and adventures across the Indian Himalaya with full guides, packing lists, gear links and road status. Each one written first person from Dehradun.</p>
+          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pilgrimages and adventures across the Indian Himalaya with full guides, packing lists, gear links and road status. Each one written first person from Dehradun.</p>
 
           {/* Search */}
           <div className="mt-8 relative" style={{ maxWidth: 540 }}>
@@ -108,7 +108,7 @@ export function DestinationsClient() {
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🏔️</div>
             <p className="text-[18px] font-bold" style={{ color: "var(--ink)" }}>No destinations found</p>
-            <p className="text-[15px] font-light mt-2" style={{ color: "var(--ink-soft)" }}>Try a different search or clear the filter</p>
+            <p className="text-[16px] font-normal mt-2" style={{ color: "var(--ink-soft)" }}>Try a different search or clear the filter</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

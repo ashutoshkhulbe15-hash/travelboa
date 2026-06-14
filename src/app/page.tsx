@@ -152,7 +152,7 @@ export default function HomePage() {
           <h1 className="text-white text-[clamp(40px,6.4vw,76px)] font-extrabold tracking-tighter leading-[1.04]" style={{ maxWidth: "13ch" }}>
             Know the <span style={{ color: "var(--terra-bright)" }}>mountain</span> before you meet it.
           </h1>
-          <p className="text-[clamp(16px,1.7vw,19px)] font-light leading-relaxed mt-6 mb-9" style={{ color: "#c8d8de", maxWidth: "54ch" }}>
+          <p className="text-[clamp(17px,1.8vw,20px)] font-normal leading-relaxed mt-6 mb-9" style={{ color: "#c8d8de", maxWidth: "54ch" }}>
             I live in Dehradun, at the foot of the hills you are planning to visit. TravelBoa is my notebook turned into a website: <b className="font-semibold text-white">road conditions, altitude weather, packing checklists and honest gear picks</b> for 23 pilgrimages and treks across North India.
           </p>
 
@@ -201,7 +201,7 @@ export default function HomePage() {
           <div className="reveal">
             <p className="kicker mb-3">The Altitude Index</p>
             <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Every trip, plotted by how high it takes you.</h2>
-            <p className="text-[17px] font-light leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Altitude decides your weather, your gear and your headache. Anything above 3,500 m means I plan a rest day, and so should you.</p>
+            <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Altitude decides your weather, your gear and your headache. Anything above 3,500 m means I plan a rest day, and so should you.</p>
           </div>
           <div className="reveal bg-white border rounded-3xl p-5 sm:p-8 mt-9 relative" style={{ borderColor: "#e3e9e6", boxShadow: "0 30px 60px -40px rgba(28,43,51,0.35)" }}>
             <span className="font-caveat text-[23px] absolute -top-4 right-7 hidden sm:block" style={{ color: "var(--terra)", transform: "rotate(3deg)" }}>this is where AMS starts &#8600;</span>
@@ -223,7 +223,7 @@ export default function HomePage() {
           <div className="reveal">
             <p className="kicker mb-3">Where to next</p>
             <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Guides written from the ground, not from a desk.</h2>
-            <p className="text-[17px] font-light leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide covers the route, the season, the budget and the exact packing list. First person, because I have done these trips or I am next in line to.</p>
+            <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide covers the route, the season, the budget and the exact packing list. First person, because I have done these trips or I am next in line to.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {FEATURED.map(f => {
@@ -239,7 +239,7 @@ export default function HomePage() {
                   </div>
                   <div className="p-5 flex flex-col gap-2 flex-1">
                     <h3 className="text-[21px] font-bold tracking-tight" style={{ color: "var(--ink)" }}>{d.name}</h3>
-                    <p className="text-[14.5px] font-light leading-relaxed flex-1" style={{ color: "var(--ink-soft)" }}>{f.hook}</p>
+                    <p className="text-[16px] font-normal leading-relaxed flex-1" style={{ color: "var(--ink-soft)" }}>{f.hook}</p>
                     <div className="flex gap-4 font-mono text-[11.5px] pt-3 border-t border-dashed" style={{ color: "var(--ink-soft)", borderColor: "#e3e9e6" }}>
                       <span>{f.season}</span>
                       <span>{f.dur}</span>
@@ -269,7 +269,7 @@ export default function HomePage() {
           <div className="reveal">
             <p className="kicker mb-3" style={{ color: "var(--terra-soft)" }}>The Gear Planner</p>
             <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08] text-white">Tell me the trip.<br />I will pack the bag.</h2>
-            <p className="text-[17px] font-light leading-relaxed mt-4" style={{ color: "#cfe4d6", maxWidth: "48ch" }}>Pick your trip type and get a checklist built for it, with the exact gear I trust and links to buy it. Tick items off as you pack. Share the list with your trip group and your ticks travel with the link.</p>
+            <p className="text-[18px] font-normal leading-relaxed mt-4" style={{ color: "#cfe4d6", maxWidth: "48ch" }}>Pick your trip type and get a checklist built for it, with the exact gear I trust and links to buy it. Tick items off as you pack. Share the list with your trip group and your ticks travel with the link.</p>
             <Link href="/gear" className="inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-[16px] font-bold text-white no-underline mt-7 transition-all duration-200 hover:-translate-y-0.5" style={{ background: "var(--terra)" }}
               onMouseEnter={e => (e.currentTarget.style.background = "var(--terra-bright)")} onMouseLeave={e => (e.currentTarget.style.background = "var(--terra)")}>
               Open the gear planner <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
@@ -281,8 +281,8 @@ export default function HomePage() {
               <Link key={tt.t} href="/gear" className="rounded-2xl p-5 no-underline text-white transition-all duration-200 hover:-translate-y-1" style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.18)" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.14)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)"; }}>
-                <span className="block text-[16.5px] font-bold mb-1.5">{tt.t}</span>
-                <span className="block text-[13px] font-light leading-relaxed" style={{ color: "#bcd8c5" }}>{tt.d}</span>
+                <span className="block text-[18px] font-bold mb-1.5">{tt.t}</span>
+                <span className="block text-[14px] font-normal leading-relaxed" style={{ color: "#bcd8c5" }}>{tt.d}</span>
               </Link>
             ))}
           </div>
@@ -297,7 +297,7 @@ export default function HomePage() {
             <h2 className="text-[clamp(26px,3vw,34px)] font-extrabold tracking-tight leading-[1.12]" style={{ color: "var(--ink)" }}>Guides I keep updating</h2>
             <div className="mt-6 border-t-2 flex flex-col" style={{ borderColor: "var(--ink)" }}>
               {GUIDES_LIST.map((g, i) => (
-                <Link key={i} href={g.href} className="flex items-baseline gap-4 py-4 border-b text-[16.5px] font-medium no-underline transition-all duration-200 hover:pl-3.5 hover:bg-white" style={{ borderColor: "#e0e7e3", color: "var(--ink)" }}>
+                <Link key={i} href={g.href} className="flex items-baseline gap-4 py-4 border-b text-[18px] font-medium no-underline transition-all duration-200 hover:pl-3.5 hover:bg-white" style={{ borderColor: "#e0e7e3", color: "var(--ink)" }}>
                   <span className="font-mono text-[11.5px] shrink-0" style={{ color: "var(--terra)" }}>G&middot;0{i + 1}</span>
                   <span className="flex-1">{g.title}</span>
                   <span className="font-mono text-[11px] shrink-0 hidden sm:block" style={{ color: "var(--ink-soft)" }}>{g.tag}</span>
@@ -313,7 +313,7 @@ export default function HomePage() {
             <h2 className="text-[clamp(26px,3vw,34px)] font-extrabold tracking-tight leading-[1.12]" style={{ color: "var(--ink)" }}>Gear I actually use</h2>
             <div className="mt-6 border-t-2 flex flex-col" style={{ borderColor: "var(--ink)" }}>
               {GEAR_LIST.map((g, i) => (
-                <Link key={i} href={g.href} className="flex items-baseline gap-4 py-4 border-b text-[16.5px] font-medium no-underline transition-all duration-200 hover:pl-3.5 hover:bg-white" style={{ borderColor: "#e0e7e3", color: "var(--ink)" }}>
+                <Link key={i} href={g.href} className="flex items-baseline gap-4 py-4 border-b text-[18px] font-medium no-underline transition-all duration-200 hover:pl-3.5 hover:bg-white" style={{ borderColor: "#e0e7e3", color: "var(--ink)" }}>
                   <span className="font-mono text-[11.5px] shrink-0" style={{ color: "var(--terra)" }}>R&middot;0{i + 1}</span>
                   <span className="flex-1">{g.title}</span>
                   <span className="font-mono text-[11px] shrink-0 hidden sm:block" style={{ color: "var(--ink-soft)" }}>{g.tag}</span>

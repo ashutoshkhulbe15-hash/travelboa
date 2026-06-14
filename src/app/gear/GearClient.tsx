@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import Link from "next/link";
 
 const TRIPS = [
@@ -165,55 +163,53 @@ const TRIPS = [
 ];
 
 export function GearClient() {
-  const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [openTrip, setOpenTrip] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [searchFocus, setSearchFocus] = useState(false);
 
-  if (!mounted) return null;
-
-  const bg = dark ? "#0c0a09" : "white";
-  const cardBg = dark ? "#1c1a17" : "white";
-  const textPrimary = dark ? "#f5f5f4" : "#111";
-  const textSecondary = dark ? "#a8a29e" : "#666";
-  const textMuted = dark ? "#57534e" : "#ccc";
-  const border = dark ? "#292524" : "#f0f0f0";
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    }), { threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) els.forEach(el => el.classList.add("on"));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
-      <Navbar accent={accent} dark={dark} />
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
 
-      <div className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-8 pb-20">
-        <div className="flex items-center gap-2 mt-6 mb-6 text-xs" style={{ color: textMuted }}>
-          <Link href="/" className="transition-colors hover:opacity-70" style={{ color: textMuted }}>Home</Link>
-          <span>→</span>
-          <span className="font-semibold" style={{ color: textPrimary }}>Gear</span>
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[1000px] mx-auto px-5 sm:px-6">
+          <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span>
+          <span style={{ color: "var(--ink)" }}>Gear Planner</span>
         </div>
+      </div>
 
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2" style={{ color: textPrimary }}>What gear do you need?</h1>
-        <p className="text-sm mb-5" style={{ color: textSecondary }}>Pick your trip or search for specific gear. Links to our tested product reviews.</p>
+      <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
+        <div className="max-w-[1000px] mx-auto px-5 sm:px-6">
+          <p className="kicker mb-3">The Gear Planner</p>
+          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Tell me the trip. I will pack the bag.</h1>
+          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pick your trip type or search for specific gear. Every item links to a review where I explain exactly why I pick it.</p>
 
-        {/* Search bar */}
-        <div className="relative mb-6">
-          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            onFocus={() => setSearchFocus(true)}
-            onBlur={() => setSearchFocus(false)}
-            placeholder="Search gear... jackets, shoes, power bank, sleeping bag"
-            className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
-            style={{ background: dark ? "#1c1a17" : "#fafaf8", color: textPrimary, border: `1.5px solid ${searchFocus ? accent : border}`, boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none" }}
-            autoComplete="off"
-          />
-          {search && (
-            <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
-          )}
+          <div className="mt-8 relative" style={{ maxWidth: 540 }}>
+            <div className="flex items-center rounded-full px-5 py-1" style={{ background: "#fff", border: `2px solid ${searchFocus ? "var(--terra)" : "#e3e9e6"}`, boxShadow: searchFocus ? "0 0 0 4px rgba(194,102,45,0.1)" : "0 4px 20px -8px rgba(28,43,51,0.15)", transition: "border-color 0.2s, box-shadow 0.2s" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+              <input value={search} onChange={e => setSearch(e.target.value)} onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
+                placeholder="Search gear... jackets, shoes, power bank, sleeping bag" className="flex-1 border-0 bg-transparent font-sans text-[16px] py-3 px-3 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" />
+              {search && (
+                <button onClick={() => setSearch("")} className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold border-0 cursor-pointer" style={{ background: "#eef2ef", color: "var(--ink-soft)" }}>✕</button>
+              )}
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Trip cards */}
-        <div className="space-y-3">
+      <div className="max-w-[1000px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
+        <div className="space-y-4">
           {TRIPS.filter(trip => {
             if (!search) return true;
             const s = search.toLowerCase();
@@ -222,41 +218,39 @@ export function GearClient() {
             const isOpen = openTrip === trip.id;
             const totalItems = trip.gear.reduce((s, c) => s + c.items.length, 0);
             return (
-              <div key={trip.id} className="rounded-xl transition-all duration-200 overflow-hidden" style={{ background: cardBg, border: `1.5px solid ${isOpen ? accent : border}` }}>
-                {/* Trip header */}
-                <button onClick={() => setOpenTrip(isOpen ? null : trip.id)} className="w-full flex items-center gap-4 p-4 sm:p-5 cursor-pointer text-left">
-                  <span className="text-3xl">{trip.icon}</span>
+              <div key={trip.id} className="reveal rounded-[18px] transition-all duration-200 overflow-hidden bg-white" style={{ border: `1.5px solid ${isOpen ? "var(--terra)" : "#e3e9e6"}`, boxShadow: isOpen ? "0 12px 40px -16px rgba(28,43,51,0.3)" : "none" }}>
+                <button onClick={() => setOpenTrip(isOpen ? null : trip.id)} className="w-full flex items-center gap-4 p-5 sm:p-6 cursor-pointer text-left border-0 bg-transparent">
+                  <span className="text-3xl sm:text-4xl">{trip.icon}</span>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-base sm:text-lg font-extrabold" style={{ color: textPrimary }}>{trip.name}</span>
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md" style={{ background: `${accent}15`, color: accent }}>{trip.altitude}</span>
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <span className="text-[18px] sm:text-[20px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{trip.name}</span>
+                      <span className="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-full" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>{trip.altitude}</span>
                     </div>
-                    <p className="text-xs mt-1" style={{ color: textSecondary }}>{trip.desc}</p>
-                    <div className="flex items-center gap-3 mt-2">
-                      <span className="text-[10px] font-semibold" style={{ color: textMuted }}>📅 {trip.season}</span>
-                      <span className="text-[10px] font-semibold" style={{ color: textMuted }}>🎒 {totalItems} items</span>
+                    <p className="text-[15px] font-normal mt-1" style={{ color: "var(--ink-soft)" }}>{trip.desc}</p>
+                    <div className="flex items-center gap-4 mt-2 font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>
+                      <span>📅 {trip.season}</span>
+                      <span>🎒 {totalItems} items</span>
                     </div>
                   </div>
-                  <span className="text-lg transition-transform duration-200 shrink-0" style={{ color: accent, transform: isOpen ? "rotate(180deg)" : "none" }}>▾</span>
+                  <span className="text-xl transition-transform duration-200 shrink-0" style={{ color: "var(--terra)", transform: isOpen ? "rotate(180deg)" : "none" }}>&#9662;</span>
                 </button>
 
-                {/* Expanded gear list */}
                 {isOpen && (
-                  <div className="px-4 sm:px-5 pb-5 pt-0">
-                    <div className="h-px mb-4" style={{ background: border }} />
+                  <div className="px-5 sm:px-6 pb-6 pt-0">
+                    <div className="h-px mb-5" style={{ background: "#e3e9e6" }} />
                     {trip.gear.map((cat, ci) => (
-                      <div key={ci} className="mb-5 last:mb-0">
-                        <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>{cat.category}</p>
-                        <div className="space-y-2.5">
+                      <div key={ci} className="mb-6 last:mb-0">
+                        <p className="kicker mb-3">{cat.category}</p>
+                        <div className="space-y-3">
                           {cat.items.map((item, ii) => (
-                            <div key={ii} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: dark ? "#0c0a09" : "#fafaf8" }}>
-                              <span className="mt-0.5 text-xs" style={{ color: accent }}>●</span>
+                            <div key={ii} className="flex items-start gap-3 p-4 rounded-2xl" style={{ background: "var(--snowfield)" }}>
+                              <span className="mt-1 text-[11px]" style={{ color: "var(--terra)" }}>●</span>
                               <div className="flex-1 min-w-0">
-                                <p className="text-sm font-bold" style={{ color: textPrimary }}>{item.name}</p>
-                                <p className="text-xs mt-0.5" style={{ color: textSecondary }}>{item.why}</p>
+                                <p className="text-[16px] font-bold" style={{ color: "var(--ink)" }}>{item.name}</p>
+                                <p className="text-[14px] font-normal mt-0.5" style={{ color: "var(--ink-soft)" }}>{item.why}</p>
                               </div>
-                              <Link href={item.link} className="text-[11px] font-bold no-underline shrink-0 px-2.5 py-1.5 rounded-lg transition-all hover:opacity-80" style={{ background: `${accent}12`, color: accent }}>
-                                {item.linkLabel} →
+                              <Link href={item.link} className="font-mono text-[12px] font-semibold no-underline shrink-0 px-3 py-2 rounded-xl transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>
+                                {item.linkLabel} &rarr;
                               </Link>
                             </div>
                           ))}
@@ -264,13 +258,9 @@ export function GearClient() {
                       </div>
                     ))}
 
-                    {/* Destination guide link */}
-                    <div className="mt-5 pt-4 flex items-center gap-3" style={{ borderTop: `1px solid ${border}` }}>
-                      <Link href={`/${trip.id === "ladakh-bike" ? "ladakh" : trip.id === "char-dham" ? "kedarnath" : trip.id}`} className="text-xs font-bold no-underline" style={{ color: accent }}>
-                        📖 Full {trip.name} destination guide →
-                      </Link>
-                      <Link href="/dashboard" className="text-xs font-bold no-underline" style={{ color: textMuted }}>
-                        🗺️ Create trip dashboard →
+                    <div className="mt-6 pt-5 flex items-center gap-4 flex-wrap border-t border-dashed" style={{ borderColor: "#e3e9e6" }}>
+                      <Link href={`/${trip.id === "ladakh-bike" ? "ladakh" : trip.id === "char-dham" ? "kedarnath" : trip.id}`} className="text-[14px] font-semibold no-underline" style={{ color: "var(--terra)" }}>
+                        📖 Full {trip.name} guide &rarr;
                       </Link>
                     </div>
                   </div>
@@ -280,12 +270,13 @@ export function GearClient() {
           })}
         </div>
 
-        {/* All gear reviews section */}
-        <div className="mt-12 pt-8" style={{ borderTop: `1px solid ${border}` }}>
-          <h2 className="text-lg font-extrabold mb-2" style={{ color: textPrimary }}>All gear reviews</h2>
-          <p className="text-xs mb-5" style={{ color: textSecondary }}>Every product we have tested, organized by category.</p>
+        {/* All gear reviews */}
+        <div className="mt-14 pt-10 border-t-2" style={{ borderColor: "var(--ink)" }}>
+          <p className="kicker mb-3">All gear reviews</p>
+          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.12] mb-2" style={{ color: "var(--ink)" }}>Every product I have tested</h2>
+          <p className="text-[16px] font-normal mb-8" style={{ color: "var(--ink-soft)" }}>Organized by category, with Amazon links.</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { cat: "🧥 Jackets", items: [{ name: "Best jackets for Kedarnath trek", href: "/gear/jackets-kedarnath" }, { name: "Best jackets for Ladakh bike trip", href: "/gear/jackets-ladakh" }] },
               { cat: "🥾 Footwear", items: [{ name: "Best trekking shoes under ₹5,000", href: "/gear/trekking-shoes-under-5000" }, { name: "Best shoes for Vaishno Devi", href: "/gear/shoes-vaishno-devi" }] },
@@ -295,11 +286,11 @@ export function GearClient() {
               { cat: "🧤 Accessories", items: [{ name: "Best thermals for high-altitude", href: "/gear/thermals-altitude" }, { name: "Best riding gloves for Ladakh", href: "/gear/riding-gloves-ladakh" }, { name: "Best rain ponchos for Char Dham", href: "/gear/rain-ponchos-char-dham" }] },
               { cat: "☀️ Protection", items: [{ name: "Best sunscreen for mountain UV", href: "/gear/sunscreen-mountain" }, { name: "Best first aid kits for travel", href: "/gear/first-aid-kits" }] },
             ].map((group, i) => (
-              <div key={i} className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-                <p className="text-sm font-extrabold mb-2" style={{ color: textPrimary }}>{group.cat}</p>
+              <div key={i} className="reveal bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+                <p className="text-[16px] font-extrabold mb-3" style={{ color: "var(--ink)" }}>{group.cat}</p>
                 {group.items.map((item, j) => (
-                  <Link key={j} href={item.href} className="block text-xs py-1.5 no-underline transition-colors hover:opacity-70" style={{ color: accent }}>
-                    {item.name} →
+                  <Link key={j} href={item.href} className="block text-[14px] font-medium py-1.5 no-underline transition-colors hover:pl-1" style={{ color: "var(--terra)" }}>
+                    {item.name} &rarr;
                   </Link>
                 ))}
               </div>
@@ -307,7 +298,8 @@ export function GearClient() {
           </div>
         </div>
       </div>
-      <Footer accent={accent} />
+
+      <Footer />
     </div>
   );
 }
