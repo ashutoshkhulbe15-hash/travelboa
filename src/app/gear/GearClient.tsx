@@ -162,6 +162,16 @@ const TRIPS = [
   },
 ];
 
+const GEAR_CATS = [
+  { cat: "🧥 Jackets", items: [{ name: "Best jackets for Kedarnath trek", href: "/gear/jackets-kedarnath" }, { name: "Best jackets for Ladakh bike trip", href: "/gear/jackets-ladakh" }] },
+  { cat: "🥾 Footwear", items: [{ name: "Best trekking shoes under ₹5,000", href: "/gear/trekking-shoes-under-5000" }, { name: "Best shoes for Vaishno Devi", href: "/gear/shoes-vaishno-devi" }] },
+  { cat: "🎒 Bags", items: [{ name: "Best backpacks for Chopta-Tungnath", href: "/gear/backpacks-chopta" }, { name: "Best daypack for pilgrimage", href: "/gear/daypack-pilgrimage" }] },
+  { cat: "🛏️ Sleep", items: [{ name: "Best sleeping bags for Spiti camping", href: "/gear/sleeping-bags-spiti" }] },
+  { cat: "🔋 Electronics", items: [{ name: "Best power banks for multi-day treks", href: "/gear/power-banks-treks" }, { name: "Best headlamps under ₹1,000", href: "/gear/headlamps-under-1000" }] },
+  { cat: "🧤 Accessories", items: [{ name: "Best thermals for high-altitude", href: "/gear/thermals-altitude" }, { name: "Best riding gloves for Ladakh", href: "/gear/riding-gloves-ladakh" }, { name: "Best rain ponchos for Char Dham", href: "/gear/rain-ponchos-char-dham" }] },
+  { cat: "☀️ Protection", items: [{ name: "Best sunscreen for mountain UV", href: "/gear/sunscreen-mountain" }, { name: "Best first aid kits for travel", href: "/gear/first-aid-kits" }] },
+];
+
 export function GearClient() {
   const [openTrip, setOpenTrip] = useState<string | null>(null);
   const [search, setSearch] = useState("");
@@ -177,20 +187,26 @@ export function GearClient() {
     return () => io.disconnect();
   }, []);
 
+  const filteredTrips = TRIPS.filter(trip => {
+    if (!search) return true;
+    const s = search.toLowerCase();
+    return trip.name.toLowerCase().includes(s) || trip.desc.toLowerCase().includes(s) || trip.gear.some(c => c.items.some(item => item.name.toLowerCase().includes(s) || item.why.toLowerCase().includes(s)));
+  });
+
   return (
     <div className="min-h-screen" style={{ background: "var(--paper)" }}>
       <Navbar />
 
       <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
-        <div className="max-w-[1000px] mx-auto px-5 sm:px-6">
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
           <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
           <span className="mx-1.5 opacity-50">/</span>
-          <span style={{ color: "var(--ink)" }}>Gear Planner</span>
+          <span style={{ color: "var(--ink)" }}>Gear</span>
         </div>
       </div>
 
       <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
-        <div className="max-w-[1000px] mx-auto px-5 sm:px-6">
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
           <p className="kicker mb-3">The Gear Planner</p>
           <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Tell me the trip. I will pack the bag.</h1>
           <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pick your trip type or search for specific gear. Every item links to a review where I explain exactly why I pick it.</p>
@@ -199,106 +215,111 @@ export function GearClient() {
             <div className="flex items-center rounded-full px-5 py-1" style={{ background: "#fff", border: `2px solid ${searchFocus ? "var(--terra)" : "#e3e9e6"}`, boxShadow: searchFocus ? "0 0 0 4px rgba(194,102,45,0.1)" : "0 4px 20px -8px rgba(28,43,51,0.15)", transition: "border-color 0.2s, box-shadow 0.2s" }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
               <input value={search} onChange={e => setSearch(e.target.value)} onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
-                placeholder="Search gear... jackets, shoes, power bank, sleeping bag" className="flex-1 border-0 bg-transparent font-sans text-[16px] py-3 px-3 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" />
-              {search && (
-                <button onClick={() => setSearch("")} className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold border-0 cursor-pointer" style={{ background: "#eef2ef", color: "var(--ink-soft)" }}>✕</button>
-              )}
+                placeholder="Search gear... jackets, shoes, power bank" className="flex-1 border-0 bg-transparent font-sans text-[16px] py-3 px-3 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" />
+              {search && <button onClick={() => setSearch("")} className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold border-0 cursor-pointer" style={{ background: "#eef2ef", color: "var(--ink-soft)" }}>✕</button>}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-[1000px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
-        <div className="space-y-4">
-          {TRIPS.filter(trip => {
-            if (!search) return true;
-            const s = search.toLowerCase();
-            return trip.name.toLowerCase().includes(s) || trip.desc.toLowerCase().includes(s) || trip.gear.some(c => c.items.some(item => item.name.toLowerCase().includes(s) || item.linkLabel.toLowerCase().includes(s) || item.why.toLowerCase().includes(s)));
-          }).map(trip => {
-            const isOpen = openTrip === trip.id;
-            const totalItems = trip.gear.reduce((s, c) => s + c.items.length, 0);
-            return (
-              <div key={trip.id} className="reveal rounded-[18px] transition-all duration-200 overflow-hidden bg-white" style={{ border: `1.5px solid ${isOpen ? "var(--terra)" : "#e3e9e6"}`, boxShadow: isOpen ? "0 12px 40px -16px rgba(28,43,51,0.3)" : "none" }}>
-                <button onClick={() => setOpenTrip(isOpen ? null : trip.id)} className="w-full flex items-center gap-4 p-5 sm:p-6 cursor-pointer text-left border-0 bg-transparent">
-                  <span className="text-3xl sm:text-4xl">{trip.icon}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="text-[18px] sm:text-[20px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{trip.name}</span>
-                      <span className="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-full" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>{trip.altitude}</span>
-                    </div>
-                    <p className="text-[15px] font-normal mt-1" style={{ color: "var(--ink-soft)" }}>{trip.desc}</p>
-                    <div className="flex items-center gap-4 mt-2 font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>
-                      <span>📅 {trip.season}</span>
-                      <span>🎒 {totalItems} items</span>
-                    </div>
-                  </div>
-                  <span className="text-xl transition-transform duration-200 shrink-0" style={{ color: "var(--terra)", transform: isOpen ? "rotate(180deg)" : "none" }}>&#9662;</span>
-                </button>
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
 
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-0">
-                    <div className="h-px mb-5" style={{ background: "#e3e9e6" }} />
-                    {trip.gear.map((cat, ci) => (
-                      <div key={ci} className="mb-6 last:mb-0">
-                        <p className="kicker mb-3">{cat.category}</p>
-                        <div className="space-y-3">
-                          {cat.items.map((item, ii) => (
-                            <div key={ii} className="flex items-start gap-3 p-4 rounded-2xl" style={{ background: "var(--snowfield)" }}>
-                              <span className="mt-1 text-[11px]" style={{ color: "var(--terra)" }}>●</span>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-[16px] font-bold" style={{ color: "var(--ink)" }}>{item.name}</p>
-                                <p className="text-[14px] font-normal mt-0.5" style={{ color: "var(--ink-soft)" }}>{item.why}</p>
-                              </div>
-                              <Link href={item.link} className="font-mono text-[12px] font-semibold no-underline shrink-0 px-3 py-2 rounded-xl transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>
-                                {item.linkLabel} &rarr;
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
+          {/* MAIN: Trip accordions */}
+          <div className="space-y-4">
+            <p className="kicker mb-1">Pick your trip</p>
+            {filteredTrips.map(trip => {
+              const isOpen = openTrip === trip.id;
+              const totalItems = trip.gear.reduce((s, c) => s + c.items.length, 0);
+              return (
+                <div key={trip.id} className="reveal rounded-[18px] transition-all duration-200 overflow-hidden bg-white" style={{ border: `1.5px solid ${isOpen ? "var(--terra)" : "#e3e9e6"}`, boxShadow: isOpen ? "0 12px 40px -16px rgba(28,43,51,0.3)" : "none" }}>
+                  <button onClick={() => setOpenTrip(isOpen ? null : trip.id)} className="w-full flex items-center gap-4 p-5 sm:p-6 cursor-pointer text-left border-0 bg-transparent">
+                    <span className="text-3xl sm:text-4xl">{trip.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <span className="text-[18px] sm:text-[20px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{trip.name}</span>
+                        <span className="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-full" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>{trip.altitude}</span>
                       </div>
-                    ))}
-
-                    <div className="mt-6 pt-5 flex items-center gap-4 flex-wrap border-t border-dashed" style={{ borderColor: "#e3e9e6" }}>
-                      <Link href={`/${trip.id === "ladakh-bike" ? "ladakh" : trip.id === "char-dham" ? "kedarnath" : trip.id}`} className="text-[14px] font-semibold no-underline" style={{ color: "var(--terra)" }}>
-                        📖 Full {trip.name} guide &rarr;
-                      </Link>
+                      <p className="text-[15px] font-normal mt-1" style={{ color: "var(--ink-soft)" }}>{trip.desc}</p>
+                      <div className="flex items-center gap-4 mt-2 font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>
+                        <span>📅 {trip.season}</span><span>🎒 {totalItems} items</span>
+                      </div>
                     </div>
+                    <span className="text-xl transition-transform duration-200 shrink-0" style={{ color: "var(--terra)", transform: isOpen ? "rotate(180deg)" : "none" }}>&#9662;</span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 sm:px-6 pb-6 pt-0">
+                      <div className="h-px mb-5" style={{ background: "#e3e9e6" }} />
+                      {trip.gear.map((cat, ci) => (
+                        <div key={ci} className="mb-6 last:mb-0">
+                          <p className="kicker mb-3">{cat.category}</p>
+                          <div className="space-y-3">
+                            {cat.items.map((item, ii) => (
+                              <div key={ii} className="flex items-start gap-3 p-4 rounded-2xl" style={{ background: "var(--snowfield)" }}>
+                                <span className="mt-1 text-[11px]" style={{ color: "var(--terra)" }}>●</span>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-[16px] font-bold" style={{ color: "var(--ink)" }}>{item.name}</p>
+                                  <p className="text-[14px] font-normal mt-0.5" style={{ color: "var(--ink-soft)" }}>{item.why}</p>
+                                </div>
+                                <Link href={item.link} className="font-mono text-[12px] font-semibold no-underline shrink-0 px-3 py-2 rounded-xl transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.1)", color: "var(--terra)" }}>
+                                  {item.linkLabel} &rarr;
+                                </Link>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      <div className="mt-6 pt-5 border-t border-dashed" style={{ borderColor: "#e3e9e6" }}>
+                        <Link href={`/${trip.id === "ladakh-bike" ? "ladakh" : trip.id === "char-dham" ? "kedarnath" : trip.id}`} className="text-[14px] font-semibold no-underline" style={{ color: "var(--terra)" }}>
+                          📖 Full {trip.name} guide &rarr;
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* SIDEBAR */}
+          <aside className="hidden lg:block">
+            <div className="sticky flex flex-col gap-5" style={{ top: 80 }}>
+              {/* Gear reviews by category */}
+              <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
+                <h3 className="text-[16px] font-bold mb-4" style={{ color: "var(--ink)" }}>🔍 All 14 gear reviews</h3>
+                {GEAR_CATS.map((g, i) => (
+                  <div key={i} className="mb-4 last:mb-0">
+                    <p className="text-[14px] font-bold mb-1" style={{ color: "var(--ink)" }}>{g.cat}</p>
+                    {g.items.map((item, j) => (
+                      <Link key={j} href={item.href} className="block text-[13px] font-medium py-1 no-underline transition-colors hover:pl-1" style={{ color: "var(--terra)" }}>
+                        {item.name} &rarr;
+                      </Link>
+                    ))}
                   </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* All gear reviews */}
-        <div className="mt-14 pt-10 border-t-2" style={{ borderColor: "var(--ink)" }}>
-          <p className="kicker mb-3">All gear reviews</p>
-          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.12] mb-2" style={{ color: "var(--ink)" }}>Every product I have tested</h2>
-          <p className="text-[16px] font-normal mb-8" style={{ color: "var(--ink-soft)" }}>Organized by category, with Amazon links.</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { cat: "🧥 Jackets", items: [{ name: "Best jackets for Kedarnath trek", href: "/gear/jackets-kedarnath" }, { name: "Best jackets for Ladakh bike trip", href: "/gear/jackets-ladakh" }] },
-              { cat: "🥾 Footwear", items: [{ name: "Best trekking shoes under ₹5,000", href: "/gear/trekking-shoes-under-5000" }, { name: "Best shoes for Vaishno Devi", href: "/gear/shoes-vaishno-devi" }] },
-              { cat: "🎒 Bags", items: [{ name: "Best backpacks for Chopta-Tungnath", href: "/gear/backpacks-chopta" }, { name: "Best daypack for pilgrimage", href: "/gear/daypack-pilgrimage" }] },
-              { cat: "🛏️ Sleep", items: [{ name: "Best sleeping bags for Spiti camping", href: "/gear/sleeping-bags-spiti" }] },
-              { cat: "🔋 Electronics", items: [{ name: "Best power banks for multi-day treks", href: "/gear/power-banks-treks" }, { name: "Best headlamps under ₹1,000", href: "/gear/headlamps-under-1000" }] },
-              { cat: "🧤 Accessories", items: [{ name: "Best thermals for high-altitude", href: "/gear/thermals-altitude" }, { name: "Best riding gloves for Ladakh", href: "/gear/riding-gloves-ladakh" }, { name: "Best rain ponchos for Char Dham", href: "/gear/rain-ponchos-char-dham" }] },
-              { cat: "☀️ Protection", items: [{ name: "Best sunscreen for mountain UV", href: "/gear/sunscreen-mountain" }, { name: "Best first aid kits for travel", href: "/gear/first-aid-kits" }] },
-            ].map((group, i) => (
-              <div key={i} className="reveal bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
-                <p className="text-[16px] font-extrabold mb-3" style={{ color: "var(--ink)" }}>{group.cat}</p>
-                {group.items.map((item, j) => (
-                  <Link key={j} href={item.href} className="block text-[14px] font-medium py-1.5 no-underline transition-colors hover:pl-1" style={{ color: "var(--terra)" }}>
-                    {item.name} &rarr;
-                  </Link>
                 ))}
               </div>
-            ))}
-          </div>
+
+              {/* Packing checklist CTA */}
+              <Link href="/kedarnath/packing" className="block text-center rounded-[20px] p-5 no-underline transition-all duration-200 hover:-translate-y-0.5" style={{ background: "var(--terra)", color: "#fff" }}>
+                <span className="block text-[15px] font-bold">Open a packing checklist</span>
+                <span className="block text-[13px] font-light opacity-80 mt-1">Tick items off, share with your group</span>
+              </Link>
+
+              {/* Author card */}
+              <div className="rounded-[20px] p-5 border" style={{ background: "#fdf5ed", borderColor: "#e8d8c4" }}>
+                <div className="flex gap-3.5 items-start">
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
+                  <div>
+                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Tested by Ash</span>
+                    <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN</span>
+                    <p className="text-[14px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Every product linked here has been used on a real trip. I do not copy spec sheets.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
-
       <Footer />
     </div>
   );
