@@ -251,12 +251,15 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
 
   // FAQ for JSON-LD schema
   faq: [
-    { q: "Is Kedarnath trek difficult?", a: "The trek is 16 km one way with 1,550m altitude gain. It's moderate difficulty — manageable for reasonably fit people. The path is paved. Start early and take breaks." },
-    { q: "Can elderly people visit Kedarnath?", a: "Yes. Pony (₹2,500–3,500), palki/palanquin (₹6,000–12,000), and helicopter (₹5,500–7,000) options are available. Many elderly pilgrims visit every year." },
-    { q: "Is helicopter to Kedarnath safe?", a: "Helicopter services are operated by licensed companies (Pawan Hans, etc.) and have a strong safety record. Flights cancel in bad weather — no compromises on safety. Book via IRCTC HeliYatra." },
-    { q: "What is the best month to visit Kedarnath?", a: "September–October for best weather and fewer crowds. May–June for reliable weather but heavy crowds. Avoid July–August (monsoon)." },
+    { q: "How long is the Kedarnath trek?", a: "The Kedarnath trek is 16 km one way from Gaurikund to the temple. Most people take 6-8 hours going up and 4-5 hours coming down. The total altitude gain is 1,550 metres, from 2,039m at Gaurikund to 3,583m at the temple." },
+    { q: "Is Kedarnath trek difficult?", a: "The trek is moderate difficulty. The path is paved and well-maintained. The steepest section is the first 4 km from Gaurikund to Jungle Chatti. Altitude is the real challenge, not the terrain. If you can walk 10 km on flat ground without stopping, you can do this trek with proper breaks." },
+    { q: "How much does the Kedarnath trek cost?", a: "A budget trip costs ₹5,000-8,000 (walking both ways, dharamshala stays, dhaba food). Mid-range is ₹10,000-20,000 (pony one way, guesthouse). Comfort is ₹20,000-35,000 (helicopter one way, hotel in Guptkashi). This excludes transport to Gaurikund." },
+    { q: "Can elderly people visit Kedarnath?", a: "Yes. Pony (₹2,500-3,500), palki/palanquin (₹6,000-12,000), and helicopter (₹5,500-7,000) options are available. Many elderly pilgrims visit every year." },
+    { q: "Is helicopter to Kedarnath safe?", a: "Helicopter services are operated by licensed companies (Pawan Hans, etc.) and have a strong safety record. Flights cancel in bad weather. Book via IRCTC HeliYatra." },
+    { q: "What is the best month to visit Kedarnath?", a: "September-October for best weather and fewer crowds. May-June for reliable weather but heavy crowds. Avoid July-August (monsoon). The temple opens around late April and closes after Diwali in November." },
     { q: "Is there mobile network at Kedarnath?", a: "BSNL works intermittently at Kedarnath. Jio/Airtel work at Guptkashi and Sonprayag but not on the trek route. Essentially no reliable signal above Jungle Chatti." },
-    { q: "How much cash should I carry for Kedarnath?", a: "₹5,000–10,000 per person. There's no ATM at Kedarnath or on the trek. UPI works at some shops in Guptkashi but not reliably on the trek. Last reliable ATM is at Guptkashi." },
+    { q: "How much cash should I carry for Kedarnath?", a: "₹5,000-10,000 per person. There is no ATM at Kedarnath or on the trek. UPI works at some shops in Guptkashi but not reliably on the trek. Last reliable ATM is at Guptkashi." },
+    { q: "What is the distance from Dehradun to Kedarnath?", a: "Dehradun to Gaurikund (the trek starting point) is about 250 km by road, taking 8-10 hours via Rishikesh, Devprayag, Rudraprayag, and Guptkashi. From Gaurikund, the 16 km trek begins." },
   ],
 
   // Emergency contacts specific to this destination
@@ -281,6 +284,6 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
   ],
 
   // SEO
-  metaTitle: "Kedarnath Trek Guide 2026 — Complete Planning Resource | TravelBoa",
-  metaDescription: "Everything you need for Kedarnath in 2026: trek details, registration, packing list, helicopter info, accommodation, budget, weather. Written from Dehradun.",
+  metaTitle: "Kedarnath Trek 2026: Route, Packing List, Budget & Road Status | TravelBoa",
+  metaDescription: "Complete Kedarnath trek guide from Dehradun. 16 km Gaurikund route, packing checklist, helicopter vs trek, budget ₹5K-35K, opening dates, and daily road status updates.",
 };

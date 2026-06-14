@@ -14,8 +14,8 @@ export const auli: DestinationData = {
   duration: "3-4 days",
   budget: { min: 5900, max: 13500 },
   heroGradient: "linear-gradient(150deg,#1a2540,#3a4a7a 60%,#5a6a9a)",
-  metaTitle: "Auli Ski Resort Guide 2026 - Cable Car, Skiing Season, Gorson Bugyal Trek & Nanda Devi Views | TravelBoa",
-  metaDescription: "Complete guide to Auli from Dehradun: 295 km via Rishikesh-Joshimath, GMVN ski resort details, cable car timings, skiing costs (Rs 500-800/day equipment rental), Gorson Bugyal trek, Nanda Devi viewpoints, and honest month-by-month breakdown of when to go.",
+  metaTitle: "Auli Ski Resort 2026: Cable Car, Skiing Season & Gorson Bugyal Trek | TravelBoa",
+  metaDescription: "Auli guide. Asia's longest cable car, skiing season (January-March), Gorson Bugyal meadow trek, Nanda Devi views, Joshimath base, and Char Dham circuit combo.",
   quickStats: [
     { label: "Top station altitude", value: "3,049m", icon: "⛷️" },
     { label: "From Dehradun", value: "295 km", icon: "🚗" },

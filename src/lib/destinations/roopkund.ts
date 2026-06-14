@@ -14,8 +14,8 @@ export const roopkund: DestinationData = {
   duration: "8 days",
   budget: { min: 6000, max: 20000 },
   heroGradient: "linear-gradient(150deg,#1a2030,#2a3548 60%,#4a5870)",
-  metaTitle: "Roopkund Trek Guide 2026 - Skeleton Lake, 8-Day Route from Lohajung, Difficulty & Permits | TravelBoa",
-  metaDescription: "Complete Roopkund trek guide from Dehradun: 8-day itinerary, 5,029m skeleton lake, permits, best season, camp-by-camp breakdown, difficulty assessment.",
+  metaTitle: "Roopkund Trek 2026: Skeleton Lake, 8-Day Route & Difficulty Guide | TravelBoa",
+  metaDescription: "Roopkund skeleton lake trek guide. 8-day Lohajung route, 4,800m altitude, difficulty assessment, KMVN permits, best season, and why this is not a beginner trek.",
   quickStats: [
     { label: "Lake altitude", value: "5,029m", icon: "🏔️" },
     { label: "From Dehradun", value: "260 km to Lohajung", icon: "🚗" },

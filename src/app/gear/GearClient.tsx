@@ -223,7 +223,7 @@ export function GearClient() {
       </div>
 
       <div className="max-w-[1180px] mx-auto px-5 sm:px-6 py-10 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
 
           {/* MAIN: Trip accordions */}
           <div className="space-y-4">
@@ -283,7 +283,7 @@ export function GearClient() {
 
           {/* SIDEBAR */}
           <aside className="hidden lg:block">
-            <div className="sticky flex flex-col gap-5" style={{ top: 80 }}>
+            <div className="flex flex-col gap-5" style={{ position: "sticky", top: 80 }}>
               {/* Gear reviews by category */}
               <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
                 <h3 className="text-[16px] font-bold mb-4" style={{ color: "var(--ink)" }}>🔍 All 14 gear reviews</h3>

@@ -14,8 +14,8 @@ export const yamunotri: DestinationData = {
   duration: "2 days from Dehradun",
   budget: { min: 2500, max: 10000 },
   heroGradient: "linear-gradient(150deg,#5a2a1a,#8a5a2a 60%,#aa7a3a)",
-  metaTitle: "Yamunotri Char Dham Guide 2026 - Trek from Janki Chatti, Surya Kund Hot Springs & Yatra Route | TravelBoa",
-  metaDescription: "Yamunotri pilgrimage guide for 2026. 6 km trek from Janki Chatti, Surya Kund boiling spring, route from Dehradun (175 km via Barkot), pony rates, accommodation at Barkot and Janki Chatti, cash situation, and Char Dham registration.",
+  metaTitle: "Yamunotri Trek 2026: Janki Chatti Route, Hot Springs & Yatra Guide | TravelBoa",
+  metaDescription: "Yamunotri Char Dham guide. Janki Chatti to temple trek (6 km), Surya Kund hot springs, pony options, Barkot base camp, and Char Dham circuit planning from Dehradun.",
   quickStats: [
     { label: "Temple altitude", value: "3,293m", icon: "🏔️" },
     { label: "From Dehradun", value: "175 km", icon: "🚗" },

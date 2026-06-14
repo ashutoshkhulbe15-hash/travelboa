@@ -14,8 +14,8 @@ export const chopta: DestinationData = {
   duration: "2-3 days",
   budget: { min: 3500, max: 5000 },
   heroGradient: "linear-gradient(150deg,#1a3a2a,#3a6a4a 60%,#2a5a1a)",
-  metaTitle: "Chopta Trek Guide 2026 - Tungnath, Chandrashila Weekend Trip from Dehradun | TravelBoa",
-  metaDescription: "Weekend trek guide to Chopta from Dehradun. Drive logistics, Tungnath trek details, Chandrashila summit, camping vs tent stay, October timing, and 3-day budget under Rs 5,000.",
+  metaTitle: "Chopta Tungnath Trek 2026: Weekend Trip from Dehradun | TravelBoa",
+  metaDescription: "Chopta-Tungnath-Chandrashila trek guide. 3.5 km trail to the highest Shiva temple, route from Dehradun, budget ₹4K-12K, best season, and camping options.",
   quickStats: [
     { label: "Base altitude", value: "2,680m", icon: "🏔️" },
     { label: "Tungnath", value: "3,680m", icon: "🛕" },

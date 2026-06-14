@@ -14,8 +14,8 @@ export const kasol: DestinationData = {
   duration: "3-4 days",
   budget: { min: 3500, max: 8000 },
   heroGradient: "linear-gradient(150deg,#1a3a2a,#2a5a3a 60%,#4a7a5a)",
-  metaTitle: "Kasol & Kheerganga Guide 2026 - Parvati Valley Trek, Manikaran Gurudwara & Hot Springs | TravelBoa",
-  metaDescription: "Kasol and Kheerganga travel guide from a Dehradun base. 360 km drive via Chandigarh-Mandi-Bhuntar, the 12 km Kheerganga trek from Barshaini, Manikaran Sahib hot springs, Parvati Valley safety, and a full seasonal breakdown.",
+  metaTitle: "Kasol & Kheerganga Trek 2026: Parvati Valley Backpacking Guide | TravelBoa",
+  metaDescription: "Kasol and Kheerganga guide. Parvati Valley backpacking, Kheerganga hot spring trek (12 km), Manikaran Gurudwara, Tosh village, budget stays, and what to carry.",
   quickStats: [
     { label: "Kasol altitude", value: "1,574m", icon: "🏘️" },
     { label: "Kheerganga altitude", value: "2,960m", icon: "♨️" },

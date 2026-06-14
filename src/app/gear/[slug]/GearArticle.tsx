@@ -44,7 +44,7 @@ export function GearArticle({ slug, meta }: Props) {
         </div>
 
         {content ? (
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
             {/* MAIN CONTENT */}
             <div className="space-y-8 min-w-0">
               {content.heroImage && (
@@ -142,7 +142,7 @@ export function GearArticle({ slug, meta }: Props) {
 
             {/* SIDEBAR */}
             <aside className="hidden lg:block">
-              <div className="sticky flex flex-col gap-5" style={{ top: 80 }}>
+              <div className="flex flex-col gap-5" style={{ position: "sticky", top: 80 }}>
                 {/* Quick picks */}
                 <div className="bg-white border rounded-[20px] p-5" style={{ borderColor: "#e3e9e6", boxShadow: "0 20px 50px -30px rgba(28,43,51,0.3)" }}>
                   <h3 className="text-[15px] font-bold mb-3" style={{ color: "var(--ink)" }}>🏆 Quick picks</h3>

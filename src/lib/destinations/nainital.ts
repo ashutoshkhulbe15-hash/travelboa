@@ -14,8 +14,8 @@ export const nainital: DestinationData = {
   duration: "2-3 nights",
   budget: { min: 4000, max: 12000 },
   heroGradient: "linear-gradient(150deg,#1a3a5a,#3a5a7a 60%,#5a7a9a)",
-  metaTitle: "Nainital & Mukteshwar Travel Guide 2026 - Weekend From Delhi, Naini Lake, Corbett & Apple Country | TravelBoa",
-  metaDescription: "Weekend planner for Nainital and Mukteshwar from Delhi and Dehradun. Naini Lake boating costs, Snow View ropeway, Jim Corbett safari booking, Mukteshwar apple orchards, Chauli Ki Jali, and honest crowd warnings for peak season.",
+  metaTitle: "Nainital & Mukteshwar 2026: Weekend Trip from Delhi, Lake & Corbett | TravelBoa",
+  metaDescription: "Nainital travel guide. Weekend trip from Delhi, Naini Lake boating, Mall Road, Mukteshwar apple orchards, Jim Corbett safari detour, and budget accommodation picks.",
   quickStats: [
     { label: "Nainital altitude", value: "2,084m", icon: "🏞️" },
     { label: "Mukteshwar altitude", value: "2,286m", icon: "⛰️" },

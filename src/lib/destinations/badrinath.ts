@@ -14,8 +14,8 @@ export const badrinath: DestinationData = {
   duration: "2-3 days",
   budget: { min: 3000, max: 20000 },
   heroGradient: "linear-gradient(150deg,#2d1060,#4a2080 60%,#6a3060)",
-  metaTitle: "Badrinath Temple Guide 2026 - Route, Darshan, Mana Village, Budget | TravelBoa",
-  metaDescription: "Complete Badrinath guide. NH-7 route from Rishikesh via Joshimath, temple darshan timings, Tapt Kund, Mana village day trip, GMVN accommodation, helicopter option, and budget breakdown.",
+  metaTitle: "Badrinath Temple Guide 2026: Route from Rishikesh, Darshan & Budget | TravelBoa",
+  metaDescription: "Badrinath Char Dham guide. Rishikesh to Badrinath route (295 km), temple darshan timings, Tapt Kund, Mana Village walk, e-pass registration, and budget breakdown.",
   quickStats: [
     { label: "Altitude", value: "3,133m", icon: "🏔️" },
     { label: "From Rishikesh", value: "295 km", icon: "🚗" },

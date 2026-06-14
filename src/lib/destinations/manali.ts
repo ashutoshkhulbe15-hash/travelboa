@@ -14,8 +14,8 @@ export const manali: DestinationData = {
   duration: "2-3 days (staging) or 5-7 days (activity)",
   budget: { min: 3000, max: 15000 },
   heroGradient: "linear-gradient(150deg,#1a3a5a,#2a6a4a 60%,#3a4a2a)",
-  metaTitle: "Manali Guide 2026 - Staging Town for Ladakh, Spiti, Rohtang, Solang | TravelBoa",
-  metaDescription: "Manali as a staging town for Ladakh and Spiti. Where to stay, permits, Solang Valley, Rohtang day trip, bike prep for Leh highway, rafting, budget breakdown, and cash/ATM logistics.",
+  metaTitle: "Manali Guide 2026: Gateway to Ladakh, Spiti & Rohtang Pass | TravelBoa",
+  metaDescription: "Manali travel guide. Staging town for Manali-Leh highway and Manali-Spiti route. Rohtang Pass permit, Solang Valley, Old Manali cafes, and what to pack for onward trips.",
   quickStats: [
     { label: "Altitude", value: "2,050m", icon: "🏔️" },
     { label: "From Dehradun", value: "530 km", icon: "🚗" },

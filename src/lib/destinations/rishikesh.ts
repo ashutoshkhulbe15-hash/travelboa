@@ -14,8 +14,8 @@ export const rishikesh: DestinationData = {
   duration: "1-2 days (transit) or 3-5 days (activity)",
   budget: { min: 1500, max: 10000 },
   heroGradient: "linear-gradient(150deg,#064e3b,#059669 60%,#0d9488)",
-  metaTitle: "Rishikesh Guide 2026 - Base Camp for Char Dham, Gear, Rafting, Yoga | TravelBoa",
-  metaDescription: "Rishikesh as a staging town for Char Dham yatra and mountain trips. Where to stay near ISBT, gear shops, ATM and cash, Char Dham registration, rafting operators, yoga ashrams, and the 2-day buffer itinerary.",
+  metaTitle: "Rishikesh Travel Guide 2026: Rafting, Yoga, Cafes & Char Dham Base | TravelBoa",
+  metaDescription: "Rishikesh guide from a Dehradun local. Best rafting stretches, yoga ashrams, Laxman Jhula, cafe guide, and why this is your staging town for Char Dham and Himalayan treks.",
   quickStats: [
     { label: "Altitude", value: "372m", icon: "🏔️" },
     { label: "From Dehradun", value: "43 km", icon: "🚗" },

@@ -14,8 +14,8 @@ export const harKiDun: DestinationData = {
   duration: "5-6 days",
   budget: { min: 6000, max: 15000 },
   heroGradient: "linear-gradient(150deg,#1f3a2a,#3a6a4a 60%,#5a8a6a)",
-  metaTitle: "Har Ki Dun Trek Guide 2026 - Route, Permits, Sankri to Valley, 5-Day Itinerary | TravelBoa",
-  metaDescription: "Complete guide to the Har Ki Dun valley trek in Uttarakhand - route stages, permit details, 5-day and 6-day itineraries, accommodation options, and how to reach Sankri from Dehradun in one drive.",
+  metaTitle: "Har Ki Dun Trek 2026: 5-Day Route from Sankri, Permits & Itinerary | TravelBoa",
+  metaDescription: "Har Ki Dun valley trek guide. 5-day route from Sankri via Taluka, Osla village, permits, best season (April-June, Sep-Nov), camping, and the ancient Pandava connection.",
   quickStats: [
     { label: "Valley altitude", value: "3,566m", icon: "🏔️" },
     { label: "From Dehradun", value: "180 km to Sankri", icon: "🚗" },

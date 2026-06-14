@@ -92,6 +92,6 @@ Unlike Kedarnath or Amarnath, Vaishno Devi is a year-round pilgrimage — the sh
     { slug: "darshan-tips", title: "Darshan & queue tips", description: "How to minimize wait time" },
     { slug: "best-time", title: "Best time & FAQ", description: "Season guide and common questions" },
   ],
-  metaTitle: "Vaishno Devi Guide 2026 — Registration, Trek, Darshan Tips | TravelBoa",
-  metaDescription: "Complete Vaishno Devi guide: online registration, trek route, darshan queue tips, packing list, budget, and best time to visit. Updated for 2026.",
+  metaTitle: "Vaishno Devi Yatra 2026: Registration, Trek Route & Packing List | TravelBoa",
+  metaDescription: "Vaishno Devi pilgrimage guide with Katra to Bhawan trek details, yatra registration, pony and helicopter options, what to carry, and budget. Written from experience.",
 };

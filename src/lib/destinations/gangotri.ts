@@ -14,8 +14,8 @@ export const gangotri: DestinationData = {
   duration: "1 day (pilgrimage) or 3-4 days (with Gaumukh trek)",
   budget: { min: 3000, max: 15000 },
   heroGradient: "linear-gradient(150deg,#2a2a4a,#4a4a6a 60%,#6a6a8a)",
-  metaTitle: "Gangotri Char Dham Guide 2026 - Temple Timings, Gaumukh Trek & Pilgrimage Route | TravelBoa",
-  metaDescription: "Gangotri Char Dham guide covering the 248 km route from Dehradun, temple darshan timings, Gaumukh glacier trek permit, Bhojbas overnight, cash situation in Uttarkashi, and what separates a pilgrimage visit from the 2-day trek.",
+  metaTitle: "Gangotri Char Dham 2026: Temple Route, Gaumukh Trek & Yatra Guide | TravelBoa",
+  metaDescription: "Gangotri pilgrimage and Gaumukh glacier trek guide. Uttarkashi to Gangotri route, temple timings, Bhagirathi river source trek, and Char Dham circuit planning.",
   quickStats: [
     { label: "Temple altitude", value: "3,048m", icon: "🏔️" },
     { label: "From Dehradun", value: "248 km", icon: "🚗" },

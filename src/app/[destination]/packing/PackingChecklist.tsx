@@ -109,7 +109,7 @@ export function PackingChecklist({ destination: d }: Props) {
         </Link>
 
         {/* Main content */}
-        <div className="flex gap-8 items-start">
+        <div className="flex gap-8">
           <div className="flex-1 min-w-0">
             {d.checklist.map((cat) => {
               const catChecked = cat.items.filter(i => checks[`${cat.category}-${i.name}`]).length;
@@ -152,7 +152,7 @@ export function PackingChecklist({ destination: d }: Props) {
 
           {/* Sidebar */}
           <div className="w-[260px] shrink-0 hidden lg:block">
-            <div className="sticky flex flex-col gap-4" style={{ top: 80 }}>
+            <div className="flex flex-col gap-4" style={{ position: "sticky", top: 80 }}>
               <div className="p-5 rounded-[18px] text-center border-2" style={{ borderColor: "var(--terra)", background: "rgba(194,102,45,0.04)" }}>
                 <div className="text-[42px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{pct}<span className="text-[18px]">%</span></div>
                 <p className="font-caveat text-[16px] mt-1" style={{ color: "var(--terra)" }}>gear ready</p>

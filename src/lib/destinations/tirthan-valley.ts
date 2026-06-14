@@ -14,8 +14,8 @@ export const tirthanValley: DestinationData = {
   duration: "3-5 days",
   budget: { min: 4000, max: 12000 },
   heroGradient: "linear-gradient(150deg,#2a3a1f,#4a5a2a 60%,#6a8a4a)",
-  metaTitle: "Tirthan Valley Travel Guide 2026 - Great Himalayan National Park, Serolsar Lake Trek & Trout Fishing | TravelBoa",
-  metaDescription: "Tirthan Valley travel guide for 2026. GHNP UNESCO World Heritage Site permits, Serolsar Lake trek from Jalori Pass, trout fishing licenses, Banjaar accommodation, and the 340 km drive from Dehradun via Bhuntar.",
+  metaTitle: "Tirthan Valley Guide 2026: GHNP Trek, Trout Fishing & Slow Travel | TravelBoa",
+  metaDescription: "Tirthan Valley travel guide. Great Himalayan National Park UNESCO site, Serolsar Lake trek, trout fishing, riverside homestays, and a quieter alternative to Kasol.",
   quickStats: [
     { label: "Banjaar altitude", value: "1,885m", icon: "🏘️" },
     { label: "Jalori Pass altitude", value: "3,120m", icon: "🏔️" },
