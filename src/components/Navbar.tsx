@@ -11,7 +11,7 @@ interface NavbarProps {
 const NAV_LINKS = [
   { label: "Destinations", href: "/destinations" },
   { label: "Guides", href: "/guides" },
-  { label: "Gear reviews", href: "/gear" },
+  { label: "Gear", href: "/gear" },
 ];
 
 export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
@@ -42,10 +42,10 @@ export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
               {l.label}
             </Link>
           ))}
-          <Link href="/gear" className="text-[15px] font-semibold no-underline rounded-full px-5 py-2 transition-colors duration-200" style={{ background: "var(--terra)", color: "#fff" }}
+          <Link href="/dashboard" className="text-[15px] font-semibold no-underline rounded-full px-5 py-2 transition-colors duration-200" style={{ background: "var(--terra)", color: "#fff" }}
             onMouseEnter={e => (e.currentTarget.style.background = "var(--terra-bright)")}
             onMouseLeave={e => (e.currentTarget.style.background = "var(--terra)")}>
-            Plan my trip
+            My trip
           </Link>
         </div>
 
@@ -62,7 +62,7 @@ export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
           {NAV_LINKS.map((l) => (
             <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-medium no-underline" style={{ color: "#cfdde2" }}>{l.label}</Link>
           ))}
-          <Link href="/gear" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold no-underline mt-1" style={{ background: "var(--terra)", color: "#fff" }}>Plan my trip</Link>
+          <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold no-underline mt-1" style={{ background: "var(--terra)", color: "#fff" }}>My trip</Link>
         </div>
       )}
     </nav>

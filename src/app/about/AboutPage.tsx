@@ -1,124 +1,36 @@
 "use client";
 
-import { useTheme } from "@/hooks/useTheme";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import Link from "next/link";
 
 export function AboutPage() {
-  const { themeKey, theme, setTheme, accent, mounted } = useTheme();
-  if (!mounted) return null;
-
-  const sections = [
-    {
-      title: "Who builds this",
-      icon: "📍",
-      content: "TravelBoa is built by a solo developer based in Dehradun, Uttarakhand — 3 hours from the Char Dham route and within a day's drive of Spiti, Ladakh, and every major Himalayan destination we cover. This isn't a travel blog run by someone Googling from a city desk. The guides on this site are written from first-hand experience, updated with local knowledge, and maintained by someone who actually drives these roads.",
-    },
-    {
-      title: "What we do differently",
-      icon: "🎯",
-      content: "Most travel content on the internet is either outdated blog posts or booking-engine pages disguised as guides. TravelBoa is a trip companion — we combine live utility data (road conditions, weather, fuel and ATM availability) with deep editorial guides, interactive packing checklists, and honest gear recommendations. Everything a traveller needs to plan and execute their trip, in one place. No fluff, no AI-generated filler, no stock photos passed off as real.",
-    },
-    {
-      title: "Our editorial standards",
-      icon: "✍️",
-      items: [
-        "All destination guides are written from personal visits or direct local knowledge",
-        "We never publish AI-generated content as original writing",
-        "Budget figures are verified against current prices, not copied from other blogs",
-        "Route information is cross-checked with government sources (PWD, BRO)",
-        "Photos are either original or sourced from Wikimedia Commons with proper attribution",
-        "We update guides at least once per season — not publish and forget",
-        "Every factual claim can be verified against a primary source",
-      ],
-    },
-    {
-      title: "Data sources",
-      icon: "📡",
-      items: [
-        "Weather: OpenWeatherMap API (free tier, 30-minute refresh)",
-        "Road status Uttarakhand: PWD UK official portal (mis.pwduk.in)",
-        "Road status Himachal: HP PWD + BRO official channels",
-        "Pass status: BRO announcements + verified local reports",
-        "Fuel & ATM: Manual verification + user reports during season",
-        "Registration portals: Direct links to official government sites",
-      ],
-    },
-    {
-      title: "Affiliate disclosure",
-      icon: "💰",
-      content: "TravelBoa participates in affiliate programs with Amazon India (Amazon Associates), Decathlon, Flipkart (via Cuelinks), Booking.com, and MakeMyTrip (via EarnKaro/Cuelinks). When you buy a product or book a hotel through our links, we earn a small commission at no extra cost to you. This helps us keep the site free and maintain live data feeds. We only recommend products we would actually use or have tested. Affiliate relationships never influence our editorial content or ratings. If a product is bad, we won't recommend it regardless of commission.",
-    },
-    {
-      title: "What we don't do",
-      icon: "🚫",
-      items: [
-        "We don't sell tour packages or accept paid placements disguised as editorial",
-        "We don't fabricate reviews or ratings",
-        "We don't use others' photos without permission or attribution",
-        "We don't provide medical advice — always consult a doctor for altitude-related concerns",
-        "We don't guarantee road status accuracy — conditions change rapidly in mountains. Always verify locally.",
-      ],
-    },
-    {
-      title: "Contact",
-      icon: "📬",
-      content: "Found an error? Road status outdated? Want to suggest a destination? Have feedback? Reach out — we read everything. Email: hello@travelboa.com",
-    },
-  ];
-
   return (
-    <div className="relative min-h-screen bg-white font-sans">
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <svg width="100%" height="100%" className="opacity-[0.016]"><defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0L0 0 0 48" fill="none" stroke="#888" strokeWidth="0.5" /></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" /></svg>
-      </div>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} />
-      <Navbar accent={accent} />
-
-      <div className="relative z-10 max-w-[720px] mx-auto px-8 pb-20">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mt-6 mb-6 text-xs text-gray-400">
-          <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-          <span>→</span>
-          <span className="text-gray-700 font-semibold">About</span>
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[760px] mx-auto px-5 sm:px-6">
+          <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span><span style={{ color: "var(--ink)" }}>About</span>
         </div>
-
-        <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">About TravelBoa</h1>
-        <p className="text-sm text-gray-400 mb-10">How we work, where our data comes from, and why you can trust what you read here.</p>
-
-        {sections.map((s, i) => (
-          <div key={i} className="mb-10">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl">{s.icon}</span>
-              <h2 className="text-lg font-extrabold text-gray-900">{s.title}</h2>
-            </div>
-            {s.content && (
-              <p className="text-[15px] text-gray-600 leading-relaxed">{s.content}</p>
-            )}
-            {s.items && (
-              <ul className="space-y-2 mt-1">
-                {s.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2.5 text-[14px] text-gray-600 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-colors duration-300" style={{ background: accent }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
+      </div>
+      <div className="max-w-[760px] mx-auto px-5 sm:px-6 py-12 sm:py-16">
+        <h1 className="text-[clamp(30px,4vw,42px)] font-extrabold tracking-tight leading-[1.08] mb-6" style={{ color: "var(--ink)" }}>About TravelBoa</h1>
+        <div className="space-y-5 text-[17px] font-normal leading-[1.8]" style={{ color: "var(--ink)" }}>
+          <p>I am a solo traveler based in <b className="font-semibold">Dehradun, Uttarakhand</b>, at the foot of the Himalaya. TravelBoa started as notes I kept for myself before every trek: what to pack, which roads are open, what the weather actually feels like at 3,500 metres. Friends started asking for the same notes, so I turned them into a website.</p>
+          <p>Everything here is written from first-hand experience or from conversations with people who run the routes. I check road conditions every morning from Dehradun. The gear reviews link to products I have used on real treks. The packing lists come from bags I have packed, not from generic templates.</p>
+          <p>TravelBoa covers <b className="font-semibold">23 destinations</b> across Uttarakhand, Himachal Pradesh, Jammu &amp; Kashmir, Ladakh, and Sikkim, with 7 topic guides and 14 gear reviews. The site is built with Next.js and deployed on Vercel.</p>
+          <div className="bg-white p-6 rounded-[18px] border mt-8" style={{ borderColor: "#e3e9e6" }}>
+            <h2 className="text-[20px] font-bold mb-3" style={{ color: "var(--ink)" }}>Affiliate disclosure</h2>
+            <p className="text-[16px] font-normal leading-[1.75]" style={{ color: "var(--ink-soft)" }}>Some gear links on this site are Amazon Associates affiliate links (tracking ID: travelboa-21). If you buy through them, I earn a small commission at no extra cost to you. This never changes my recommendations. I link to products I have actually used and trust. If something is not worth buying, I say so.</p>
           </div>
-        ))}
-
-        <div className="mt-12 p-6 rounded-xl border-2 transition-colors duration-300" style={{ borderColor: accent, background: `${accent}06` }}>
-          <p className="font-caveat text-lg transition-colors duration-300" style={{ color: accent }}>
-            "I built TravelBoa because I was tired of checking 10 different sites every time I planned a trip from Dehradun. If it helps even one person travel safer and better prepared, it was worth building."
-          </p>
-          <p className="text-xs text-gray-400 mt-3">— The person behind TravelBoa</p>
+          <div className="mt-8">
+            <h2 className="text-[20px] font-bold mb-3" style={{ color: "var(--ink)" }}>Get in touch</h2>
+            <p>Write to me at <a href="mailto:hello@travelboa.com" className="font-semibold no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com</a>. I read every email and reply to trip questions personally.</p>
+          </div>
         </div>
       </div>
-
-      <Footer accent={accent} />
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import Link from "next/link";
 
 const ROUTE_GROUPS = [
@@ -74,11 +72,18 @@ const ALERTS = [
   { text: "Kunzum La opened for 2026 season on May 18", level: "success" as const, dest: "Spiti" },
 ];
 
-export function RoadStatusDashboard() {
-  const { themeKey, theme, setTheme, accent, mounted } = useTheme();
-  const [filter, setFilter] = useState<string>("all");
 
-  if (!mounted) return null;
+export function RoadStatusDashboard() {
+  const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    }), { threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   const filtered = filter === "all" ? ROUTE_GROUPS : ROUTE_GROUPS.filter(g => g.slug === filter);
   const totalRoutes = ROUTE_GROUPS.reduce((s, g) => s + g.routes.length, 0);
@@ -86,39 +91,57 @@ export function RoadStatusDashboard() {
   const partialRoutes = ROUTE_GROUPS.reduce((s, g) => s + g.routes.filter(r => r.status === "partial").length, 0);
   const closedRoutes = ROUTE_GROUPS.reduce((s, g) => s + g.routes.filter(r => r.status === "closed").length, 0);
 
+  const statusColor: Record<string, string> = { open: "#7be3a2", partial: "#e3b04b", closed: "#ef4444" };
+  const statusBg: Record<string, string> = { open: "#ecfdf5", partial: "#fffbeb", closed: "#fef2f2" };
+  const statusText: Record<string, string> = { open: "#065f46", partial: "#92400e", closed: "#991b1b" };
+
   return (
-    <div className="relative min-h-screen bg-white font-sans">
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <svg width="100%" height="100%" className="opacity-[0.016]"><defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0L0 0 0 48" fill="none" stroke="#888" strokeWidth="0.5" /></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" /></svg>
-      </div>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} />
-      <Navbar accent={accent} />
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
 
-      <div className="relative z-10 max-w-[900px] mx-auto px-8 pb-20">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mt-6 mb-6 text-xs text-gray-400">
-          <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
-          <span>→</span>
-          <span className="text-gray-700 font-semibold">Live road status</span>
+      <div className="py-3 font-mono text-[12px] border-b" style={{ background: "var(--snowfield)", borderColor: "#e3e9e6", color: "var(--ink-soft)" }}>
+        <div className="max-w-[960px] mx-auto px-5 sm:px-6">
+          <Link href="/" className="no-underline" style={{ color: "var(--terra)" }}>Home</Link>
+          <span className="mx-1.5 opacity-50">/</span><span style={{ color: "var(--ink)" }}>Road Status</span>
         </div>
+      </div>
 
-        {/* Header */}
-        <div className="flex items-start justify-between gap-8 mb-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-              <h1 className="text-3xl font-black text-gray-900 tracking-tight">Live road status</h1>
-            </div>
-            <p className="text-sm text-gray-400 mt-2">Updated every 30–60 minutes from PWD Uttarakhand, HP PWD, and BRO sources.</p>
+      <div className="contour-bg py-10 sm:py-12 border-b" style={{ borderColor: "#e3e9e6" }}>
+        <div className="max-w-[960px] mx-auto px-5 sm:px-6">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-3 h-3 rounded-full" style={{ background: "#7be3a2", animation: "pulse-dot 2s ease-in-out infinite" }} />
+            <p className="kicker">Live road status</p>
+          </div>
+          <h1 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Road conditions from Dehradun, updated this morning.</h1>
+          <p className="text-[17px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Sourced from PWD Uttarakhand, HP PWD, and BRO. Refreshed every 30-60 minutes during season.</p>
+
+          {/* Summary stats */}
+          <div className="flex gap-3 mt-8 flex-wrap">
+            {[
+              ["Open", openRoutes, "#7be3a2", "#ecfdf5"],
+              ["Partial", partialRoutes, "#e3b04b", "#fffbeb"],
+              ["Closed", closedRoutes, "#ef4444", "#fef2f2"],
+              ["Total", totalRoutes, "var(--ink-soft)", "var(--snowfield)"],
+            ].map(([label, count, dot, bg]) => (
+              <div key={label as string} className="flex-1 min-w-[100px] px-4 py-3 rounded-2xl border text-center" style={{ background: bg as string, borderColor: "#e3e9e6" }}>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: dot as string }} />
+                  <span className="text-[22px] font-extrabold" style={{ color: "var(--ink)" }}>{count as number}</span>
+                </div>
+                <div className="font-mono text-[11px] uppercase tracking-wider mt-0.5" style={{ color: "var(--ink-soft)" }}>{label as string}</div>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
+      <div className="max-w-[960px] mx-auto px-5 sm:px-6 py-8 sm:py-10">
         {/* Disclaimer */}
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl mb-6" style={{ background: "#fffbeb", border: "1px solid #fde68a" }}>
-          <span className="text-base mt-0.5">⚠️</span>
+        <div className="flex items-start gap-3 px-5 py-4 rounded-[18px] mb-6" style={{ background: "#fffbeb", border: "1px solid #fde68a" }}>
+          <span className="text-lg mt-0.5">⚠️</span>
           <div>
-            <p className="text-sm font-semibold text-amber-800">Road conditions change rapidly in the mountains</p>
-            <p className="text-xs text-amber-700/70 mt-0.5 leading-relaxed">This data is sourced from government portals and may not reflect real-time conditions. Landslides, weather, and BRO maintenance can change road status within hours. Always verify with local authorities before starting your journey. Call SDRF (1070) or BRO (1800-180-6763) for latest updates.</p>
+            <p className="text-[15px] font-semibold text-amber-800">Road conditions change rapidly in the mountains</p>
+            <p className="text-[14px] text-amber-700/70 mt-1 leading-relaxed">Landslides, weather, and BRO maintenance can change status within hours. Always verify with local authorities. Call SDRF (1070) or BRO (1800-180-6763) for latest updates.</p>
           </div>
         </div>
 
@@ -126,12 +149,12 @@ export function RoadStatusDashboard() {
         {ALERTS.length > 0 && (
           <div className="mb-6 flex flex-col gap-2">
             {ALERTS.map((a, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm"
+              <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-[14px] text-[14px]"
                 style={{
                   background: a.level === "danger" ? "#fef2f2" : a.level === "warning" ? "#fffbeb" : "#f0fdf4",
                   border: `1px solid ${a.level === "danger" ? "#fecaca" : a.level === "warning" ? "#fde68a" : "#bbf7d0"}`,
                 }}>
-                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: a.level === "danger" ? "#ef4444" : a.level === "warning" ? "#f59e0b" : "#22c55e" }} />
+                <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: a.level === "danger" ? "#ef4444" : a.level === "warning" ? "#f59e0b" : "#22c55e" }} />
                 <span style={{ color: a.level === "danger" ? "#991b1b" : a.level === "warning" ? "#92400e" : "#166534" }}>
                   <strong>{a.dest}:</strong> {a.text}
                 </span>
@@ -140,58 +163,34 @@ export function RoadStatusDashboard() {
           </div>
         )}
 
-        {/* Summary stats */}
-        <div className="flex gap-3 mb-6">
-          {[
-            ["Open", openRoutes, "#22c55e", "#f0fdf4"],
-            ["Partial", partialRoutes, "#f59e0b", "#fffbeb"],
-            ["Closed", closedRoutes, "#ef4444", "#fef2f2"],
-            ["Total", totalRoutes, "#6b7280", "#f9fafb"],
-          ].map(([label, count, dot, bg]) => (
-            <div key={label as string} className="flex-1 px-4 py-3 rounded-xl border border-gray-100 text-center" style={{ background: bg as string }}>
-              <div className="flex items-center justify-center gap-2">
-                <span className="w-2 h-2 rounded-full" style={{ background: dot as string }} />
-                <span className="text-xl font-black text-gray-900">{count as number}</span>
-              </div>
-              <div className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mt-0.5">{label as string}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Destination filter */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-1">
-          <button onClick={() => setFilter("all")} className="px-4 py-2 rounded-lg text-xs font-bold shrink-0 transition-all" style={{ background: filter === "all" ? accent : "#f5f5f5", color: filter === "all" ? "white" : "#888" }}>All routes</button>
+        {/* Filter */}
+        <div className="flex gap-2.5 mb-8 overflow-x-auto pb-1 flex-wrap">
+          <button onClick={() => setFilter("all")} className="px-4 py-2 rounded-full text-[13px] font-semibold shrink-0 border-0 cursor-pointer transition-all" style={{ background: filter === "all" ? "var(--terra)" : "#fff", color: filter === "all" ? "#fff" : "var(--ink-soft)", border: `1.5px solid ${filter === "all" ? "var(--terra)" : "#e3e9e6"}` }}>All routes</button>
           {ROUTE_GROUPS.map(g => (
-            <button key={g.slug} onClick={() => setFilter(g.slug)} className="px-4 py-2 rounded-lg text-xs font-bold shrink-0 transition-all" style={{ background: filter === g.slug ? accent : "#f5f5f5", color: filter === g.slug ? "white" : "#888" }}>{g.destination}</button>
+            <button key={g.slug} onClick={() => setFilter(g.slug)} className="px-4 py-2 rounded-full text-[13px] font-semibold shrink-0 border-0 cursor-pointer transition-all" style={{ background: filter === g.slug ? "var(--terra)" : "#fff", color: filter === g.slug ? "#fff" : "var(--ink-soft)", border: `1.5px solid ${filter === g.slug ? "var(--terra)" : "#e3e9e6"}` }}>{g.destination}</button>
           ))}
         </div>
 
         {/* Route groups */}
-        {filtered.map((group) => (
-          <div key={group.slug} className="mb-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Link href={`/${group.slug}`} className="text-lg font-extrabold text-gray-900 hover:underline">{group.destination}</Link>
-              <span className="text-xs text-gray-300">·</span>
-              <span className="text-xs text-gray-300">{group.routes.length} segments</span>
+        {filtered.map(group => (
+          <div key={group.slug} className="reveal mb-8">
+            <div className="flex items-center gap-2.5 mb-3">
+              <Link href={`/${group.slug}`} className="text-[20px] font-extrabold no-underline hover:underline" style={{ color: "var(--ink)" }}>{group.destination}</Link>
+              <span className="font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>{group.routes.length} segments</span>
             </div>
-
-            <div className="bg-white rounded-xl border border-gray-100 overflow-hidden" style={{ boxShadow: "2px 4px 14px rgba(0,0,0,0.03)" }}>
+            <div className="bg-white rounded-[18px] border overflow-hidden" style={{ borderColor: "#e3e9e6", boxShadow: "0 8px 30px -16px rgba(28,43,51,0.15)" }}>
               {group.routes.map((r, i) => (
-                <div key={i} className="flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-gray-50 cursor-default"
-                  style={{ borderBottom: i < group.routes.length - 1 ? "1px solid #f8f8f8" : "none" }}>
-                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: r.status === "open" ? "#22c55e" : r.status === "partial" ? "#f59e0b" : "#ef4444" }} />
+                <div key={i} className="flex items-center gap-3 px-5 py-4 transition-colors hover:bg-[var(--snowfield)]" style={{ borderBottom: i < group.routes.length - 1 ? "1px solid #f0f3f1" : "none" }}>
+                  <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: statusColor[r.status] }} />
                   <div className="flex-1 min-w-0">
-                    <span className="text-sm font-semibold text-gray-900">{r.from}</span>
-                    <span className="text-xs text-gray-300 mx-2">→</span>
-                    <span className="text-sm font-semibold text-gray-900">{r.to}</span>
-                    <span className="text-xs text-gray-300 ml-2">{r.km} km</span>
+                    <span className="text-[15px] font-semibold" style={{ color: "var(--ink)" }}>{r.from}</span>
+                    <span className="text-[13px] mx-2" style={{ color: "var(--ink-soft)" }}>&rarr;</span>
+                    <span className="text-[15px] font-semibold" style={{ color: "var(--ink)" }}>{r.to}</span>
+                    <span className="font-mono text-[12px] ml-2" style={{ color: "var(--ink-soft)" }}>{r.km} km</span>
                   </div>
-                  <span className="text-xs text-gray-400 hidden sm:block">{r.note}</span>
-                  <span className="font-mono text-[10px] text-gray-300">{r.updated}</span>
-                  <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase" style={{
-                    background: r.status === "open" ? "#ecfdf5" : r.status === "partial" ? "#fffbeb" : "#fef2f2",
-                    color: r.status === "open" ? "#065f46" : r.status === "partial" ? "#92400e" : "#991b1b",
-                  }}>{r.status}</span>
+                  <span className="text-[13px] hidden sm:block" style={{ color: "var(--ink-soft)" }}>{r.note}</span>
+                  <span className="font-mono text-[11px]" style={{ color: "var(--ink-soft)" }}>{r.updated}</span>
+                  <span className="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold uppercase" style={{ background: statusBg[r.status], color: statusText[r.status] }}>{r.status}</span>
                 </div>
               ))}
             </div>
@@ -199,14 +198,13 @@ export function RoadStatusDashboard() {
         ))}
 
         {/* Sources */}
-        <div className="mt-8 p-5 bg-gray-50 rounded-xl text-xs text-gray-400 leading-relaxed">
-          <p className="font-bold text-gray-600 mb-2">Data sources & accuracy</p>
-          <p>Road status data is sourced from PWD Uttarakhand (mis.pwduk.in), Himachal Pradesh PWD, BRO (Border Roads Organisation) official channels, and Uttarakhand Police updates. Data is refreshed every 30–60 minutes during season. Actual conditions may vary — always verify with local authorities before starting your journey.</p>
-          <p className="mt-2">For real-time updates, follow BRO on Twitter: @BaboroOfficial</p>
+        <div className="mt-8 p-6 rounded-[18px] text-[14px] leading-relaxed" style={{ background: "var(--snowfield)", color: "var(--ink-soft)" }}>
+          <p className="font-bold mb-2" style={{ color: "var(--ink)" }}>Data sources &amp; accuracy</p>
+          <p>Road status data is sourced from PWD Uttarakhand (mis.pwduk.in), Himachal Pradesh PWD, BRO official channels, and Uttarakhand Police updates. Actual conditions may vary. Always verify with local authorities before starting your journey.</p>
         </div>
       </div>
 
-      <Footer accent={accent} />
+      <Footer />
     </div>
   );
 }

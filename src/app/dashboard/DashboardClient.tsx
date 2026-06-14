@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ColorPicker } from "@/components/ColorPicker";
 import { DESTINATIONS } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,79 +33,55 @@ function saveState(slug: string, state: DashboardState) {
 }
 
 /* ═══ DESTINATION SELECTOR ═══ */
-function DestSelector({ accent, dark, onSelect }: { accent: string; dark: boolean; onSelect: (i: number) => void }) {
-  const [hov, setHov] = useState<number | null>(null);
+function DestSelector({ onSelect }: { onSelect: (i: number) => void }) {
   const [search, setSearch] = useState("");
   const [searchFocus, setSearchFocus] = useState(false);
-
-  const bg = dark ? "#0c0a09" : "white";
-  const textPrimary = dark ? "#f5f5f4" : "#111";
-  const textSecondary = dark ? "#a8a29e" : "#666";
-  const textMuted = dark ? "#57534e" : "#ccc";
-  const border = dark ? "#292524" : "#f0f0f0";
-  const cardBg = dark ? "#1c1a17" : "white";
 
   const filtered = DESTINATIONS.filter(d =>
     search.length === 0 || d.name.toLowerCase().includes(search.toLowerCase()) || d.info.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center px-4 py-12" style={{ background: bg }}>
-      <div className="text-4xl mb-4">🗺️</div>
-      <h1 className="text-2xl sm:text-3xl font-black text-center tracking-tight mb-2" style={{ color: textPrimary }}>Create your trip dashboard</h1>
-      <p className="text-sm text-center max-w-md mb-8" style={{ color: textSecondary }}>Select a destination and we&apos;ll build a personalized dashboard with checklists, weather, road status, and more.</p>
+    <div className="contour-bg min-h-[calc(100vh-64px)] flex flex-col items-center px-5 py-16">
+      <div className="text-5xl mb-5">🗺️</div>
+      <h1 className="text-[clamp(28px,4vw,42px)] font-extrabold text-center tracking-tight mb-2" style={{ color: "var(--ink)" }}>Create your trip dashboard</h1>
+      <p className="text-[17px] font-normal text-center max-w-lg mb-10" style={{ color: "var(--ink-soft)" }}>Select a destination. I will build a personal dashboard with checklists, weather, road status, and notes that saves to your browser.</p>
 
-      {/* Search bar */}
-      <div className="relative w-full max-w-[500px] mb-8">
-        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base" style={{ color: textMuted }}>🔍</div>
-        <input
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          onFocus={() => setSearchFocus(true)}
-          onBlur={() => setSearchFocus(false)}
-          placeholder="Search destinations..."
-          className="w-full pl-11 pr-4 py-3.5 rounded-xl text-sm font-semibold outline-none transition-all duration-200"
-          style={{ background: dark ? "#1c1a17" : "#fafafa", color: textPrimary, border: `1.5px solid ${searchFocus ? accent : border}`, boxShadow: searchFocus ? `0 0 0 3px ${accent}15` : "none" }}
-          autoComplete="off"
-        />
-        {search && (
-          <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center" style={{ background: dark ? "#333" : "#eee", color: textMuted }}>✕</button>
-        )}
+      <div className="w-full max-w-md mb-8">
+        <div className="flex items-center rounded-full px-5 py-1" style={{ background: "#fff", border: `2px solid ${searchFocus ? "var(--terra)" : "#e3e9e6"}`, boxShadow: searchFocus ? "0 0 0 4px rgba(194,102,45,0.1)" : "0 4px 20px -8px rgba(28,43,51,0.15)", transition: "border-color 0.2s, box-shadow 0.2s" }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          <input value={search} onChange={e => setSearch(e.target.value)} onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
+            placeholder="Search destinations..." className="flex-1 border-0 bg-transparent font-sans text-[16px] py-3 px-3 outline-none" style={{ color: "var(--ink)" }} autoComplete="off" />
+        </div>
       </div>
 
-      {filtered.length === 0 ? (
-        <div className="text-center py-10">
-          <p className="text-base font-bold" style={{ color: textPrimary }}>No destinations found</p>
-          <p className="text-sm mt-1" style={{ color: textMuted }}>Try a different search</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[800px] w-full">
-          {filtered.map((d, i) => {
-            const realIndex = DESTINATIONS.findIndex(dd => dd.slug === d.slug);
-            return (
-              <button key={d.slug} onClick={() => onSelect(realIndex)}
-                onMouseEnter={() => setHov(realIndex)} onMouseLeave={() => setHov(null)}
-                className="text-left rounded-xl overflow-hidden transition-all duration-200 cursor-pointer"
-                style={{
-                  background: cardBg, border: `1.5px solid ${hov === realIndex ? accent : border}`,
-                  transform: hov === realIndex ? "translateY(-4px)" : "none",
-                  boxShadow: hov === realIndex ? `0 8px 24px ${accent}20` : "none",
-                }}>
-                <div className="aspect-[16/9] relative" style={{ background: d.grad }}>
-                  {d.image && <Image src={d.image} alt={`${d.name} - trip dashboard destination`} fill className="object-cover" sizes="260px" />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-3 left-4">
-                    <div className="text-lg font-extrabold text-white">{d.name}</div>
-                    <div className="text-xs text-white/60">{d.info}</div>
-                  </div>
+      <div className="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+        {filtered.map((d, i) => {
+          const idx = DESTINATIONS.indexOf(d);
+          return (
+            <button key={d.slug} onClick={() => onSelect(idx)}
+              className="group rounded-[16px] overflow-hidden text-left border-0 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl bg-white" style={{ border: "1px solid #e3e9e6" }}>
+              <div className="relative aspect-[16/10] overflow-hidden" style={{ background: d.grad }}>
+                {d.image && <Image src={d.image} alt={d.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="200px" />}
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.55))" }} />
+                <div className="absolute bottom-2.5 left-3">
+                  <div className="text-[16px] font-extrabold text-white">{d.name}</div>
+                  <div className="text-[11px] text-white/60 font-mono">{d.info}</div>
                 </div>
-                <div className="p-3 flex items-center justify-between">
-                  <span className="font-caveat text-sm" style={{ color: accent }}>{d.note}</span>
-                  <span className="text-xs font-bold" style={{ color: accent }}>Select →</span>
-                </div>
-              </button>
-            );
-          })}
+              </div>
+              <div className="p-3 flex items-center justify-between">
+                <span className="font-caveat text-[14px]" style={{ color: "var(--terra)" }}>{d.note}</span>
+                <span className="text-[12px] font-semibold" style={{ color: "var(--terra)" }}>Select &rarr;</span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {filtered.length === 0 && (
+        <div className="text-center py-12">
+          <div className="text-4xl mb-3">🏔️</div>
+          <p className="text-[17px] font-bold" style={{ color: "var(--ink)" }}>No destinations found</p>
         </div>
       )}
     </div>
@@ -116,14 +90,12 @@ function DestSelector({ accent, dark, onSelect }: { accent: string; dark: boolea
 
 /* ═══ MAIN DASHBOARD ═══ */
 export function DashboardClient() {
-  const { themeKey, theme, setTheme, accent, dark, toggleDark, mounted } = useTheme();
   const [destIndex, setDestIndex] = useState<number>(-1);
   const [state, setState] = useState<DashboardState>(getDefaultState());
   const [loaded, setLoaded] = useState(false);
   const [shareMsg, setShareMsg] = useState(false);
 
   useEffect(() => {
-    // URL param takes priority
     const params = new URLSearchParams(window.location.search);
     const destParam = params.get("dest");
     const stateParam = params.get("s");
@@ -132,50 +104,33 @@ export function DashboardClient() {
       const idx = DESTINATIONS.findIndex(d => d.slug === destParam);
       if (idx >= 0) {
         setDestIndex(idx);
-        // If shared state exists in URL, decode it
         if (stateParam) {
-          try {
-            const decoded = JSON.parse(atob(stateParam));
-            setState(decoded);
-            setLoaded(true);
-            return;
-          } catch {}
+          try { const decoded = JSON.parse(atob(stateParam)); setState(decoded); setLoaded(true); return; } catch {}
         }
-        // Otherwise load from localStorage
         setState(loadState(destParam));
         setLoaded(true);
         return;
       }
     }
-    // Otherwise check if user had a saved destination
-    const lastDest = localStorage.getItem("travelboa-dash-last");
-    if (lastDest) {
-      const idx = DESTINATIONS.findIndex(d => d.slug === lastDest);
-      if (idx >= 0) {
-        setDestIndex(idx);
-        setState(loadState(lastDest));
+    try {
+      const lastDest = localStorage.getItem("travelboa-dash-last");
+      if (lastDest) {
+        const idx = DESTINATIONS.findIndex(d => d.slug === lastDest);
+        if (idx >= 0) { setDestIndex(idx); setState(loadState(lastDest)); }
       }
-    }
+    } catch {}
     setLoaded(true);
   }, []);
 
-  // Save state whenever it changes
   useEffect(() => {
     if (loaded && destIndex >= 0) {
       const slug = DESTINATIONS[destIndex].slug;
       saveState(slug, state);
-      localStorage.setItem("travelboa-dash-last", slug);
+      try { localStorage.setItem("travelboa-dash-last", slug); } catch {}
     }
   }, [state, loaded, destIndex]);
 
-  if (!mounted || !loaded) return null;
-
-  const bg = dark ? "#0c0a09" : "white";
-  const cardBg = dark ? "#1c1a17" : "white";
-  const textPrimary = dark ? "#f5f5f4" : "#111";
-  const textSecondary = dark ? "#a8a29e" : "#666";
-  const textMuted = dark ? "#57534e" : "#ccc";
-  const border = dark ? "#292524" : "#f0f0f0";
+  if (!loaded) return null;
 
   const selectDest = (i: number) => {
     const slug = DESTINATIONS[i].slug;
@@ -187,7 +142,7 @@ export function DashboardClient() {
   const resetDash = () => {
     setDestIndex(-1);
     setState(getDefaultState());
-    localStorage.removeItem("travelboa-dash-last");
+    try { localStorage.removeItem("travelboa-dash-last"); } catch {}
     window.history.replaceState({}, "", "/dashboard");
   };
 
@@ -206,11 +161,10 @@ export function DashboardClient() {
   // Selector screen
   if (destIndex < 0) {
     return (
-      <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
-        <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
-        <Navbar accent={accent} dark={dark} />
-        <DestSelector accent={accent} dark={dark} onSelect={selectDest} />
-        <Footer accent={accent} />
+      <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+        <Navbar />
+        <DestSelector onSelect={selectDest} />
+        <Footer />
       </div>
     );
   }
@@ -230,79 +184,78 @@ export function DashboardClient() {
   const doneChecks = Object.values(state.checks).filter(Boolean).length;
   const progress = totalChecks > 0 ? Math.round((doneChecks / totalChecks) * 100) : 0;
 
-  return (
-    <div className="relative min-h-screen font-sans transition-colors duration-300" style={{ background: bg }}>
-      <ColorPicker themeKey={themeKey} setTheme={setTheme} dark={dark} toggleDark={toggleDark} />
-      <Navbar accent={accent} dark={dark} />
+  const routeStatusColor: Record<string, string> = { open: "#7be3a2", partial: "#e3b04b", closed: "#ef4444" };
 
-      <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8 pb-20">
-        {/* Hero banner with image */}
-        <div className="relative rounded-2xl overflow-hidden mt-4 mb-6" style={{ aspectRatio: "21/6" }}>
-          <div className="absolute inset-0" style={{ background: dest.grad }}>
-            {dest.image && <Image src={dest.image} alt={`${dest.name} - your trip dashboard`} fill className="object-cover" sizes="1100px" />}
+  return (
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
+      <Navbar />
+
+      {/* Hero banner */}
+      <div className="relative overflow-hidden" style={{ minHeight: 200, background: dest.grad }}>
+        {dest.image && <Image src={dest.image} alt={dest.name} fill className="object-cover" sizes="1200px" />}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,22,32,0.3) 0%, rgba(10,22,32,0.8) 100%)" }} />
+        <div className="relative z-[2] max-w-[1100px] mx-auto px-5 sm:px-6 py-8 sm:py-10">
+          <div className="flex items-center gap-2 font-mono text-[12px] text-white/50 mb-3">
+            <Link href="/" className="no-underline text-white/50 hover:text-white/80">Home</Link>
+            <span>/</span>
+            <span className="text-white/80 font-semibold">My trip</span>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-              <div>
-                <div className="flex items-center gap-2 text-xs text-white/50 mb-1">
-                  <Link href="/" className="hover:text-white/80 text-white/50 no-underline">Home</Link>
-                  <span>→</span>
-                  <span className="text-white/80 font-semibold">My trip</span>
-                </div>
-                <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Your {dest.name} trip</h1>
-                <p className="text-xs sm:text-sm text-white/50 mt-1">Personal dashboard — saves automatically to your browser</p>
-              </div>
-              <div className="flex gap-2">
-                <button onClick={shareUrl} className="px-4 py-2 rounded-xl text-xs font-bold bg-white/15 text-white border border-white/20 backdrop-blur-sm transition-all hover:bg-white/25">
-                  {shareMsg ? "✓ Copied!" : "📤 Share"}
-                </button>
-                <button onClick={resetDash} className="px-4 py-2 rounded-xl text-xs font-bold text-white border-2 border-white/40 backdrop-blur-sm transition-all hover:bg-white/15 hover:border-white/60">
-                  🔄 Change destination
-                </button>
-              </div>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <h1 className="text-[clamp(26px,4vw,36px)] font-extrabold text-white tracking-tight">Your {dest.name} trip</h1>
+              <p className="text-[15px] text-white/50 mt-1">Personal dashboard. Saves automatically to your browser.</p>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={shareUrl} className="px-4 py-2.5 rounded-xl text-[13px] font-semibold text-white border-0 cursor-pointer transition-all hover:bg-white/25" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(4px)" }}>
+                {shareMsg ? "✓ Copied!" : "📤 Share"}
+              </button>
+              <button onClick={resetDash} className="px-4 py-2.5 rounded-xl text-[13px] font-semibold text-white border-2 border-white/30 bg-transparent cursor-pointer transition-all hover:bg-white/15">
+                🔄 Change
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-6 py-8 sm:py-10">
         {/* Progress bar */}
-        <div className="p-4 rounded-xl mb-6" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
+        <div className="bg-white p-5 rounded-[18px] border mb-6" style={{ borderColor: "#e3e9e6", boxShadow: "0 8px 30px -16px rgba(28,43,51,0.2)" }}>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-bold" style={{ color: textPrimary }}>Trip readiness</span>
-            <span className="text-sm font-black" style={{ color: progress === 100 ? "#22c55e" : accent }}>{progress}%</span>
+            <span className="text-[16px] font-bold" style={{ color: "var(--ink)" }}>Trip readiness</span>
+            <span className="text-[18px] font-extrabold" style={{ color: progress === 100 ? "var(--meadow)" : "var(--terra)" }}>{progress}%</span>
           </div>
-          <div className="w-full h-2.5 rounded-full overflow-hidden" style={{ background: dark ? "#292524" : "#f0f0f0" }}>
-            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${progress}%`, background: progress === 100 ? "#22c55e" : accent }} />
+          <div className="w-full h-3 rounded-full overflow-hidden" style={{ background: "var(--snowfield)" }}>
+            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${progress}%`, background: progress === 100 ? "var(--meadow)" : "var(--terra)" }} />
           </div>
-          <p className="text-xs mt-2" style={{ color: textMuted }}>{doneChecks} of {totalChecks} items checked</p>
+          <p className="text-[13px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>{doneChecks} of {totalChecks} items checked</p>
         </div>
 
         {/* Trip details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-          <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-            <label className="text-xs font-semibold block mb-2" style={{ color: textMuted }}>📅 Trip date</label>
-            <input type="date" value={state.tripDate} onChange={e => setState(p => ({ ...p, tripDate: e.target.value }))} className="w-full py-2 px-3 rounded-lg text-sm font-semibold outline-none" style={{ background: dark ? "#0c0a09" : "#fafafa", color: textPrimary, border: `1px solid ${border}` }} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div className="bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+            <label className="block font-mono text-[12px] font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--ink-soft)" }}>📅 Trip date</label>
+            <input type="date" value={state.tripDate} onChange={e => setState(p => ({ ...p, tripDate: e.target.value }))} className="w-full py-2.5 px-3 rounded-xl text-[15px] font-semibold outline-none" style={{ background: "var(--snowfield)", color: "var(--ink)", border: "1px solid #e3e9e6" }} />
           </div>
-          <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-            <label className="text-xs font-semibold block mb-2" style={{ color: textMuted }}>👥 Travelers</label>
-            <input type="number" min="1" max="20" value={state.travelers} onChange={e => setState(p => ({ ...p, travelers: e.target.value }))} className="w-full py-2 px-3 rounded-lg text-sm font-semibold outline-none" style={{ background: dark ? "#0c0a09" : "#fafafa", color: textPrimary, border: `1px solid ${border}` }} />
+          <div className="bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+            <label className="block font-mono text-[12px] font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--ink-soft)" }}>👥 Travelers</label>
+            <input type="number" min="1" max="20" value={state.travelers} onChange={e => setState(p => ({ ...p, travelers: e.target.value }))} className="w-full py-2.5 px-3 rounded-xl text-[15px] font-semibold outline-none" style={{ background: "var(--snowfield)", color: "var(--ink)", border: "1px solid #e3e9e6" }} />
           </div>
         </div>
 
         {/* Main grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
           {/* Checklists */}
           <div className="flex flex-col gap-4">
             {checkSections.map((sec, si) => (
-              <div key={si} className="p-4 sm:p-5 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-                <h3 className="text-sm font-extrabold mb-3" style={{ color: textPrimary }}>{sec.title}</h3>
+              <div key={si} className="bg-white p-5 sm:p-6 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+                <h3 className="text-[16px] font-bold mb-4" style={{ color: "var(--ink)" }}>{sec.title}</h3>
                 {sec.items.map((item, ii) => {
                   const key = `${si}-${ii}`;
                   const done = !!state.checks[key];
                   return (
-                    <div key={key} onClick={() => toggleCheck(key)} className="flex items-center gap-3 py-2 cursor-pointer rounded-lg px-2 -mx-2 transition-colors" style={{}} onMouseEnter={e=>e.currentTarget.style.background=dark?'rgba(255,255,255,0.02)':'rgba(0,0,0,0.01)'} onMouseLeave={e=>e.currentTarget.style.background=''}>
-                      <div className="w-5 h-5 rounded-md flex items-center justify-center text-xs text-white font-bold shrink-0 transition-all" style={{ border: `2px solid ${done ? "#22c55e" : border}`, background: done ? "#22c55e" : "transparent" }}>{done ? "✓" : ""}</div>
-                      <span className="text-sm transition-all" style={{ color: done ? textMuted : textPrimary, textDecoration: done ? "line-through" : "none" }}>{item}</span>
+                    <div key={key} onClick={() => toggleCheck(key)} className="flex items-center gap-3 py-2.5 cursor-pointer rounded-lg px-2 -mx-2 transition-colors hover:bg-[var(--snowfield)]">
+                      <div className="w-5 h-5 rounded-md flex items-center justify-center text-[11px] text-white font-bold shrink-0 transition-all" style={{ border: `2px solid ${done ? "var(--meadow)" : "#e3e9e6"}`, background: done ? "var(--meadow)" : "transparent" }}>{done ? "✓" : ""}</div>
+                      <span className="text-[15px] transition-all" style={{ color: done ? "var(--ink-soft)" : "var(--ink)", textDecoration: done ? "line-through" : "none" }}>{item}</span>
                     </div>
                   );
                 })}
@@ -313,92 +266,90 @@ export function DashboardClient() {
           {/* Sidebar */}
           <div className="flex flex-col gap-4">
             {/* Weather */}
-            <div className="p-4 rounded-xl text-center" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
+            <div className="bg-white p-5 rounded-[18px] border text-center" style={{ borderColor: "#e3e9e6" }}>
               <div className="text-3xl">{w.icon}</div>
-              <div className="text-3xl font-black mt-1" style={{ color: textPrimary }}>{w.temp}°C</div>
-              <div className="text-xs font-semibold mt-1" style={{ color: textSecondary }}>{dest.name} · {w.cond}</div>
-              <div className="grid grid-cols-3 gap-2 mt-4 pt-3" style={{ borderTop: `1px solid ${border}` }}>
+              <div className="text-[38px] font-extrabold tracking-tight mt-1" style={{ color: "var(--ink)" }}>{w.temp}&deg;C</div>
+              <div className="text-[14px] font-medium mt-1" style={{ color: "var(--ink-soft)" }}>{dest.name} &middot; {w.cond}</div>
+              <div className="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-dashed" style={{ borderColor: "#e3e9e6" }}>
                 {[["💧", w.hum + "%"], ["💨", w.wind + " km/h"], ["🌅", w.sunrise]].map(([ic, val]) => (
                   <div key={ic as string} className="text-center">
                     <div className="text-sm">{ic}</div>
-                    <div className="text-xs font-bold mt-0.5" style={{ color: textPrimary }}>{val}</div>
+                    <div className="text-[13px] font-bold mt-0.5" style={{ color: "var(--ink)" }}>{val}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Road status */}
-            <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: textPrimary }}>Road status</span>
-              </div>
+            <div className="bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+              <h3 className="text-[15px] font-bold flex items-center gap-2 mb-3" style={{ color: "var(--ink)" }}>
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#7be3a2", animation: "pulse-dot 2s ease-in-out infinite" }} /> Road status
+              </h3>
               {dest.routes.map((r, i) => (
-                <div key={i} className="flex items-center gap-2 py-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: r.status === "open" ? "#22c55e" : r.status === "partial" ? "#f59e0b" : "#ef4444" }} />
-                  <span className="text-xs font-semibold flex-1" style={{ color: textPrimary }}>{r.route}</span>
-                  <span className="text-[10px]" style={{ color: textMuted }}>{r.note}</span>
+                <div key={i} className="flex items-center gap-2.5 py-2" style={{ borderBottom: i < dest.routes.length - 1 ? "1px solid #f0f3f1" : "none" }}>
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: routeStatusColor[r.status] || "#ccc" }} />
+                  <span className="text-[13px] font-medium flex-1" style={{ color: "var(--ink)" }}>{r.route}</span>
+                  <span className="font-mono text-[11px]" style={{ color: "var(--ink-soft)" }}>{r.note}</span>
                 </div>
               ))}
             </div>
 
             {/* Quick facts */}
-            <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-              <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>Quick facts</div>
+            <div className="bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+              <p className="kicker mb-3">Quick facts</p>
               {dest.quickFacts.map((f, i) => (
-                <div key={i} className="flex items-center gap-2 py-1.5" style={{ borderBottom: i < dest.quickFacts.length - 1 ? `1px solid ${border}` : "none" }}>
-                  <span className="text-base">{f.icon}</span>
-                  <span className="text-xs flex-1" style={{ color: textSecondary }}>{f.label}</span>
-                  <span className="text-xs font-bold" style={{ color: textPrimary }}>{f.value}</span>
+                <div key={i} className="flex items-center gap-2.5 py-2" style={{ borderBottom: i < dest.quickFacts.length - 1 ? "1px solid #f0f3f1" : "none" }}>
+                  <span className="text-lg">{f.icon}</span>
+                  <span className="text-[13px] flex-1" style={{ color: "var(--ink-soft)" }}>{f.label}</span>
+                  <span className="text-[13px] font-bold" style={{ color: "var(--ink)" }}>{f.value}</span>
                 </div>
               ))}
             </div>
 
             {/* Emergency */}
-            <div className="p-4 rounded-xl" style={{ background: dark ? "#1c1210" : "#fef8f8", border: `1.5px solid ${dark ? "#3b1c1c" : "#fee2e2"}` }}>
-              <div className="text-xs font-bold uppercase tracking-wider text-red-500 mb-3">🚨 Emergency</div>
+            <div className="bg-white p-5 rounded-[18px] border-[1.5px]" style={{ borderColor: "#f0d0d0" }}>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-red-500 mb-3">🚨 Emergency</p>
               {dest.emergency.map(e => (
-                <div key={e.number} className="flex justify-between py-1.5 text-xs">
-                  <span style={{ color: textSecondary }}>{e.name}</span>
-                  <a href={`tel:${e.number}`} className="font-mono font-bold no-underline" style={{ color: textPrimary }}>{e.number}</a>
+                <div key={e.number} className="flex justify-between py-1.5 text-[13px]">
+                  <span style={{ color: "var(--ink-soft)" }}>{e.name}</span>
+                  <a href={`tel:${e.number}`} className="font-mono font-bold no-underline" style={{ color: "var(--ink)" }}>{e.number}</a>
                 </div>
               ))}
             </div>
 
             {/* Notes */}
-            <div className="p-4 rounded-xl" style={{ background: cardBg, border: `1.5px solid ${border}` }}>
-              <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>📝 Your notes</div>
+            <div className="bg-white p-5 rounded-[18px] border" style={{ borderColor: "#e3e9e6" }}>
+              <p className="kicker mb-3">📝 Your notes</p>
               <textarea
                 value={state.notes}
                 onChange={e => setState(p => ({ ...p, notes: e.target.value }))}
                 placeholder="Hotel names, contacts, reminders..."
                 rows={6}
-                className="w-full p-3 rounded-lg text-sm outline-none resize-none"
-                style={{ background: dark ? "#0c0a09" : "#fafafa", color: textPrimary, border: `1px solid ${border}` }}
+                className="w-full p-3 rounded-xl text-[14px] outline-none resize-none font-sans" style={{ background: "var(--snowfield)", color: "var(--ink)", border: "1px solid #e3e9e6" }}
               />
-              <p className="text-[10px] mt-2" style={{ color: textMuted }}>Auto-saved ✓</p>
+              <p className="font-mono text-[11px] mt-2" style={{ color: "var(--ink-soft)" }}>Auto-saved ✓</p>
             </div>
 
-            {/* Guide link */}
-            <Link href={`/${dest.slug}`} className="flex items-center gap-3 p-4 rounded-xl no-underline transition-all hover:-translate-y-0.5" style={{ border: `2px solid ${accent}` }}>
+            {/* Links */}
+            <Link href={`/${dest.slug}`} className="flex items-center gap-3 p-4 rounded-[18px] no-underline transition-all hover:-translate-y-0.5 bg-white border" style={{ borderColor: "var(--terra)" }}>
               <span className="text-xl">📖</span>
               <div>
-                <div className="text-sm font-extrabold" style={{ color: textPrimary }}>Full {dest.name} guide</div>
-                <div className="text-[11px]" style={{ color: textMuted }}>Trek info, stay, food, safety →</div>
+                <div className="text-[15px] font-bold" style={{ color: "var(--ink)" }}>Full {dest.name} guide</div>
+                <div className="text-[12px]" style={{ color: "var(--ink-soft)" }}>Trek info, stay, food, safety &rarr;</div>
               </div>
             </Link>
 
-            <Link href={`/${dest.slug}/packing`} className="flex items-center gap-3 p-4 rounded-xl no-underline transition-all hover:-translate-y-0.5" style={{ background: `${accent}08`, border: `1.5px solid ${accent}25` }}>
+            <Link href={`/${dest.slug}/packing`} className="flex items-center gap-3 p-4 rounded-[18px] no-underline transition-all hover:-translate-y-0.5" style={{ background: "rgba(194,102,45,0.08)", border: "1.5px solid rgba(194,102,45,0.2)" }}>
               <span className="text-xl">🛒</span>
               <div>
-                <div className="text-sm font-extrabold" style={{ color: textPrimary }}>Gear buy list for {dest.name}</div>
-                <div className="text-[11px]" style={{ color: textMuted }}>What to buy with store links →</div>
+                <div className="text-[15px] font-bold" style={{ color: "var(--ink)" }}>Gear buy list for {dest.name}</div>
+                <div className="text-[12px]" style={{ color: "var(--ink-soft)" }}>What to buy with store links &rarr;</div>
               </div>
             </Link>
           </div>
         </div>
       </div>
-      <Footer accent={accent} />
+      <Footer />
     </div>
   );
 }
