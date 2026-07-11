@@ -18,51 +18,51 @@ export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b" style={{ background: "rgba(12,26,35,0.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", borderColor: "rgba(255,255,255,0.07)" }}>
+    <nav className="sticky top-0 z-50 border-b" style={{ background: "rgba(247,249,247,0.86)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderColor: "var(--line)" }}>
       <div className="max-w-[1180px] mx-auto px-5 sm:px-6 flex items-center justify-between" style={{ height: 64 }}>
         <Link href="/" className="flex items-center gap-2.5 no-underline" aria-label="TravelBoa home">
-          <div className="w-8 h-8 rounded-[9px] flex items-center justify-center overflow-hidden" style={{ background: "var(--terra)", boxShadow: "0 2px 8px rgba(194,102,45,0.4)" }}>
+          <div className="w-8 h-8 rounded-[9px] flex items-center justify-center overflow-hidden" style={{ background: "var(--terra)", boxShadow: "0 2px 8px rgba(194,102,45,0.3)" }}>
             <svg width="18" height="18" viewBox="0 0 120 120" fill="none"><path d="M35 90 Q35 60 55 55 Q75 50 75 35 Q75 20 60 20 Q45 20 45 35 Q45 50 60 55 Q80 62 80 80 Q80 95 65 95 Q50 95 50 80" stroke="white" strokeWidth="6" strokeLinecap="round" fill="none"/><path d="M55 20 L60 12 L65 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-white font-extrabold text-[22px] tracking-tight">
-              travel<span style={{ color: "var(--terra-bright)" }}>boa</span>
+            <span className="font-extrabold text-[22px] tracking-tight" style={{ color: "var(--ink)" }}>
+              travel<span style={{ color: "var(--terra)" }}>boa</span>
             </span>
             <svg width="82" height="6" viewBox="0 0 92 7" fill="none" aria-hidden="true" className="mt-0.5">
-              <path d="M1 4 C 14 -1, 24 8, 38 4 S 64 0, 78 4 90 4 91 4" stroke="var(--terra-bright)" strokeWidth="2.4" strokeLinecap="round" />
+              <path d="M1 4 C 14 -1, 24 8, 38 4 S 64 0, 78 4 90 4 91 4" stroke="var(--terra)" strokeWidth="2.4" strokeLinecap="round" />
             </svg>
           </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-7">
           {NAV_LINKS.map((l) => (
-            <Link key={l.label} href={l.href} className="text-[15px] font-medium no-underline transition-colors duration-200" style={{ color: "#cfdde2" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#cfdde2")}>
+            <Link key={l.label} href={l.href} className="text-[15px] font-medium no-underline transition-colors duration-200" style={{ color: "var(--ink-soft)" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--ink)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--ink-soft)")}>
               {l.label}
             </Link>
           ))}
-          <Link href="/dashboard" className="text-[15px] font-semibold no-underline rounded-full px-5 py-2 transition-colors duration-200" style={{ background: "var(--terra)", color: "#fff" }}
-            onMouseEnter={e => (e.currentTarget.style.background = "var(--terra-bright)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "var(--terra)")}>
+          <Link href="/dashboard" className="text-[15px] font-semibold no-underline rounded-full px-5 py-2 transition-colors duration-200" style={{ background: "var(--pine)", color: "#fff" }}
+            onMouseEnter={e => (e.currentTarget.style.background = "#2c5a48")}
+            onMouseLeave={e => (e.currentTarget.style.background = "var(--pine)")}>
             My trip
           </Link>
         </div>
 
         {/* Mobile hamburger */}
         <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          <div className="w-5 h-0.5 rounded" style={{ background: "#ccc", transform: menuOpen ? "rotate(45deg) translateY(4px)" : "none", transition: "transform 0.2s" }} />
-          <div className="w-5 h-0.5 rounded" style={{ background: "#ccc", opacity: menuOpen ? 0 : 1, transition: "opacity 0.2s" }} />
-          <div className="w-5 h-0.5 rounded" style={{ background: "#ccc", transform: menuOpen ? "rotate(-45deg) translateY(-4px)" : "none", transition: "transform 0.2s" }} />
+          <div className="w-5 h-0.5 rounded" style={{ background: "var(--ink)", transform: menuOpen ? "rotate(45deg) translateY(4px)" : "none", transition: "transform 0.2s" }} />
+          <div className="w-5 h-0.5 rounded" style={{ background: "var(--ink)", opacity: menuOpen ? 0 : 1, transition: "opacity 0.2s" }} />
+          <div className="w-5 h-0.5 rounded" style={{ background: "var(--ink)", transform: menuOpen ? "rotate(-45deg) translateY(-4px)" : "none", transition: "transform 0.2s" }} />
         </button>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden py-3 px-5 flex flex-col gap-1 border-t" style={{ background: "var(--dusk)", borderColor: "rgba(255,255,255,0.08)" }}>
+        <div className="md:hidden py-3 px-5 flex flex-col gap-1 border-t" style={{ background: "var(--paper)", borderColor: "var(--line)" }}>
           {NAV_LINKS.map((l) => (
-            <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-medium no-underline" style={{ color: "#cfdde2" }}>{l.label}</Link>
+            <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-medium no-underline" style={{ color: "var(--ink)" }}>{l.label}</Link>
           ))}
-          <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold no-underline mt-1" style={{ background: "var(--terra)", color: "#fff" }}>My trip</Link>
+          <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold no-underline mt-1" style={{ background: "var(--pine)", color: "#fff" }}>My trip</Link>
         </div>
       )}
     </nav>

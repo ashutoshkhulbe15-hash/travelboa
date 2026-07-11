@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
+import { Polaroid } from "@/components/Polaroid";
 import { Footer } from "@/components/Footer";
 import { DESTINATIONS } from "@/lib/data";
 
@@ -98,18 +99,18 @@ export default function HomePage() {
   const getDest = (slug: string) => DESTINATIONS.find(d => d.slug === slug);
 
   return (
-    <div className="min-h-screen" style={{ background: "var(--dusk-deep)" }}>
+    <div className="min-h-screen" style={{ background: "var(--paper)" }}>
 
-      {/* ═══ TICKER ═══ */}
-      <div className="overflow-hidden whitespace-nowrap font-mono text-[12px] tracking-wide py-[7px]" style={{ background: "var(--terra)", color: "#fff" }}>
+      {/* ═══ FIELD UPDATES TICKER ═══ */}
+      <div className="overflow-hidden whitespace-nowrap font-mono text-[12px] tracking-wide py-[9px]" style={{ background: "var(--paper-warm)", color: "var(--ink-soft)", borderBottom: "1.5px dashed var(--line)" }}>
         <div className="inline-block" style={{ animation: "tick 38s linear infinite" }}>
           {[...Array(2)].map((_, rep) => (
             <span key={rep}>
-              <span className="mx-6"><b>TODAY FROM DEHRADUN</b> &middot; 06:40 AM</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#7be3a2" }} />Kedarnath yatra: OPEN</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#7be3a2" }} />NH-7 Rishikesh to Joshimath: CLEAR</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "var(--gold)" }} />Manali-Kaza via Kunzum La: CHECK BEFORE YOU GO</span>
-              <span className="mx-6"><b>23 DESTINATIONS</b> &middot; 7 GUIDES &middot; 14 GEAR REVIEWS</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>TODAY FROM DEHRADUN</b> &middot; 06:40 AM</span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />Kedarnath yatra: OPEN</span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />NH-7 Rishikesh to Joshimath: CLEAR</span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "var(--terra)" }} />Manali-Kaza via Kunzum La: CHECK BEFORE YOU GO</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>23 DESTINATIONS</b> &middot; 7 GUIDES &middot; 14 GEAR REVIEWS</span>
             </span>
           ))}
         </div>
@@ -117,78 +118,71 @@ export default function HomePage() {
 
       <Navbar />
 
-      {/* ═══ HERO ═══ */}
-      <header className="relative overflow-hidden flex items-start" style={{ minHeight: "94vh", background: "linear-gradient(180deg,#0a1620 0%,#10222e 38%,#27414e 64%,#5d4a3c 86%,#7a4a2c 100%)" }}>
-        {/* Scene */}
-        <div className="absolute inset-0 z-[1]" aria-hidden="true">
-          <svg viewBox="0 0 1440 810" preserveAspectRatio="xMidYMax slice" className="w-full h-full">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#0a1620" /><stop offset=".45" stopColor="#16303d" /><stop offset=".72" stopColor="#4a5a58" /><stop offset=".88" stopColor="#b06a3a" /><stop offset="1" stopColor="#d98a4e" /></linearGradient>
-              <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stopColor="#ffd9a8" /><stop offset=".55" stopColor="#e8945a" /><stop offset="1" stopColor="#e8945a" stopOpacity="0" /></radialGradient>
-            </defs>
-            <rect width="1440" height="810" fill="url(#sky)" />
-            <g fill="#fff">{[120,300,480,640,820,980,1120,1290].map((cx,i)=>(<circle key={i} cx={cx} cy={[80,150,60,180,90,160,70,140][i]} r={[1.4,1,1.6,1,1.3,1,1.5,1.1][i]} style={{animation:`twinkle 4s ease-in-out ${i*0.4}s infinite`}} />))}</g>
-            <circle cx="1010" cy="560" r="190" fill="url(#sun)" opacity=".85" />
-            <circle cx="1010" cy="560" r="52" fill="#ffd9a8" />
-            <path d="M0 520 L120 430 180 470 290 380 370 440 470 360 560 450 660 370 760 455 870 385 960 460 1070 380 1170 450 1280 395 1370 455 1440 420 1440 810 0 810Z" fill="#5c7484" />
-            <path d="M270 397 L290 380 318 404Z M448 378 L470 360 498 386Z M638 388 L660 370 688 396Z M1048 398 L1070 380 1098 406Z" fill="#e9f1f4" opacity=".9" />
-            <path d="M0 600 L140 520 250 575 380 500 520 585 650 515 790 590 930 525 1080 595 1220 530 1340 590 1440 545 1440 810 0 810Z" fill="#33495a" />
-            <path d="M0 690 L170 615 320 670 470 605 640 680 800 620 960 685 1130 625 1290 680 1440 635 1440 810 0 810Z" fill="#1d3340" />
-            <path d="M0 760 L220 700 460 755 720 695 980 760 1230 700 1440 750 1440 810 0 810Z" fill="#0e1d27" />
-          </svg>
-        </div>
+      {/* ═══ HERO · FIELD JOURNAL ═══ */}
+      <header className="contour-bg relative overflow-hidden">
+        <div className="relative z-[2] max-w-[1180px] mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-10 items-center" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
+          <div>
+            <span className="inline-block font-mono text-[12px] tracking-[0.16em] uppercase rounded-full px-4 py-1.5 mb-6" style={{ color: "var(--pine)", border: "1px solid var(--pine)", background: "rgba(30,69,55,0.05)" }}>Field notes &middot; Dehradun, Uttarakhand</span>
+            <h1 className="text-[clamp(38px,5.6vw,64px)] font-extrabold tracking-tighter leading-[1.06]" style={{ color: "var(--ink)", maxWidth: "16ch" }}>
+              My journal of the <span className="hl">Indian Himalaya</span>, open for you
+            </h1>
+            <p className="text-[clamp(17px,1.8vw,19px)] font-normal leading-relaxed mt-5 mb-8" style={{ color: "var(--ink-soft)", maxWidth: "52ch" }}>
+              Every guide here starts as scribbles in my notebook on the trail. I clean them up and publish them with <b className="font-semibold" style={{ color: "var(--ink)" }}>road conditions, altitude weather, packing checklists and honest gear picks</b> for 23 pilgrimages and treks across North India.
+            </p>
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg, rgba(10,22,32,0.85) 0%, rgba(10,22,32,0.6) 35%, rgba(10,22,32,0.15) 55%, transparent 70%)" }} />
-
-        {/* Handwritten note */}
-        <div className="absolute right-[6%] bottom-[17%] z-[3] font-caveat text-[25px] text-center hidden lg:block" style={{ color: "#ffe9d6", maxWidth: 240, transform: "rotate(-4deg)" }}>
-          yes, I check the roads<br />every single morning
-          <svg width="54" height="40" viewBox="0 0 54 40" fill="none" className="mx-auto mt-1.5"><path d="M44 4C30 14 22 22 12 34M12 34l11-4M12 34l2-12" stroke="#ffe9d6" strokeWidth="2.2" strokeLinecap="round" /></svg>
-        </div>
-
-        <div className="relative z-[2] w-full max-w-[1180px] mx-auto px-5 sm:px-6 pt-16 sm:pt-20 lg:pt-24 pb-32 sm:pb-40" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
-          <p className="font-mono text-[12px] tracking-[0.22em] uppercase mb-5" style={{ color: "var(--terra-soft)" }}>A trip companion for the Indian Himalaya</p>
-          <h1 className="text-white text-[clamp(40px,6.4vw,76px)] font-extrabold tracking-tighter leading-[1.04]" style={{ maxWidth: "13ch" }}>
-            Know the <span style={{ color: "var(--terra-bright)" }}>mountain</span> before you meet it.
-          </h1>
-          <p className="text-[clamp(17px,1.8vw,20px)] font-normal leading-relaxed mt-6 mb-9" style={{ color: "#c8d8de", maxWidth: "54ch" }}>
-            I live in Dehradun, at the foot of the hills you are planning to visit. TravelBoa is my notebook turned into a website: <b className="font-semibold text-white">road conditions, altitude weather, packing checklists and honest gear picks</b> for 23 pilgrimages and treks across North India.
-          </p>
-
-          {/* Search */}
-          <div className="relative" style={{ maxWidth: 620 }} ref={searchRef}>
-            <div className="flex items-center rounded-full px-5 py-1.5 sm:py-2" style={{ background: "rgba(255,255,255,0.97)", boxShadow: "0 24px 60px -18px rgba(0,0,0,0.55)" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-              <input value={searchVal} onChange={e => { setSearchVal(e.target.value); setShowSuggest(true); }} onFocus={() => setShowSuggest(true)}
-                placeholder="Where are you headed? Try Kedarnath, Spiti, Ladakh..." className="flex-1 border-0 bg-transparent font-sans text-[17px] py-3 px-3.5 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" aria-label="Search destinations"
-                onKeyDown={e => { if (e.key === "Enter") goSearch(); }} />
-              <button onClick={goSearch} className="shrink-0 border-0 cursor-pointer rounded-full px-5 sm:px-6 py-3 font-semibold text-[15px] text-white transition-colors" style={{ background: "var(--terra)", fontFamily: "var(--font-sans)" }}
-                onMouseEnter={e => (e.currentTarget.style.background = "var(--terra-bright)")} onMouseLeave={e => (e.currentTarget.style.background = "var(--terra)")}>Search</button>
-            </div>
-            {showSuggest && searchVal.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2.5 rounded-2xl overflow-hidden z-30" style={{ background: "#fff", boxShadow: "0 30px 70px -20px rgba(0,0,0,0.5)" }}>
-                {filtered.map(d => (
-                  <Link key={d.slug} href={`/${d.slug}`} className="flex justify-between items-center px-5 py-3 text-[15px] no-underline border-b transition-colors hover:bg-[#f6efe8]" style={{ borderColor: "#eef1f0", color: "var(--ink)" }}>
-                    {d.name}
-                    <span className="font-mono text-[11px]" style={{ color: "var(--ink-soft)" }}>{d.info}</span>
-                  </Link>
-                ))}
-                <Link href="/destinations" className="flex justify-center items-center px-5 py-3 text-[15px] font-semibold no-underline" style={{ color: "var(--terra)" }}>See all 23 destinations &rarr;</Link>
+            {/* Search */}
+            <div className="relative" style={{ maxWidth: 560 }} ref={searchRef}>
+              <div className="flex items-center rounded-full px-5 py-1 sm:py-1.5 bg-white" style={{ border: "1.5px solid var(--line)", boxShadow: "0 14px 40px -18px rgba(28,43,51,0.3)" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa8a3" strokeWidth="2.2" strokeLinecap="round" className="shrink-0"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+                <input value={searchVal} onChange={e => { setSearchVal(e.target.value); setShowSuggest(true); }} onFocus={() => setShowSuggest(true)}
+                  placeholder="Where are you headed? Try Kedarnath, Spiti..." className="flex-1 border-0 bg-transparent font-sans text-[17px] py-3 px-3.5 outline-none min-w-0" style={{ color: "var(--ink)" }} autoComplete="off" aria-label="Search destinations"
+                  onKeyDown={e => { if (e.key === "Enter") goSearch(); }} />
+                <button onClick={goSearch} className="shrink-0 border-0 cursor-pointer rounded-full px-5 sm:px-6 py-3 font-semibold text-[15px] text-white transition-colors" style={{ background: "var(--pine)", fontFamily: "var(--font-sans)" }}
+                  onMouseEnter={e => (e.currentTarget.style.background = "#2c5a48")} onMouseLeave={e => (e.currentTarget.style.background = "var(--pine)")}>Search</button>
               </div>
-            )}
+              {showSuggest && searchVal.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2.5 rounded-2xl overflow-hidden z-30" style={{ background: "#fff", border: "1px solid var(--line)", boxShadow: "0 30px 70px -20px rgba(28,43,51,0.35)" }}>
+                  {filtered.map(d => (
+                    <Link key={d.slug} href={`/${d.slug}`} className="flex justify-between items-center px-5 py-3 text-[15px] no-underline border-b transition-colors hover:bg-[#f6efe8]" style={{ borderColor: "#eef1f0", color: "var(--ink)" }}>
+                      {d.name}
+                      <span className="font-mono text-[11px]" style={{ color: "var(--ink-soft)" }}>{d.info}</span>
+                    </Link>
+                  ))}
+                  <Link href="/destinations" className="flex justify-center items-center px-5 py-3 text-[15px] font-semibold no-underline" style={{ color: "var(--terra)" }}>See all 23 destinations &rarr;</Link>
+                </div>
+              )}
+            </div>
+
+            {/* Quick chips */}
+            <div className="flex gap-2.5 flex-wrap mt-5">
+              {["kedarnath","spiti","valley-of-flowers","ladakh","vaishno-devi"].map(s => {
+                const d = getDest(s);
+                return d ? (
+                  <Link key={s} href={`/${s}`} className="text-[13.5px] rounded-full px-4 py-[7px] no-underline transition-all duration-200 bg-white" style={{ color: "var(--ink)", border: "1px solid var(--line)" }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--terra)"; e.currentTarget.style.color = "var(--terra)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--line)"; e.currentTarget.style.color = "var(--ink)"; }}>
+                    {d.name}
+                  </Link>
+                ) : null;
+              })}
+            </div>
+
+            <span className="font-caveat text-[24px] mt-6 inline-block -rotate-1" style={{ color: "var(--terra)" }}>honest notes, no fluff, promise &#10003;</span>
           </div>
 
-          {/* Quick chips */}
-          <div className="flex gap-2.5 flex-wrap mt-5">
-            {["kedarnath","spiti","valley-of-flowers","ladakh","vaishno-devi"].map(s => {
-              const d = getDest(s);
+          {/* Polaroid stack */}
+          <div className="relative hidden md:block" style={{ height: 480 }} aria-hidden="true">
+            {[
+              { slug: "kedarnath", cls: "absolute", st: { width: 250, top: 8, left: "4%", transform: "rotate(-5deg)", zIndex: 1 } },
+              { slug: "valley-of-flowers", cls: "absolute", st: { width: 260, top: 56, right: "2%", transform: "rotate(4deg)", zIndex: 2 } },
+              { slug: "spiti", cls: "absolute", st: { width: 240, bottom: 0, left: "26%", transform: "rotate(-2deg)", zIndex: 3 } },
+            ].map(p => {
+              const d = getDest(p.slug);
               return d ? (
-                <Link key={s} href={`/${s}`} className="text-[13.5px] rounded-full px-4 py-[7px] no-underline transition-all duration-200" style={{ color: "#dce8eb", border: "1px solid rgba(255,255,255,0.28)", backdropFilter: "blur(3px)" }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.14)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = ""; e.currentTarget.style.borderColor = "rgba(255,255,255,0.28)"; }}>
-                  {d.name}
-                </Link>
+                <div key={p.slug} className={p.cls} style={p.st}>
+                  <span className="tape" />
+                  <Polaroid name={d.name} slug={d.slug} info={d.info} note={d.note} temp={d.temp} image={d.image} grad={d.grad} rot={0} accent="var(--terra)" />
+                </div>
               ) : null;
             })}
           </div>
@@ -218,9 +212,10 @@ export default function HomePage() {
       </section>
 
       {/* ═══ DESTINATIONS ═══ */}
-      <section className="py-20 sm:py-24" style={{ background: "var(--snowfield)" }}>
+      <section className="py-20 sm:py-24" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)", borderBottom: "1.5px dashed var(--line)" }}>
         <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
           <div className="reveal">
+            <span className="font-caveat text-[24px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>from the notebook&hellip;</span>
             <p className="kicker mb-3">Where to next</p>
             <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Guides written from the ground, not from a desk.</h2>
             <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide covers the route, the season, the budget and the exact packing list. First person, because I have done these trips or I am next in line to.</p>
@@ -234,11 +229,12 @@ export default function HomePage() {
                   <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
                     <Image src={`/${f.slug === "valley-of-flowers" ? "valley-of-flowers" : f.slug}.jpg`} alt={d.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.45))" }} />
-                    <span className="absolute top-3.5 left-3.5 font-mono text-[10.5px] tracking-wide uppercase px-3 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.92)", color: "var(--ink)" }}>{d.type}</span>
+                    <span className="absolute top-3.5 left-3.5 font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-[3px]" style={{ background: "rgba(247,249,247,0.94)", color: "var(--pine)", border: "1.5px solid var(--pine)", transform: "rotate(-2deg)" }}>{d.type}</span>
                     <span className="absolute top-3.5 right-3.5 font-mono text-[11.5px] px-3 py-1 rounded-full" style={{ background: "rgba(12,26,35,0.78)", color: "#fff", backdropFilter: "blur(4px)" }}>&#9650; {d.info.split("·")[0].trim()}</span>
                   </div>
                   <div className="p-5 flex flex-col gap-2 flex-1">
                     <h3 className="text-[21px] font-bold tracking-tight" style={{ color: "var(--ink)" }}>{d.name}</h3>
+                    <p className="font-caveat text-[19px] leading-tight -mt-1" style={{ color: "var(--terra)" }}>&ldquo;{d.note}&rdquo;</p>
                     <p className="text-[16px] font-normal leading-relaxed flex-1" style={{ color: "var(--ink-soft)" }}>{f.hook}</p>
                     <div className="flex gap-4 font-mono text-[11.5px] pt-3 border-t border-dashed" style={{ color: "var(--ink-soft)", borderColor: "#e3e9e6" }}>
                       <span>{f.season}</span>
