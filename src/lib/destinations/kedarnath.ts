@@ -103,6 +103,40 @@ Not officially mandatory for Kedarnath (unlike Amarnath), but recommended if you
 **Important:** Registration is free. Don't pay anyone for "priority registration" — it's a scam.`,
     },
     {
+      id: "opening-dates",
+      title: "Kedarnath opening and closing dates 2026",
+      icon: "🚪",
+      content: `**Opening date 2026:** 22 April 2026, 8:00 AM
+**Announced on:** Mahashivratri, 15 February 2026, at Omkareshwar Temple, Ukhimath
+**Expected closing date 2026:** 11 November 2026 (Bhai Dooj, tentative)
+**Decided by:** Badrinath-Kedarnath Temple Committee (BKTC)
+
+The kapat opening date changes every year. It is calculated by the priests at Omkareshwar Temple in Ukhimath using the Panchang and announced each Mahashivratri, with the temple opening around Akshaya Tritiya in late April or early May.
+
+The closing follows a fixed logic: two days after Diwali, on Bhai Dooj, with the final date confirmed around Vijayadashami. After closing, the deity moves to Omkareshwar Temple in Ukhimath, where winter worship continues for six months.
+
+**Important:** Do not plan travel for the first week after opening unless you are prepared for serious crowds. The opening days draw tens of thousands of pilgrims and hotel prices in Guptkashi and Sonprayag spike. I would aim for mid May or, better, September.`,
+    },
+    {
+      id: "kedarnath-to-badrinath",
+      title: "Kedarnath to Badrinath: distance and route",
+      icon: "🛣️",
+      content: `**Road distance:** Around 218 km from Gaurikund, plus your 16 km walk down from the temple
+**Driving time:** 8 to 10 hours in good conditions, so treat it as a full day
+**Aerial distance:** Only about 41 km, which is why helicopter Do Dham packages exist
+
+Most pilgrims do Kedarnath and Badrinath together as the Do Dham circuit, and the order matters less than the rest day. My advice after doing both: descend from Kedarnath, sleep at Guptkashi or Ukhimath, and drive to Badrinath the next morning instead of pushing through.
+
+**The standard route:**
+- Gaurikund → Sonprayag (5 km, shared jeep)
+- Sonprayag → Ukhimath (30 km)
+- Ukhimath → Chopta → Gopeshwar (75 km, the prettiest stretch of the whole yatra)
+- Gopeshwar → Chamoli → Joshimath (65 km, joins NH-7)
+- Joshimath → Badrinath (45 km, gate system may apply)
+
+**Note:** The Chopta road is narrow and slow but scenic. The alternative via Rudraprayag and Karnaprayag is longer on paper yet sometimes faster because the road is wider. Ask locally at Guptkashi before you commit, or check my road status page the morning you leave.`,
+    },
+    {
       id: "best-time",
       title: "Best time to visit",
       icon: "🗓️",
@@ -251,6 +285,9 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
 
   // FAQ for JSON-LD schema
   faq: [
+    { q: "How long is the Kedarnath trek?", a: "The Kedarnath trek is 16 km one way from Gaurikund, with about 1,550 m of altitude gain. Most people take 6 to 8 hours going up and 4 to 5 hours coming down. If you start from Sonprayag, add a 5 km shared jeep ride to reach Gaurikund first." },
+    { q: "What is the Kedarnath opening date in 2026?", a: "Kedarnath temple opened on 22 April 2026 at 8:00 AM. The date was announced on Mahashivratri, 15 February 2026, by the Badrinath-Kedarnath Temple Committee at Omkareshwar Temple, Ukhimath. The expected closing date is 11 November 2026 on Bhai Dooj." },
+    { q: "What is the distance from Kedarnath to Badrinath?", a: "By road it is around 218 km from Gaurikund to Badrinath via Ukhimath, Chopta and Joshimath, which takes 8 to 10 hours of driving plus the 16 km walk down from Kedarnath temple. The aerial distance is only about 41 km, which is why Do Dham helicopter packages cover both in a day." },
     { q: "How long is the Kedarnath trek?", a: "The Kedarnath trek is 16 km one way from Gaurikund to the temple. Most people take 6-8 hours going up and 4-5 hours coming down. The total altitude gain is 1,550 metres, from 2,039m at Gaurikund to 3,583m at the temple." },
     { q: "Is Kedarnath trek difficult?", a: "The trek is moderate difficulty. The path is paved and well-maintained. The steepest section is the first 4 km from Gaurikund to Jungle Chatti. Altitude is the real challenge, not the terrain. If you can walk 10 km on flat ground without stopping, you can do this trek with proper breaks." },
     { q: "How much does the Kedarnath trek cost?", a: "A budget trip costs ₹5,000-8,000 (walking both ways, dharamshala stays, dhaba food). Mid-range is ₹10,000-20,000 (pony one way, guesthouse). Comfort is ₹20,000-35,000 (helicopter one way, hotel in Guptkashi). This excludes transport to Gaurikund." },
@@ -285,5 +322,5 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
 
   // SEO
   metaTitle: "Kedarnath Trek 2026: Route, Packing List, Budget & Road Status | TravelBoa",
-  metaDescription: "Complete Kedarnath trek guide from Dehradun. 16 km Gaurikund route, packing checklist, helicopter vs trek, budget ₹5K-35K, opening dates, and daily road status updates.",
+  metaDescription: "Complete Kedarnath trek guide from Dehradun. 16 km Gaurikund route, 2026 opening dates (22 April), Kedarnath to Badrinath distance, packing checklist, helicopter vs trek, budget ₹5K-35K.",
 };

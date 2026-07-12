@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { TermsPage } from "./TermsPage";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms of Use — TravelBoa",
   description: "Terms and conditions for using TravelBoa.",
 };

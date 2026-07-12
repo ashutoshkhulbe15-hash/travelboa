@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `What to Buy for ${dest.name} - Gear Checklist with Buy Links | TravelBoa`,
     description: `Complete gear checklist for ${dest.name} at ${dest.altitude.toLocaleString()}m. Every item with buy links to Amazon and Decathlon. Interactive checklist that saves your progress.`,
+    alternates: { canonical: `/${dest.slug}/packing` },
+    openGraph: {
+      title: `${dest.name} Packing Checklist | TravelBoa`,
+      description: `Complete gear checklist for ${dest.name} at ${dest.altitude.toLocaleString()}m, with buy links.`,
+      url: `https://www.travelboa.com/${dest.slug}/packing`,
+      images: [{ url: `/${dest.slug}.jpg`, width: 1200, height: 630, alt: `${dest.name} packing checklist` }],
+    },
   };
 }
 

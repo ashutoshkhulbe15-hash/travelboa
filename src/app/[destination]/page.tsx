@@ -18,6 +18,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: dest.metaTitle,
     description: dest.metaDescription,
+    alternates: { canonical: `/${dest.slug}` },
+    openGraph: {
+      title: dest.metaTitle,
+      description: dest.metaDescription,
+      url: `https://www.travelboa.com/${dest.slug}`,
+      type: "article",
+      siteName: "TravelBoa",
+      images: [{ url: `/${dest.slug}.jpg`, width: 1200, height: 630, alt: `${dest.name} — ${dest.tagline}` }],
+    },
+    twitter: { card: "summary_large_image", title: dest.metaTitle, description: dest.metaDescription, images: [`/${dest.slug}.jpg`] },
   };
 }
 

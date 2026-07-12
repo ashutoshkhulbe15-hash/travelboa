@@ -1,4 +1,5 @@
 import { GUIDES } from "@/lib/data";
+import { guideContent } from "@/lib/guide-content";
 import { GuideArticle } from "./GuideArticle";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -11,9 +12,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const guide = GUIDES.find((g) => g.slug === slug);
   if (!guide) return { title: "Guide not found — TravelBoa" };
+  const hero = guideContent[slug]?.heroImage?.src || "/og-default.png";
   return {
     title: `${guide.title} — TravelBoa`,
     description: guide.desc,
+    alternates: { canonical: `/guides/${slug}` },
+    openGraph: {
+      title: guide.title,
+      description: guide.desc,
+      url: `https://www.travelboa.com/guides/${slug}`,
+      type: "article",
+      siteName: "TravelBoa",
+      images: [{ url: hero, width: 1200, height: 630, alt: guide.title }],
+    },
+    twitter: { card: "summary_large_image", title: guide.title, description: guide.desc, images: [hero] },
   };
 }
 
