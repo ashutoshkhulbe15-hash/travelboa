@@ -14,7 +14,7 @@ export const kasol: DestinationData = {
   duration: "3-4 days",
   budget: { min: 3500, max: 8000 },
   heroGradient: "linear-gradient(150deg,#1a3a2a,#2a5a3a 60%,#4a7a5a)",
-  metaTitle: "Kasol & Kheerganga Trek 2026: Parvati Valley Backpacking Guide | TravelBoa",
+  metaTitle: "Kasol & Kheerganga Trek 2026: Parvati Valley Guide",
   metaDescription: "Kasol and Kheerganga guide. Parvati Valley backpacking, Kheerganga hot spring trek (12 km), Manikaran Gurudwara, Tosh village, budget stays, and what to carry.",
   quickStats: [
     { label: "Kasol altitude", value: "1,574m", icon: "🏘️" },

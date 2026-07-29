@@ -545,7 +545,7 @@ guideContent["best-time-char-dham"] = {
       heading: "How the temple calendar works",
       paragraphs: [
         "The Char Dham season runs from roughly late April or early May to Diwali or Bhai Dooj in October-November. Outside this window, all four temples are closed. The deities of Kedarnath, Badrinath, Gangotri, and Yamunotri are ceremonially transferred to winter residences in the lower valleys.",
-        "The opening dates are tied to the Hindu calendar and determined by tithi (lunar day). Kedarnath, Gangotri, and Yamunotri traditionally open on Akshaya Tritiya, which falls in late April to mid-May depending on the year. Badrinath typically opens 2 to 4 weeks after Kedarnath.",
+        "The opening dates are tied to the Hindu calendar and determined by tithi (lunar day). Gangotri and Yamunotri traditionally open on Akshaya Tritiya; Kedarnath opens on a date the Ukhimath priests calculate from the Panchang, usually within a few days of it. All three land between late April and mid-May. Badrinath typically opens shortly after Kedarnath.",
         "Closing dates follow a similar structure. Kedarnath closes on Bhai Dooj (the day after Diwali). Gangotri closes on Diwali. Yamunotri closes the morning of Diwali. Badrinath closes a few days after Kedarnath, usually within a week.",
         "The state government now requires Char Dham registration before you travel. Registration opens through the official portal a few weeks before the temples open. You cannot generate an e-pass before dates are announced. See the Char Dham e-pass guide for the step-by-step process."
       ],
@@ -637,7 +637,7 @@ guideContent["best-time-char-dham"] = {
     },
   ],
   faq: [
-    { question: "When are the Char Dham temples confirmed to open in 2026?", answer: "The dates will be announced by the Uttarakhand government in late March or April 2026. Akshaya Tritiya in 2026 falls on April 29th, which is the likely opening date for Kedarnath, Gangotri, and Yamunotri. Track it at registrationandtouristcare.uk.gov.in. Do not book non-refundable travel before confirmation." },
+    { question: "When did the Char Dham temples open in 2026?", answer: "Yamunotri and Gangotri opened on 19 April 2026, Kedarnath on 22 April 2026 and Badrinath a few days later. The 2027 dates will be announced on Maha Shivratri 2027. Track them at registrationandtouristcare.uk.gov.in and do not book non-refundable travel before confirmation." },
     { question: "Is it safe to do Char Dham in September?", answer: "Yes. The second half of September, after the monsoon withdraws, is one of the safest windows. Roads have been cleared, temples are open, crowds are low, and weather is stable with clear mornings. Target the last 10 days of September." },
     { question: "Can I do all four Char Dhams in one trip?", answer: "The full circuit from Rishikesh takes 10 to 12 days at a reasonable pace. Rushing it into 7 days involves very long driving days and limited time at each temple. In October, plan backwards from Yamunotri's closing date on Diwali morning." },
     { question: "Does Char Dham registration apply to all four temples?", answer: "Yes. Registration at registrationandtouristcare.uk.gov.in is mandatory for all four dhams in one registration. The e-pass is required at checkpoints. Kedarnath has a daily pilgrim cap enforced through the system." },
@@ -649,7 +649,7 @@ guideContent["best-time-char-dham"] = {
   schemaJson: [
     { "@context": "https://schema.org", "@type": "TravelGuide", "headline": "Best Time to Visit Char Dham: Kedarnath, Badrinath, Gangotri, Yamunotri", "description": "Month-by-month guide for Char Dham timing: temple opening dates, crowd levels, road conditions, helicopter availability.", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/best-time-char-dham" } },
     { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-      { "@type": "Question", "name": "When are Char Dham temples confirmed to open in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Dates are announced in late March/April 2026. Akshaya Tritiya 2026 falls on April 29th. Check registrationandtouristcare.uk.gov.in." } },
+      { "@type": "Question", "name": "When did the Char Dham temples open in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Yamunotri and Gangotri on 19 April 2026, Kedarnath on 22 April 2026, Badrinath shortly after. Check registrationandtouristcare.uk.gov.in." } },
       { "@type": "Question", "name": "Is it safe to do Char Dham in September?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the second half of September after monsoon withdrawal is one of the safest and best windows." } },
       { "@type": "Question", "name": "Can I do all four Char Dhams in one trip?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the full circuit takes 10-12 days from Rishikesh at a reasonable pace." } },
       { "@type": "Question", "name": "What is the minimum budget for Char Dham yatra?", "acceptedAnswer": { "@type": "Answer", "text": "Rs 15,000-20,000 per person for 10 days with shared transport and GMVN stays. Rs 30,000-40,000 with helicopter and private accommodation." } },
@@ -1210,17 +1210,17 @@ guideContent["kedarnath-opening-date-2026"] = {
     disclosure: undefined,
     sections: [
       { heading: "Kedarnath Opening Date 2026", paragraphs: [
-        "The Kedarnath temple opens on April 30, 2026. That is Akshaya Tritiya on the Hindu calendar, the auspicious date that determines the opening of the Kedarnath shrine every year. The Badri Kedar Temple Committee (BKTC) confirmed the date in early 2026.",
-        "The closing date for 2026 is on or around October 20, 2026 (Bhai Dooj), after which the shrine remains locked and under snow for approximately six months.",
-        "Both dates are official but always worth double-checking on the BKTC website (badrinath-kedarnath.gov.in) or Uttarakhand Tourism a few weeks before you travel."
+        "The Kedarnath temple opened on 22 April 2026 at 8:00 AM. The Badrinath-Kedarnath Temple Committee (BKTC) announced the date on Maha Shivratri, 15 February 2026, after Panchang calculations at the Omkareshwar Temple in Ukhimath, the shrine's winter seat.",
+        "The closing date is expected on or around 11 November 2026 (Bhai Dooj, two days after Diwali). It is not yet official. BKTC confirms the closing date on Vijayadashami. After it closes, the shrine stays locked and under snow for roughly six months.",
+        "The opening date is confirmed. The closing date is still tentative, so check the BKTC site (badrinath-kedarnath.gov.in) or Uttarakhand Tourism before booking anything non-refundable for late October or November."
       ] },
       { heading: "Why the opening date changes every year", paragraphs: [
-        "The Kedarnath opening date follows the Hindu lunar calendar and specifically falls on Akshaya Tritiya, the third day of the bright fortnight of the month of Vaishakha. In practice, Akshaya Tritiya lands somewhere between late April and mid-May. The BKTC announces the official date, usually in February or March."
+        "The opening is set by the Panchang, not by a fixed calendar date, and lands near Akshaya Tritiya, the third day of the bright fortnight of Vaishakha. In practice the temple opens somewhere between late April and mid-May. The BKTC announces the date each year on Maha Shivratri. It does not always land exactly on Akshaya Tritiya, which is why 2026 opened on 22 April."
       ] },
       { heading: "Year-by-year opening and closing dates", paragraphs: [], table: {
         headers: ["Year", "Opening", "Closing", "Best Month", "Snow at Opening"],
         rows: [
-          ["2026", "April 30", "~Oct 20", "September", "High (40-60 cm above 3,200m)"],
+          ["2026", "April 22", "~Nov 11 (tentative)", "September", "High (40-60 cm above 3,200m)"],
           ["2025", "May 2", "~Oct 22", "September", "Moderate-High"],
           ["2024", "May 10", "~Nov 3", "Sep-Oct", "Moderate"],
           ["2023", "April 25", "~Nov 14", "September", "High"],
@@ -1230,8 +1230,8 @@ guideContent["kedarnath-opening-date-2026"] = {
           ["2019", "May 9", "~Nov 1", "September", "Moderate"],
         ]
       } },
-      { heading: "The opening ceremony: what happens on April 30", paragraphs: [
-        "3-4 days before opening, the Utsav Murti procession begins from the Sri Omkareshwar temple in Ukhimath back to Kedarnath. The opening puja happens between 5 AM and 8 AM. By opening day, approximately 10,000-15,000 pilgrims will be present. Queue times for darshan on April 30 itself are typically 4 to 8 hours.",
+      { heading: "The opening ceremony: what happens on opening day", paragraphs: [
+        "The Panchmukhi Doli left Ukhimath on 19 April, reached Gaurikund on 20 April and arrived at Kedarnath Dham on 21 April. The kapat opened at 8:00 AM on 22 April. Roughly 10,000-15,000 pilgrims are present on opening day and darshan queues run 4 to 8 hours.",
         "If your priority is the ceremony and the energy of opening day, go but plan to queue. If your priority is spending a quiet moment inside the sanctum, go in September."
       ] },
       { heading: "Temple timings at Kedarnath", paragraphs: [], table: {
@@ -1247,16 +1247,16 @@ guideContent["kedarnath-opening-date-2026"] = {
         "The Utsav Murti (processional idol) is relocated to the Sri Omkareshwar temple at Ukhimath in Rudraprayag district at approximately 1,311m. Prayers continue through the winter. The main Jyotirlinga stays in place at Kedarnath under snow with the doors sealed after the closing puja."
       ] },
       { heading: "Month-by-month guide for 2026", paragraphs: [
-        "Late April/Early May: Opening week. Snow above 3,200m, 4-8 hour darshan queues, all accommodation full. May-June: Peak crowds, best weather, 15,000-25,000 daily pilgrims. Book everything weeks ahead. July-August: Monsoon. Trail is slippery, leeches above Rambara. Crowds drop 60-70%. September: Post-monsoon clarity. Best weather, 40-50% of peak crowds. My recommended window. October: Temple closing approaches. Cold nights (0 to -5C), thin crowds, dramatic light."
+        "Late April: Opening week (22 April in 2026). Snow above 3,200m, 4-8 hour darshan queues, all accommodation full. May-June: Peak crowds, best weather, 15,000-25,000 daily pilgrims. Book everything weeks ahead. July-August: Monsoon. Trail is slippery, leeches above Rambara. Crowds drop 60-70%. September: Post-monsoon clarity. Best weather, 40-50% of peak crowds. My recommended window. October: Temple closing approaches. Cold nights (0 to -5C), thin crowds, dramatic light."
       ] },
       { heading: "How to plan your visit", paragraphs: [
         "For the full route breakdown from Dehradun to Kedarnath, see the Dehradun to Kedarnath route guide. For packing, see what to pack for 4,000m altitude. For registration, see the Char Dham e-pass guide."
       ] },
     ],
     faq: [
-      { question: "When does Kedarnath open in 2026?", answer: "Kedarnath temple opens on April 30, 2026, coinciding with Akshaya Tritiya on the Hindu lunar calendar." },
-      { question: "When does Kedarnath close in 2026?", answer: "The expected closing date is October 20, 2026 (Bhai Dooj), two days after Diwali." },
-      { question: "How is the opening date decided?", answer: "It follows Akshaya Tritiya on the Hindu Panchang (lunar calendar), which shifts between late April and mid-May each year." },
+      { question: "When did Kedarnath open in 2026?", answer: "Kedarnath temple opened on 22 April 2026 at 8:00 AM. The date was announced by the BKTC on Maha Shivratri, 15 February 2026, at Omkareshwar Temple, Ukhimath." },
+      { question: "When does Kedarnath close in 2026?", answer: "The expected closing date is around 11 November 2026 (Bhai Dooj, two days after Diwali). BKTC confirms it on Vijayadashami, so treat it as tentative until then." },
+      { question: "How is the opening date decided?", answer: "Priests at Omkareshwar Temple in Ukhimath calculate it from the Panchang. It falls near Akshaya Tritiya, somewhere between late April and mid-May, and is announced on Maha Shivratri." },
       { question: "Is it good to visit on opening day?", answer: "Extraordinary atmosphere but 4-8 hour darshan queues, significant snow above 3,200m, and all accommodation completely full. Book months in advance." },
       { question: "What are temple timings at Kedarnath?", answer: "Morning darshan 6 AM to 3 PM. Evening aarti 3-5 PM. Evening darshan 5-9 PM. Abhishek slot 4-6 AM (advance booking required)." },
       { question: "Where does the idol go in winter?", answer: "The Utsav Murti goes to the Sri Omkareshwar temple in Ukhimath, Rudraprayag district. The main Shivalingam stays at Kedarnath under snow." },
@@ -1270,8 +1270,8 @@ guideContent["kedarnath-opening-date-2026"] = {
     schemaJson: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Kedarnath Opening Date 2026: When Does the Temple Open & Close?", "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" }, "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" }, "datePublished": "2026-05-22", "dateModified": "2026-05-22", "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/kedarnath-opening-date-2026" } },
       { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": "When does Kedarnath open in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "April 30, 2026 (Akshaya Tritiya)." } },
-        { "@type": "Question", "name": "When does Kedarnath close in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "October 20, 2026 (Bhai Dooj)." } },
+        { "@type": "Question", "name": "When did Kedarnath open in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "22 April 2026 at 8:00 AM, announced by the BKTC on Maha Shivratri." } },
+        { "@type": "Question", "name": "When does Kedarnath close in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "Expected around 11 November 2026 (Bhai Dooj). Confirmed by BKTC on Vijayadashami." } },
         { "@type": "Question", "name": "What are the temple timings?", "acceptedAnswer": { "@type": "Answer", "text": "Morning darshan 6 AM-3 PM. Evening aarti 3-5 PM. Evening darshan 5-9 PM. Abhishek 4-6 AM (advance booking)." } },
         { "@type": "Question", "name": "What is the best month to visit Kedarnath?", "acceptedAnswer": { "@type": "Answer", "text": "September. Post-monsoon clarity, dry trail, and crowds at 40-50% of peak." } },
       ] },

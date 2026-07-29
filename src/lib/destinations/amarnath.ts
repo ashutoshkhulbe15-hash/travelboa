@@ -14,8 +14,8 @@ export const amarnath: DestinationData = {
   duration: "5-10 days from Dehradun",
   budget: { min: 4000, max: 23000 },
   heroGradient: "linear-gradient(150deg,#2a3045,#4a5070 60%,#6a7090)",
-  metaTitle: "Amarnath Yatra 2026: Baltal vs Pahalgam, Registration & Permit Guide | TravelBoa",
-  metaDescription: "Amarnath Yatra guide. Baltal (shorter) vs Pahalgam (scenic) route comparison, SASB registration, medical certificate, helicopter booking, and what to pack for the cave trek.",
+  metaTitle: "Amarnath Yatra 2026: Baltal vs Pahalgam Route & Permits",
+  metaDescription: "Amarnath Yatra guide. Baltal (shorter) vs Pahalgam (scenic) route comparison, SASB registration, medical certificate, helicopter booking.",
   quickStats: [
     { label: "Cave altitude", value: "3,888m", icon: "🏔️" },
     { label: "Baltal route", value: "14 km, 1 day", icon: "🥾" },

@@ -14,7 +14,7 @@ export const shimla: DestinationData = {
   duration: "2-3 days (staging) or 4-5 days (full)",
   budget: { min: 2500, max: 12000 },
   heroGradient: "linear-gradient(150deg,#4a2020,#8a4040 60%,#6a3030)",
-  metaTitle: "Shimla Guide 2026: Kinnaur Road Trip & Spiti Staging Town | TravelBoa",
+  metaTitle: "Shimla 2026: Kinnaur Road Trip & Spiti Staging Town",
   metaDescription: "Shimla travel guide. Toy train from Kalka, Mall Road, Kufri, and why Shimla is your best staging point for the Kinnaur-Spiti circuit via NH-5.",
   quickStats: [
     { label: "Altitude", value: "2,206m", icon: "🏔️" },

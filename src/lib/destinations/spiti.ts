@@ -111,6 +111,6 @@ This guide covers both routes, every key stop, permits, fuel and ATM warnings, a
     { slug: "accommodation", title: "Where to stay", description: "Homestays, guesthouses, camps" },
     { slug: "best-time", title: "Best time to visit", description: "Month-by-month breakdown" },
   ],
-  metaTitle: "Spiti Valley Road Trip 2026: Route, Permits, Budget from Dehradun | TravelBoa",
-  metaDescription: "Plan your Spiti Valley road trip with this first-hand guide. Manali-Kaza route, ILP permits, fuel stops, ATM locations, camping at Chandratal, and budget breakdown.",
+  metaTitle: "Spiti Valley Road Trip 2026: Route, Permits & Budget",
+  metaDescription: "Plan your Spiti Valley road trip with this first-hand guide. Manali-Kaza route, ILP permits, fuel stops, ATM locations, camping at Chandratal.",
 };

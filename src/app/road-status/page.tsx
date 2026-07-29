@@ -3,8 +3,8 @@ import { RoadStatusDashboard } from "./RoadStatusDashboard";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/road-status" },
-  title: "Live Road Status — Uttarakhand, Himachal, Ladakh Routes | TravelBoa",
-  description: "Real-time road conditions for Kedarnath, Spiti Valley, Ladakh, Vaishno Devi and other pilgrimage and adventure routes. Updated every 30-60 minutes from PWD and BRO sources.",
+  title: "Road Status: Uttarakhand, Himachal & Ladakh Routes",
+  description: "Road conditions for Kedarnath, Spiti, Ladakh and Vaishno Devi routes. Compiled by hand from PWD and BRO bulletins. Not a live feed, so confirm locally.",
 };
 
 export default function RoadStatusPage() {

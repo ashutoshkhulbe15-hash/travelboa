@@ -130,7 +130,8 @@ export function DashboardClient() {
     }
   }, [state, loaded, destIndex]);
 
-  if (!loaded) return null;
+  // Render immediately so the page is not an empty document for crawlers.
+  // Saved state is restored by the useEffect above after hydration.
 
   const selectDest = (i: number) => {
     const slug = DESTINATIONS[i].slug;

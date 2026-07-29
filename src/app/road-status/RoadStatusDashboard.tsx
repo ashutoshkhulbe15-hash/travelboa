@@ -5,63 +5,66 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 
+// Manually verified. Update this date whenever the route table below is checked.
+const LAST_VERIFIED = "28 July 2026";
+
 const ROUTE_GROUPS = [
   {
     destination: "Kedarnath",
     slug: "kedarnath",
     routes: [
-      { from: "Rishikesh", to: "Devprayag", km: 70, status: "open" as const, note: "NH-7, good condition", updated: "25m ago" },
-      { from: "Devprayag", to: "Rudraprayag", km: 69, status: "open" as const, note: "Clear", updated: "25m ago" },
-      { from: "Rudraprayag", to: "Guptkashi", km: 50, status: "open" as const, note: "Narrow mountain road", updated: "40m ago" },
-      { from: "Guptkashi", to: "Sonprayag", km: 30, status: "open" as const, note: "Clear", updated: "40m ago" },
-      { from: "Gaurikund", to: "Kedarnath", km: 16, status: "open" as const, note: "Trek route, well-maintained", updated: "1h ago" },
+      { from: "Rishikesh", to: "Devprayag", km: 70, status: "open" as const, note: "NH-7, good condition" },
+      { from: "Devprayag", to: "Rudraprayag", km: 69, status: "open" as const, note: "Clear" },
+      { from: "Rudraprayag", to: "Guptkashi", km: 50, status: "open" as const, note: "Narrow mountain road" },
+      { from: "Guptkashi", to: "Sonprayag", km: 30, status: "open" as const, note: "Clear" },
+      { from: "Gaurikund", to: "Kedarnath", km: 16, status: "open" as const, note: "Trek route, well-maintained" },
     ],
   },
   {
     destination: "Badrinath",
     slug: "badrinath",
     routes: [
-      { from: "Rishikesh", to: "Rudraprayag", km: 139, status: "open" as const, note: "NH-7", updated: "30m ago" },
-      { from: "Rudraprayag", to: "Joshimath", km: 130, status: "partial" as const, note: "Slow near Pipalkoti, single lane", updated: "40m ago" },
-      { from: "Joshimath", to: "Badrinath", km: 44, status: "open" as const, note: "Clear", updated: "1h ago" },
+      { from: "Rishikesh", to: "Rudraprayag", km: 139, status: "open" as const, note: "NH-7" },
+      { from: "Rudraprayag", to: "Joshimath", km: 130, status: "partial" as const, note: "Slow near Pipalkoti, single lane" },
+      { from: "Joshimath", to: "Badrinath", km: 44, status: "open" as const, note: "Clear" },
     ],
   },
   {
     destination: "Yamunotri",
     slug: "yamunotri",
     routes: [
-      { from: "Rishikesh", to: "Barkot", km: 175, status: "open" as const, note: "Via Mussoorie", updated: "1h ago" },
-      { from: "Barkot", to: "Hanuman Chatti", km: 45, status: "closed" as const, note: "⚠️ Landslide at Hanuman Chatti. Road blocked.", updated: "12m ago" },
+      { from: "Rishikesh", to: "Barkot", km: 175, status: "open" as const, note: "Via Mussoorie" },
+      { from: "Barkot", to: "Hanuman Chatti", km: 45, status: "closed" as const, note: "⚠️ Landslide at Hanuman Chatti. Road blocked." },
     ],
   },
   {
     destination: "Spiti Valley",
     slug: "spiti",
     routes: [
-      { from: "Manali", to: "Rohtang Pass", km: 51, status: "open" as const, note: "Clear. Snow clearance complete.", updated: "55m ago" },
-      { from: "Rohtang", to: "Batal", km: 79, status: "partial" as const, note: "Single lane BRO repair, 45 min wait", updated: "40m ago" },
-      { from: "Batal", to: "Kunzum La", km: 20, status: "open" as const, note: "Kunzum opened May 18", updated: "1h ago" },
-      { from: "Kunzum", to: "Kaza", km: 105, status: "open" as const, note: "Gravel descent, drive slow", updated: "1h ago" },
-      { from: "Kaza", to: "Tabo", km: 47, status: "open" as const, note: "Good road", updated: "3h ago" },
-      { from: "Sumdo", to: "Reckong Peo", km: 110, status: "partial" as const, note: "⚠️ Rockfall zone Khab-Akpa, 1-2h delay", updated: "18m ago" },
+      { from: "Manali", to: "Rohtang Pass", km: 51, status: "open" as const, note: "Clear. Snow clearance complete." },
+      { from: "Rohtang", to: "Batal", km: 79, status: "partial" as const, note: "Single lane BRO repair, 45 min wait" },
+      { from: "Batal", to: "Kunzum La", km: 20, status: "open" as const, note: "Kunzum opened May 18" },
+      { from: "Kunzum", to: "Kaza", km: 105, status: "open" as const, note: "Gravel descent, drive slow" },
+      { from: "Kaza", to: "Tabo", km: 47, status: "open" as const, note: "Good road" },
+      { from: "Sumdo", to: "Reckong Peo", km: 110, status: "partial" as const, note: "⚠️ Rockfall zone Khab-Akpa, 1-2h delay" },
     ],
   },
   {
     destination: "Vaishno Devi",
     slug: "vaishno-devi",
     routes: [
-      { from: "Jammu", to: "Katra", km: 48, status: "open" as const, note: "NH-44, good condition", updated: "2h ago" },
-      { from: "Katra", to: "Bhawan", km: 13, status: "open" as const, note: "Trek route, normal crowd", updated: "2h ago" },
+      { from: "Jammu", to: "Katra", km: 48, status: "open" as const, note: "NH-44, good condition" },
+      { from: "Katra", to: "Bhawan", km: 13, status: "open" as const, note: "Trek route, normal crowd" },
     ],
   },
   {
     destination: "Leh–Ladakh",
     slug: "ladakh",
     routes: [
-      { from: "Manali", to: "Rohtang", km: 51, status: "open" as const, note: "Clear", updated: "55m ago" },
-      { from: "Rohtang", to: "Baralacha La", km: 175, status: "partial" as const, note: "Baralacha open, patches near Darcha", updated: "90m ago" },
-      { from: "Baralacha", to: "Pang", km: 70, status: "open" as const, note: "Clear", updated: "2h ago" },
-      { from: "Pang", to: "Leh", km: 183, status: "open" as const, note: "Via Tanglang La, good condition", updated: "2h ago" },
+      { from: "Manali", to: "Rohtang", km: 51, status: "open" as const, note: "Clear" },
+      { from: "Rohtang", to: "Baralacha La", km: 175, status: "partial" as const, note: "Baralacha open, patches near Darcha" },
+      { from: "Baralacha", to: "Pang", km: 70, status: "open" as const, note: "Clear" },
+      { from: "Pang", to: "Leh", km: 183, status: "open" as const, note: "Via Tanglang La, good condition" },
     ],
   },
 ];
@@ -112,8 +115,8 @@ export function RoadStatusDashboard() {
             <span className="w-3 h-3 rounded-full" style={{ background: "#7be3a2", animation: "pulse-dot 2s ease-in-out infinite" }} />
             <p className="kicker">Live road status</p>
           </div>
-          <h1 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Road conditions from Dehradun, updated this morning.</h1>
-          <p className="text-[17px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Sourced from PWD Uttarakhand, HP PWD, and BRO. Refreshed every 30-60 minutes during season.</p>
+          <h1 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Road conditions from Dehradun, checked by hand.</h1>
+          <p className="text-[17px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Compiled by hand from PWD Uttarakhand, HP PWD and BRO bulletins. Last verified {LAST_VERIFIED}. This page is not live: always confirm with the local control room before you set out.</p>
 
           {/* Summary stats */}
           <div className="flex gap-3 mt-8 flex-wrap">
@@ -189,7 +192,7 @@ export function RoadStatusDashboard() {
                     <span className="font-mono text-[12px] ml-2" style={{ color: "var(--ink-soft)" }}>{r.km} km</span>
                   </div>
                   <span className="text-[13px] hidden sm:block" style={{ color: "var(--ink-soft)" }}>{r.note}</span>
-                  <span className="font-mono text-[11px]" style={{ color: "var(--ink-soft)" }}>{r.updated}</span>
+                  
                   <span className="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold uppercase" style={{ background: statusBg[r.status], color: statusText[r.status] }}>{r.status}</span>
                 </div>
               ))}

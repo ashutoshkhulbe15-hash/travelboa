@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { RelatedLinks } from "@/components/RelatedLinks";
+import { relatedForDestination } from "@/lib/related";
 import type { DestinationData } from "@/lib/destinations/types";
 import Link from "next/link";
 
@@ -28,7 +30,36 @@ export function PackingChecklist({ destination: d }: Props) {
     try { localStorage.setItem(STORAGE_PREFIX + d.slug, JSON.stringify(checks)); } catch {}
   }, [checks, loaded, d.slug]);
 
-  if (!loaded) return null;
+  // NOTE: do NOT gate rendering on `loaded`. The checklist markup is built from
+  // static destination data and must be present in the server-rendered HTML for
+  // crawlers. `checks` starts as {} on both server and client first render, so
+  // hydration matches; the useEffect above then restores saved ticks.
+
+  const rel = relatedForDestination(d.slug);
+
+  // ─── structured data ───
+  const pageUrl = `https://www.travelboa.com/${d.slug}/packing`;
+  const packingLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${d.name} packing checklist`,
+    description: `Gear checklist for ${d.name} at ${d.altitude}m.`,
+    url: pageUrl,
+    numberOfItems: d.checklist.reduce((n, c) => n + c.items.length, 0),
+    itemListElement: d.checklist.flatMap((cat) =>
+      cat.items.map((it) => ({ "@type": "ListItem", name: it.name }))
+    ).map((li, i) => ({ ...li, position: i + 1 })),
+  };
+  const packingBreadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
+      { "@type": "ListItem", position: 2, name: d.name, item: `https://www.travelboa.com/${d.slug}` },
+      { "@type": "ListItem", position: 3, name: "Packing list", item: pageUrl },
+    ],
+  };
+
 
   const totalItems = d.checklist.reduce((s, c) => s + c.items.length, 0);
   const checkedCount = Object.values(checks).filter(Boolean).length;
@@ -189,7 +220,29 @@ export function PackingChecklist({ destination: d }: Props) {
           </button>
         </div>
       </div>
+      {/* ═══ RELATED CONTENT ═══ */}
+      <section className="py-14" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)" }}>
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
+          <span className="font-caveat text-[22px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>before you buy anything&hellip;</span>
+          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Read the detail behind these picks</h2>
+          <p className="text-[16px] mt-2" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>
+            This is the short list. The gear write-ups below explain why each item made it, and the guides cover the planning that decides what you actually need.
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-2">
+            <RelatedLinks title="Gear write-ups" links={rel.gear} />
+            <RelatedLinks title="Planning guides" links={rel.guides} />
+          </div>
+          <div className="mt-8">
+            <RelatedLinks title="Nearby trips" links={rel.destinations} />
+          </div>
+        </div>
+      </section>
+
       <Footer />
+
+      {/* JSON-LD */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(packingLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(packingBreadcrumbLd) }} />
     </div>
   );
 }

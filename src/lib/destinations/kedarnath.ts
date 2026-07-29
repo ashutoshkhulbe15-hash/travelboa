@@ -288,7 +288,7 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
     { q: "How long is the Kedarnath trek?", a: "The Kedarnath trek is 16 km one way from Gaurikund, with about 1,550 m of altitude gain. Most people take 6 to 8 hours going up and 4 to 5 hours coming down. If you start from Sonprayag, add a 5 km shared jeep ride to reach Gaurikund first." },
     { q: "What is the Kedarnath opening date in 2026?", a: "Kedarnath temple opened on 22 April 2026 at 8:00 AM. The date was announced on Mahashivratri, 15 February 2026, by the Badrinath-Kedarnath Temple Committee at Omkareshwar Temple, Ukhimath. The expected closing date is 11 November 2026 on Bhai Dooj." },
     { q: "What is the distance from Kedarnath to Badrinath?", a: "By road it is around 218 km from Gaurikund to Badrinath via Ukhimath, Chopta and Joshimath, which takes 8 to 10 hours of driving plus the 16 km walk down from Kedarnath temple. The aerial distance is only about 41 km, which is why Do Dham helicopter packages cover both in a day." },
-    { q: "How long is the Kedarnath trek?", a: "The Kedarnath trek is 16 km one way from Gaurikund to the temple. Most people take 6-8 hours going up and 4-5 hours coming down. The total altitude gain is 1,550 metres, from 2,039m at Gaurikund to 3,583m at the temple." },
+    { q: "Is there an ATM in Sonprayag or Gaurikund?", a: "There is an SBI ATM in Sonprayag near the parking area, but it runs out of cash regularly during peak season and there is no ATM at Gaurikund at all. The last reliable machines are in Guptkashi, about 30 km back. Carry enough cash for the whole trek." },
     { q: "Is Kedarnath trek difficult?", a: "The trek is moderate difficulty. The path is paved and well-maintained. The steepest section is the first 4 km from Gaurikund to Jungle Chatti. Altitude is the real challenge, not the terrain. If you can walk 10 km on flat ground without stopping, you can do this trek with proper breaks." },
     { q: "How much does the Kedarnath trek cost?", a: "A budget trip costs ₹5,000-8,000 (walking both ways, dharamshala stays, dhaba food). Mid-range is ₹10,000-20,000 (pony one way, guesthouse). Comfort is ₹20,000-35,000 (helicopter one way, hotel in Guptkashi). This excludes transport to Gaurikund." },
     { q: "Can elderly people visit Kedarnath?", a: "Yes. Pony (₹2,500-3,500), palki/palanquin (₹6,000-12,000), and helicopter (₹5,500-7,000) options are available. Many elderly pilgrims visit every year." },
@@ -321,6 +321,6 @@ Plenty of dhabas on the trek route. Food is basic but safe (maggi, rice, dal, ch
   ],
 
   // SEO
-  metaTitle: "Kedarnath Trek 2026: Route, Packing List, Budget & Road Status | TravelBoa",
-  metaDescription: "Complete Kedarnath trek guide from Dehradun. 16 km Gaurikund route, 2026 opening dates (22 April), Kedarnath to Badrinath distance, packing checklist, helicopter vs trek, budget ₹5K-35K.",
+  metaTitle: "Kedarnath Trek 2026: Route, Budget & Opening Dates",
+  metaDescription: "Complete Kedarnath trek guide from Dehradun. 16 km Gaurikund route, 2026 opening dates (22 April), Kedarnath to Badrinath distance, packing checklist.",
 };

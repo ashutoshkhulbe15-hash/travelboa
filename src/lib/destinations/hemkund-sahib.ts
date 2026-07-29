@@ -14,8 +14,8 @@ export const hemkundSahib: DestinationData = {
   duration: "4 days (with Valley of Flowers)",
   budget: { min: 2300, max: 17500 },
   heroGradient: "linear-gradient(150deg,#1a2540,#3a5a8a 60%,#5a8aaa)",
-  metaTitle: "Hemkund Sahib Trek 2026: Ghangaria Route & Valley of Flowers Combo | TravelBoa",
-  metaDescription: "Hemkund Sahib yatra guide. Govindghat to Ghangaria trek, 6 km climb to the Sikh shrine at 4,329m, helicopter option, Valley of Flowers combo, and best time to visit.",
+  metaTitle: "Hemkund Sahib Trek 2026: Ghangaria Route & Timings",
+  metaDescription: "Hemkund Sahib yatra guide. Govindghat to Ghangaria trek, 6 km climb to the Sikh shrine at 4,329m, helicopter option, Valley of Flowers combo.",
   quickStats: [
     { label: "Gurudwara altitude", value: "4,329m", icon: "🏔️" },
     { label: "From Dehradun", value: "290 km", icon: "🚗" },

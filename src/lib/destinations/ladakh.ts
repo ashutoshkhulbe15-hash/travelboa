@@ -14,8 +14,8 @@ export const ladakh: DestinationData = {
   duration: "7-12 days",
   budget: { min: 10000, max: 35000 },
   heroGradient: "linear-gradient(150deg,#1a2a4a,#2a5a7a 60%,#3a3a2a)",
-  metaTitle: "Ladakh Road Trip 2026: Manali-Leh Route, Permits & Checklist | TravelBoa",
-  metaDescription: "Ladakh bike and road trip guide. Manali-Leh and Srinagar-Leh routes, high pass acclimatization, ILP permits, fuel stops, and complete gear checklist from Dehradun.",
+  metaTitle: "Ladakh Road Trip 2026: Manali-Leh Route & Permits",
+  metaDescription: "Ladakh bike and road trip guide. Manali-Leh and Srinagar-Leh routes, high pass acclimatization, ILP permits, fuel stops.",
   quickStats: [
     { label: "Leh altitude", value: "3,524m", icon: "🏔️" },
     { label: "Highest pass", value: "Tanglang La 5,328m", icon: "⛰️" },

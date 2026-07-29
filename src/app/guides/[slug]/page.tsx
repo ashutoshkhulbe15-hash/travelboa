@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!guide) return { title: "Guide not found — TravelBoa" };
   const hero = guideContent[slug]?.heroImage?.src || "/og-default.png";
   return {
-    title: `${guide.title} — TravelBoa`,
+    title: guide.metaTitle,
     description: guide.desc,
     alternates: { canonical: `/guides/${slug}` },
     openGraph: {

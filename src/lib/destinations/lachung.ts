@@ -14,7 +14,7 @@ export const lachung: DestinationData = {
   duration: "4-5 days from Gangtok",
   budget: { min: 8000, max: 35000 },
   heroGradient: "linear-gradient(150deg,#1a3a4a,#2a5a6a 60%,#4a7a8a)",
-  metaTitle: "Lachung & Yumthang Valley 2026: North Sikkim ILP, Zero Point Guide | TravelBoa",
+  metaTitle: "Lachung & Yumthang 2026: North Sikkim ILP, Zero Point",
   metaDescription: "Lachung and Yumthang Valley guide. North Sikkim ILP permit process, rhododendron bloom season (April), Zero Point at 4,428m, and Gangtok to Lachung route.",
   quickStats: [
     { label: "Lachung altitude", value: "2,680m", icon: "🏘️" },

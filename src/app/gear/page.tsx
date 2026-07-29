@@ -1,16 +1,41 @@
 import type { Metadata } from "next";
+import { GEAR_SLUGS, GEAR_GUIDE_META, type GearSlug } from "@/lib/gear-content";
 import { GearClient } from "./GearClient";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/gear" },
-  title: "Gear Guides - Best Jackets, Shoes, Bags for Mountain Travel | TravelBoa",
-  description: "Destination-specific gear recommendations for Indian mountain travel. Best jackets for Kedarnath, shoes for Vaishno Devi, sleeping bags for Spiti. Tested picks with affiliate links.",
+  title: "Himalaya Trek Gear: Jackets, Shoes & Backpacks Tested",
+  description:
+    "Destination-specific gear for Indian mountain travel: jackets for Kedarnath, shoes for Vaishno Devi, sleeping bags for Spiti. Tested picks with prices.",
   openGraph: {
-    title: "Gear Guides - Best Jackets, Shoes, Bags for Mountain Travel | TravelBoa",
+    title: "Himalaya Trek Gear: Jackets, Shoes & Backpacks Tested",
     description: "Destination-specific gear recommendations. Tested picks for Indian mountain travel.",
   },
 };
 
+const hubLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Gear guides",
+  url: "https://www.travelboa.com/gear",
+  isPartOf: { "@id": "https://www.travelboa.com/#website" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: GEAR_SLUGS.length,
+    itemListElement: GEAR_SLUGS.map((slug, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: GEAR_GUIDE_META[slug as GearSlug].title,
+      url: `https://www.travelboa.com/gear/${slug}`,
+    })),
+  },
+};
+
 export default function GearPage() {
-  return <GearClient />;
+  return (
+    <>
+      <GearClient />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hubLd) }} />
+    </>
+  );
 }

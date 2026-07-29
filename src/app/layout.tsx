@@ -1,13 +1,32 @@
 import type { Metadata } from "next";
+import { Outfit, IBM_Plex_Mono, Caveat } from "next/font/google";
 
 import "./globals.css";
 
-const outfit = { variable: "" };
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-caveat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "TravelBoa — Indian Himalaya Travel Guides, Road Status & Packing Lists",
+  title: "TravelBoa: Indian Himalaya Guides, Roads & Packing Lists",
   description:
-    "First-hand guides to Kedarnath, Spiti, Ladakh and 20 more Himalayan destinations. Live road conditions, altitude weather, packing checklists and honest gear picks. Written from Dehradun.",
+    "First-hand guides to Kedarnath, Spiti, Ladakh and 20 more Himalayan trips. Road conditions, packing checklists and honest gear picks, written from Dehradun.",
   keywords: [
     "Kedarnath trek", "Spiti road trip", "Vaishno Devi guide",
     "road status Uttarakhand", "trekking packing list", "India travel companion",
@@ -25,7 +44,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.travelboa.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "TravelBoa — Indian Himalaya Travel Guides, Road Status & Packing Lists",
+    title: "TravelBoa: Indian Himalaya Guides, Roads & Packing Lists",
     description: "First-hand guides to Kedarnath, Spiti, Ladakh and 20 more. Road status, altitude weather, packing checklists. Written from Dehradun.",
     url: "https://www.travelboa.com",
     siteName: "TravelBoa",
@@ -71,17 +90,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
+    <html
+      lang="en-IN"
+      className={`${outfit.variable} ${plexMono.variable} ${caveat.variable} h-full antialiased`}
+    >
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZRJENXP96" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-SZRJENXP96');`,
           }}
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">

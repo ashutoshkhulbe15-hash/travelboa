@@ -14,7 +14,7 @@ export const auli: DestinationData = {
   duration: "3-4 days",
   budget: { min: 5900, max: 13500 },
   heroGradient: "linear-gradient(150deg,#1a2540,#3a4a7a 60%,#5a6a9a)",
-  metaTitle: "Auli Ski Resort 2026: Cable Car, Skiing Season & Gorson Bugyal Trek | TravelBoa",
+  metaTitle: "Auli 2026: Ski Season, Cable Car & Gorson Bugyal Trek",
   metaDescription: "Auli guide. Asia's longest cable car, skiing season (January-March), Gorson Bugyal meadow trek, Nanda Devi views, Joshimath base, and Char Dham circuit combo.",
   quickStats: [
     { label: "Top station altitude", value: "3,049m", icon: "⛷️" },

@@ -2,8 +2,11 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { RelatedLinks } from "@/components/RelatedLinks";
+import { destinationsForGear, siblingGear, packingListsForGear } from "@/lib/related";
 import { gearGuideContent, GEAR_GUIDE_META, type GearSlug } from "@/lib/gear-content";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   slug: string;
@@ -11,7 +14,57 @@ interface Props {
 }
 
 export function GearArticle({ slug, meta }: Props) {
+  const relDest = destinationsForGear(slug);
+  const relGear = siblingGear(slug);
+  const relPacking = packingListsForGear(slug);
+
+
   const content = gearGuideContent[slug as GearSlug];
+
+  // ─── structured data ───
+  const pageUrl = `https://www.travelboa.com/gear/${slug}`;
+  const heroSrc = content?.heroImage?.src;
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: meta.title,
+    description: meta.desc,
+    ...(heroSrc ? { image: [`https://www.travelboa.com${heroSrc}`] } : {}),
+    author: { "@type": "Person", name: "Ash", url: "https://www.travelboa.com/about" },
+    publisher: {
+      "@type": "Organization",
+      name: "TravelBoa",
+      url: "https://www.travelboa.com",
+      logo: { "@type": "ImageObject", url: "https://www.travelboa.com/android-chrome-512x512.png" },
+    },
+    datePublished: "2026-05-22",
+    dateModified: "2026-07-30",
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+  };
+
+  const itemListLd = content?.products?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: meta.title,
+        numberOfItems: content.products.length,
+        itemListElement: content.products.map((prod, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: prod.name,
+        })),
+      }
+    : null;
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
+      { "@type": "ListItem", position: 2, name: "Gear", item: "https://www.travelboa.com/gear" },
+      { "@type": "ListItem", position: 3, name: meta.title, item: pageUrl },
+    ],
+  };
   const otherSlugs = Object.keys(GEAR_GUIDE_META).filter(s => s !== slug).slice(0, 4) as GearSlug[];
 
   return (
@@ -49,7 +102,7 @@ export function GearArticle({ slug, meta }: Props) {
             <div className="space-y-8 min-w-0">
               {content.heroImage && (
                 <div className="rounded-[18px] overflow-hidden" style={{ aspectRatio: "21/9" }}>
-                  <img src={content.heroImage.src} alt={content.heroImage.alt} className="w-full h-full object-cover" />
+                  <Image src={content.heroImage.src} alt={content.heroImage.alt} fill sizes="(max-width:1024px) 100vw, 760px" priority className="object-cover" />
                 </div>
               )}
 
@@ -61,14 +114,14 @@ export function GearArticle({ slug, meta }: Props) {
 
               {content.sectionImages?.afterIntro && (
                 <div className="rounded-[18px] overflow-hidden">
-                  <img src={content.sectionImages.afterIntro.src} alt={content.sectionImages.afterIntro.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                  <Image src={content.sectionImages.afterIntro.src} alt={content.sectionImages.afterIntro.alt} width={1200} height={675} sizes="(max-width:1024px) 100vw, 760px" className="w-full object-cover h-auto" style={{ maxHeight: 400 }} />
                   {content.sectionImages.afterIntro.caption && <p className="text-[13px] text-center py-2.5 italic" style={{ color: "var(--ink-soft)", background: "var(--snowfield)" }}>{content.sectionImages.afterIntro.caption}</p>}
                 </div>
               )}
 
               {content.sectionImages?.afterBuyingGuide && (
                 <div className="rounded-[18px] overflow-hidden">
-                  <img src={content.sectionImages.afterBuyingGuide.src} alt={content.sectionImages.afterBuyingGuide.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                  <Image src={content.sectionImages.afterBuyingGuide.src} alt={content.sectionImages.afterBuyingGuide.alt} width={1200} height={675} sizes="(max-width:1024px) 100vw, 760px" className="w-full object-cover h-auto" style={{ maxHeight: 400 }} />
                   {content.sectionImages.afterBuyingGuide.caption && <p className="text-[13px] text-center py-2.5 italic" style={{ color: "var(--ink-soft)", background: "var(--snowfield)" }}>{content.sectionImages.afterBuyingGuide.caption}</p>}
                 </div>
               )}
@@ -112,7 +165,7 @@ export function GearArticle({ slug, meta }: Props) {
 
               {content.sectionImages?.afterProducts && (
                 <div className="rounded-[18px] overflow-hidden">
-                  <img src={content.sectionImages.afterProducts.src} alt={content.sectionImages.afterProducts.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                  <Image src={content.sectionImages.afterProducts.src} alt={content.sectionImages.afterProducts.alt} width={1200} height={675} sizes="(max-width:1024px) 100vw, 760px" className="w-full object-cover h-auto" style={{ maxHeight: 400 }} />
                 </div>
               )}
 
@@ -194,7 +247,29 @@ export function GearArticle({ slug, meta }: Props) {
           </div>
         )}
       </div>
+      {/* ═══ RELATED CONTENT ═══ */}
+      <section className="py-14" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)" }}>
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
+          <span className="font-caveat text-[22px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>where I use this kit&hellip;</span>
+          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Trips this gear is for</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-2">
+            <RelatedLinks title="Destinations" links={relDest} />
+            <RelatedLinks title="Other gear I rate" links={relGear} />
+          </div>
+          <div className="mt-8">
+            <RelatedLinks title="Full packing checklists" note="tick items off as you buy" links={relPacking} />
+          </div>
+        </div>
+      </section>
+
       <Footer />
+
+      {/* JSON-LD */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {itemListLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+      )}
     </div>
   );
 }

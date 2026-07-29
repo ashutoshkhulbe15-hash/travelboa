@@ -2,7 +2,7 @@
 
 @theme inline {
   --font-sans: var(--font-outfit), "Outfit", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 }
 
 /* ═══ DESIGN SYSTEM ═══ */
@@ -63,11 +63,11 @@ body {
 }
 
 .font-caveat {
-  font-family: "Caveat", cursive;
+  font-family: var(--font-caveat), "Caveat", cursive;
 }
 
 .font-mono {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 }
 
 /* Contour texture background */
@@ -78,7 +78,7 @@ body {
 
 /* Kicker label style */
 .kicker {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-plex-mono), "IBM Plex Mono", monospace;
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -88,7 +88,7 @@ body {
 /* Entry stamp (Field Journal) */
 .entry-stamp {
   display: inline-block;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-plex-mono), "IBM Plex Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

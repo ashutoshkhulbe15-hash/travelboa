@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { RelatedLinks } from "@/components/RelatedLinks";
+import { relatedForDestination } from "@/lib/related";
 import type { DestinationData } from "@/lib/destinations/types";
 import { DESTINATIONS } from "@/lib/data";
 import Link from "next/link";
@@ -237,16 +239,9 @@ export function DestinationGuide({ destination: d }: Props) {
   const totalItems = d.checklist.reduce((s, c) => s + c.items.length, 0);
   const checkedCount = Object.values(checks).filter(Boolean).length;
 
-  // Related destinations (same type first, then classics)
-  const relatedSlugs = [
-    d.type === "pilgrimage" ? "badrinath" : "spiti",
-    "chopta",
-    "valley-of-flowers",
-    "kedarnath",
-  ].filter(s => s !== d.slug).slice(0, 3);
-  const related = relatedSlugs
-    .map(s => DESTINATIONS.find(x => x.slug === s))
-    .filter((x): x is (typeof DESTINATIONS)[number] => Boolean(x));
+  // Related content, driven by the curated map in @/lib/related
+  const rel = relatedForDestination(d.slug);
+  const related = rel.destinations;
 
   const entryNo = String(Math.max(1, DESTINATIONS.findIndex(x => x.slug === d.slug) + 1)).padStart(2, "0");
   const hasAffiliate = d.checklist.some(c => c.items.some(it => it.affiliateLink));
@@ -484,31 +479,51 @@ export function DestinationGuide({ destination: d }: Props) {
         </div>
       </div>
 
-      {/* ═══ RELATED ENTRIES ═══ */}
-      {related.length > 0 && (
-        <section className="py-14" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)" }}>
-          <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
-            <span className="font-caveat text-[22px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>if this entry helped, read these next&hellip;</span>
-            <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Related entries</h2>
+      {/* ═══ RELATED CONTENT ═══ */}
+      <section className="py-14" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)" }}>
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
+          <span className="font-caveat text-[22px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>if this entry helped, read these next&hellip;</span>
+          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Read next</h2>
+
+          {related.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-7">
               {related.map(r => (
-                <Link key={r.slug} href={`/${r.slug}`} className="bg-white rounded-xl p-5 no-underline transition-all duration-250 hover:-translate-y-1 hover:shadow-xl" style={{ border: "1px solid var(--line)", boxShadow: "0 4px 14px -8px rgba(28,43,51,0.12)" }}>
-                  <span className="font-mono text-[10px] tracking-[0.1em] uppercase" style={{ color: "var(--terra)" }}>{r.type} &middot; {r.info}</span>
-                  <span className="block text-[18px] font-bold mt-2" style={{ color: "var(--ink)" }}>{r.name}</span>
-                  <span className="block font-caveat text-[18px] mt-0.5" style={{ color: "var(--terra)" }}>&ldquo;{r.note}&rdquo;</span>
+                <Link key={r.href} href={r.href} className="bg-white rounded-xl p-5 no-underline transition-all duration-250 hover:-translate-y-1 hover:shadow-xl" style={{ border: "1px solid var(--line)", boxShadow: "0 4px 14px -8px rgba(28,43,51,0.12)" }}>
+                  <span className="font-mono text-[10px] tracking-[0.1em] uppercase" style={{ color: "var(--terra)" }}>{r.blurb}</span>
+                  <span className="block text-[18px] font-bold mt-2" style={{ color: "var(--ink)" }}>{r.title}</span>
                 </Link>
               ))}
             </div>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-4">
+            <RelatedLinks title={`Gear for ${d.name}`} note="what I actually carry" links={rel.gear} />
+            <RelatedLinks title={`Planning guides for ${d.name}`} note="permits, budget, timing" links={rel.guides} />
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       <Footer />
 
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "TravelGuide", name: d.metaTitle, description: d.metaDescription,
-        about: { "@type": "TouristDestination", name: d.name, description: d.tagline },
+        "@context": "https://schema.org", "@type": "TravelGuide",
+        name: d.metaTitle, description: d.metaDescription,
+        url: `https://www.travelboa.com/${d.slug}`,
+        image: [`https://www.travelboa.com/${d.slug}.jpg`],
+        inLanguage: "en-IN",
+        datePublished: "2026-05-22",
+        dateModified: "2026-07-30",
+        author: { "@type": "Person", name: "Ash", url: "https://www.travelboa.com/about" },
+        publisher: {
+          "@type": "Organization", name: "TravelBoa", url: "https://www.travelboa.com",
+          logo: { "@type": "ImageObject", url: "https://www.travelboa.com/android-chrome-512x512.png" },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.travelboa.com/${d.slug}` },
+        about: {
+          "@type": "TouristDestination", name: d.name, description: d.tagline,
+          address: { "@type": "PostalAddress", addressRegion: d.state, addressCountry: "IN" },
+        },
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "FAQPage",

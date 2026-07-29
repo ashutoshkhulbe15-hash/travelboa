@@ -14,8 +14,8 @@ export const valleyOfFlowers: DestinationData = {
   duration: "4-5 days",
   budget: { min: 5000, max: 15000 },
   heroGradient: "linear-gradient(150deg,#4a1060,#86198f 60%,#c026d3)",
-  metaTitle: "Valley of Flowers Trek 2026: Bloom Calendar, Govindghat Route | TravelBoa",
-  metaDescription: "Valley of Flowers trek guide with week-by-week bloom calendar. Govindghat to Ghangaria route, permits, best time (July-September), Hemkund Sahib combo, and packing list.",
+  metaTitle: "Valley of Flowers Trek 2026: Bloom Calendar & Route",
+  metaDescription: "Valley of Flowers trek guide with week-by-week bloom calendar. Govindghat to Ghangaria route, permits, best time (July-September), Hemkund Sahib combo.",
   quickStats: [
     { label: "Valley altitude", value: "3,658m", icon: "🌸" },
     { label: "Trek distance", value: "17 km from Govindghat", icon: "🥾" },

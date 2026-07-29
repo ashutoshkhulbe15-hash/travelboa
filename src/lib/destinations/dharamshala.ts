@@ -14,8 +14,8 @@ export const dharamshala: DestinationData = {
   duration: "3-5 days",
   budget: { min: 2000, max: 12000 },
   heroGradient: "linear-gradient(150deg,#1f3a2d,#3a6a4a 60%,#5a8a6a)",
-  metaTitle: "Dharamshala & McLeodganj 2026: Triund Trek, Tibetan Quarter Guide | TravelBoa",
-  metaDescription: "Dharamshala and McLeodganj travel guide. Triund overnight trek, Dalai Lama temple, Tibetan quarter food walk, Indrahar Pass, Kangra Valley, and Dharamkot village stays.",
+  metaTitle: "Dharamshala & McLeodganj 2026: Triund Trek Guide",
+  metaDescription: "Dharamshala and McLeodganj travel guide. Triund overnight trek, Dalai Lama temple, Tibetan quarter food walk, Indrahar Pass, Kangra Valley.",
   quickStats: [
     { label: "McLeodganj altitude", value: "1,457m", icon: "🏔️" },
     { label: "Triund altitude", value: "2,842m", icon: "⛰️" },

@@ -14,8 +14,8 @@ export const sandakphu: DestinationData = {
   duration: "4-5 days (trek) or 2 days (Land Rover)",
   budget: { min: 6000, max: 25000 },
   heroGradient: "linear-gradient(150deg,#1a3540,#3a6580 60%,#6a95b0)",
-  metaTitle: "Sandakphu Trek 2026: Everest & Kanchenjunga Views from Darjeeling | TravelBoa",
-  metaDescription: "Sandakphu trek guide. Singalila Ridge route from Manebhanjan, Everest and Kanchenjunga panorama, Land Rover option, permits, 4-day itinerary, and Darjeeling base.",
+  metaTitle: "Sandakphu Trek 2026: Everest & Kanchenjunga Views",
+  metaDescription: "Sandakphu trek guide. Singalila Ridge route from Manebhanjan, Everest and Kanchenjunga panorama, Land Rover option, permits, 4-day itinerary.",
   quickStats: [
     { label: "Altitude", value: "3,636m (highest in W. Bengal)", icon: "🏔️" },
     { label: "From Dehradun", value: "~680 km via Bagdogra", icon: "✈️" },

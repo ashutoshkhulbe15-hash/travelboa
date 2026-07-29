@@ -112,20 +112,22 @@ export function DestinationsClient() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((d, i) => (
-              <Link key={d.slug} href={d.hasPage ? `/${d.slug}` : "#"}
-                className={`reveal group block rounded-[18px] overflow-hidden no-underline transition-all duration-300 hover:-translate-y-[6px] hover:shadow-2xl ${!d.hasPage ? "opacity-70" : ""}`}
+            {filtered.map((d) => (
+              <div key={d.slug}
+                className={`reveal group block rounded-[18px] overflow-hidden transition-all duration-300 hover:-translate-y-[6px] hover:shadow-2xl ${!d.hasPage ? "opacity-70" : ""}`}
                 style={{ border: "1px solid #e3e9e6", background: "#fff" }}>
-                <div className="aspect-[16/10] relative overflow-hidden" style={{ background: d.grad }}>
-                  {d.image && <Image src={d.image} alt={`${d.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 33vw" />}
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.55))" }} />
-                  <span className="absolute top-3 left-3 font-mono text-[10.5px] tracking-wide uppercase px-2.5 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.92)", color: "var(--ink)" }}>{d.type}</span>
-                  {d.temp && <span className="absolute top-3 right-3 font-mono text-[11px] px-2.5 py-1 rounded-full" style={{ background: "rgba(12,26,35,0.78)", color: "#fff", backdropFilter: "blur(4px)" }}>{d.temp}</span>}
-                  <div className="absolute bottom-3 left-4 right-4">
-                    <div className="text-[20px] font-extrabold text-white tracking-tight">{d.name}</div>
-                    <div className="text-[12px] text-white/65 font-mono mt-0.5">{d.info}</div>
+                <Link href={d.hasPage ? `/${d.slug}` : "#"} className="block no-underline" tabIndex={d.hasPage ? 0 : -1}>
+                  <div className="aspect-[16/10] relative overflow-hidden" style={{ background: d.grad }}>
+                    {d.image && <Image src={d.image} alt={`${d.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 33vw" />}
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.55))" }} />
+                    <span className="absolute top-3 left-3 font-mono text-[10.5px] tracking-wide uppercase px-2.5 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.92)", color: "var(--ink)" }}>{d.type}</span>
+                    {d.temp && <span className="absolute top-3 right-3 font-mono text-[11px] px-2.5 py-1 rounded-full" style={{ background: "rgba(12,26,35,0.78)", color: "#fff", backdropFilter: "blur(4px)" }}>{d.temp}</span>}
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <h2 className="text-[20px] font-extrabold text-white tracking-tight">{d.name}</h2>
+                      <div className="text-[12px] text-white/65 font-mono mt-0.5">{d.info}</div>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div className="p-4">
                   {d.note && <p className="font-caveat text-[15px] mb-2" style={{ color: "var(--terra)" }}>{d.note}</p>}
                   <div className="flex gap-1.5 flex-wrap">
@@ -135,9 +137,16 @@ export function DestinationsClient() {
                       </span>
                     ))}
                   </div>
-                  {!d.hasPage && <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>GUIDE COMING SOON</p>}
+                  {d.hasPage ? (
+                    <div className="flex gap-4 mt-3 pt-3 border-t border-dashed" style={{ borderColor: "#e3e9e6" }}>
+                      <Link href={`/${d.slug}`} className="text-[13px] font-semibold no-underline" style={{ color: "var(--terra)" }}>Full guide &rarr;</Link>
+                      <Link href={`/${d.slug}/packing`} className="text-[13px] font-semibold no-underline" style={{ color: "var(--pine)" }}>Packing list &rarr;</Link>
+                    </div>
+                  ) : (
+                    <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>GUIDE COMING SOON</p>
+                  )}
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         )}

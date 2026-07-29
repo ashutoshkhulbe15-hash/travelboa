@@ -2,13 +2,18 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { RelatedLinks } from "@/components/RelatedLinks";
+import { destinationsForGuide, siblingGuides } from "@/lib/related";
 import { GUIDES } from "@/lib/data";
 import { guideContent } from "@/lib/guide-content";
 import Link from "next/link";
+import Image from "next/image";
 
 type Guide = (typeof GUIDES)[number];
 
 export function GuideArticle({ guide }: { guide: Guide }) {
+  const relDest = destinationsForGuide(guide.slug);
+  const relGuides = siblingGuides(guide.slug);
   const content = guideContent[guide.slug];
   const related = GUIDES.filter(g => g.slug !== guide.slug).slice(0, 4);
 
@@ -45,8 +50,8 @@ export function GuideArticle({ guide }: { guide: Guide }) {
             {/* MAIN CONTENT */}
             <div className="min-w-0">
               {content.heroImage && (
-                <div className="rounded-[18px] overflow-hidden mb-10" style={{ aspectRatio: "21/9" }}>
-                  <img src={content.heroImage.src} alt={content.heroImage.alt} className="w-full h-full object-cover" />
+                <div className="relative rounded-[18px] overflow-hidden mb-10" style={{ aspectRatio: "21/9" }}>
+                  <Image src={content.heroImage.src} alt={content.heroImage.alt} fill sizes="(max-width:1024px) 100vw, 760px" priority className="object-cover" />
                 </div>
               )}
 
@@ -62,7 +67,7 @@ export function GuideArticle({ guide }: { guide: Guide }) {
                     {section.heading && <h2 className="text-[22px] font-extrabold tracking-tight mb-3" style={{ color: "var(--ink)" }}>{section.heading}</h2>}
                     {section.image && (
                       <div className="rounded-[18px] overflow-hidden mb-4">
-                        <img src={section.image.src} alt={section.image.alt} className="w-full object-cover" style={{ maxHeight: 400 }} />
+                        <Image src={section.image.src} alt={section.image.alt} width={1200} height={675} sizes="(max-width:1024px) 100vw, 760px" className="w-full object-cover h-auto" style={{ maxHeight: 400 }} />
                         {section.image.caption && <p className="text-[13px] text-center py-2.5 italic" style={{ color: "var(--ink-soft)", background: "var(--snowfield)" }}>{section.image.caption}</p>}
                       </div>
                     )}
@@ -186,6 +191,18 @@ export function GuideArticle({ guide }: { guide: Guide }) {
           </div>
         )}
       </div>
+      {/* ═══ RELATED CONTENT ═══ */}
+      <section className="py-14" style={{ background: "var(--paper-warm)", borderTop: "1.5px dashed var(--line)" }}>
+        <div className="max-w-[1100px] mx-auto px-5 sm:px-6">
+          <span className="font-caveat text-[22px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>apply this on the ground&hellip;</span>
+          <h2 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Where this guide applies</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-2">
+            <RelatedLinks title="Destinations" links={relDest} />
+            <RelatedLinks title="Related guides" links={relGuides} />
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

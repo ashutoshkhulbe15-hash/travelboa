@@ -106,11 +106,11 @@ export default function HomePage() {
         <div className="inline-block" style={{ animation: "tick 38s linear infinite" }}>
           {[...Array(2)].map((_, rep) => (
             <span key={rep}>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>TODAY FROM DEHRADUN</b> &middot; 06:40 AM</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />Kedarnath yatra: OPEN</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />NH-7 Rishikesh to Joshimath: CLEAR</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "var(--terra)" }} />Manali-Kaza via Kunzum La: CHECK BEFORE YOU GO</span>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>23 DESTINATIONS</b> &middot; 7 GUIDES &middot; 14 GEAR REVIEWS</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>FIELD NOTES FROM DEHRADUN</b></span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />Kedarnath yatra: open for the 2026 season</span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />NH-7 Rishikesh to Joshimath: see road status</span>
+              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "var(--terra)" }} />Manali-Kaza via Kunzum La: check before you go</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>23 DESTINATIONS</b> &middot; 10 GUIDES &middot; 14 GEAR REVIEWS</span>
             </span>
           ))}
         </div>
@@ -301,7 +301,7 @@ export default function HomePage() {
               ))}
             </div>
             <Link href="/guides" className="inline-flex items-center gap-2 mt-5 text-[15px] font-semibold no-underline" style={{ color: "var(--terra)" }}>
-              All 7 topic guides <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+              All 10 topic guides <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
             </Link>
           </div>
           <div className="reveal">
