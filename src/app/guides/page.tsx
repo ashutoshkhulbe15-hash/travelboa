@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides" },
   title: "Himalaya Travel Guides: Permits, Altitude & Budget",
   description:
-    "Indian mountain planning guides currently undergoing source, safety and first-hand-experience review before search publication.",
+    "Practical Indian mountain planning guides for permits, altitude, seasons and trip preparation.",
   robots: { index: false, follow: true },
   openGraph: {
     title: "Himalaya Travel Guides: Permits, Altitude & Budget",
-    description: "Indian mountain planning guides currently undergoing editorial review.",
+    description: "Practical Indian mountain planning guides are coming soon to TravelBoa.",
   },
 };
 

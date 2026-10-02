@@ -29,7 +29,7 @@ export const lachung: DestinationData = {
 
 The road also deserves humility. Official Sikkim updates in 2026 document landslides, restoration work and complex evacuations elsewhere in North Sikkim. Conditions on the Lachung axis can change after heavy rain or infrastructure damage. No evergreen travel page can truthfully display “open” beside every segment.
 
-This guide separates stable planning principles from details that must be checked again: permit eligibility, exact documents, route access, Zero Point inclusion, vehicle charges, snow and flower timing. It removes invented first-person scenes and precise temperature or cash claims that were not backed by first-party evidence.`,
+Plan the trip around the details that matter most: permit eligibility, exact documents, route access, Zero Point inclusion, vehicle charges, snow and flower timing. Confirm each of these with the registered operator for your travel dates.`,
 
   comparison: {
     title: "Choose the North Sikkim experience you are actually booking",
@@ -104,7 +104,7 @@ Do not let an advertisement quietly redefine “three days” as a late first-ni
       id: "road-reality",
       title: "Road status can change faster than an article",
       icon: "🛣️",
-      content: `North Sikkim is a high-relief, high-rainfall environment with landslide, bridge and river risks. The state government's own 2026 notices show how seriously connectivity can change: the Chungthang–Lachen axis was disrupted for months, and the administration also inspected a landslide site at Teeling in Lachung during July. These events do not prove your travel date will fail; they prove that static green “open” badges are irresponsible.
+      content: `North Sikkim is a high-relief, high-rainfall environment with landslide, bridge and river risks. The state government's own 2026 notices show how seriously connectivity can change: the Chungthang–Lachen axis was disrupted for months, and the administration also inspected a landslide site at Teeling in Lachung during July. A green “open” badge seen days earlier is not enough for a travel decision.
 
 Check the Government of Sikkim or district update, then confirm with the registered operator close to departure. Operators should use official directions, not pressure from a prepaid group. Police, BRO, district administration, army and local bodies may regulate movement during a disruption.
 
@@ -112,7 +112,7 @@ Carry water, simple food, essential medicine and a warm layer in the vehicle. Ke
 
 Do not leave the authorised route, cross a barrier or walk into a damaged section because another vehicle appears to have passed. An evacuation corridor is not general tourist access. Follow checkpoint and driver instructions.
 
-The route panel on this page is labelled as a reference. It describes sequence, not live condition. When the current authority contradicts a booking or this guide, the authority wins.`,
+The route panel shows the journey sequence, not live road conditions. Current instructions from authorities and checkpoints take priority over any booking itinerary.`,
     },
     {
       id: "yumthang",

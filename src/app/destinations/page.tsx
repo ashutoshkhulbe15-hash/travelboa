@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/destinations" },
   title: "Himalayan Destination Guides: Routes, Permits & Safety",
   description:
-    "Browse TravelBoa's source-reviewed Nainital, Kedarnath, Spiti and Lachung guides. Nineteen more destinations remain out of search during editorial review.",
+    "Browse TravelBoa's in-depth Nainital, Kedarnath, Spiti and Lachung guides, with more Himalayan destinations coming soon.",
   openGraph: {
     title: "Himalayan Destination Guides: Routes, Permits & Safety",
-    description: "Indian Himalayan destinations with visible source notes and editorial checks.",
+    description: "Practical Indian Himalayan destination guides for routes, seasons, permits and trip planning.",
   },
 };
 

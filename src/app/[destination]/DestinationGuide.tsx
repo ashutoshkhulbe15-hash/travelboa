@@ -303,39 +303,13 @@ export function DestinationGuide({ destination: d }: Props) {
               ))}
             </div>
 
-            <section className="reveal mt-8 rounded-[18px] p-5 sm:p-6" style={{ background: "#f7f1e9", border: "1px solid var(--line)" }} aria-labelledby="verification-heading">
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
-                <div className="sm:w-[180px] shrink-0">
-                  <p className="font-mono text-[10.5px] font-semibold tracking-[0.12em] uppercase" style={{ color: "var(--terra)" }}>Editorial check</p>
-                  <p className="text-[14px] font-semibold mt-1" style={{ color: "var(--ink)" }}>{editorial.deskVerified}</p>
-                </div>
-                <div>
-                  <h2 id="verification-heading" className="text-[20px] font-bold mb-2" style={{ color: "var(--ink)" }}>How this guide was verified</h2>
-                  <p className="text-[15.5px] leading-[1.7]" style={{ color: "var(--ink-soft)" }}>{editorial.reviewNote}</p>
-                  {editorial.fieldNote && (
-                    <p className="text-[14.5px] leading-[1.7] mt-3 pl-3" style={{ color: "var(--ink)", borderLeft: "3px solid var(--terra)" }}><strong>First-party note:</strong> {editorial.fieldNote}</p>
-                  )}
-                  {editorial.sources.length > 0 && (
-                    <ul className="mt-3 flex flex-col gap-1.5 p-0" style={{ listStyle: "none" }}>
-                      {editorial.sources.map(source => (
-                        <li key={source.url}>
-                          <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[14px] font-semibold no-underline hover:underline" style={{ color: "var(--terra)" }}>{source.label} ↗</a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-            </section>
-
             {d.photoGallery && d.photoGallery.length > 0 && (
-              <section className="reveal mt-10" aria-labelledby="first-party-gallery">
+              <section className="reveal mt-10" aria-labelledby="photo-gallery-heading">
                 <div className="flex items-end justify-between gap-4 mb-4">
                   <div>
-                    <p className="kicker mb-1">First-party photographs</p>
-                    <h2 id="first-party-gallery" className="text-[24px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Nainital in three moods</h2>
+                    <p className="kicker mb-1">Ash&apos;s Nainital photographs</p>
+                    <h2 id="photo-gallery-heading" className="text-[24px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Nainital in three moods</h2>
                   </div>
-                  <span className="hidden sm:block font-mono text-[10.5px]" style={{ color: "var(--ink-soft)" }}>PROVIDED BY ASH</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {d.photoGallery.map((photo, index) => (
@@ -426,7 +400,7 @@ export function DestinationGuide({ destination: d }: Props) {
               </Link>
               {hasAffiliate && (
                 <p className="text-[13px] font-normal leading-relaxed rounded-xl px-4 py-3 mt-5" style={{ color: "var(--ink-soft)", background: "var(--paper-warm)", border: "1px solid var(--line)", maxWidth: "68ch" }}>
-                  Disclosure: some links above are affiliate links. If you buy through them, TravelBoa may earn a small commission at no extra cost to you. Product pages identify the evidence behind each recommendation; an affiliate relationship is never evidence by itself.
+                  Disclosure: some links above are affiliate links. If you buy through them, TravelBoa may earn a small commission at no extra cost to you. That does not affect which items are included.
                 </p>
               )}
             </div>
@@ -450,6 +424,20 @@ export function DestinationGuide({ destination: d }: Props) {
                 </div>
               ))}
             </div>
+
+            {editorial.sources.length > 0 && (
+              <section className="reveal mt-12" id="official-resources" style={{ paddingTop: 8, borderTop: "1.5px dashed var(--line)" }}>
+                <h2 className="text-[clamp(24px,3vw,31px)] font-extrabold tracking-tight leading-[1.15] mb-3" style={{ color: "var(--ink)" }}>Official planning resources</h2>
+                <p className="text-[15.5px] leading-relaxed mb-4" style={{ color: "var(--ink-soft)" }}>Use these official pages for the latest permits, registration, access rules and operational notices.</p>
+                <ul className="flex flex-col gap-2 p-0" style={{ listStyle: "none" }}>
+                  {editorial.sources.map(source => (
+                    <li key={source.url}>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[14.5px] font-semibold no-underline hover:underline" style={{ color: "var(--terra)" }}>{source.label} ↗</a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </main>
 
           {/* SIDEBAR */}
@@ -492,7 +480,7 @@ export function DestinationGuide({ destination: d }: Props) {
                     </div>
                   </div>
                 ))}
-                <Link href="/road-status" className="font-mono text-[10.5px] inline-block mt-3 no-underline" style={{ color: "var(--terra)" }}>VERIFICATION SOURCES &rarr;</Link>
+                <Link href="/road-status" className="font-mono text-[10.5px] inline-block mt-3 no-underline" style={{ color: "var(--terra)" }}>OFFICIAL ROAD RESOURCES &rarr;</Link>
               </div>
 
               {/* Weather */}
@@ -529,12 +517,12 @@ export function DestinationGuide({ destination: d }: Props) {
               {/* Author card */}
               <div className="rounded-[18px] p-5" style={{ background: "var(--paper-warm)", border: "1px solid var(--line)" }}>
                 <div className="flex gap-3.5 items-start">
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
+                  <Image src="/ash-author.jpg" alt="Ash, founder of TravelBoa" width={44} height={44} className="w-11 h-11 rounded-full object-cover shrink-0" />
                   <div>
                     <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Written and maintained by Ash</span>
                     <span className="block font-mono text-[10.5px] mt-0.5" style={{ color: "var(--ink-soft)" }}>NAINITAL ROOTS &middot; BASED IN UTTARAKHAND</span>
-                    <p className="text-[13.5px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Regional experience adds context; official sources and dated checks establish changing facts. Personal observation is labelled separately from desk research.</p>
-                    <Link href="/about" className="text-[13px] font-semibold mt-1.5 inline-block no-underline" style={{ color: "var(--terra)" }}>Method and corrections &rarr;</Link>
+                    <p className="text-[13.5px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Born in Nainital and based in Uttarakhand, Ash writes practical guides for planning Himalayan journeys.</p>
+                    <Link href="/about" className="text-[13px] font-semibold mt-1.5 inline-block no-underline" style={{ color: "var(--terra)" }}>About Ash &rarr;</Link>
                   </div>
                 </div>
               </div>
@@ -574,7 +562,7 @@ export function DestinationGuide({ destination: d }: Props) {
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-4">
-            <RelatedLinks title={`Gear for ${d.name}`} note="what I actually carry" links={rel.gear} />
+            <RelatedLinks title={`Gear for ${d.name}`} note="route-specific essentials" links={rel.gear} />
             <RelatedLinks title={`Planning guides for ${d.name}`} note="permits, budget, timing" links={rel.guides} />
           </div>
         </div>

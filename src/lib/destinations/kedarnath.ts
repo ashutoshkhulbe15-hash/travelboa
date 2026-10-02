@@ -27,9 +27,9 @@ export const kedarnath: DestinationData = {
 
   intro: `Kedarnath is not a conventional sightseeing trip with a temple added at the end. The shrine stands at roughly 3,580 metres in Rudraprayag district, and reaching it normally means a long road journey followed by a sustained uphill walk from Gaurikund. Cold, rain, low oxygen, crowd control and transport bottlenecks can all shape the day. Faith may be the reason for going; careful preparation is what makes the journey more manageable.
 
-For 2026, Uttarakhand Tourism's official Char Dham portal lists 22 April as the opening date. Registration is mandatory and free. The closing date, temple hours and ritual timings should not be guessed: at the time of this editorial check, the official portal says those timings will be announced. TravelBoa therefore does not publish an unconfirmed closing date or turn a previous season's fare into a promise.
+For 2026, Uttarakhand Tourism's official Char Dham portal lists 22 April as the opening date. Registration is mandatory and free. The closing date, temple hours and ritual timings were still awaiting announcement when this page was updated, so check the state portal and temple committee before booking around them.
 
-This guide is designed around decisions you can make safely. It explains how Sonprayag and Gaurikund function, why official sources disagree slightly on the trek distance, how to choose between walking and assisted transport, what the state health department asks pilgrims to do, and where the information must be checked again near departure. It does not claim that the author has completed this pilgrimage, and it does not offer medical clearance.`,
+The plan below explains how Sonprayag and Gaurikund function, why official sources disagree slightly on the trek distance, how to choose between walking and assisted transport, and what the state health department asks pilgrims to do. Treat it as trip planning, not personal medical clearance.`,
 
   comparison: {
     title: "Choose the access method before you book the rest of the trip",
@@ -123,7 +123,7 @@ The state advises medical and trek preparation, regular walking before travel, f
 
 Seek the nearest health service urgently for symptoms highlighted by the state, including chest pain, shortness of breath that makes talking difficult, persistent cough, dizziness or disorientation, difficulty walking, vomiting, icy or cold skin, or one-sided weakness or numbness. Do not hide symptoms to preserve a booking.
 
-TravelBoa has removed acetazolamide—commonly sold as Diamox—from the “essential” packing list. It is a prescription medicine with contraindications and side effects. Whether it is appropriate belongs in a conversation with a qualified clinician who knows the traveller's history. A pill is not a substitute for pacing, observation, professional assessment or descent when advised.
+Acetazolamide—commonly sold as Diamox—is a prescription medicine with contraindications and side effects, not a universal packing essential. Whether it is appropriate belongs in a conversation with a qualified clinician who knows the traveller's history. A pill is not a substitute for pacing, observation, professional assessment or descent when advised.
 
 Carry regular medicine in the original packaging, plus a buffer for delay. Keep a written list of conditions, medicines, allergies and emergency contacts. If travelling with someone vulnerable, decide in advance who will accompany them down or to a health post if the group must split. The strongest safety plan is one the group has discussed before anyone becomes unwell.`,
     },
@@ -219,7 +219,7 @@ The broad budget band at the top of this page is only a planning signal. Group s
 
 Carry identification, registration QR code, lodging details, emergency contacts and essential health information in both digital and protected paper form. Add a refillable water bottle, simple trail food, sunscreen, sunglasses, headlamp and a modest power bank. Pack personal prescription medicine with delay margin.
 
-The state health advisory suggests adequate warm clothing, rain gear and basic monitoring equipment; travellers with existing conditions should carry their usual medication and test devices. Ask the treating clinician what is appropriate for the individual. TravelBoa does not label prescription drugs as general trekking essentials.
+The state health advisory suggests adequate warm clothing, rain gear and basic monitoring equipment; travellers with existing conditions should carry their usual medication and test devices. Ask the treating clinician what is appropriate for the individual. Prescription drugs are not general trekking essentials.
 
 Keep the day bag light enough to carry when tired. A large power bank, several litres of water, duplicate clothes and “just in case” gadgets can collectively become a burden. Protect electronics from rain but never let photography delay the group near a movement cutoff or in worsening weather.
 
@@ -299,7 +299,7 @@ The responsible version of this pilgrimage is slower, better informed and willin
   ],
 
   faq: [
-    { q: "What is the confirmed Kedarnath opening date in 2026?", a: "Uttarakhand Tourism's official Char Dham portal lists 22 April 2026. At the current editorial check it says temple hours and closing information will be announced, so verify those details on the state portal and Badrinath–Kedarnath Temple Committee website." },
+    { q: "What is the confirmed Kedarnath opening date in 2026?", a: "Uttarakhand Tourism's official Char Dham portal lists 22 April 2026. Temple hours and closing information were still awaiting announcement when this page was updated, so verify those details on the state portal and Badrinath–Kedarnath Temple Committee website." },
     { q: "How long is the Kedarnath trek?", a: "Plan for about 17 km one way from Gaurikund. Current official pages variously state 16, 17 or roughly 19 km, likely because of different endpoints or page histories. Follow current district signs and allow for a long uphill day rather than planning around one exact number." },
     { q: "Is Char Dham registration mandatory and paid?", a: "Registration is mandatory and the official Uttarakhand Tourism FAQ says it is free. Register every traveller through registrationandtouristcare.uk.gov.in and carry the resulting QR code with accepted identification." },
     { q: "Where is the official Kedarnath helicopter booking site?", a: "The official route is IRCTC HeliYatra at heliyatra.irctc.co.in. The temple committee and Tourist Care Uttarakhand both direct pilgrims there. Read the current terms for registration linkage, identification, baggage, reporting and cancellation." },

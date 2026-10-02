@@ -65,7 +65,7 @@ const siteJsonLd = {
       "@id": "https://www.travelboa.com/#website",
       url: "https://www.travelboa.com",
       name: "TravelBoa",
-      description: "Source-reviewed travel guides for the Indian Himalaya, researched and maintained in Uttarakhand.",
+      description: "Practical travel guides for the Indian Himalaya, written and maintained in Uttarakhand.",
       inLanguage: "en-IN",
       publisher: { "@id": "https://www.travelboa.com/#organization" },
     },

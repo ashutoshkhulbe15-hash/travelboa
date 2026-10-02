@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const editorial = editorialForDestination(slug);
   if (!editorial.searchIndexable) {
     return {
-      title: `${dest.name} Guide: Editorial Review in Progress`,
-      description: `${dest.name} planning information is being source-checked before publication.`,
+      title: `${dest.name} Travel Guide: Coming Soon`,
+      description: `${dest.name} destination guide coming soon to TravelBoa.`,
       alternates: { canonical: `/${dest.slug}` },
       robots: { index: false, follow: true },
     };
@@ -51,8 +51,8 @@ export default async function DestinationPage({ params }: Props) {
   if (!editorial.searchIndexable) {
     return (
       <EditorialReviewNotice
-        title={`${dest.name} guide is being re-checked`}
-        description={editorial.reviewNote}
+        title={`${dest.name} guide coming soon`}
+        description="We are preparing a practical destination guide for this route. In the meantime, browse the complete guides currently available on TravelBoa."
         backHref="/destinations"
         backLabel="Browse published guides"
       />

@@ -185,8 +185,8 @@ export function GearArticle({ slug, meta }: Props) {
                   <div className="flex gap-3.5 items-start">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-extrabold text-[16px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                     <div>
-                      <span className="block text-[14px] font-bold" style={{ color: "var(--ink)" }}>Editorial review underway</span>
-                      <p className="text-[13px] font-normal leading-relaxed mt-1" style={{ color: "var(--ink-soft)" }}>Product-use, price and availability claims must be verified before publication.</p>
+                      <span className="block text-[14px] font-bold" style={{ color: "var(--ink)" }}>More gear guides coming soon</span>
+                      <p className="text-[13px] font-normal leading-relaxed mt-1" style={{ color: "var(--ink-soft)" }}>New destination-specific packing and gear guides will appear here.</p>
                       <a href="mailto:hello@travelboa.com" className="text-[12px] font-semibold mt-1 inline-block no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com &rarr;</a>
                     </div>
                   </div>

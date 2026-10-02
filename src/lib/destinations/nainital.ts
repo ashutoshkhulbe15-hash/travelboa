@@ -19,17 +19,17 @@ export const nainital: DestinationData = {
     {
       src: "/nainital-lake-evening-original.png",
       alt: "Naini Lake after sunset with town lights reflected across the water and low cloud over the wooded hillside",
-      caption: "Naini Lake settling into evening, with the town lights reflected on the water. Image provided by Ash.",
+      caption: "Naini Lake settling into evening, with the town lights reflected on the water. Photo by Ash.",
     },
     {
       src: "/nainital-lake-day-original.png",
       alt: "Wide daytime view across Naini Lake toward the forested slopes and buildings of Nainital",
-      caption: "A clear daytime view across Naini Lake and the surrounding slopes. Image provided by Ash.",
+      caption: "A clear daytime view across Naini Lake and the surrounding slopes. Photo by Ash.",
     },
     {
       src: "/nainital-lake-mist-original.png",
       alt: "Mist descending over the forested Nainital hillside above Naini Lake while boats cross the water",
-      caption: "Mist moving down the hillside above Naini Lake—a familiar Kumaon change in mood. Image provided by Ash.",
+      caption: "Mist moving down the hillside above Naini Lake—a familiar Kumaon change in mood. Photo by Ash.",
     },
   ],
   comparison: {
@@ -54,13 +54,13 @@ export const nainital: DestinationData = {
     { label: "Ideal first stay", value: "2 nights", icon: "🛏️" },
     { label: "Official emergency", value: "112 / 1077", icon: "☎️" },
   ],
-  intro: `Ash, the founder and editor of TravelBoa, was born in Nainital. That is the honest local connection behind this page. It is useful context, but it is not a licence to turn every remembered detail into a permanent fact. Nainital changes with the season, the day of the week and the pressure of traffic. Fares change. Parking arrangements change. A clear Himalayan view can disappear behind cloud. This guide therefore separates local perspective from information that must be checked against a current official source.
+  intro: `Ash, the founder of TravelBoa, was born in Nainital. The lake, steep neighbourhoods, sudden mist and weekend traffic are all part of the town he knows—not background details added to a generic hill-station itinerary. Nainital changes noticeably with the season and day of the week, so a good plan needs breathing room.
 
 Nainital is organised around one simple geographic fact: the town wraps around Naini Lake. Mallital is at the northern end, Tallital at the southern end, Mall Road follows one side, and vehicle-free Thandi Road follows the other. That compact shape makes the centre walkable, but it also concentrates visitors, taxis and parking demand into a small bowl. The lake is not merely an attraction added to the town; it is the town's visual centre and the easiest way to understand how the main areas connect.
 
 The best first trip is rarely a race through a checklist. Two nights give you one unhurried lake evening, one clear-weather morning for a viewpoint or forest walk, and enough margin for traffic. Add Mukteshwar only if you have a third or fourth night and genuinely want a quieter ridge-and-orchard setting. Add Corbett only as a separate stay around Ramnagar, not as a rushed afternoon excursion.
 
-This page gives you a decision framework rather than a collection of unsupported promises. It explains where to stay, how to arrive without creating a parking problem for yourself, which sights naturally fit together, what changes in monsoon and winter, and which details must be reconfirmed before payment or departure.`,
+The plan below explains where to stay, how to arrive without creating a parking problem for yourself, which sights naturally fit together, and what changes in monsoon and winter. Check current fares, opening hours and transport arrangements directly before payment or departure.`,
   sections: [
     {
       id: "choose-your-trip",
@@ -92,7 +92,7 @@ The common mistake is booking a remote property because its photographs look pea
     },
     {
       id: "arriving",
-      title: "How to reach Nainital without relying on stale schedules",
+      title: "How to reach Nainital by rail, road or air",
       icon: "🚆",
       content: `Kathgodam is the practical railhead for Nainital. The District Nainital website places it about 35 km away and identifies Haldwani and Lalkuan as other rail terminals. Train numbers and timings can change, so use the railway's official enquiry or booking system for the travel date rather than copying a schedule from a travel article. From Kathgodam and Haldwani, buses and shared or private taxis continue uphill.
 
@@ -113,7 +113,7 @@ If you arrive after dark, avoid improvising an unfamiliar shortcut shown by a na
       id: "traffic-parking",
       title: "Traffic, Mall Road and parking: what the official rules actually say",
       icon: "🅿️",
-      content: `The earlier TravelBoa draft incorrectly described Mall Road as permanently closed to private vehicles. The district's published guidance is more specific: restrictions vary by vehicle type, time and season. It lists heavier restrictions during May, June and October, evening restrictions for light vehicles, and separate cycle-rickshaw timings. Because enforcement arrangements may be updated for crowd control, check the district or police notice close to travel rather than treating old hours as permanent.
+      content: `Mall Road restrictions vary by vehicle type, time and season. District guidance lists heavier restrictions during May, June and October, evening restrictions for light vehicles, and separate cycle-rickshaw timings. Enforcement arrangements may also be updated for crowd control, so check the latest district or police notice close to travel.
 
 The district identifies parking at the Flats in Mallital, the taxi-stand area in Tallital and KMVN parking at Sukhatal, while noting that some hotels provide their own parking. This is the right starting point—not a guarantee that a space will be available when you arrive.
 
@@ -141,7 +141,7 @@ Continue toward the Flats and Mallital. The Flats is a public gathering space be
 
 **Day two morning: choose one elevated experience:** Do not attempt every viewpoint. If you want a proper walk, choose Tiffin Top or Naina Peak according to fitness and current trail advice. The district describes Tiffin Top at 2,292 m and about 4 km from town. It describes Naina Peak as the town's highest point at 2,611 m and about 6 km from town. Both depend on visibility, and distances quoted by different starting points may vary.
 
-If walking is not suitable, choose an operating viewpoint attraction only after checking its current hours, fare, queue and weather. This guide deliberately avoids publishing an undated ropeway price or fixed opening time. A ticket is poor value when cloud has removed the view, and operations can be affected by weather or maintenance.
+If walking is not suitable, choose an operating viewpoint attraction after checking its current hours, fare, queue and weather. A ropeway ticket is poor value when cloud has removed the view, and operations can be affected by weather or maintenance.
 
 **Day two afternoon: stay local or make one lake-district detour:** Bhimtal is officially listed about 22 km from Nainital, while Sattal is around 23 km away. Either can work as a separate half-day loop if you have a vehicle and are not already tired. Do not combine Bhimtal, Sattal, Mukteshwar and central Nainital into the same day merely because they look close on a map; hill-road time and stopping time add up.
 
@@ -205,9 +205,9 @@ The right month depends on the desired experience. Choose spring for walking, ea
     },
     {
       id: "lake-boating",
-      title: "Naini Lake and boating without outdated price claims",
+      title: "Naini Lake boating: fares, safety and timing",
       icon: "🚣",
-      content: `The district describes Naini Lake as the centre of the town and confirms boating, yachting and paddle-boat activity. It also states that rowing and paddle boats are available at both ends and that rates are displayed at prepaid booths. That is the appropriate source of truth on the day.
+      content: `The district describes Naini Lake as the centre of the town and confirms boating, yachting and paddle-boat activity. It also states that rowing and paddle boats are available at both ends and that rates are displayed at prepaid booths. Use the displayed booth rate on the day.
 
 Before boarding, confirm the displayed fare, duration, permitted passenger count, route and life-jacket arrangement. Follow the operator's weather instructions. Wind, rain, visibility or an official direction can change operations, and no travel page can make a lake activity available on demand.
 
@@ -219,9 +219,9 @@ Swimming should not be inferred from the presence of boats. Use the lake only th
       id: "corbett",
       title: "Adding Corbett: use the real booking portal and a separate stay",
       icon: "🐘",
-      content: `Corbett Tiger Reserve can complement Nainital, but it should be planned as a different experience around Ramnagar. The previous version of this guide linked to an outdated domain and repeated an unsupported tiger-sighting percentage. Both have been removed.
+      content: `Corbett Tiger Reserve can complement Nainital, but it should be planned as a different experience around Ramnagar. Wildlife sightings are unpredictable, and no responsible operator can guarantee a tiger encounter.
 
-The reserve currently tells visitors to use corbettgov.org as its only official website and warns about lookalike booking sites. It also publishes dated notices because booking windows and portal arrangements can change. As of the current editorial check, the official site lists Jhirna, Dhela and Garjia as year-round zones; Bijrani generally from 15 October to 30 June; and Dhikala, Durgadevi, Sonanadi and Pakhro generally from 15 November to 15 June. Weather, management decisions and current notices still control actual access.
+The reserve tells visitors to use corbettgov.org as its official website and warns about lookalike booking sites. It also publishes dated notices because booking windows and portal arrangements can change. The official site currently lists Jhirna, Dhela and Garjia as year-round zones; Bijrani generally from 15 October to 30 June; and Dhikala, Durgadevi, Sonanadi and Pakhro generally from 15 November to 15 June. Weather, management decisions and current notices still control actual access.
 
 **Safe booking sequence:**
 - start at corbettgov.org and read the newest notice before choosing a zone
@@ -250,7 +250,7 @@ Build the budget in six lines: transport to the railhead or town, onward taxi or
 
 When comparing rooms, check the final price after taxes and the cancellation deadline. Ask whether hot water is timed, whether heating costs extra in winter, whether the driver has accommodation if relevant, and whether “lake view” means a direct view or a distant glimpse from a shared terrace.
 
-The planning band shown at the top of this page is deliberately broad. It is not a quote. A traveller using public transport and a simple room may spend far less than a family using a private vehicle, peak-weekend hotel and several paid activities. Current booking screens and official counters should supply the final numbers.`,
+The planning band shown at the top of this page is broad and is not a quote. A traveller using public transport and a simple room may spend far less than a family using a private vehicle, peak-weekend hotel and several paid activities. Current booking screens and official counters should supply the final numbers.`,
     },
     {
       id: "accessibility-safety",
@@ -276,7 +276,7 @@ Walk once you are checked in. Carry a refillable bottle and a small rubbish pouc
 
 Spread the itinerary rather than driving between every named attraction. One lake walk and one ridge walk usually produce a better day than five vehicle stops. If central Nainital is under obvious pressure, consider a quieter second night elsewhere in the lake district—but do not simply transfer congestion to a village without respecting its road and waste limits.
 
-TravelBoa's local claim is intentionally modest: Ash was born in Nainital, and the images on this page come from his collection. Current operational facts are sourced separately. That distinction is part of the guide, because trustworthy local writing should be comfortable saying what it knows, what it remembers and what it still needs to verify.`,
+Ash was born in Nainital, and the lake photographs on this page are from his collection. Visit with the same care you would want people to show your own hometown: make room for residents, respect the lake and forest, and leave narrow roads and viewpoints cleaner than you found them.`,
     },
   ],
   weatherPoints: [

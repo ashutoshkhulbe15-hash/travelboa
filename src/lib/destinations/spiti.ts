@@ -29,7 +29,7 @@ export const spiti: DestinationData = {
 
 Himachal Tourism states that Indian citizens do not need a permit simply to enter Spiti. Foreign visitors using the Shimla–Kinnaur approach do need an Inner Line Permit for the protected border belt. A Rohtang vehicle permit, when applicable, is a separate traffic document and not a Spiti entry permit. Those distinctions replace the vague “everyone needs an ILP” advice that circulates online.
 
-This guide does not pretend a mountain road is permanently open, a fuel pump will definitely have stock, or one mobile network will work at every village. It gives a decision structure, conservative altitude pacing and official verification points. Prices and service availability must be confirmed for the actual dates.`,
+Mountain roads, fuel stock and mobile coverage are never guaranteed across the valley. Build the trip around conservative altitude pacing, spare time and backup options, then confirm prices and service availability for your actual dates.`,
 
   comparison: {
     title: "Choose the approach that fits your body and calendar",
@@ -110,7 +110,7 @@ Spend the first Kaza day gently. Hydrate normally, eat regular meals and avoid a
 
 Himachal Tourism lists a Community Health Centre at Kaza, a Primary Health Centre at Tabo and a civil dispensary at Kibber, but high-level care is limited. Carry regular prescription medicine and a written medical summary. Travellers with relevant heart, lung or other conditions should seek clinician advice before committing to the route.
 
-TravelBoa has removed acetazolamide from the general “essential” list. It is a prescription medicine, not a universal preventive. A qualified clinician who knows the traveller's health can discuss whether it is appropriate. No drug makes a fast itinerary automatically safe.`,
+Acetazolamide is a prescription medicine, not a universal preventive or a standard packing essential. A qualified clinician who knows the traveller's health can discuss whether it is appropriate. No drug makes a fast itinerary automatically safe.`,
     },
     {
       id: "road-vehicle",
@@ -126,7 +126,7 @@ On the Manali side, water flow can strengthen later in the day during warm perio
 
 Motorcyclists should carry puncture capability, weather layers and a plan for fatigue. A passenger plus luggage changes handling on rough surfaces. Do not rent a heavy motorcycle for the first time in Manali and learn on the road to Kaza.
 
-The route cards on this page deliberately say “reference, not live.” Only district authorities and fresh local information can establish current movement.`,
+The route cards show the journey sequence, not live road status. District authorities and fresh local information should determine current movement.`,
     },
     {
       id: "fuel-cash-connectivity",
@@ -200,7 +200,7 @@ If access is uncertain, replace Chandratal with a second Kaza, Tabo or Pin Valle
 
 **Winter:** This is specialist travel, not the summer road trip with a heavier jacket. Access, water, heating, transport, medical response and accommodation all require local winter expertise.
 
-Never write “the road opens on 15 June” as an evergreen fact. Check the current district administration, police or transport source and confirm with operators who crossed recently.`,
+Do not plan around a fixed annual opening date for the high road. Check the current district administration, police or transport source and confirm with operators who crossed recently.`,
     },
     {
       id: "stay-budget",
@@ -214,7 +214,7 @@ Create a current budget in categories: transport to the gateway, vehicle or bus 
 
 Do not freeze a motorcycle rate, room rate or taxi day rate into an evergreen guide. Season, vehicle type, fuel, road conditions and group size change the total. Compare final quotes for the same route and cancellation terms.
 
-The budget band at the top is deliberately broad and excludes transport to Himachal. The best saving is often one fewer rushed detour, not a dangerously thin contingency. Keep money available for an extra night if a road closes.`,
+The budget band at the top is broad and excludes transport to Himachal. The best saving is often one fewer rushed detour, not a dangerously thin contingency. Keep money available for an extra night if a road closes.`,
     },
     {
       id: "packing-responsibility",
@@ -301,5 +301,5 @@ The most useful preparation is a shared group plan: route, expected check-in tim
   ],
 
   metaTitle: "Spiti Valley Guide: Routes, Permits & Altitude Planning",
-  metaDescription: "Plan Spiti with a route comparison, corrected permit rules, gradual altitude itinerary, road and fuel resilience, Chandratal decisions and official sources.",
+  metaDescription: "Plan Spiti with a route comparison, clear permit rules, gradual altitude itinerary, road and fuel resilience, Chandratal decisions and official resources.",
 };

@@ -183,7 +183,7 @@ export function GuideArticle({ guide }: { guide: Guide }) {
           <div className="text-center py-20 rounded-[18px] bg-white border" style={{ borderColor: "#e3e9e6" }}>
             <div className="text-5xl mb-4">✍️</div>
             <h2 className="text-[22px] font-extrabold mb-2" style={{ color: "var(--ink)" }}>This guide is being written</h2>
-            <p className="text-[16px] font-normal max-w-md mx-auto" style={{ color: "var(--ink-soft)" }}>This page is withheld until the research, sourcing and editorial review are complete.</p>
+            <p className="text-[16px] font-normal max-w-md mx-auto" style={{ color: "var(--ink-soft)" }}>This planning guide is coming soon.</p>
             <Link href="/guides" className="inline-block mt-6 px-6 py-3 rounded-full text-[15px] font-bold text-white no-underline" style={{ background: "var(--terra)" }}>&larr; Back to all guides</Link>
           </div>
         )}

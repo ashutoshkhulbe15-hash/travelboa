@@ -45,19 +45,19 @@ export function AboutPage() {
                 <div className="relative aspect-[16/8]">
                   <Image src="/nainital-lake-evening-original.png" alt="Naini Lake after sunset with town lights reflected in the water and low clouds over the hillside" fill sizes="(max-width: 900px) 100vw, 900px" className="object-cover" />
                 </div>
-                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>Naini Lake after sunset, with town lights reflected across the water. Image provided by Ash.</figcaption>
+                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>Naini Lake after sunset, with town lights reflected across the water. Photo by Ash.</figcaption>
               </figure>
               <figure className="m-0 overflow-hidden rounded-[20px] bg-white border" style={{ borderColor: "var(--line)" }}>
                 <div className="relative aspect-[4/3]">
                   <Image src="/nainital-lake-day-original.png" alt="Wide daytime view across Naini Lake and the forested slopes of Nainital" fill sizes="(max-width: 640px) 100vw, 440px" className="object-cover" />
                 </div>
-                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>A clear daytime view across the lake. Image provided by Ash.</figcaption>
+                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>A clear daytime view across the lake. Photo by Ash.</figcaption>
               </figure>
               <figure className="m-0 overflow-hidden rounded-[20px] bg-white border" style={{ borderColor: "var(--line)" }}>
                 <div className="relative aspect-[4/3]">
                   <Image src="/nainital-lake-mist-original.png" alt="Mist descending over the forested hillside above Naini Lake while boats cross the water" fill sizes="(max-width: 640px) 100vw, 440px" className="object-cover" />
                 </div>
-                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>Mist descending over the wooded hillside and lake. Image provided by Ash.</figcaption>
+                <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>Mist descending over the wooded hillside and lake. Photo by Ash.</figcaption>
               </figure>
             </div>
           </section>

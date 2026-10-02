@@ -53,9 +53,9 @@ export function DestinationsClient() {
       {/* Header */}
       <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
         <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
-          <p className="kicker mb-3">4 published · 19 in editorial review</p>
+          <p className="kicker mb-3">4 complete guides · more coming soon</p>
           <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Indian Himalayan trips, published only after review.</h1>
-          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "58ch" }}>The four finished guides include visible sources, dated checks and clear limits. The remaining destinations stay out of search and are marked in review until their claims meet the same standard.</p>
+          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "58ch" }}>Start with four complete guides to Nainital, Kedarnath, Spiti and Lachung. More Himalayan destinations will be added here over time.</p>
 
           {/* Search */}
           <div className="mt-8 relative" style={{ maxWidth: 540 }}>
@@ -145,7 +145,7 @@ export function DestinationsClient() {
                       <Link href={`/${d.slug}/packing`} className="text-[13px] font-semibold no-underline" style={{ color: "var(--pine)" }}>Packing list &rarr;</Link>
                     </div>
                   ) : (
-                    <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>EDITORIAL REVIEW IN PROGRESS</p>
+                    <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>GUIDE COMING SOON</p>
                   )}
                 </div>
               </div>

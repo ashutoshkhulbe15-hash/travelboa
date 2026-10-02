@@ -4,13 +4,13 @@ import { GearClient } from "./GearClient";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/gear" },
-  title: "Himalaya Trek Gear Planner: Review in Progress",
+  title: "Himalaya Trek Gear Planner: Coming Soon",
   description:
-    "Destination-specific gear planning tools for Indian mountain travel. Product-testing claims and prices are being re-verified before search publication.",
+    "Destination-specific gear planning tools for Indian mountain travel are coming soon to TravelBoa.",
   robots: { index: false, follow: true },
   openGraph: {
-    title: "Himalaya Trek Gear Planner: Review in Progress",
-    description: "Destination-specific gear planning tools currently undergoing editorial review.",
+    title: "Himalaya Trek Gear Planner: Coming Soon",
+    description: "Destination-specific gear planning tools are coming soon to TravelBoa.",
   },
 };
 

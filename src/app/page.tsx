@@ -28,9 +28,9 @@ const ALTI_DATA = [
 
 /* ─── featured destinations for cards ─── */
 const FEATURED = [
-  { slug: "nainital", season: "Route dependent", dur: "2-4 nights", hook: "A locally grounded Nainital plan with first-party photographs, parking guidance and a clear Mukteshwar decision." },
+  { slug: "nainital", season: "Route dependent", dur: "2-4 nights", hook: "A locally grounded Nainital plan with Ash's photographs, parking guidance and a clear Mukteshwar decision." },
   { slug: "kedarnath", season: "Temple season", dur: "4-6 days", hook: "A safety-first pilgrimage guide with confirmed 2026 information, official registration and health sources." },
-  { slug: "spiti", season: "Route dependent", dur: "8-12 days", hook: "A route-first cold-desert plan with corrected permit rules, altitude pacing and road resilience." },
+  { slug: "spiti", season: "Route dependent", dur: "8-12 days", hook: "A route-first cold-desert plan with clear permit rules, altitude pacing and road resilience." },
   { slug: "lachung", season: "Access dependent", dur: "3 days / 2 nights", hook: "A permit-first North Sikkim plan built around the current PAP, itinerary and road-safety rules." },
 ];
 
@@ -112,7 +112,7 @@ export default function HomePage() {
               <span className="mx-6">Rules and dates link to official sources</span>
               <span className="mx-6">Road and weather conditions must be checked on the day</span>
               <span className="mx-6">Corrections: hello@travelboa.com</span>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>4 SOURCE-REVIEWED GUIDES</b> &middot; 19 DESTINATIONS IN EDITORIAL REVIEW</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>4 IN-DEPTH HIMALAYAN GUIDES</b> &middot; MORE DESTINATIONS COMING SOON</span>
             </span>
           ))}
         </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
               My journal of the <span className="hl">Indian Himalaya</span>, open for you
             </h1>
             <p className="text-[clamp(17px,1.8vw,19px)] font-normal leading-relaxed mt-5 mb-8" style={{ color: "var(--ink-soft)", maxWidth: "52ch" }}>
-              TravelBoa combines regional context from growing up in Nainital with careful desk research. Guides separate <b className="font-semibold" style={{ color: "var(--ink)" }}>first-hand observations, official rules, typical conditions and details that still need a same-day check</b>.
+              Born in Nainital and based in Uttarakhand, Ash brings local context to practical Himalayan planning. Each guide focuses on <b className="font-semibold" style={{ color: "var(--ink)" }}>routes, seasons, permits, safety and the decisions travellers actually face</b>.
             </p>
 
             {/* Search */}
@@ -219,7 +219,7 @@ export default function HomePage() {
           <div className="reveal">
             <span className="font-caveat text-[24px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>from the notebook&hellip;</span>
             <p className="kicker mb-3">Where to next</p>
-            <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Useful guides, with the evidence visible.</h2>
+            <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Useful guides for real mountain decisions.</h2>
             <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide is being rebuilt around a real planning task: route, season, budget, risks and what to verify. Personal experience is labelled as such; rules and dates point to primary sources.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">

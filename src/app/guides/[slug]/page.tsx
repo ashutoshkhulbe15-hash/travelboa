@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!guide) return { title: "Guide not found — TravelBoa" };
   if (!INDEXABLE_GUIDES.has(slug)) {
     return {
-      title: `${guide.title}: Editorial Review in Progress`,
-      description: "This planning guide is being source-checked before publication.",
+      title: `${guide.title}: Coming Soon`,
+      description: "This TravelBoa planning guide is coming soon.",
       alternates: { canonical: `/guides/${slug}` },
       robots: { index: false, follow: true },
     };
@@ -49,8 +49,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   if (!INDEXABLE_GUIDES.has(slug)) {
     return (
       <EditorialReviewNotice
-        title={`${guide.title} is being re-checked`}
-        description="The source, safety and experience claims in this planning guide are being reviewed before publication."
+        title={`${guide.title} coming soon`}
+        description="We are preparing this planning guide for the TravelBoa collection."
         backHref="/guides"
         backLabel="Return to guides"
       />
