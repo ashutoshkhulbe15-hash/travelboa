@@ -7,6 +7,7 @@ import { RelatedLinks } from "@/components/RelatedLinks";
 import { relatedForDestination } from "@/lib/related";
 import type { DestinationData } from "@/lib/destinations/types";
 import { DESTINATIONS } from "@/lib/data";
+import { editorialForDestination } from "@/lib/editorial";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -245,6 +246,7 @@ export function DestinationGuide({ destination: d }: Props) {
 
   const entryNo = String(Math.max(1, DESTINATIONS.findIndex(x => x.slug === d.slug) + 1)).padStart(2, "0");
   const hasAffiliate = d.checklist.some(c => c.items.some(it => it.affiliateLink));
+  const editorial = editorialForDestination(d.slug);
 
   return (
     <div className="min-h-screen" style={{ background: "var(--paper)" }}>
@@ -263,7 +265,7 @@ export function DestinationGuide({ destination: d }: Props) {
 
       {/* ═══ HERO ═══ */}
       <header className="relative overflow-hidden flex items-end" style={{ minHeight: 420, background: d.heroGradient }}>
-        <Image src={`/${d.slug}.jpg`} alt={d.name} fill className="object-cover" priority onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+        <Image src={d.heroImage ?? `/${d.slug}.jpg`} alt={d.name} fill className="object-cover" loading="eager" fetchPriority="high" sizes="100vw" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg,rgba(10,22,32,0.15) 0%,rgba(10,22,32,0.65) 60%,rgba(10,22,32,0.9) 100%)" }} />
         <div className="relative z-[2] w-full max-w-[1100px] mx-auto px-5 sm:px-6 pb-9">
           <span className="inline-block font-mono text-[11px] tracking-[0.12em] uppercase px-3.5 py-1.5 rounded-[3px] mb-4 -rotate-2" style={{ border: "1.5px solid rgba(255,255,255,0.85)", color: "#fff", background: "rgba(28,43,51,0.3)", backdropFilter: "blur(4px)" }}>
@@ -301,6 +303,79 @@ export function DestinationGuide({ destination: d }: Props) {
               ))}
             </div>
 
+            <section className="reveal mt-8 rounded-[18px] p-5 sm:p-6" style={{ background: "#f7f1e9", border: "1px solid var(--line)" }} aria-labelledby="verification-heading">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
+                <div className="sm:w-[180px] shrink-0">
+                  <p className="font-mono text-[10.5px] font-semibold tracking-[0.12em] uppercase" style={{ color: "var(--terra)" }}>Editorial check</p>
+                  <p className="text-[14px] font-semibold mt-1" style={{ color: "var(--ink)" }}>{editorial.deskVerified}</p>
+                </div>
+                <div>
+                  <h2 id="verification-heading" className="text-[20px] font-bold mb-2" style={{ color: "var(--ink)" }}>How this guide was verified</h2>
+                  <p className="text-[15.5px] leading-[1.7]" style={{ color: "var(--ink-soft)" }}>{editorial.reviewNote}</p>
+                  {editorial.fieldNote && (
+                    <p className="text-[14.5px] leading-[1.7] mt-3 pl-3" style={{ color: "var(--ink)", borderLeft: "3px solid var(--terra)" }}><strong>First-party note:</strong> {editorial.fieldNote}</p>
+                  )}
+                  {editorial.sources.length > 0 && (
+                    <ul className="mt-3 flex flex-col gap-1.5 p-0" style={{ listStyle: "none" }}>
+                      {editorial.sources.map(source => (
+                        <li key={source.url}>
+                          <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[14px] font-semibold no-underline hover:underline" style={{ color: "var(--terra)" }}>{source.label} ↗</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </section>
+
+            {d.photoGallery && d.photoGallery.length > 0 && (
+              <section className="reveal mt-10" aria-labelledby="first-party-gallery">
+                <div className="flex items-end justify-between gap-4 mb-4">
+                  <div>
+                    <p className="kicker mb-1">First-party photographs</p>
+                    <h2 id="first-party-gallery" className="text-[24px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>Nainital in three moods</h2>
+                  </div>
+                  <span className="hidden sm:block font-mono text-[10.5px]" style={{ color: "var(--ink-soft)" }}>PROVIDED BY ASH</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {d.photoGallery.map((photo, index) => (
+                    <figure key={photo.src} className={`m-0 overflow-hidden rounded-[18px] bg-white border ${index === 0 ? "sm:col-span-2" : ""}`} style={{ borderColor: "var(--line)" }}>
+                      <div className={`relative ${index === 0 ? "aspect-[16/8]" : "aspect-[4/3]"}`}>
+                        <Image src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(max-width: 1024px) 100vw, 760px" : "(max-width: 640px) 100vw, 380px"} className="object-cover" />
+                      </div>
+                      <figcaption className="px-4 py-3 text-[13px] leading-relaxed" style={{ color: "var(--ink-soft)" }}>{photo.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {d.comparison && (
+              <section className="reveal mt-10" aria-labelledby="destination-comparison-heading">
+                <p className="kicker mb-1">Decision board</p>
+                <h2 id="destination-comparison-heading" className="text-[24px] font-extrabold tracking-tight" style={{ color: "var(--ink)" }}>{d.comparison.title}</h2>
+                <p className="text-[14.5px] leading-relaxed mt-2 mb-4" style={{ color: "var(--ink-soft)" }}>{d.comparison.caption}</p>
+                <div className="overflow-x-auto rounded-[18px] bg-white border" style={{ borderColor: "var(--line)" }}>
+                  <table className="w-full min-w-[720px] border-collapse text-left">
+                    <thead>
+                      <tr style={{ background: "var(--snowfield)" }}>
+                        <th className="p-4 font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--ink-soft)" }}>Decision</th>
+                        {d.comparison.columns.map(column => <th key={column} className="p-4 text-[15px] font-bold" style={{ color: "var(--ink)" }}>{column}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {d.comparison.rows.map((row, rowIndex) => (
+                        <tr key={row.label} style={{ borderTop: "1px solid var(--line)", background: rowIndex % 2 ? "#fcfdfc" : "white" }}>
+                          <th className="p-4 font-mono text-[11px] uppercase tracking-wider align-top" style={{ color: "var(--pine)" }}>{row.label}</th>
+                          {row.values.map((value, index) => <td key={`${row.label}-${index}`} className="p-4 text-[14px] leading-relaxed align-top" style={{ color: "var(--ink-soft)" }}>{value}</td>)}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+
             {/* Sections */}
             {d.sections.map((section, si) => (
               <div key={section.id} id={section.id} className="reveal mt-12" style={{ paddingTop: 8, borderTop: si > 0 ? "1.5px dashed var(--line)" : "none" }}>
@@ -332,10 +407,10 @@ export function DestinationGuide({ destination: d }: Props) {
             </div>
 
             {/* Packing essentials */}
-            <div className="reveal mt-12" id="packing" style={{ paddingTop: 8, borderTop: "1.5px dashed var(--line)" }}>
+            <div className="reveal mt-12" id="packing-checklist" style={{ paddingTop: 8, borderTop: "1.5px dashed var(--line)" }}>
               <span className="font-mono text-[11.5px] font-semibold tracking-[0.14em]" style={{ color: "var(--terra)" }}>&sect; {String(d.sections.length + 2).padStart(2, "0")}</span>
               <h2 className="text-[clamp(24px,3vw,31px)] font-extrabold tracking-tight leading-[1.15] mt-1.5 mb-2" style={{ color: "var(--ink)" }}>What to pack</h2>
-              <p className="text-[17px] font-normal leading-[1.75] mb-5" style={{ color: "var(--ink-soft)", maxWidth: "68ch" }}>I maintain a full packing checklist you can tick off and share. Here are the essentials from my list:</p>
+              <p className="text-[17px] font-normal leading-[1.75] mb-5" style={{ color: "var(--ink-soft)", maxWidth: "68ch" }}>A full packing checklist is available to tick off and share. Start with these essentials, then adjust for the current forecast, route and your own needs:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {d.checklist.slice(0, 2).flatMap(cat => cat.items.filter(it => it.essential).slice(0, 3)).map(item => (
                   <Link key={item.name} href={item.affiliateLink || `/gear`} target={item.affiliateLink ? "_blank" : undefined} rel={item.affiliateLink ? "noopener noreferrer sponsored" : undefined}
@@ -351,7 +426,7 @@ export function DestinationGuide({ destination: d }: Props) {
               </Link>
               {hasAffiliate && (
                 <p className="text-[13px] font-normal leading-relaxed rounded-xl px-4 py-3 mt-5" style={{ color: "var(--ink-soft)", background: "var(--paper-warm)", border: "1px solid var(--line)", maxWidth: "68ch" }}>
-                  Disclosure: some links above are affiliate links. If you buy through them, TravelBoa earns a small commission at no extra cost to you. I only link gear I have bought and used myself.
+                  Disclosure: some links above are affiliate links. If you buy through them, TravelBoa may earn a small commission at no extra cost to you. Product pages identify the evidence behind each recommendation; an affiliate relationship is never evidence by itself.
                 </p>
               )}
             </div>
@@ -395,7 +470,7 @@ export function DestinationGuide({ destination: d }: Props) {
               {/* TOC */}
               <div className="bg-white rounded-[18px] p-5" style={{ border: "1px solid var(--line)", boxShadow: "0 14px 40px -26px rgba(28,43,51,0.4)" }}>
                 <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: "var(--pine)" }}>In this entry</h3>
-                {[...d.sections.map(s => ({ id: s.id, title: s.title })), { id: "season", title: "When to go" }, { id: "packing", title: "What to pack" }, { id: "faq", title: "Questions I get asked" }].map((s, i, arr) => (
+                {[...d.sections.map(s => ({ id: s.id, title: s.title })), { id: "season", title: "When to go" }, { id: "packing-checklist", title: "What to pack" }, { id: "faq", title: "Questions I get asked" }].map((s, i, arr) => (
                   <a key={s.id} href={`#${s.id}`} className="flex items-center gap-2.5 py-2 text-[14px] no-underline transition-all hover:pl-1.5" style={{ borderBottom: i < arr.length - 1 ? "1.5px dashed var(--line)" : "none", color: "var(--ink-soft)" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "var(--terra)")} onMouseLeave={e => (e.currentTarget.style.color = "var(--ink-soft)")}>
                     <span className="font-mono text-[10.5px] w-6 shrink-0" style={{ color: "var(--terra)" }}>&sect;{String(i + 1).padStart(2, "0")}</span>
@@ -404,24 +479,26 @@ export function DestinationGuide({ destination: d }: Props) {
                 ))}
               </div>
 
-              {/* Road status */}
+              {/* Route reference */}
               <div className="bg-white rounded-[18px] p-5" style={{ border: "1px solid var(--line)", boxShadow: "0 14px 40px -26px rgba(28,43,51,0.4)" }}>
-                <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: "var(--pine)" }}>Route status</h3>
+                <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] mb-1" style={{ color: "var(--pine)" }}>Route reference · not live</h3>
+                <p className="text-[12px] leading-relaxed mb-2" style={{ color: "var(--ink-soft)" }}>Conditions can change within hours. Verify locally before departure.</p>
                 {d.routes.map((r, i) => (
                   <div key={i} className="flex items-center gap-2.5 py-2.5" style={{ borderBottom: i < d.routes.length - 1 ? "1.5px dashed var(--line)" : "none" }}>
-                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: routeStatusColor[r.status] || "#ccc", boxShadow: `0 0 7px ${routeStatusColor[r.status] || "#ccc"}80`, animation: r.status === "open" ? "pulse-dot 2s ease-in-out infinite" : "none" }} />
+                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: routeStatusColor[r.status] || "#ccc" }} />
                     <div className="min-w-0">
                       <div className="text-[13.5px] font-medium" style={{ color: "var(--ink)" }}>{r.from} &rarr; {r.to}</div>
                       <div className="font-mono text-[10.5px] mt-0.5" style={{ color: "var(--ink-soft)" }}>{r.note}</div>
                     </div>
                   </div>
                 ))}
-                <Link href="/road-status" className="font-mono text-[10.5px] inline-block mt-3 no-underline" style={{ color: "var(--terra)" }}>FULL ROAD STATUS &rarr;</Link>
+                <Link href="/road-status" className="font-mono text-[10.5px] inline-block mt-3 no-underline" style={{ color: "var(--terra)" }}>VERIFICATION SOURCES &rarr;</Link>
               </div>
 
               {/* Weather */}
               <div className="bg-white rounded-[18px] p-5" style={{ border: "1px solid var(--line)", boxShadow: "0 14px 40px -26px rgba(28,43,51,0.4)" }}>
-                <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: "var(--pine)" }}>Weather on the route</h3>
+                <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] mb-1" style={{ color: "var(--pine)" }}>Typical conditions · not forecast</h3>
+                <p className="text-[12px] leading-relaxed mb-2" style={{ color: "var(--ink-soft)" }}>Illustrative planning values; check an official forecast before travel.</p>
                 <div className="flex items-center gap-4 pb-3 mb-2 border-b" style={{ borderBottom: "1.5px dashed var(--line)" }}>
                   <span className="text-[40px] font-extrabold tracking-tight leading-none" style={{ color: "var(--ink)" }}>{d.temp}&deg;</span>
                   <div>
@@ -454,10 +531,10 @@ export function DestinationGuide({ destination: d }: Props) {
                 <div className="flex gap-3.5 items-start">
                   <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                   <div>
-                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Written by Ash</span>
-                    <span className="block font-mono text-[10.5px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN &middot; FIRST-HAND GUIDE</span>
-                    <p className="text-[13.5px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>I live at the foot of these hills. Everything in this entry comes from walking this path, not reading about it.</p>
-                    <a href="mailto:hello@travelboa.com" className="text-[13px] font-semibold mt-1.5 inline-block no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com &rarr;</a>
+                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Written and maintained by Ash</span>
+                    <span className="block font-mono text-[10.5px] mt-0.5" style={{ color: "var(--ink-soft)" }}>NAINITAL ROOTS &middot; BASED IN UTTARAKHAND</span>
+                    <p className="text-[13.5px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Regional experience adds context; official sources and dated checks establish changing facts. Personal observation is labelled separately from desk research.</p>
+                    <Link href="/about" className="text-[13px] font-semibold mt-1.5 inline-block no-underline" style={{ color: "var(--terra)" }}>Method and corrections &rarr;</Link>
                   </div>
                 </div>
               </div>
@@ -504,39 +581,6 @@ export function DestinationGuide({ destination: d }: Props) {
       </section>
 
       <Footer />
-
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "TravelGuide",
-        name: d.metaTitle, description: d.metaDescription,
-        url: `https://www.travelboa.com/${d.slug}`,
-        image: [`https://www.travelboa.com/${d.slug}.jpg`],
-        inLanguage: "en-IN",
-        datePublished: "2026-05-22",
-        dateModified: "2026-07-30",
-        author: { "@type": "Person", name: "Ash", url: "https://www.travelboa.com/about" },
-        publisher: {
-          "@type": "Organization", name: "TravelBoa", url: "https://www.travelboa.com",
-          logo: { "@type": "ImageObject", url: "https://www.travelboa.com/android-chrome-512x512.png" },
-        },
-        mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.travelboa.com/${d.slug}` },
-        about: {
-          "@type": "TouristDestination", name: d.name, description: d.tagline,
-          address: { "@type": "PostalAddress", addressRegion: d.state, addressCountry: "IN" },
-        },
-      }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: d.faq.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-      }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
-          { "@type": "ListItem", position: 2, name: "Destinations", item: "https://www.travelboa.com/destinations" },
-          { "@type": "ListItem", position: 3, name: d.name, item: `https://www.travelboa.com/${d.slug}` },
-        ],
-      }) }} />
     </div>
   );
 }

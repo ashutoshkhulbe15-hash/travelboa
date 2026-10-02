@@ -1,111 +1,292 @@
-import type { DestinationData } from "./types";
+import { DestinationData } from "./types";
 
 export const lachung: DestinationData = {
   slug: "lachung",
   name: "Lachung & Yumthang",
-  tagline: "North Sikkim's rhododendron valley - 36 species at 3,564m, road to Zero Point at 4,428m",
+  tagline: "A permit-first, weather-aware North Sikkim plan",
   region: "North Sikkim",
   state: "Sikkim",
   type: "adventure",
-  altitude: 2680,
-  temp: 8,
-  weather: "Cool, cloud-prone",
-  season: "Apr-May (peak bloom), Sep-Oct",
-  duration: "4-5 days from Gangtok",
-  budget: { min: 8000, max: 35000 },
-  heroGradient: "linear-gradient(150deg,#1a3a4a,#2a5a6a 60%,#4a7a8a)",
-  metaTitle: "Lachung & Yumthang 2026: North Sikkim ILP, Zero Point",
-  metaDescription: "Lachung and Yumthang Valley guide. North Sikkim ILP permit process, rhododendron bloom season (April), Zero Point at 4,428m, and Gangtok to Lachung route.",
+  altitude: 2700,
+  temp: 7,
+  weather: "🌤️",
+  season: "Access dependent",
+  duration: "3 days / 2 nights minimum",
+  budget: { min: 12000, max: 45000 },
+  heroGradient: "linear-gradient(150deg, #24483d, #50755f 50%, #b98b62)",
+  heroImage: "/lachung.jpg",
+
   quickStats: [
-    { label: "Lachung altitude", value: "2,680m", icon: "🏘️" },
-    { label: "Yumthang altitude", value: "3,564m", icon: "🌸" },
-    { label: "Zero Point altitude", value: "4,428m", icon: "❄️" },
-    { label: "From Dehradun", value: "700+ km via Bagdogra flight", icon: "✈️" },
-    { label: "Rhododendron species", value: "36 at Yumthang", icon: "🌺" },
-    { label: "ILP permit", value: "~Rs 200/person (same day)", icon: "📋" },
+    { label: "Lachung altitude", value: "about 2,700m", icon: "🏔️" },
+    { label: "Yumthang altitude", value: "about 3,500m", icon: "🌸" },
+    { label: "Permit", value: "PAP required", icon: "📋" },
+    { label: "Current minimum plan", value: "3 days / 2 nights", icon: "🗓️" },
+    { label: "Same-day permits", value: "Not issued", icon: "⏳" },
+    { label: "Emergency", value: "112", icon: "☎️" },
   ],
-  intro: "Sikkim is not a casual detour from Dehradun. The state is 700+ km away, and the only practical way to get there from Uttarakhand is to fly - Dehradun (DED) to Bagdogra (IXB), 1.5 hours, then a 3.5-4 hour road journey from Bagdogra to Gangtok. I want to be upfront about that. This is a trip that requires a flight and two full days of travel before you are inside North Sikkim. I am covering it because the Yumthang Valley rhododendron bloom - specifically the April-May window - is genuinely unlike anything else in the northeast Himalayas, and because the permit situation here is far more manageable than most people assume.\n\nI flew from Dehradun to Bagdogra on an IndiGo morning flight, caught a shared taxi from NJP to Gangtok (Rs 250 per seat, the driver stopped twice but we were in Gangtok by 7 PM), and went to bed early. The next morning I walked to the Sikkim Tourism Office on MG Road at 9 AM with my Aadhaar card and two passport photos. Fifteen minutes later I had an Inner Line Permit for North Sikkim. I do not know what I was expecting - some kind of bureaucratic ordeal - but the counter staff were efficient and the whole process was genuinely simple.\n\nFour days later, after Lachung and Yumthang and Zero Point, I drove back into Gangtok with a specific thought: the permit anxiety that keeps people away from North Sikkim is disproportionate to the actual effort involved. The bloom in the valley and the snowfields at 4,428m are the real subjects of this guide. But we have to deal with the logistics first.",
+
+  intro: `Lachung is not a flexible self-drive detour from Gangtok. It lies on a protected North Sikkim route where the visitor permit, authorised vehicle, driver and itinerary are part of the same journey. The Government of Sikkim's September 2025 notification requires permits to be issued at least one day in advance and says tourists visiting Lachung must follow a three-day, two-night itinerary. Those rules matter more than a cheap package advertisement.
+
+The road also deserves humility. Official Sikkim updates in 2026 document landslides, restoration work and complex evacuations elsewhere in North Sikkim. Conditions on the Lachung axis can change after heavy rain or infrastructure damage. No evergreen travel page can truthfully display “open” beside every segment.
+
+This guide separates stable planning principles from details that must be checked again: permit eligibility, exact documents, route access, Zero Point inclusion, vehicle charges, snow and flower timing. It removes invented first-person scenes and precise temperature or cash claims that were not backed by first-party evidence.`,
+
+  comparison: {
+    title: "Choose the North Sikkim experience you are actually booking",
+    caption: "Every option remains subject to the destinations named on the permit and the current road and weather decision.",
+    columns: ["Lachung stay", "Yumthang visit", "Yumesamdong / Zero Point"],
+    rows: [
+      { label: "Role in trip", values: ["Overnight base and village", "Main valley excursion", "Higher optional extension"] },
+      { label: "Main constraint", values: ["Permit itinerary and long road transfer", "Weather, checkpoint and road condition", "Altitude, snow, access and separate inclusion"] },
+      { label: "Confirm in writing", values: ["Two nights, room, meals and heating", "Permit coverage and departure plan", "Eligibility, vehicle charge and operating status"] },
+      { label: "Do not expect", values: ["Urban hotel consistency", "A guaranteed bloom or clear view", "Guaranteed snow or safe access"] },
+    ],
+  },
+
   sections: [
-    { id: "ilp-permit", title: "The Inner Line Permit - what it actually involves", icon: "📋",
-      content: "The Inner Line Permit is the one thing every article about North Sikkim foregrounds, usually in a way that makes it sound complicated. Here is what it actually involves.\n\nNorth Sikkim district - which includes Chungthang, Lachung, Yumthang Valley, Lachen, and Gurudongmar Lake - requires an Inner Line Permit for all visitors, Indian and foreign alike. This is a restricted zone permit under the Bengal Eastern Frontier Regulation Act. The restriction exists because North Sikkim borders China.\n\nWhere to get the ILP: the primary collection point is the Sikkim Tourism Office, MG Marg, Gangtok. Open Monday to Saturday, approximately 9 AM to 5 PM. You can also collect the permit at the Mangan checkpoint (Mangan is 64 km north of Gangtok on the North Sikkim highway), though the Gangtok office is more convenient.\n\nWhat you need: original photo ID (Aadhaar card or passport for Indian nationals, passport for foreign nationals). Two passport-size photographs. Fill in the permit application form (available at the office).\n\nCost: approximately Rs 200 per person. Confirm the current rate at the Sikkim Tourism official site (sikkimtourism.gov.in) before your trip.\n\nDuration: permits are typically issued for 3-7 days, which covers a standard North Sikkim itinerary.\n\nProcessing time: same-day, usually within 30-60 minutes of arriving. In peak season (April-May and October), arrive early - the queue builds after 10 AM.\n\nFor foreign nationals: you need a Protected Area Permit (PAP) in addition to the ILP. The PAP requires more documentation and a slightly longer processing time. Apply at the Foreigners' Regional Registration Office (FRRO) in Gangtok or coordinate through a registered tour operator. The PAP must be arranged before your travel date - this is the one case where same-day collection is not straightforward.\n\nVehicle requirement - the critical detail most guides miss: you cannot simply hire any vehicle and drive into North Sikkim. The vehicle must be registered with Sikkim Tourism and the driver must hold a North Sikkim route permit. This is checked at checkpoints. Most hotels in Gangtok and all registered travel operators know this and arrange the correct vehicles as part of North Sikkim packages. If you are booking transport independently, specifically confirm that the vehicle and driver are registered for North Sikkim. This matters.\n\nSolo travel: technically permitted, but North Sikkim is structured for group travel. Vehicle hire is per vehicle (not per seat) for private hires - you are paying Rs 4,000-6,000 per day for a vehicle regardless of how many people are in it. Solo travelers who join package tours from Gangtok are generally paying per-person rates within a group, which is significantly cheaper." },
-    { id: "from-dehradun", title: "Getting there from Dehradun", icon: "✈️",
-      content: "Step 1 - Fly Dehradun (DED) to Bagdogra (IXB): Dehradun's Jolly Grant Airport has regular IndiGo and Air India flights to Bagdogra. Flight time is approximately 1.5 hours. Fares range from Rs 3,000 to Rs 8,000 one way depending on how far in advance you book. Book at least 4-6 weeks ahead for April-May travel.\n\nStep 2 - Bagdogra/NJP to Gangtok: Bagdogra is the airport, NJP (New Jalpaiguri) is 12 km away and is the main railway junction. From either, shared taxis to Gangtok run Rs 250-300 per seat, 3.5-4 hours on the Teesta valley highway. Private cab is Rs 2,500-3,000. The road from Siliguri to Gangtok is largely good but involves significant ascent on the Teesta valley highway. If you are prone to motion sickness on mountain roads, take a front seat.\n\nTotal travel time from Dehradun: plan one full day. A 6 AM flight from Dehradun lands in Bagdogra by 7:30 AM. You can be in Gangtok by noon-1 PM if the shared taxi fills quickly. Realistically, budget a full travel day and plan to collect your ILP the following morning.\n\nStep 3 - Gangtok to Lachung: 115 km, 4-5 hours on the North Sikkim State Highway. The route passes through Chungthang (1,646m, approximately 70 km from Gangtok) - the junction where the Lachung road and the Lachen road diverge. Beyond Chungthang, the road follows the Lachung River northward, climbing steadily to 2,680m at Lachung village. Vehicles for this route must be the registered Sikkim Tourism vehicles. Most operators run packages that include Gangtok pickup." },
-    { id: "lachung-village", title: "Lachung village", icon: "🏘️",
-      content: "Lachung sits at 2,680m in a valley surrounded by forested slopes. It is a small settlement - the village centre has a Buddhist monastery (Lachung Monastery, dating to 1880s, worth the 20-minute walk up), a few guesthouses, basic shops, and a small market. Do not arrive expecting a tourist town. This is a mountain village that happens to receive visitors during the rhododendron season.\n\nThe altitude (2,680m) is manageable for most people coming from Gangtok (1,650m) - the gain is around 1,030m over 4-5 hours, which is gradual enough. However, if you are planning to visit Zero Point (4,428m) the following day, spending the night at Lachung is the acclimatization step that makes the difference. Going from Gangtok directly to Zero Point in a single day - a gain of nearly 2,800m - is what causes altitude sickness in many visitors. Stay one night in Lachung. The acclimatize-above-3000m guide covers the physiology in detail.\n\nAccommodation in Lachung: basic guesthouses Rs 600-1,200 per night, meals typically included (there are very few restaurants separately). Mid-range options like Denzong Peak resort Rs 2,500-4,000 per night. Advance booking is essential in April-May - the village fills up completely during peak bloom.\n\nBSNL has weak signal in Lachung town. Airtel and Jio work below Chungthang but become very limited or non-functional above it. Carry a power bank - charging points in guesthouses are available but shared. See power-banks-trek." },
-    { id: "yumthang-valley", title: "Yumthang Valley - the rhododendron situation", icon: "🌸",
-      content: "Yumthang Valley is 24 km from Lachung by road - approximately 1.5 to 2 hours depending on road conditions. The valley sits at 3,564m and is designated a wildlife sanctuary. The road from Lachung to Yumthang is mostly paved but narrows and steepens in the upper sections.\n\nThere is a checkpoint at the valley entrance where permits are verified before vehicles are allowed in. Keep your ILP accessible.\n\nI drove up at 7 AM on a day in mid-April. The first rhododendrons appeared at around the 15 km mark from Lachung - patches of red on the upper slopes. In the final 8 km into the valley floor, the density changed completely. Wall-to-wall red and pink on the slopes on both sides of the road, with white rhododendron species higher up near the ridgeline. The valley floor at Yumthang had patches of yellow wildflowers between the shrubs. Thirty-six species of rhododendron grow in the valley, including Rhododendron niveum - the Sikkim state tree - which blooms in the higher zones. At ground level the colours are predominantly red (Rhododendron arboreum) and pink.\n\nIf you arrive after 10 AM, cloud frequently builds from the south and softens the light. The valley is clear in the morning. That 7 AM departure from Lachung is not an arbitrary recommendation.\n\nYumthang hot springs: just before the valley entrance, there is a cluster of sulphur hot springs - a Yumthang Valley staple on tour itineraries. Worth a 10-minute stop on the way out. Water temperature is around 50C." },
-    { id: "zero-point", title: "Zero Point (Yumesamdong) - 4,428m", icon: "❄️",
-      content: "Zero Point is 23 km beyond Yumthang Valley, at 4,428m. The name refers to the fact that this is where the public road ends - the military area boundary begins here. Civilians cannot proceed further.\n\nThe road from Yumthang to Zero Point is one of the highest motorable roads in Sikkim. You cannot trek to Zero Point - vehicles only, and again, the vehicles must be registered for the route. A Zero Point vehicle surcharge applies on top of the standard package rate: Rs 500-1,000 extra per vehicle in most packages, often included in premium packages.\n\nWhat is at Zero Point: a high-altitude snowfield with year-round snow, the Kanchenjunga and Gurudongmar ranges visible to the north when skies are clear, and nothing else. No tea stalls beyond what vendors temporarily park here. No shelter. No facilities. You arrive, you walk around on the snow, you photograph the mountains, you leave. The temperature at 4,428m in April was -2C at 10 AM with a clear sky when I was there. By the time we left (11:30 AM), cloud was beginning to build from the west.\n\nThe altitude at Zero Point is significant. 4,428m is high enough that acute mountain sickness is a real possibility for anyone who has not spent adequate time at intermediate altitude. The one-night-in-Lachung acclimatization strategy specifically addresses this: Gangtok (1,650m) on arrival, Lachung (2,680m) night one, Yumthang (3,564m) and Zero Point (4,428m) on day two. This is the pacing that makes Zero Point accessible without misery.\n\nAMS warning signs to take seriously: persistent headache unresolved by paracetamol and water, nausea, loss of coordination, confusion. At 4,428m with no medical facilities for hours, descent is the only treatment. Read the acclimatize-above-3000m guide before you go." },
-    { id: "monthly-guide", title: "Yumthang Valley by season", icon: "📅",
-      content: "This is the table that determines whether your trip makes sense. Rhododendron timing at Yumthang is the variable that most people get wrong - they arrive in March thinking the bloom is on, or come in June thinking it continues through monsoon.\n\nJanuary: -8 to -15C nights, no bloom, Zero Point road usually closed (snow), very low crowds, ILP available but few operators running.\n\nFebruary: -5 to -10C nights, no bloom, Zero Point usually closed, low crowds.\n\nMarch: 0 to 5C days, lower slope rhododendrons (below 2,500m) beginning, Zero Point may open mid-late March, low to moderate crowds.\n\nApril: 5 to 12C days, PEAK BLOOM (valley floor and mid-slopes), Zero Point generally open, high crowds - book ahead.\n\nMay (early): 8 to 15C days, late peak (higher species still blooming), Zero Point open, high crowds - book ahead.\n\nMay (late): 10 to 16C days, bloom fading below but higher species finishing, Zero Point open, moderate crowds.\n\nJune: 12 to 18C days, rhododendrons finished but wildflowers on valley floor, Zero Point open, moderate crowds.\n\nJuly-August: 10 to 16C days, no bloom, monsoon green, Zero Point open with caution (landslips), low crowds.\n\nSeptember: 8 to 14C days, no bloom, Zero Point open, low to moderate crowds.\n\nOctober: 2 to 10C days, no bloom but autumn colours on deciduous trees, Zero Point open, moderate crowds.\n\nNovember: -2 to 5C days, no bloom, Zero Point open (may close late Nov), low crowds.\n\nDecember: -5 to -12C nights, no bloom, Zero Point closed, very low crowds.\n\nThe monsoon-routes guide covers how to assess North Sikkim road conditions in July-September - the Lachung highway is prone to landslips at Chungthang." },
-    { id: "package-vs-self", title: "The North Sikkim 4D/3N package", icon: "📦",
-      content: "Most visitors to North Sikkim cover both valleys - Lachung/Yumthang and Lachen/Gurudongmar - in a single trip. This is the standard North Sikkim package that Gangtok operators sell.\n\nThe two valleys branch at Chungthang (1,646m, 70 km from Gangtok). Lachung is in the western fork, Lachen is in the eastern fork. The typical package route:\n\nDay 1: Gangtok to Lachen (2,750m) - 107 km, 5-6 hours. Day 2: Lachen to Gurudongmar Lake (5,430m) and back to Lachen, or onward to Lachung. Day 3: Lachen to Lachung via Chungthang - drive to Yumthang Valley, overnight Lachung. Day 4: Lachung to Zero Point (morning), then Yumthang, then drive back to Gangtok.\n\nGurudongmar Lake at 5,430m is one of the highest lakes in the world and is sacred to both Buddhists and Hindus. It is also one of the highest points accessible by vehicle in India. The altitude at Gurudongmar is significantly higher than Zero Point - acclimatization strategy for this combination requires more planning.\n\nPackage costs from Gangtok: Rs 8,000-14,000 per person for 4 days/3 nights, including accommodation, vehicle, most meals, and ILP assistance. Self-arranged (vehicle hire only): Rs 4,000-6,000 per day per vehicle plus accommodation.\n\nThis is genuinely the case where a package works out cheaper than self-arrangement, because the vehicle cost is per vehicle and the ILP assistance is included. For solo travelers or couples, joining a package makes straightforward economic sense.\n\nLachung vs Lachen - the other North Sikkim valley: Lachung/Yumthang has 2,680m village + 3,564m valley + 4,428m Zero Point, rhododendron valley as primary draw, best April-May, moderate AMS risk. Lachen/Gurudongmar has 2,750m village + 5,430m lake, sacred high-altitude lake as primary draw, best April-June and October, high AMS risk. The honest answer: if you are in April-May and the rhododendrons are the reason you are going, Lachung/Yumthang is the primary destination. Lachen/Gurudongmar is a powerful add-on if you have the full 4-day window and are not altitude-sensitive." },
-    { id: "what-to-pack", title: "What to pack", icon: "🎒",
-      content: "The temperature range from Lachung to Zero Point spans nearly 10C and involves wind chill at 4,428m. What works in Gangtok (1,650m) in April (15-18C) is not what you need at Zero Point (4,428m) at the same time of year (-2 to -5C).\n\nLayering is the system:\n\nBase layer thermals are the foundation. See thermals-high-altitude for what actually retains heat versus what looks good and fails at 4,000m+.\n\nJacket: an insulated, windproof outer layer. At Zero Point the wind chill in April drops the effective temperature well below the ambient -2C. See jackets-kedarnath-trek for tested options.\n\nFootwear: the Yumthang Valley floor is accessible in sturdy walking shoes or light trekking shoes. At Zero Point, you will be walking on compacted snow and ice - waterproof trekking shoes with ankle support are necessary. See trekking-shoes-under-5000.\n\nBackpack: you are not trekking - you are in a vehicle for most of the day. A 20-30L daypack for the Zero Point stop is sufficient. See backpacks-chopta-tungnath.\n\nSleeping bag: guesthouses in Lachung provide blankets, but in January-March when night temperatures drop to -10C or below, carrying your own bag is worthwhile. In April-May, guesthouse blankets are adequate in most properties. See sleeping-bags-spiti for colder month trips.\n\nHeadlamp: if you are doing the 7 AM Yumthang departure in March, departure will be pre-dawn at Lachung. See headlamps-under-1000.\n\nRain gear: the North Sikkim highway can receive afternoon rain even in May. A rain poncho packs small and protects both you and your camera equipment. See rain-ponchos-char-dham.\n\nCash: there are no functioning ATMs in Lachung. The last reliable ATM is in Gangtok. Carry all cash for the North Sikkim portion before leaving Gangtok - accommodation, meals, tips, and any extra vehicle costs are cash-only. Carry at least Rs 8,000-10,000 in cash if on a package, more if self-arranging. See atm-cash-guide. The packing-4000m guide covers the broader altitude checklist." },
-    { id: "budget", title: "Budget breakdown", icon: "💰",
-      content: "Getting to Gangtok from Dehradun: Dehradun to Bagdogra flight (one way) Rs 3,000-8,000. NJP/Bagdogra to Gangtok shared taxi Rs 250-300 per seat. Private cab NJP to Gangtok Rs 2,500-3,000.\n\nILP: Rs 200 per person (Indian nationals). Foreign nationals confirm current PAP rates at the Gangtok FRRO.\n\nNorth Sikkim package (Lachung + Yumthang + Zero Point only, 2D/1N from Gangtok): per person on group package Rs 4,500-7,000.\n\nFull North Sikkim package (Lachung + Lachen, 4D/3N from Gangtok): per person Rs 8,000-14,000 (includes accommodation, vehicle, most meals, ILP assistance).\n\nSelf-arranged (vehicle hire only, per day): registered vehicle Rs 4,000-6,000 per vehicle per day. Zero Point surcharge Rs 500-1,000 per vehicle. Lachung accommodation (guesthouse) Rs 600-1,200 per night. Lachung accommodation (mid-range) Rs 2,500-4,000 per night.\n\nTotal per person from Gangtok (North Sikkim, 3 nights): Rs 6,000-12,000 depending on package vs self-arranged and accommodation tier.\n\nTotal trip budget from Dehradun (return flights + full North Sikkim 4D): Rs 20,000-35,000 depending on flight prices and accommodation level." },
-    { id: "connectivity", title: "Connectivity, medical, comparisons", icon: "📶",
-      content: "Mobile signal: BSNL is the most functional network in Lachung - expect weak but usable signal. Airtel and Jio work below Chungthang (about 64 km from Gangtok) and become unreliable or non-functional above it. At Zero Point there is no signal of any kind. Download offline maps (OsmAnd or Maps.me - Sikkim region) before leaving Gangtok.\n\nMedical: no medical facility in Lachung beyond basic first aid at guesthouses. The nearest hospital is in Mangan (64 km south). Carry a personal first aid kit. The acclimatize-above-3000m guide covers AMS basics.\n\nPhotography: Yumthang Valley in morning light (7-9 AM) in peak bloom is one of the most photographically rich environments in the Indian Himalayas. The combination of the valley floor wildflowers, the rhododendron-covered slopes, and the snow peaks above is the shot. Afternoon haze and cloud flatten the light. Go early.\n\nDress code for Lachung Monastery: cover shoulders and knees. The monastery is a functioning place of worship and receives visitors - basic respect for dress is expected.\n\nNorth Sikkim compared to other destinations: if you have been to Sandakphu or Chopta, you will find North Sikkim requires a different level of logistical advance work. The permit, the registered vehicle requirement, and the distance from Dehradun all add friction that Uttarakhand treks do not have. But the trade-off is a valley that is genuinely uncrowded relative to its quality - Yumthang in April has nowhere near the footfall of Valley of Flowers in August, and the bloom is comparable.\n\nCompared to Ladakh: North Sikkim is significantly greener, lower in overall altitude (Zero Point is lower than most Ladakh passes), and far easier to reach from northeast India. The permit framework is similar in structure - restricted zone - but simpler to navigate. Ladakh's altitude range (most destinations 3,500-5,300m) makes acclimatization more involved." },
+    {
+      id: "permit-first",
+      title: "Arrange the Protected Area Permit before the road trip",
+      icon: "📋",
+      content: `Sikkim Tourism classifies Lachung, Yumthang and the relevant North Sikkim destinations as protected-area travel. The document is a **Protected Area Permit (PAP)**. Calling every Sikkim travel document an ILP creates confusion, especially because rules differ by visitor nationality and destination.
+
+Government notification No. 101 DOT & CAV, dated 13 September 2025, sets the current operating framework for the resumed Lachung axis:
+- permits must be issued at least one day in advance
+- same-day permits are not issued
+- Lachung visitors must follow a three-day, two-night itinerary
+- visitors must remain within the places listed on the permit
+- travel agencies are responsible for their drivers and guides and are advised to use local drivers familiar with the terrain
+
+Arrange the permit through a Sikkim Tourism-registered travel agency or another channel currently authorised by the department. Ask for the agency's registration details, the exact permitted destinations and the issue timeline before paying. Sending documents to a random messaging number is not a permit process.
+
+The visitor permit and vehicle authorisation are related but distinct. The operator should explain which vehicle and driver will be used and how the checkpoint verification works. Keep original identification and the permit copy accessible.
+
+Rules for foreign visitors are different. Sikkim Tourism states that foreign tourists may visit the Lachen–Lachung–Yumthang–Thangu Valley through the protected-area system, but route and destination eligibility are not identical to domestic packages. Confirm Yumesamdong eligibility rather than assuming that “North Sikkim included” covers it.`,
+    },
+    {
+      id: "arrival-plan",
+      title: "Build a full Gangtok day before the permit departure",
+      icon: "🧭",
+      content: `The practical gateways are Bagdogra Airport and New Jalpaiguri railway station, followed by a substantial road transfer to Gangtok. Flight, train and Teesta-corridor conditions change, so do not freeze one duration into an evergreen article.
+
+Avoid landing and joining a North Sikkim departure on the same clock. A delayed arrival can miss the operator's document check or the permit-issue window. Spend at least one full night in Gangtok before the scheduled departure; more margin may be wise when travelling in unstable weather.
+
+Before leaving Gangtok, verify:
+- every traveller appears correctly on the permit
+- the permit names the intended destinations
+- the operator has the required vehicle paperwork
+- the package reflects the mandatory three-day, two-night structure
+- both nights, meals and room allocation are confirmed
+- Zero Point is included or excluded explicitly
+- cancellation and road-closure terms are written
+
+Download the permit, hotel address and operator contacts. Carry a paper copy. Tell a trusted contact the planned return date. North Sikkim travel should not depend on finding a mobile signal at the next stop.
+
+If the permit is not ready, do not let an operator persuade the group to depart and “sort it at the checkpoint.” The current notification rules out same-day issuance. Losing a day in Gangtok is frustrating; travelling without the required authority is worse.`,
+    },
+    {
+      id: "three-day-plan",
+      title: "A practical three-day, two-night Lachung structure",
+      icon: "🗓️",
+      content: `The government-mandated minimum creates space for a less punishing route than the older two-day package model.
+
+**Day 1 — Gangtok to Lachung:** Leave with the authorised group and vehicle. The route normally passes through the Mangan and Chungthang side, subject to the current traffic arrangement. Expect checkpoints, meal or permit stops and possible construction delay. Treat the road as the day's main activity. Check in, eat, stay warm and rest.
+
+**Day 2 — Yumthang and optional permitted extension:** Depart according to the driver and current access window. Visit Yumthang without assuming flower, snow or mountain visibility. Continue toward Yumesamdong only if it appears on the permit, the operator has confirmed it, authorities allow it and the group is well. Return to Lachung for the second night.
+
+**Day 3 — Lachung to Gangtok:** Use daylight and accept that the return can take longer than expected. Do not attach a tight Bagdogra flight or NJP train to the same afternoon. A fourth night in Gangtok provides a safer connection plan.
+
+The second night is not wasted time. It reduces the incentive to drive both directions and complete the high excursion within one exhausting cycle. It also gives some room for traffic management and weather decisions. It does not guarantee that a closed road will reopen.
+
+Do not let an advertisement quietly redefine “three days” as a late first-night arrival plus a pre-dawn excursion and early return. Ask for departure windows, expected driving load and actual time in Lachung.`,
+    },
+    {
+      id: "road-reality",
+      title: "Road status can change faster than an article",
+      icon: "🛣️",
+      content: `North Sikkim is a high-relief, high-rainfall environment with landslide, bridge and river risks. The state government's own 2026 notices show how seriously connectivity can change: the Chungthang–Lachen axis was disrupted for months, and the administration also inspected a landslide site at Teeling in Lachung during July. These events do not prove your travel date will fail; they prove that static green “open” badges are irresponsible.
+
+Check the Government of Sikkim or district update, then confirm with the registered operator close to departure. Operators should use official directions, not pressure from a prepaid group. Police, BRO, district administration, army and local bodies may regulate movement during a disruption.
+
+Carry water, simple food, essential medicine and a warm layer in the vehicle. Keep enough flexibility for an extra Gangtok or Lachung night. A landslide delay is not the moment to discover that every prescription tablet is in checked luggage scheduled for a flight.
+
+Do not leave the authorised route, cross a barrier or walk into a damaged section because another vehicle appears to have passed. An evacuation corridor is not general tourist access. Follow checkpoint and driver instructions.
+
+The route panel on this page is labelled as a reference. It describes sequence, not live condition. When the current authority contradicts a booking or this guide, the authority wins.`,
+    },
+    {
+      id: "yumthang",
+      title: "Yumthang is a mountain valley, not a guaranteed flower show",
+      icon: "🌸",
+      content: `Yumthang lies north of Lachung at a much higher elevation, commonly described around 3,500 metres. The route and checkpoint operate within the protected-area system. Keep the permit and identification accessible and remain within the authorised area.
+
+Spring is associated with rhododendrons, but bloom timing changes with elevation, winter snow, temperature and the year's weather. Avoid planning a non-refundable trip around a social-media post dated only “April.” Ask the operator what has actually begun flowering that week and accept that nature may be early or late.
+
+Likewise, a clear mountain view cannot be promised. Morning often offers a better planning window, but cloud can exist at any time. The driver and current traffic instructions should determine departure—not a claim that every visitor must arrive by a magic hour.
+
+Move slowly when leaving the vehicle. The body has travelled from Gangtok to Lachung and higher in a short period. A headache, nausea, marked dizziness or unusual breathlessness should be reported immediately. Worsening symptoms are not the price of getting the photograph.
+
+Use paths and stopping areas indicated by authorities. Do not pick flowers, leave plastic, walk into protected vegetation or crowd wildlife. Hot-spring access and facilities can change; treat it as optional and follow local hygiene and safety instructions rather than publishing a permanent water temperature.`,
+    },
+    {
+      id: "zero-point",
+      title: "Yumesamdong or Zero Point is optional, higher and less forgiving",
+      icon: "❄️",
+      content: `Yumesamdong, widely marketed as Zero Point, is the higher road extension beyond Yumthang. It is often described around 4,400 metres. The public-access endpoint, checkpoint decision and road condition can change; visitors must not continue toward restricted military areas.
+
+Confirm four things in writing before departure: that your nationality is eligible for the specific destination, that it is printed or valid on the permit, that the vehicle charge is included, and that the road is currently operating. A generic “North Sikkim package” is not enough.
+
+Snow is not guaranteed. It varies by month, weather and recent clearance. Vendors may operate seasonally, but there is limited shelter and no reason to expect a full visitor centre. Carry warm and wind-resistant layers even if Gangtok is mild.
+
+The rapid rise makes altitude the main concern. A night in Lachung is helpful but does not make everyone acclimatised to 4,400 metres. Do not continue with worsening symptoms. Follow the driver, checkpoint and medical advice, and descend when instructed. Prescription medicine should be discussed with a clinician before the trip, not purchased from a packing list.
+
+Skipping the extension does not make the permit or itinerary poor value. Yumthang and Lachung are the core journey. If the road, weather, permit or group health is wrong, turn back without bargaining with the checkpoint.`,
+    },
+    {
+      id: "health-comfort",
+      title: "Cold, altitude and long vehicle days require a group plan",
+      icon: "🩺",
+      content: `The journey combines long sitting, rough road, large elevation change and cold. Travellers prone to motion sickness should discuss suitable medication with a clinician and sit where the vehicle movement is manageable. Keep water and a simple snack accessible.
+
+Anyone with relevant heart, lung, blood-pressure or other health conditions should seek medical advice before booking. Carry regular medication, a delay buffer and a written summary of important conditions and allergies. Do not rely on a guesthouse for anything beyond basic assistance.
+
+Agree in advance what happens if one person becomes unwell: who stays with them, which booking can be abandoned, how the operator contacts medical help, and when the entire group turns back. The September 2025 notification specifies a clearance process involving an army or government doctor for an emergency return, reinforcing that operators must coordinate with authorities.
+
+Dress in layers: a base layer, warm mid-layer and wind-resistant outer layer, with hat, gloves and dry socks. Wear shoes with grip; rented snow boots, if available, should be checked for fit and sole condition rather than assumed safe.
+
+At high stops, move slowly and keep the visit short if cold or symptomatic. Alcohol is a poor response to cold and altitude. A hot drink and warm vehicle do not rule out illness.`,
+    },
+    {
+      id: "stay-food",
+      title: "Judge accommodation by warmth and logistics",
+      icon: "🏨",
+      content: `Lachung accommodation is part of a regulated route package more often than a standalone city booking. Room photographs alone do not answer the important questions.
+
+Ask whether the room is in the main building, how many stairs are involved, how hot water is supplied, what heating is available and whether heating costs extra. Confirm dinner and breakfast times around the excursion. Power interruptions can occur, so ask about backup for lighting rather than expecting continuous charging or electric heating.
+
+Food is usually simple and scheduled for groups. Tell the operator about dietary restrictions before departure. Carry a small amount of appropriate backup food if a delayed arrival would create a problem, but do not arrive with a large disposable snack haul.
+
+The current three-day, two-night requirement means both nights must be in the quoted package. Confirm whether the same property is used, whether room sharing changes, and what happens if the group is held on the road. Read refund terms for a government closure.
+
+Do not use the cheapest quote until its inclusions match another quote. A vehicle, permit processing, driver costs, two nights, meals and the intended permitted excursions must all be compared on the same basis.`,
+    },
+    {
+      id: "money-connectivity",
+      title: "Plan payment and communication without absolute claims",
+      icon: "📶",
+      content: `Connectivity in North Sikkim is variable. Do not state that one network always works in Lachung or that another always fails at a precise kilometre. Terrain, infrastructure, weather and maintenance affect service.
+
+Download the permit, hotel details, maps and operator contacts in Gangtok. Keep paper copies. Establish a check-in plan with family that allows for a full day without contact, so a normal outage does not trigger unnecessary alarm. In a genuine emergency, use the driver and official response chain rather than waiting for personal data service.
+
+Carry a cash reserve based on the written package and likely extras, but there is no universal ₹8,000 or ₹10,000 requirement. Confirm what can be paid digitally, which charges are already settled and whether an optional extension is cash-only. Split funds between responsible adults.
+
+Avoid large cash prepayments to an unverified agent. Use traceable payment to a registered operator and retain the quote, receipt and cancellation terms. A permit fee, package price and optional vehicle extension should be itemised rather than blended into a mysterious “government charge.”
+
+A modest power bank is useful. Keep the phone warm enough to preserve battery and do not run it flat filming from the vehicle. The most important information should remain available without power.`,
+    },
+    {
+      id: "season-choice",
+      title: "Choose timing for the experience, then verify access",
+      icon: "🌦️",
+      content: `Season descriptions are broad tendencies, not access guarantees.
+
+**Spring:** Travellers often hope for rhododendron bloom and remaining snow. Exact timing varies. Roads can still be recovering from winter, and high access depends on clearance.
+
+**Early summer:** Longer days can help road travel, while rain and slope instability may increase as the season changes. School-holiday demand can affect package availability.
+
+**Monsoon:** Landslides, drainage problems and road closures become a central risk. The July 2026 government inspection at Teeling, Lachung is a concrete reminder that restoration work can affect the axis. Travel only under current official and operator guidance.
+
+**Autumn:** Clearer spells are possible and temperatures fall. Confirm whether all desired excursions and accommodations still operate.
+
+**Winter:** Snow, cold and restricted access make this a specialised trip. Do not book a generic spring package after seeing a snow photograph. Heating, vehicle, road permission and emergency response all need explicit confirmation.
+
+Check forecast and road information close to travel, then reconfirm before leaving Gangtok and before the high excursion. Authorities may shorten or suspend movement even when the sky looks clear at the hotel.`,
+    },
+    {
+      id: "respect",
+      title: "Travel respectfully through Dzumsa communities and protected land",
+      icon: "🙏",
+      content: `Lachung is governed through the traditional Dzumsa system as well as state administration. Visitors are entering a community, not an empty scenic corridor. Follow local rules, hotel guidance and checkpoint directions without treating them as obstacles to a purchased package.
+
+At Lachung Monastery and other religious spaces, dress modestly, speak quietly and ask before photographing people or interiors. Do not fly a drone without explicit legal and local permission. Border sensitivity makes casual assumptions especially inappropriate.
+
+Carry waste back to the accommodation or authorised collection. Do not leave plastic in snow, flower meadows or roadside stops. Avoid amplified music, picking plants and walking beyond marked areas. Buy from local vendors without turning every purchase into an aggressive negotiation.
+
+The vehicle is part of the environmental burden. Do not demand unnecessary idling for warmth or repeated stops in unsafe places. Respect the driver's judgement when a shoulder, slope or checkpoint is unsuitable.
+
+Water, food, road space and waste handling are community resources. Use them with the same care you would expect from visitors in your own hometown. If a closure limits supplies, residents and emergency services take priority over a tourist's preferred menu or schedule. Patience is part of responsible travel here.
+
+The best North Sikkim plan is not the one that reaches the farthest signboard. It is the one that follows the permit, protects the group and leaves the route easier for the community to host again.`,
+    },
   ],
+
   weatherPoints: [
-    { location: "Gangtok", altitude: 1650, temp: 18, weather: "🌤️" },
-    { location: "Chungthang", altitude: 1646, temp: 16, weather: "⛅" },
-    { location: "Lachung", altitude: 2680, temp: 8, weather: "🌥️" },
-    { location: "Yumthang Valley", altitude: 3564, temp: 4, weather: "❄️" },
-    { location: "Zero Point", altitude: 4428, temp: -2, weather: "❄️" },
+    { location: "Gangtok", altitude: 1650, temp: 16, weather: "🌤️" },
+    { location: "Mangan", altitude: 1200, temp: 18, weather: "🌦️" },
+    { location: "Chungthang", altitude: 1790, temp: 13, weather: "🌦️" },
+    { location: "Lachung", altitude: 2700, temp: 7, weather: "⛅" },
+    { location: "Yumthang", altitude: 3500, temp: 3, weather: "🌨️" },
+    { location: "Yumesamdong", altitude: 4400, temp: -2, weather: "❄️" },
   ],
+
   routes: [
-    { from: "Dehradun", to: "Bagdogra (flight)", status: "open", note: "1.5 hrs, Rs 3K-8K" },
-    { from: "Bagdogra/NJP", to: "Gangtok", status: "open", note: "100 km, 3.5-4 hrs, Rs 250/seat shared" },
-    { from: "Gangtok", to: "Lachung", status: "open", note: "115 km, 4-5 hrs (registered vehicle only)" },
-    { from: "Lachung", to: "Yumthang Valley", status: "open", note: "24 km, 1.5-2 hrs" },
-    { from: "Yumthang", to: "Zero Point", status: "open", note: "23 km, 45-60 min" },
+    { from: "Bagdogra / NJP", to: "Gangtok", status: "partial", note: "Gateway transfer; confirm Teesta-corridor condition" },
+    { from: "Gangtok", to: "Mangan", status: "partial", note: "Protected-route journey begins under authorised itinerary" },
+    { from: "Mangan", to: "Lachung", status: "partial", note: "Via Chungthang; verify current district and operator advice" },
+    { from: "Lachung", to: "Yumthang", status: "partial", note: "Permit and checkpoint dependent; not live status" },
+    { from: "Yumthang", to: "Yumesamdong", status: "partial", note: "Optional higher extension; eligibility and access vary" },
   ],
+
   checklist: [
-    { category: "Pre-trip from Dehradun", items: [
-      { name: "Dehradun to Bagdogra flight (4-6 weeks ahead Apr-May)", essential: true },
-      { name: "Gangtok hotel booking for ILP collection day", essential: true },
-      { name: "North Sikkim package booked or vehicle confirmed (registered)", essential: true },
-      { name: "Aadhaar original + 2 passport photos for ILP", essential: true },
-    ] },
-    { category: "Inner Line Permit (Gangtok)", items: [
-      { name: "ID proof original (Aadhaar/passport)", essential: true },
-      { name: "2 passport-size photographs", essential: true },
-      { name: "Approx Rs 200 cash for permit", essential: true },
-      { name: "Early arrival at MG Marg office (peak season)", essential: true },
-    ] },
-    { category: "North Sikkim trip essentials", items: [
-      { name: "Cash Rs 8,000-10,000 (no ATM beyond Gangtok)", essential: true },
-      { name: "Insulated windproof jacket", essential: true },
-      { name: "Thermal base layer", essential: true },
-      { name: "Waterproof trekking shoes (snow at Zero Point)", essential: true },
-      { name: "Daypack 20-30L", essential: true },
-      { name: "Headlamp + spare batteries", essential: true },
-      { name: "Power bank (shared charging at Lachung)", essential: true },
-      { name: "Rain poncho", essential: true },
-      { name: "Offline maps downloaded", essential: true },
-    ] },
-    { category: "Zero Point day (4,428m)", items: [
-      { name: "3-4 litres water on the day", essential: true },
-      { name: "No alcohol night before", essential: true },
-      { name: "Sun protection (UV at altitude)", essential: true },
-      { name: "Pulse oximeter (optional but useful)", essential: false },
-    ] },
+    { category: "Permit and booking", items: [
+      { name: "Original accepted photo identification", essential: true },
+      { name: "PAP showing the correct travellers and destinations", essential: true },
+      { name: "Registered operator and authorised vehicle details", essential: true },
+      { name: "Written three-day, two-night inclusions", essential: true },
+    ]},
+    { category: "Cold and weather", items: [
+      { name: "Warm base and mid layers", essential: true },
+      { name: "Wind-resistant insulated outer layer", essential: true },
+      { name: "Warm hat, gloves and dry socks", essential: true },
+      { name: "Shoes with reliable grip", essential: true },
+      { name: "Rain protection", essential: true },
+    ]},
+    { category: "Road day", items: [
+      { name: "Refillable water bottle and simple food", essential: true },
+      { name: "Offline maps, permit and contacts", essential: true },
+      { name: "Modest power bank", essential: true },
+      { name: "Proportionate cash reserve", essential: true },
+    ]},
+    { category: "Health", items: [
+      { name: "Usual prescription medicine plus delay buffer", essential: true },
+      { name: "Written conditions, allergies and emergency contacts", essential: true },
+      { name: "Clinician-approved motion or altitude plan", essential: false },
+      { name: "Basic first-aid supplies", essential: true },
+    ]},
   ],
+
   faq: [
-    { q: "When is the best time to see rhododendrons at Yumthang Valley?", a: "Late March to early May, with the peak typically in the second and third weeks of April. The exact timing shifts by 1-2 weeks depending on the year's winter snowfall. Rhododendron arboreum (red, lower slopes) blooms first, followed by the higher-altitude species. By late May the bloom is largely finished at valley level. Do not plan this trip for June expecting flowers." },
-    { q: "How do I get the Inner Line Permit for North Sikkim?", a: "Walk into the Sikkim Tourism Office on MG Marg, Gangtok with your Aadhaar card (or passport for foreign nationals) and two passport-size photographs. Fill out the application form at the counter, pay approximately Rs 200 per person, and collect the permit the same day. The process typically takes 15-30 minutes. In peak season (April-May), arrive by 9-9:30 AM to avoid queues." },
-    { q: "Can I visit Yumthang Valley and Zero Point in one day from Gangtok?", a: "Technically yes - the driving distances work out to a very long 14-16 hour day. But it is strongly inadvisable because of altitude. Going from Gangtok at 1,650m to Zero Point at 4,428m in a single day represents a 2,778m altitude gain in one stretch. The standard and recommended approach is Gangtok to Lachung on Day 1 (night at 2,680m), then Yumthang and Zero Point on Day 2." },
-    { q: "Is North Sikkim open for solo travelers?", a: "Yes, but with practical constraints. The ILP is issued to individuals and groups equally. The vehicle requirement is per vehicle - solo travelers hiring a private vehicle pay the full daily rate of Rs 4,000-6,000 regardless of the number of passengers. Solo travel becomes economical by joining a group tour package from Gangtok. Notice boards at guesthouses in Gangtok often have group formation for North Sikkim packages." },
-    { q: "How far is Lachung from Gangtok, and how long does the drive take?", a: "Lachung is 115 km from Gangtok by road on the North Sikkim State Highway. The drive takes 4-5 hours depending on road conditions, traffic through Chungthang, and weather. The road passes through the Teesta Valley and climbs steadily through dense forest. It is a good road by Himalayan standards - paved throughout and maintained reasonably well outside monsoon season." },
-    { q: "What is the altitude at Zero Point, and should I be concerned?", a: "Zero Point (Yumesamdong) is at 4,428m above sea level. At this altitude, people who have not adequately acclimatized will notice breathlessness on mild exertion, potential headache, and reduced energy. Following the recommended itinerary (one night at Lachung before visiting Zero Point) significantly reduces AMS risk. Drink 3-4 litres of water on the day, avoid alcohol the night before, and do not exert yourself at the top." },
-    { q: "Can foreign nationals visit Yumthang Valley and Zero Point?", a: "Yes, but the permit requirement is more involved. Foreign nationals need both the Inner Line Permit (ILP) and a Protected Area Permit (PAP). The PAP is issued by the FRRO in Gangtok and requires your passport, visa, and additional documentation. The PAP cannot typically be obtained same-day - coordinate through a registered tour operator in advance." },
+    { q: "Do I need a permit for Lachung and Yumthang?", a: "Yes. They are protected-area destinations requiring a PAP arranged through authorised channels, normally a registered travel agency. The vehicle paperwork is also part of the controlled journey." },
+    { q: "Can I get a same-day permit in Gangtok?", a: "No under the September 2025 Government of Sikkim notification. Permits must be issued at least one day in advance. Build document and timing margin before the planned departure." },
+    { q: "Is a two-day, one-night Lachung package valid?", a: "The current notification requires Lachung tourists to follow a three-day, two-night itinerary. Ask an operator selling anything shorter to show the current authority before payment." },
+    { q: "Can foreign tourists visit Lachung and Yumthang?", a: "Sikkim Tourism permits foreign tourists for specified North Sikkim valleys through the PAP system, with different documentation and supervision. Confirm the exact destinations—especially Yumesamdong—for your nationality." },
+    { q: "Is Zero Point included in every package?", a: "No. Confirm permit eligibility, destination coverage, current access and vehicle charge in writing. It is a higher optional extension, not an automatic part of the Lachung stay." },
+    { q: "When will flowers bloom in Yumthang?", a: "There is no guaranteed date. Spring is associated with rhododendron bloom, but elevation, snow and annual weather change the timing. Ask for a current local report close to travel." },
+    { q: "Will there be snow at Zero Point?", a: "Snow cannot be guaranteed for a booking. Recent weather and clearance determine what remains. Pack for cold and assess the trip on access and altitude safety, not a promised snow photograph." },
+    { q: "Can I drive my own car to Lachung?", a: "Do not assume so. Protected routes use authorised vehicle and permit arrangements. Confirm the current rule through Sikkim Tourism and the registered operator rather than arriving in a private vehicle." },
   ],
+
   emergency: [
-    { name: "Sikkim Tourism Office Gangtok", number: "03592-221634" },
-    { name: "District Collector Gangtok", number: "03592-202016" },
-    { name: "Mangan Hospital (nearest to Lachung)", number: "03592-234047" },
-    { name: "Disaster Helpline", number: "112" },
+    { name: "Integrated emergency", number: "112" },
+    { name: "Sikkim tourist nodal helpline", number: "7001911393" },
+    { name: "Mangan emergency operating centre", number: "03592-234538" },
+    { name: "Sikkim SDRF", number: "03592-220545" },
   ],
-  subPages: [],
+
+  subPages: [
+    { slug: "packing", title: "Lachung packing checklist", description: "Permit, cold-weather and road-delay essentials" },
+  ],
+
+  metaTitle: "Lachung & Yumthang Guide: PAP, 3-Day Plan & Safety",
+  metaDescription: "Plan Lachung and Yumthang with current PAP rules, mandatory 3-day/2-night itinerary, Zero Point decisions, road-risk guidance and official Sikkim sources.",
 };

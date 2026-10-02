@@ -27,17 +27,17 @@ export const guideContent: Record<string, GuideContent> = {
 
 "acclimatize-above-3000m": {
   publishDate: "2026-05-22",
-  lastUpdated: "2026-05-22",
+  lastUpdated: "2026-09-30",
   author: "Ash",
-  disclosure: "This article mentions specific products (pulse oximeters) with affiliate links. Purchases through these links support TravelBoa at no extra cost to you.",
+  disclosure: "Medical review pending: this page is excluded from search indexing while it is rewritten against clinical guidance. It is general education, not a diagnosis or treatment plan. Seek medical advice before high-altitude travel or using prescription medicine. Affiliate links, where present, never determine medical guidance.",
   heroImage: { src: "/guide-acclimatize-hero.jpg", alt: "Trekkers walking towards Kedarnath with snow-covered Himalayan peaks in the background at 3,583m altitude" },
   sections: [
     {
       heading: "",
       paragraphs: [
-        "The first time I drove from Dehradun to Kedarnath without a proper acclimatization stop, I paid for it with two days of headaches and a tent I barely left. I pulled into Guptkashi around 10 PM, skipped the planned overnight, pushed to Gaurikund the next morning, and started the 16 km trek on four hours of sleep and overconfidence. By the 8 km mark, around 2,800m on the trail, my head was pounding in a way that water was not fixing. By the time I reached the temple at 3,583m, the afternoon was mostly spent horizontal.",
-        "Nothing dangerous happened. But it was genuinely miserable and completely avoidable. I had broken the most basic rules of altitude gain and my body charged me for it.",
-        "That trip and several since - to Kedarnath at 3,583m, Chopta at 3,680m, and the Spiti Valley at 3,650m - are what this is actually based on. Not a textbook. Not a list of disclaimers. What follows is practical: what altitude does to you, how to stay ahead of it, and how to recognize when it is time to go down."
+        "High-altitude itineraries in the Himalaya often compress a large gain into one or two days. Kedarnath, for example, finishes at 3,583m after travellers have approached from much lower towns. That makes ascent planning a safety question, not merely a comfort preference.",
+        "This page is being medically reviewed. Until that review is complete, use it only to understand warning signs and the importance of stopping ascent. It does not replace a clinician, an experienced trek leader or emergency services.",
+        "The safest recurring principles are simple: ascend gradually where the route allows, never climb higher with worsening symptoms, and treat confusion, poor coordination or breathlessness at rest as an emergency requiring descent and medical help."
       ],
     },
     {
@@ -54,8 +54,8 @@ export const guideContent: Record<string, GuideContent> = {
       paragraphs: [
         "Acute Mountain Sickness (AMS) is what most people mean when they say \"altitude sickness.\" It is the common, manageable version. Catch it early and it resolves in 24 to 48 hours with rest. Ignore it and it progresses.",
         "Headache is the cardinal symptom. Not a vague heaviness - a real headache, usually throbbing, that worsens with exertion or bending over. If you develop a headache within 6 to 12 hours of arriving at a new altitude, that is AMS until proven otherwise.",
-        "Mild AMS: Headache plus one other symptom. The right response is to stop ascending, rest at your current altitude, take ibuprofen 400mg for the headache, and drink water. Most mild AMS resolves within 24 hours if you do not push higher. Do not take paracetamol and push on. Rest means rest.",
-        "Moderate AMS: Headache that is not responding to ibuprofen, pronounced nausea, difficulty with basic tasks. Rest at current altitude. If you are not significantly better after 24 hours, descend 300 to 500m and rest there. Diamox 250mg twice daily can assist.",
+        "Possible mild AMS: headache plus another symptom after a recent ascent. Stop ascending, rest, monitor the person and seek medical advice. Do not use pain relief to mask symptoms and continue climbing; follow the medicine label and your clinician's advice.",
+        "Worsening symptoms, pronounced nausea or difficulty with basic tasks require a conservative response. Do not ascend. Arrange medical assessment and descend if symptoms worsen or fail to improve; prescription treatment must follow a clinician or an established expedition medical protocol.",
         "Severe AMS: Any symptom that is getting worse despite rest, or severe headache plus vomiting plus extreme fatigue. Descend immediately.",
         "The pattern I see repeatedly on the Kedarnath trail is pilgrims who are clearly symptomatic continuing to climb because they have flown in from Bangalore and this is their only week off. That logic is understandable and the wrong call. AMS that is pushed through does not stay AMS."
       ],
@@ -76,8 +76,8 @@ export const guideContent: Record<string, GuideContent> = {
         <line x1="50" y1="168" x2="210" y2="168" stroke="#bbf7d0" stroke-width="1"/>
         <text x="40" y="190" font-size="11" fill="#555">• Stop ascending</text>
         <text x="40" y="210" font-size="11" fill="#555">• Rest at current altitude</text>
-        <text x="40" y="230" font-size="11" fill="#555">• Ibuprofen 400mg</text>
-        <text x="40" y="250" font-size="11" fill="#555">• Drink water</text>
+        <text x="40" y="230" font-size="11" fill="#555">• Monitor symptoms</text>
+        <text x="40" y="250" font-size="11" fill="#555">• Seek medical advice</text>
         <text x="40" y="276" font-size="10" font-weight="600" fill="#15803d">Resolves in 24hrs with rest</text>
         <!-- Moderate -->
         <rect x="250" y="55" width="220" height="245" rx="14" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
@@ -86,7 +86,7 @@ export const guideContent: Record<string, GuideContent> = {
         <text x="360" y="154" text-anchor="middle" font-size="11" fill="#555">Persistent headache + nausea</text>
         <line x1="280" y1="168" x2="440" y2="168" stroke="#fde68a" stroke-width="1"/>
         <text x="270" y="190" font-size="11" fill="#555">• Rest at current altitude</text>
-        <text x="270" y="210" font-size="11" fill="#555">• Diamox 250mg x2 daily</text>
+        <text x="270" y="210" font-size="11" fill="#555">• Arrange medical advice</text>
         <text x="270" y="230" font-size="11" fill="#555">• If no better in 24hrs:</text>
         <text x="270" y="250" font-size="11" font-weight="600" fill="#b45309">  Descend 300-500m</text>
         <text x="270" y="276" font-size="10" font-weight="600" fill="#b45309">Do not push higher</text>
@@ -111,7 +111,7 @@ export const guideContent: Record<string, GuideContent> = {
         "HACE at altitude is an emergency. Descend immediately and as far as safely possible - ideally 1,000m or more. If you have a portable altitude chamber (Gamow Bag), use it while descent is being organized. SDRF Uttarakhand runs rescue operations on the Kedarnath route; their number is 1070. The general disaster helpline is 112.",
         "HAPE is fluid accumulating in the lungs and it is more common than HACE, and kills more people. The early signs are subtle: unusual breathlessness with mild exertion, a dry persistent cough, a feeling that you cannot get a full breath even when sitting still. As it develops: a wet cough (sometimes with pink or frothy mucus), visible labored breathing, and in advanced cases you can hear crackling sounds in the chest.",
         "HAPE often develops during the second night at a new altitude - people wake up struggling to breathe. If that happens, get the person sitting upright and begin descent immediately. Do not wait for morning.",
-        "For reference: Diamox is for AMS. HACE is treated with dexamethasone (4mg every 6 hours). HAPE is treated with nifedipine (30mg extended release). If you are planning extended treks above 4,000m, these medications are worth carrying after a conversation with a wilderness medicine doctor. For Kedarnath-level trips, the priority is recognizing the condition and descending fast."
+        "Emergency medicines may be used by trained clinicians or expedition teams under established protocols, but this page does not provide a self-treatment regimen. The priorities are recognition, immediate descent when safe, supplemental oxygen when available, emergency assistance and professional medical care."
       ],
       warning: "HACE and HAPE are life-threatening. If someone cannot walk heel-to-toe, is confused, or is breathless at rest, descend immediately. Do not wait for morning. Call SDRF at 1070.",
     },
@@ -171,21 +171,20 @@ export const guideContent: Record<string, GuideContent> = {
       </svg>`,
     },
     {
-      heading: "Diamox: dosage, timing, and what to expect",
-      image: { src: "/guide-acclimatize-diamox.jpg", alt: "Diamox acetazolamide 250mg tablet strip in a trekking backpack pocket", caption: "Diamox 250mg - available at most Rishikesh and Haridwar chemists" },
+      heading: "Acetazolamide (Diamox): discuss it before the trip",
+      image: { src: "/guide-acclimatize-diamox.jpg", alt: "Acetazolamide medicine beside trekking equipment", caption: "Prescription decisions belong with a qualified clinician who knows your health history and itinerary." },
       paragraphs: [
-        "Diamox (acetazolamide) speeds up acclimatization by stimulating faster breathing, which increases blood oxygen levels. It works. It is not a substitute for proper ascent rates, and it does not prevent HACE or HAPE directly, but for people concerned about sensitivity or working with a compressed schedule, it is genuinely useful.",
-        "Dosage for prevention: 125mg twice daily (morning and evening). Some protocols use 250mg twice daily. I use 125mg twice daily on Kedarnath-level trips. The side effects are more manageable at the lower dose and effectiveness is comparable for altitudes up to 4,000m. For treks above 4,500m, the 250mg dose is more commonly recommended.",
-        "When to start: Begin 1 to 2 days before ascending above 3,000m. If you are staying in Guptkashi the night before the Kedarnath trek, start Diamox that morning. Continue until you have been at your target altitude for 2 full days or until you begin descending.",
-        "Where to get it: Available at most chemists in Rishikesh and Haridwar - ask for \"Acetazolamide 250mg\" if the brand name is not stocked. Technically prescription-only in India but practically available over the counter at hill-town pharmacies. I pick it up in Rishikesh on the way through rather than trying to source it in Dehradun.",
-        "What Diamox does not do: It does not let you skip acclimatization stops. People on Diamox still develop AMS if they go up too fast. Think of it as a margin-extender, not a workaround."
+        "Acetazolamide can speed acclimatization and is used in some prevention and treatment plans. It is not a substitute for a conservative ascent, and taking it does not make worsening symptoms safe to ignore.",
+        "Whether it is appropriate, the dose and the timing depend on the itinerary, medical history, other medicines, pregnancy status and prior reactions. Discuss those details with a qualified clinician before the trip rather than buying it on the route and self-prescribing.",
+        "A clinician can also explain expected effects such as tingling, increased urination and altered taste, and the symptoms that require stopping the medicine or seeking urgent care.",
+        "Most importantly, medication does not grant permission to continue ascending with altitude illness. Worsening symptoms still mean stop, reassess and seek help; severe symptoms require descent and emergency care."
       ],
       items: [
         "Tingling in the fingers, toes, and lips (paresthesia). Affects the majority of users. Harmless and usually mild.",
         "Frequent urination, especially in the first 24 hours. Budget extra time on the trail.",
         "Carbonated drinks taste metallic or flat. Beer becomes unpleasant. This is actually useful if you were considering drinking at altitude (do not)."
       ],
-      warning: "Diamox is a sulfa drug. If you have a sulfa allergy (to antibiotics like Bactrim/Septran, or to certain diuretics), do not take Diamox. Sulfa reactions can be severe. Stop immediately if you develop a skin rash, vision changes, or severe nausea.",
+      warning: "Do not self-prescribe acetazolamide from this page. Tell a clinician about all allergies, kidney or liver problems, pregnancy, and other medicines. Seek urgent care for a severe reaction or rapidly worsening illness.",
     },
     {
       heading: "Hydration at altitude",
@@ -206,7 +205,7 @@ export const guideContent: Record<string, GuideContent> = {
     {
       heading: "AMS vs HACE vs HAPE: symptoms and response at a glance",
       paragraphs: [
-        "The key point from this table: Diamox is only relevant to AMS. By the time you are in HACE or HAPE territory, the answer is descent and emergency medication - not more Diamox. If you are leading a group above 4,000m, talking to a doctor about carrying dexamethasone and nifedipine is worth the conversation."
+        "The key point from this table is the change in urgency. Possible AMS means no further ascent and careful monitoring. Confusion, loss of coordination or breathlessness at rest can indicate life-threatening illness: descend when safe, call for help and seek professional medical care."
       ],
       table: {
         headers: ["", "AMS", "HACE", "HAPE"],
@@ -216,8 +215,8 @@ export const guideContent: Record<string, GuideContent> = {
           ["Other signs", "Nausea, fatigue, poor sleep", "Severe headache, drowsiness, slurred speech", "Wet cough, crackling chest, blue lips"],
           ["Typical onset", "6 to 12 hours after arriving", "AMS that progresses", "Second night at new altitude"],
           ["Risk level", "Low to moderate", "Life-threatening", "Life-threatening"],
-          ["First action", "Stop ascending, rest, ibuprofen", "Descend immediately", "Descend immediately"],
-          ["Emergency drug", "Diamox assists", "Dexamethasone 4mg", "Nifedipine 30mg"],
+          ["First action", "Stop ascending; assess", "Emergency descent and care", "Emergency descent and care"],
+          ["Medicine", "Follow a clinician's plan", "Trained medical protocol", "Trained medical protocol"],
           ["Common at 3,500m?", "Yes, frequently", "Rare but occurs", "Rare but occurs"],
         ],
       },
@@ -230,17 +229,17 @@ export const guideContent: Record<string, GuideContent> = {
         "For route logistics before your trip, read the Kedarnath safety and emergency guide and save the trip dashboard with emergency contacts for offline access."
       ],
       items: [
-        "Descend immediately, no discussion: Failed ataxia test (cannot walk heel-to-toe), confusion or slurred speech, breathlessness at rest, severe headache not responding to 400mg ibuprofen within 2 hours, someone else telling you that you look or sound wrong",
-        "Descend within 24 hours: Moderate AMS not improving after a full day of rest, unable to sleep for 2 consecutive nights, not keeping food or water down for 24 hours, resting SpO2 below 75% with any symptoms",
-        "Do not ascend at all today: You have a headache this morning, you had fewer than 4 hours of sleep, you vomited in the last 12 hours, you are still symptomatic from yesterday"
+        "Emergency response: confusion, slurred speech, loss of coordination or breathlessness at rest. Arrange descent when safe, emergency assistance and professional medical care.",
+        "Do not wait for a device reading if symptoms are worsening. A pulse oximeter can be inaccurate and does not diagnose or exclude altitude illness.",
+        "Do not ascend with a new headache plus other symptoms after a recent altitude gain, repeated vomiting, or symptoms that persist or worsen at rest."
       ],
     },
     {
       heading: "Pulse oximeter: the one piece of gear worth carrying",
       image: { src: "/guide-acclimatize-oximeter.jpg", alt: "Finger pulse oximeter showing SpO2 reading of 99 percent used for monitoring blood oxygen at altitude", caption: "A basic pulse oximeter - Rs. 800 to Rs. 1,500, weighs 35 grams" },
       paragraphs: [
-        "A pulse oximeter clips to your fingertip and reads blood oxygen saturation (SpO2). At sea level, 95 to 100% is normal. At 3,500m, most properly acclimatized people stabilize at 85 to 92%. A reading below 80% with symptoms is a concrete signal to stop ascending.",
-        "The oximeter does not diagnose altitude sickness - symptoms do that. But it gives you data points that are useful, especially at night when you might feel fine but are desaturating. It is also reassuring when readings are normal and you are second-guessing whether a mild headache is AMS or just dehydration.",
+        "A pulse oximeter estimates blood oxygen saturation (SpO2), but cold fingers, movement, nail products, circulation and device quality can distort the reading. Expected values also change with altitude and the person.",
+        "An oximeter does not diagnose or rule out altitude sickness, and a seemingly reassuring number must never override symptoms. If you carry one, ask a clinician or trained trek leader how to take repeat readings and interpret them in context.",
         "Take readings at the same time each day for comparison: morning readings right after waking are typically the lowest and most informative. If morning SpO2 drops more than 5 points below the previous day's reading, pay attention.",
         "A reliable finger pulse oximeter costs Rs. 800 to Rs. 1,500. The Dr. Trust 202 and Contec CMS50D both read accurately at altitude (some cheaper models do not). I have carried one for 3 years and it is 35 grams and the size of a matchbox. See the gear recommendations for a specific buy link.",
         "Before your trip, go through the Char Dham e-pass and registration process and check road conditions on the Rishikesh to Kedarnath route if you are traveling in July or August."
@@ -250,24 +249,24 @@ export const guideContent: Record<string, GuideContent> = {
   ],
   faq: [
     { question: "Does being fit mean I will not get altitude sickness?", answer: "No. Cardiovascular fitness has almost no correlation with altitude sensitivity. Fit people develop AMS just as frequently as unfit people - the mechanisms are physiological, not fitness-dependent. Do not use a strong fitness base to justify compressing your acclimatization schedule." },
-    { question: "Can I take Diamox if I am pregnant?", answer: "No. Acetazolamide is contraindicated during pregnancy. If you are pregnant and considering a trek above 3,000m, that is a conversation for your OB, not something a pill resolves." },
+    { question: "Can I take Diamox if I am pregnant?", answer: "Do not self-start it. Pregnancy and high-altitude travel require individual advice from an obstetric clinician who can weigh your health, the itinerary and the available evidence." },
     { question: "What is the minimum practical acclimatization for Kedarnath?", answer: "For most people, one night at Guptkashi (1,319m) before the trek day gives a meaningful baseline. If you have any history of AMS or are coming from sea level with no altitude in the previous month, add a night at Gaurikund (2,039m) before you start the 16 km to the temple." },
     { question: "Does alcohol really affect acclimatization that much?", answer: "Yes. Alcohol suppresses the increased breathing rate your body uses to compensate for lower oxygen, disrupts sleep architecture (which is when acclimatization consolidates), and masks early AMS symptoms. Drinking at altitude consistently will slow your adaptation and worsen any symptoms you already have." },
     { question: "Is Diamox the same as a sleeping pill?", answer: "No, it is the opposite. Diamox stimulates breathing and prevents the drop in blood oxygen that naturally occurs during sleep at altitude. Sleeping pills suppress breathing and make nocturnal desaturation worse. Do not take sleeping pills at altitude." },
     { question: "I felt completely fine last time I went to Kedarnath. Does that mean I am safe this time?", answer: "Not necessarily. Altitude sensitivity varies between trips for the same person. Factors like overall health, recent illness, sleep debt, and how quickly you ascended all play a role. Previous successful acclimatization is a good data point but not a guarantee. Follow the same ascent rules regardless." },
     { question: "What should I eat when I have AMS symptoms?", answer: "High-carbohydrate foods are easier to metabolize at altitude than fats or proteins. Eat even if you do not want to - loss of appetite is a symptom, not a reason to skip meals. Maggi, rice, roti, dal: the standard dhaba fare on the Kedarnath trail is actually appropriate nutrition at altitude. If you cannot keep anything solid down, ORS in water and clear broth until you feel better." },
-    { question: "When should I see a doctor before going to altitude?", answer: "If you have a heart condition, high blood pressure, asthma, kidney disease, or a history of severe AMS, talk to a doctor before the trip. Also before taking Diamox if you have never taken it, to rule out sulfa allergy." },
+    { question: "When should I see a doctor before going to altitude?", answer: "Seek pre-travel medical advice if you have a heart or lung condition, high blood pressure, kidney disease, are pregnant, take regular medicine, or have a history of severe altitude illness. Consult a clinician before taking acetazolamide." },
   ],
   schemaJson: [
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "How to Acclimatize Above 3,000m: AMS, Diamox and Ascent Rules",
-      "description": "Practical acclimatization guide for treks above 3,000m in India. Altitude sickness symptoms, Diamox dosage and timing, safe ascent rates, hydration, and when to descend.",
+      "description": "General education about acclimatization, altitude-illness warning signs and when to stop ascending. Pending clinical review; not medical advice.",
       "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" },
       "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" },
       "datePublished": "2026-05-22",
-      "dateModified": "2026-05-22",
+      "dateModified": "2026-09-30",
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelboa.com/guides/acclimatize-above-3000m" }
     },
     {
@@ -277,15 +276,15 @@ export const guideContent: Record<string, GuideContent> = {
         { "@type": "Question", "name": "Does being fit mean I will not get altitude sickness?", "acceptedAnswer": { "@type": "Answer", "text": "No. Cardiovascular fitness has almost no correlation with altitude sensitivity. Fit people develop AMS just as frequently as unfit people - the mechanisms are physiological, not fitness-dependent." } },
         { "@type": "Question", "name": "What is the minimum practical acclimatization for Kedarnath?", "acceptedAnswer": { "@type": "Answer", "text": "For most people, one night at Guptkashi (1,319m) before the trek day gives a meaningful baseline. If you have any history of AMS, add a night at Gaurikund (2,039m) before starting the 16 km to the temple." } },
         { "@type": "Question", "name": "Does alcohol really affect acclimatization that much?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Alcohol suppresses the increased breathing rate your body uses to compensate for lower oxygen and disrupts sleep architecture, which is when acclimatization consolidates." } },
-        { "@type": "Question", "name": "Can I take Diamox if I am pregnant?", "acceptedAnswer": { "@type": "Answer", "text": "No. Acetazolamide is contraindicated during pregnancy. Consult your OB before the trip." } },
+        { "@type": "Question", "name": "Can I take Diamox if I am pregnant?", "acceptedAnswer": { "@type": "Answer", "text": "Do not self-start it. Seek individual advice from an obstetric clinician before high-altitude travel or using acetazolamide." } },
         { "@type": "Question", "name": "Is Diamox the same as a sleeping pill?", "acceptedAnswer": { "@type": "Answer", "text": "No, it is the opposite. Diamox stimulates breathing. Sleeping pills suppress breathing and make nocturnal desaturation worse." } },
         { "@type": "Question", "name": "What should I eat when I have AMS symptoms?", "acceptedAnswer": { "@type": "Answer", "text": "High-carbohydrate foods are easier to metabolize at altitude. Maggi, rice, roti, and dal are appropriate. If you cannot keep solids down, ORS in water until you feel better." } },
-        { "@type": "Question", "name": "When should I see a doctor before going to altitude?", "acceptedAnswer": { "@type": "Answer", "text": "If you have a heart condition, high blood pressure, asthma, kidney disease, or a history of severe AMS. Also consult before taking Diamox for the first time to rule out sulfa allergy." } },
+        { "@type": "Question", "name": "When should I see a doctor before going to altitude?", "acceptedAnswer": { "@type": "Answer", "text": "Seek pre-travel advice for heart or lung conditions, high blood pressure, kidney disease, pregnancy, regular medicine use, prior severe altitude illness, or before using acetazolamide." } },
       ]
     }
   ],
   outboundLinks: [
-    { label: "Wilderness Medical Society altitude guidelines", url: "https://wms.org" },
+    { label: "CDC Yellow Book: altitude illness", url: "https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html" },
     { label: "Char Dham official registration", url: "https://registrationandtouristcare.uk.gov.in" },
   ],
 },

@@ -3,18 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 
-interface NavbarProps {
-  accent?: string;
-  dark?: boolean;
-}
-
 const NAV_LINKS = [
   { label: "Destinations", href: "/destinations" },
   { label: "Guides", href: "/guides" },
   { label: "Gear", href: "/gear" },
 ];
 
-export function Navbar({ accent: _accent, dark: _dark }: NavbarProps) {
+export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

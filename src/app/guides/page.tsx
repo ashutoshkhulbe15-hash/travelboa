@@ -6,10 +6,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides" },
   title: "Himalaya Travel Guides: Permits, Altitude & Budget",
   description:
-    "Practical guides for Indian mountain trips: acclimatization, Char Dham permits, packing, budgets, ATMs and monsoon safety. Written from Dehradun.",
+    "Indian mountain planning guides currently undergoing source, safety and first-hand-experience review before search publication.",
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Himalaya Travel Guides: Permits, Altitude & Budget",
-    description: "Practical guides for Indian mountain trips. Written from Dehradun.",
+    description: "Indian mountain planning guides currently undergoing editorial review.",
   },
 };
 

@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const CANONICAL_HOST = "www.travelboa.com";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: process.cwd(),
+  },
   async redirects() {
     return [
       // The .vercel.app production alias serves a full copy of the site and does

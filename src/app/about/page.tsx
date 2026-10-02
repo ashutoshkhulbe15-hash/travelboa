@@ -3,9 +3,9 @@ import { AboutPage } from "./AboutPage";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About TravelBoa: Who Writes This & How",
+  title: "About TravelBoa: Nainital Roots & Editorial Method",
   description:
-    "TravelBoa is written in Dehradun by someone who lives near these trips. Editorial standards, data sources and affiliate transparency explained.",
+    "Meet the Uttarakhand-based writer behind TravelBoa and see how route, permit, safety and gear information is researched, checked and corrected.",
 };
 
 /**
@@ -28,24 +28,25 @@ const aboutLd = {
       "@id": "https://www.travelboa.com/about#person",
       name: "Ash",
       url: "https://www.travelboa.com/about",
+      image: "https://www.travelboa.com/ash-author.jpg",
       email: "hello@travelboa.com",
-      jobTitle: "Travel writer",
-      homeLocation: {
+      jobTitle: "Founder and editor of TravelBoa",
+      birthPlace: {
         "@type": "Place",
-        name: "Dehradun, Uttarakhand, India",
+        name: "Nainital, Uttarakhand, India",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Dehradun",
+          addressLocality: "Nainital",
           addressRegion: "Uttarakhand",
           addressCountry: "IN",
         },
       },
+      homeLocation: { "@type": "Place", name: "Dehradun, Uttarakhand, India" },
       knowsAbout: [
-        "Himalayan trekking",
-        "Char Dham Yatra",
-        "Spiti Valley",
-        "Ladakh road trips",
-        "High-altitude acclimatization",
+        "Nainital",
+        "Kumaon travel",
+        "Uttarakhand travel planning",
+        "Travel research and editorial verification",
       ],
       worksFor: { "@id": "https://www.travelboa.com/#organization" },
     },

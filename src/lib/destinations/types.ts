@@ -68,6 +68,18 @@ export interface DestinationData {
   duration: string;
   budget: { min: number; max: number };
   heroGradient: string;
+  heroImage?: string;
+  photoGallery?: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+  }>;
+  comparison?: {
+    title: string;
+    caption: string;
+    columns: string[];
+    rows: Array<{ label: string; values: string[] }>;
+  };
   quickStats: QuickStat[];
   intro: string;
   sections: GuideSection[];

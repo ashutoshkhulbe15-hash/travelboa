@@ -4,12 +4,13 @@ import { GearClient } from "./GearClient";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/gear" },
-  title: "Himalaya Trek Gear: Jackets, Shoes & Backpacks Tested",
+  title: "Himalaya Trek Gear Planner: Review in Progress",
   description:
-    "Destination-specific gear for Indian mountain travel: jackets for Kedarnath, shoes for Vaishno Devi, sleeping bags for Spiti. Tested picks with prices.",
+    "Destination-specific gear planning tools for Indian mountain travel. Product-testing claims and prices are being re-verified before search publication.",
+  robots: { index: false, follow: true },
   openGraph: {
-    title: "Himalaya Trek Gear: Jackets, Shoes & Backpacks Tested",
-    description: "Destination-specific gear recommendations. Tested picks for Indian mountain travel.",
+    title: "Himalaya Trek Gear Planner: Review in Progress",
+    description: "Destination-specific gear planning tools currently undergoing editorial review.",
   },
 };
 

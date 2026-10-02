@@ -1,6 +1,5 @@
 import { getAllDestinations } from "@/lib/destinations";
-import { GUIDES } from "@/lib/data";
-import { GEAR_SLUGS } from "@/lib/gear-content";
+import { editorialForDestination } from "@/lib/editorial";
 
 const BASE_URL = "https://www.travelboa.com";
 
@@ -14,10 +13,11 @@ const BASE_URL = "https://www.travelboa.com";
 const SITE_DEFAULT = "2026-07-30";
 
 const LAST_UPDATED: Record<string, string> = {
-  "/kedarnath": "2026-07-30",
-  "/guides/kedarnath-opening-date-2026": "2026-07-30",
-  "/guides/best-time-char-dham": "2026-07-30",
-  "/road-status": "2026-07-28",
+  "/about": "2026-09-30",
+  "/kedarnath": "2026-10-02",
+  "/spiti": "2026-10-02",
+  "/lachung": "2026-10-02",
+  "/nainital": "2026-10-02",
 };
 
 const lm = (path: string) => new Date(LAST_UPDATED[path] ?? SITE_DEFAULT);
@@ -35,28 +35,21 @@ const entry = (path: string, changeFrequency: Freq, priority: number): Entry => 
 export default async function sitemap(): Promise<Entry[]> {
   const destinations = getAllDestinations();
 
-  const destPages = destinations.flatMap((d) => [
-    entry(`/${d.slug}`, "monthly", 0.9),
-    entry(`/${d.slug}/packing`, "monthly", 0.7),
-  ]);
+  // Only canonical, indexable destination guides belong in the sitemap.
+  // The templated packing tools remain useful to people but are noindexed
+  // until each has genuinely distinct editorial content and expert review.
+  const destPages = destinations
+    .filter((d) => editorialForDestination(d.slug).searchIndexable)
+    .map((d) => entry(`/${d.slug}`, "monthly", 0.9));
 
-  const guidePages = GUIDES.map((g) => entry(`/guides/${g.slug}`, "monthly", 0.8));
-  const gearPages = GEAR_SLUGS.map((slug) => entry(`/gear/${slug}`, "monthly", 0.8));
 
   return [
     entry("/", "weekly", 1.0),
     entry("/destinations", "monthly", 0.9),
-    // Compiled by hand, not a live feed — do not claim hourly change.
-    entry("/road-status", "weekly", 0.8),
-    entry("/guides", "monthly", 0.8),
-    entry("/gear", "monthly", 0.8),
-    entry("/dashboard", "yearly", 0.4),
     entry("/about", "yearly", 0.5),
     entry("/privacy", "yearly", 0.3),
     entry("/terms", "yearly", 0.3),
     entry("/contact", "yearly", 0.4),
     ...destPages,
-    ...guidePages,
-    ...gearPages,
   ];
 }

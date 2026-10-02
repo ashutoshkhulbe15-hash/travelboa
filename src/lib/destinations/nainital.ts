@@ -3,51 +3,281 @@ import type { DestinationData } from "./types";
 export const nainital: DestinationData = {
   slug: "nainital",
   name: "Nainital & Mukteshwar",
-  tagline: "Two weekends in Kumaon - the lake town and the apple country with Nanda Devi views",
+  tagline: "A locally grounded Kumaon plan: lake town first, quieter ridge country second",
   region: "Kumaon",
   state: "Uttarakhand",
   type: "adventure",
   altitude: 2084,
   temp: 16,
-  weather: "Pleasant",
+  weather: "Typical mild hill weather",
   season: "Mar-Jun, Sep-Nov",
-  duration: "2-3 nights",
-  budget: { min: 4000, max: 12000 },
+  duration: "2-4 nights",
+  budget: { min: 6000, max: 18000 },
   heroGradient: "linear-gradient(150deg,#1a3a5a,#3a5a7a 60%,#5a7a9a)",
-  metaTitle: "Nainital & Mukteshwar 2026: Weekend Trip from Delhi",
-  metaDescription: "Nainital travel guide. Weekend trip from Delhi, Naini Lake boating, Mall Road, Mukteshwar apple orchards, Jim Corbett safari detour.",
-  quickStats: [
-    { label: "Nainital altitude", value: "2,084m", icon: "🏞️" },
-    { label: "Mukteshwar altitude", value: "2,286m", icon: "⛰️" },
-    { label: "From Delhi", value: "300 km, 6-7 hrs", icon: "🚗" },
-    { label: "From Dehradun", value: "310 km, 6-7 hrs", icon: "🚙" },
-    { label: "Corbett pairing", value: "65 km from Nainital", icon: "🐅" },
-    { label: "Best months", value: "Oct-Nov, Mar-Jun", icon: "📅" },
+  heroImage: "/nainital-lake-day-original.png",
+  photoGallery: [
+    {
+      src: "/nainital-lake-evening-original.png",
+      alt: "Naini Lake after sunset with town lights reflected across the water and low cloud over the wooded hillside",
+      caption: "Naini Lake settling into evening, with the town lights reflected on the water. Image provided by Ash.",
+    },
+    {
+      src: "/nainital-lake-day-original.png",
+      alt: "Wide daytime view across Naini Lake toward the forested slopes and buildings of Nainital",
+      caption: "A clear daytime view across Naini Lake and the surrounding slopes. Image provided by Ash.",
+    },
+    {
+      src: "/nainital-lake-mist-original.png",
+      alt: "Mist descending over the forested Nainital hillside above Naini Lake while boats cross the water",
+      caption: "Mist moving down the hillside above Naini Lake—a familiar Kumaon change in mood. Image provided by Ash.",
+    },
   ],
-  intro: "Nainital is not a secret. The lake is real, the views are real, the ropeway to Snow View is fast and cheap - but on a Saturday in August, you are sharing Mall Road with what feels like the entire population of Delhi's west side. It is genuinely crowded. Not in a vibrant way. In a 35-minute queue for a rowboat way.\n\nMukteshwar is 51 km away, 202m higher, and rarely mentioned in the same breath. It has no lake, no cable car, no big hotel chains. What it has: apple orchards run by the IARI research station, a Shiva temple at the top of a cliff, and a rock face called Chauli Ki Jali where locals casually hang over the edge on weekends. On the right morning in October or November, you can see both Nanda Devi (7,816m) and Trishul (7,120m) with nothing in front of them.\n\nThis page is a weekend planner for both. I will tell you which one suits your trip, how to drive there from Dehradun or Delhi, and what the 2-day schedule actually looks like on the ground.",
+  comparison: {
+    title: "Which Kumaon stay fits your trip?",
+    caption: "A decision aid, not a ranking. Corbett access and bookings must be checked on its official portal.",
+    columns: ["Nainital", "Mukteshwar", "Corbett / Ramnagar"],
+    rows: [
+      { label: "Best for", values: ["First visit, lake and walkable centre", "Quiet ridge stay and slower days", "Forest experience and authorised safari"] },
+      { label: "Suggested time", values: ["2 nights", "1-2 nights", "1-2 nights"] },
+      { label: "Transport reality", values: ["Central area works without a car", "Vehicle planning is more important", "Plan around the confirmed entry gate"] },
+      { label: "Main uncertainty", values: ["Traffic, parking and visibility", "Cloud and property location", "Zone access and wildlife movement"] },
+      { label: "Do not expect", values: ["Silence on peak weekends", "A dense list of town activities", "A guaranteed tiger sighting"] },
+    ],
+  },
+  metaTitle: "Nainital Travel Guide: Local Planning, Parking & Mukteshwar",
+  metaDescription: "Plan Nainital with a locally grounded guide: official parking rules, lake and walking itinerary, arrival options, seasons, Mukteshwar comparison and Corbett booking warnings.",
+  quickStats: [
+    { label: "Nainital altitude", value: "about 2,000m", icon: "🏞️" },
+    { label: "Mukteshwar altitude", value: "2,286m", icon: "⛰️" },
+    { label: "Kathgodam railhead", value: "about 35 km", icon: "🚆" },
+    { label: "Mukteshwar distance", value: "51 km", icon: "🚙" },
+    { label: "Ideal first stay", value: "2 nights", icon: "🛏️" },
+    { label: "Official emergency", value: "112 / 1077", icon: "☎️" },
+  ],
+  intro: `Ash, the founder and editor of TravelBoa, was born in Nainital. That is the honest local connection behind this page. It is useful context, but it is not a licence to turn every remembered detail into a permanent fact. Nainital changes with the season, the day of the week and the pressure of traffic. Fares change. Parking arrangements change. A clear Himalayan view can disappear behind cloud. This guide therefore separates local perspective from information that must be checked against a current official source.
+
+Nainital is organised around one simple geographic fact: the town wraps around Naini Lake. Mallital is at the northern end, Tallital at the southern end, Mall Road follows one side, and vehicle-free Thandi Road follows the other. That compact shape makes the centre walkable, but it also concentrates visitors, taxis and parking demand into a small bowl. The lake is not merely an attraction added to the town; it is the town's visual centre and the easiest way to understand how the main areas connect.
+
+The best first trip is rarely a race through a checklist. Two nights give you one unhurried lake evening, one clear-weather morning for a viewpoint or forest walk, and enough margin for traffic. Add Mukteshwar only if you have a third or fourth night and genuinely want a quieter ridge-and-orchard setting. Add Corbett only as a separate stay around Ramnagar, not as a rushed afternoon excursion.
+
+This page gives you a decision framework rather than a collection of unsupported promises. It explains where to stay, how to arrive without creating a parking problem for yourself, which sights naturally fit together, what changes in monsoon and winter, and which details must be reconfirmed before payment or departure.`,
   sections: [
-    { id: "which-one", title: "Nainital vs Mukteshwar - which one is your trip", icon: "⚖️",
-      content: "First Kumaon trip: Nainital. Family with kids under 12: Nainital (lake activities, easy walks). Couple wanting quiet: Mukteshwar. Going in August: Mukteshwar (Nainital is badly overcrowded). Himalaya peak views are the priority: Mukteshwar. Pairing with Jim Corbett: Nainital (65 km from Corbett). Cycling or slow walks: Mukteshwar. 3-night trip: do both (Day 1-2 Nainital, Day 3 Mukteshwar). Budget traveler: Nainital has cheaper dorms, Mukteshwar homestays are calmer.\n\nThe practical difference comes down to crowd tolerance. Nainital in May-June and August weekends is genuinely difficult - the lake and Mall Road absorb a lot of people, but the ropeway queue, the parking situation, and the dinner-time congestion on Mall Road wear you down by Day 2. Mukteshwar at the same time has a fraction of the footfall.\n\nThe trade-off: Nainital has more activities packed into a small area. Mukteshwar requires you to be okay with slowness - a morning at Chauli Ki Jali, an afternoon walking through orchards, an evening reading a book. If that does not match your travel style, Nainital is the better choice." },
-    { id: "getting-there", title: "Getting there from Dehradun and Delhi", icon: "🚗",
-      content: "Dehradun to Nainital: 310 km via Haridwar-Roorkee-Rampur-Haldwani. The road joins NH9 at Haldwani, and the last 35 km climbs from Kathgodam into Nainital town. Allow 6 to 7 hours. Leave Dehradun by 6 AM and you will arrive before lunch.\n\nDehradun segments: Dehradun to Haridwar 52 km (1.5 hrs). Haridwar to Rampur 145 km (3 hrs). Rampur to Haldwani 65 km (1.5 hrs). Haldwani (Kathgodam) to Nainital 35 km (1 hour, steep switchbacks).\n\nBy bus: UPSRTC and KMOU run Dehradun to Haldwani/Nainital buses. Fare Rs 350-500, journey 7-8 hours.\n\nDelhi to Nainital: 300 km via NH9 through Rampur-Haldwani. The Delhi-Moradabad stretch (180 km) is now mostly expressway - drive time is faster than it used to be. Total 6 to 7 hours from Delhi.\n\nBy train: Delhi Anand Vihar to Kathgodam - the Ranikhet Express and Uttaranchal Sampark Kranti both cover this route overnight. Kathgodam is 35 km from Nainital. From Kathgodam station, shared cabs (Rs 150-200/seat) and taxis (Rs 600-800) run up to Nainital. The most reliable way to avoid highway traffic.\n\nDehradun to Mukteshwar: 360 km via Haridwar-Rampur-Haldwani-Bhimtal-Mukteshwar. After Haldwani, take the road through Bhimtal (22 km east of Nainital) rather than going via Nainital town itself - saves 30-40 minutes and avoids congestion. Bhimtal to Mukteshwar 48 km (1.5 hrs). Total from Dehradun 7-8 hours.\n\nIf driving to Mukteshwar, plan the route as: Dehradun - Haridwar - Rampur - Haldwani - Bhimtal - Mukteshwar. Do not go through Nainital town unless you want to add traffic." },
-    { id: "the-drive", title: "The drive matters - what the roads are actually like", icon: "🛣️",
-      content: "The Haldwani to Nainital stretch (35 km) is the one that catches people off guard. It is a narrow two-lane road climbing 1,400m in 35 km. On Friday evenings from May through October, this road turns into a slow convoy. I have seen it take 2.5 hours to cover 35 km on a June Friday evening.\n\nPractical fix: if driving from Delhi or Dehradun on a Friday, either arrive at Kathgodam by 2 PM (before traffic builds) or push through to reach Nainital after 8 PM. The middle window between 4-8 PM on Friday evenings is the worst.\n\nThe Bhimtal to Mukteshwar road is completely different - low traffic, good tarmac, forest cover, and proper curves. This is actually enjoyable to drive.\n\nIf you are interested in mountain driving more generally, the monsoon-routes guide covers what changes on Kumaon roads during July-August." },
-    { id: "nainital-plan", title: "Nainital - 2-day plan", icon: "🏞️",
-      content: "Day 1 - arrival, Naini Lake, Mall Road: check in, walk to the lake. The Mall Road is a 1.5 km lakeside promenade - no private vehicles allowed, so it is actually pleasant to walk. On the north shore, the Naina Devi Temple sits right at the lake edge. Worth the short visit even if temples are not your usual interest - the location directly on the water is unlike most temple settings I have seen.\n\nBoating on Naini Lake: the lake is 1.5 km long and 0.5 km wide. Rowboat Rs 200-400/hour (2-4 people). Shared pedal boat Rs 80-100/person for 30 minutes. Private paddleboat Rs 300-400/hour.\n\nThe lake is cleaner than it used to be but it is still a lake in a busy town. I would not describe it as pristine. The boating is worth doing - the views of the hills from the water are the best perspective on the town - but manage your expectations on water clarity.\n\nAfter boating, walk Mall Road toward the Flats area. This is where most of the restaurants and shops are clustered. Dinner at one of the lakeside restaurants Rs 200-400 per person for a proper meal.\n\nDay 2 - Snow View, Tiffin Top, optional Bhimtal: get up to Snow View before 9 AM. By mid-morning, clouds typically roll in from the valley and the Himalaya views disappear. The ropeway from Mallital takes 4 minutes and costs Rs 200 return. On clear mornings October to March, you can see Nanda Devi (7,816m) and the main Kumaon range. By afternoon the view is usually gone. Ropeway hours roughly 8 AM to 6 PM.\n\nTiffin Top (Dorothy's Seat, 2,292m): 4 km trek from Nainital, gain of about 200m. Trail starts from the Ayarpatta area. A better option than Snow View if you want to walk rather than ride the ropeway - on a clear day the views are similar, with the added benefit of the forest walk. Return trip 2.5 to 3 hours.\n\nAfternoon option: drive 22 km to Bhimtal. Quieter than Nainital, smaller lake, significantly less crowd. Sattal (23 km, seven interconnected lakes) is good for birdwatching and can be added to the same afternoon loop.\n\nEco Cave Gardens: an oddly enjoyable local attraction - 6 interconnected caves, Rs 50 entry, takes about 45 minutes. More interesting than it sounds. Good for families." },
-    { id: "corbett", title: "Jim Corbett National Park - pairing with Nainital", icon: "🐅",
-      content: "Corbett is 65 km from Nainital (to the Dhikala zone entrance via Ramnagar). If you are spending two nights in Nainital, a third night in Corbett or Ramnagar makes the trip genuinely different in character.\n\nThe zones: Dhikala - the largest zone, deepest in the park, highest density of tigers. Day visit requires entering by 7 AM and exiting by 5 PM. Overnight stays inside the zone are possible at the government rest house - book early through corbettonline.uk.gov.in. Bijrani - good for day visitors, closer to Ramnagar, active wildlife area. Jhirna - the only zone open year-round. Useful if visiting during the June-September closure period when other zones shut.\n\nJeep safari costs: Rs 4,000-6,000 per jeep (seats 6 people) including guide fees and entry charges. The guide fee is mandatory and the guide quality varies significantly. Book at corbettonline.uk.gov.in - the third-party sites charge more for the same permit.\n\nOn tiger sightings: I want to be direct about this. The probability of a tiger sighting on a single jeep safari is roughly 20-30%. That is not low - Corbett has one of the higher sighting rates among Indian reserves - but it is not a guarantee. Go because you want 3 hours in actual jungle. The sighting is a bonus.\n\nFor gear relevant to wildlife safaris and forest trails, trekking-shoes-under-5000 are worth checking before you go." },
-    { id: "mukteshwar-plan", title: "Mukteshwar - 2-day plan", icon: "🍎",
-      content: "The morning that made the destination for me: I drove from Dehradun to Mukteshwar on a November morning, leaving at 4 AM to hit the Chauli Ki Jali viewpoint at first light. By 6 AM the apple orchards on the approach road were frosted - the fruit had been harvested but the trees still had some leaves, and the frost sat on them in a way that made the road look different from any other hill road I have driven. No one else was moving.\n\nI reached the Mukteshwar Temple at 7:15 AM and walked the 500 meters to Chauli Ki Jali. At 7:30 AM, Nanda Devi was fully clear. No cloud, no morning haze. Trishul was to its right. The rock face drops away below the viewpoint, and the Himalaya fills the entire horizon above it. By 10 AM cloud had covered both peaks. That 3-hour window from sunrise to cloud-cover is the reason I will go back. This is not a landscape you can see on a schedule. You are competing with weather. But when it works, Mukteshwar earns its altitude.\n\nDay 1 - arrival, Mukteshwar Temple, Chauli Ki Jali: the Mukteshwar Temple is a Shiva temple at the highest point of the town - about a 10-minute walk from the main market. The climb is steep but short. The temple itself is not grand architecture - it is an old stone shrine at the edge of a cliff. The surrounding rock face is where Chauli Ki Jali is located: a natural cliff with holes and ledges that locals use for scrambling. Rock climbing sessions are organized here by a few local operators (Rs 500-800 per person, equipment included).\n\nThe viewpoint at Chauli Ki Jali gives you the full Himalaya panorama - Nanda Devi (7,816m) to the northeast, Trishul (7,120m) slightly right. Best visibility October and November mornings, before 10 AM.\n\nCheck in to a homestay. Mukteshwar has no big hotel chains. The accommodation here is boutique guesthouses and farm-style homestays. Budget Rs 1,500-3,000 per night. Owners tend to be more involved - most homestays will cook dinner if you ask.\n\nDay 2 - apple orchards, cycling, slow morning: IARI orchards - the Indian Agricultural Research Institute has research orchards around Mukteshwar open for visits during the harvest season (August to September). The varieties grown here include different apple types being researched for Himalayan climates. Outside harvest season the orchards are not as interesting but the surrounding roads are still good for walking.\n\nCycling: the roads around Mukteshwar are among the best in Kumaon for cycling - low traffic, good surface, elevation variation that makes the ride interesting without being brutal. A few homestays have cycles available for rent (Rs 200-300/day). The 10 km loop toward Peora village is worth doing.\n\nTake the drive back via Bhimtal for a different road than the one you came on, and stop at Bhimtal lake for lunch before heading to Haldwani." },
-    { id: "accommodation", title: "Accommodation - what to expect at each place", icon: "🏨",
-      content: "Nainital: dorm beds Rs 400-700/night (Mallital area, a few backpacker guesthouses). Budget guesthouses Rs 1,200-2,000/night (basic rooms, usually above the Mall Road area). Standard hotels Rs 2,500-5,000/night on peak weekends (May, June, October).\n\nLocation advice for Nainital: stay in Mallital (north side of the lake) rather than Tallital. Closer to the ropeway, temple, and quieter end of Mall Road.\n\nPeak season (May-June, October, school holidays in August) - prices jump 50-80% above normal. Book 2-3 weeks in advance for October weekends specifically.\n\nFor ATM access in Nainital and smaller Kumaon towns, the atm-cash-guide is useful - Mukteshwar's ATMs are unreliable and Nainital's queues get long on weekends.\n\nMukteshwar: homestays Rs 1,500-2,500/night (often includes meals). Boutique guesthouses Rs 2,000-3,500/night. No resort chains of the type you would find in Nainital.\n\nBooking in advance is still advisable for October-November weekends, but you are not competing with tour bus groups here." },
-    { id: "packing", title: "Packing for Kumaon", icon: "🎒",
-      content: "The altitude at both Nainital (2,084m) and Mukteshwar (2,286m) is manageable without altitude gear, but the temperature difference from the plains is significant. Even in May, evenings drop to 10-12C. In November they drop to 2-5C.\n\nWhat to bring: a proper mid-layer fleece or light jacket for evenings (the jackets-kedarnath-trek page covers options that also work at Kumaon altitudes). Thermals for November-February travel (thermals-high-altitude). Rain gear from July through September (rain-ponchos-char-dham). A good daypack if you are doing the Tiffin Top trek or Chauli Ki Jali walk (backpacks-chopta-tungnath).\n\nIf you are also heading to Corbett, headlamps-under-1000 are worth having for early morning safari starts in the dark.\n\nThe full packing-4000m list is overkill for Nainital but useful if you are extending the trip toward higher Kumaon treks.\n\nPractical notes: mobile network - Jio and Airtel work in Nainital town and on Mall Road. Coverage drops on the Tiffin Top trail. Mukteshwar has decent Jio coverage near the main market; it weakens on the roads toward Peora. Parking in Nainital - private vehicles cannot enter Mall Road. Parking at the Flats and at Tallital. Rs 50-100/hour for paid parking on weekends. Medical - Nainital has a district hospital and pharmacies near Mallital. Mukteshwar has a primary health center only. Carry any prescription medication from Haldwani before going up." },
-    { id: "seasonal-guide", title: "Seasonal guide - when to go", icon: "📅",
-      content: "March to June: the best general-purpose window. Temperatures are 15-25C during the day. Rhododendrons flower in March-April on the higher ridges. The crowds build from April onward but are not yet at peak. May and June are busy - school vacations bring large family groups. If you are going in May, book accommodation 3-4 weeks early and plan to reach Nainital before Friday afternoon.\n\nJuly to August (monsoon): the roads are passable but the Haldwani-Nainital stretch gets slippery and occasional landslides cause delays. More importantly, Nainital in August is the most crowded it ever gets - school summer holidays overlap with the monsoon, creating a combination I find genuinely difficult to enjoy. The lake is full and the scenery is green, but the queues and traffic negate most of the positives.\n\nMukteshwar in August is more bearable - lower footfall, and the orchards are coming into harvest season. If you are going in monsoon, Mukteshwar is the better call.\n\nSeptember to October: the best time to visit. Post-monsoon clarity brings the Himalaya into full view - the peaks that were cloud-covered all summer become visible. October is the peak of Himalaya-view season and the apple harvest in Mukteshwar. Expect slightly higher accommodation prices in October but the weather makes it worth it.\n\nNovember to February: cold. Nainital gets down to 0-5C in January, with occasional snowfall. The town is much quieter - good for people who want the lake to themselves. Mukteshwar in November is excellent for Himalaya views. December-January is cold enough that you want proper thermals and a warm sleeping arrangement." },
-    { id: "circuit", title: "Connecting Kumaon to the wider Uttarakhand circuit", icon: "🗺️",
-      content: "Nainital is a natural pairing with Jim Corbett National Park (65 km), but it also connects to Rishikesh (230 km via Haridwar) for river-based trips, or to Badrinath and Chopta if you are building a longer Uttarakhand circuit.\n\nFrom Dehradun, a standard Uttarakhand circuit could run: Dehradun - Rishikesh (43 km) - Chopta (218 km from Dehradun) - back to Dehradun - Nainital (310 km) - Mukteshwar (360 km from Dehradun).\n\nSee the chopta, rishikesh, and badrinath pages for the western Uttarakhand additions. Uttarakhand Tourism's official Kumaon pages have current road and permit information that is worth checking before any Kumaon trip, especially post-monsoon when some roads take weeks to reopen after landslide clearing." },
-    { id: "budget", title: "Budget breakdown", icon: "💰",
-      content: "Nainital (2 nights, per person): Accommodation (standard guesthouse, 2 nights) Rs 2,400-4,000. Meals (3 meals/day x 2 days) Rs 1,200-1,600. Naini Lake boating (1 hour rowboat, shared) Rs 100-200. Snow View ropeway (return) Rs 200. Eco Cave Gardens Rs 50. Local transport / autorickshaw Rs 200-400. Total per person, excluding travel to Nainital: Rs 4,150-6,450.\n\nTransport to Nainital: Rs 350-500 by UPSRTC bus from Dehradun, or Rs 800-1,200 by shared cab.\n\nMukteshwar (2 nights, per person): Homestay (2 nights, includes breakfast) Rs 3,000-5,000. Meals (lunch and dinner x 2 days) Rs 800-1,200. Rock climbing at Chauli Ki Jali (optional) Rs 500-800. Cycle rental (1 day) Rs 200-300. Total per person, excluding travel: Rs 4,500-7,300." },
+    {
+      id: "choose-your-trip",
+      title: "Choose the right version of Nainital before booking",
+      icon: "🧭",
+      content: `Nainital works best when you decide what kind of trip you want before choosing a hotel. A lake-centred family weekend, a walking weekend and a Nainital–Mukteshwar circuit use the same destination name but need different locations, transport and pacing.
+
+**Choose central Nainital if:**
+- this is your first Kumaon trip and you want the lake, Mall Road and Naina Devi Temple within walking distance
+- you are travelling with children or older relatives who benefit from short transfers
+- you are arriving by bus, shared taxi or train and do not want to depend on a private car
+- you value evening atmosphere, restaurants and convenience more than silence
+
+**Choose a quieter edge of town if:**
+- you want forest walks and views but can accept an uphill return or short taxi ride
+- you have already seen the lakefront and want distance from the busiest evening areas
+- your hotel has confirmed its own parking in writing
+
+**Add Mukteshwar if:**
+- you have at least one additional night rather than a few spare hours
+- orchards, conifer forest, a slower schedule and long Himalayan views matter more than shopping or lake activities
+- you are comfortable verifying your onward transport because the experience is more spread out
+
+**Keep Corbett separate if:**
+- a safari is a real priority; stay around Ramnagar and book only through the official Corbett Tiger Reserve website
+- you understand that wildlife sightings are never guaranteed and the forest experience is the purpose of the visit
+
+The common mistake is booking a remote property because its photographs look peaceful, then discovering that every meal and lake visit requires a taxi. The reverse mistake is booking directly on the busiest stretch of town while expecting a silent retreat. Read the map, ask the hotel for its exact pin and walking gradient, and decide which compromise you prefer.`,
+    },
+    {
+      id: "arriving",
+      title: "How to reach Nainital without relying on stale schedules",
+      icon: "🚆",
+      content: `Kathgodam is the practical railhead for Nainital. The District Nainital website places it about 35 km away and identifies Haldwani and Lalkuan as other rail terminals. Train numbers and timings can change, so use the railway's official enquiry or booking system for the travel date rather than copying a schedule from a travel article. From Kathgodam and Haldwani, buses and shared or private taxis continue uphill.
+
+The district administration describes Nainital as connected by regular road services from cities including Delhi, Dehradun and Haridwar. That is useful for route planning, not proof of a particular departure. Confirm the current service with the relevant state transport operator or bus station before building a same-day connection.
+
+For a Delhi road journey, Uttarakhand Tourism describes the route as roughly 300 km and approximately seven hours by bus under normal assumptions. Real driving time is sensitive to Delhi–NCR traffic, stops, congestion around Haldwani and the final climb. Treat any single duration as a planning estimate, not an arrival promise.
+
+Pantnagar is the nearest airport commonly used for Nainital. Official tourism material places the onward road journey at roughly 70 km. Flight schedules can be limited and seasonal, so compare the complete door-to-door journey with rail before assuming flying will save time.
+
+**Rail arrival:** Kathgodam is the most useful endpoint; confirm the train and onward vehicle separately.
+**Bus arrival:** verify the current departure, boarding point and final stop with the operator.
+**Private car:** choose accommodation only after confirming parking and approach-road access.
+**Flight arrival:** check the actual flight schedule and transfer availability for the same date.
+
+If you arrive after dark, avoid improvising an unfamiliar shortcut shown by a navigation app. Mountain approach roads vary in width and lighting. Ask the hotel which approach it recommends and whether the driver can reach the entrance. A place that is “five minutes from Mall Road” may be five steep minutes on foot rather than five level minutes with luggage.`,
+    },
+    {
+      id: "traffic-parking",
+      title: "Traffic, Mall Road and parking: what the official rules actually say",
+      icon: "🅿️",
+      content: `The earlier TravelBoa draft incorrectly described Mall Road as permanently closed to private vehicles. The district's published guidance is more specific: restrictions vary by vehicle type, time and season. It lists heavier restrictions during May, June and October, evening restrictions for light vehicles, and separate cycle-rickshaw timings. Because enforcement arrangements may be updated for crowd control, check the district or police notice close to travel rather than treating old hours as permanent.
+
+The district identifies parking at the Flats in Mallital, the taxi-stand area in Tallital and KMVN parking at Sukhatal, while noting that some hotels provide their own parking. This is the right starting point—not a guarantee that a space will be available when you arrive.
+
+**Before paying for a hotel, ask four questions:**
+- Does the property have parking on its own premises or merely “parking nearby”?
+- Can your vehicle reach the entrance, or is the final approach pedestrian-only or very steep?
+- Is parking included, chargeable or first-come-first-served?
+- What should you do if town entry or the preferred lot is restricted when you arrive?
+
+Nainital also charges a municipal lake-bridge tax on vehicles entering town. The district guidance describes collection at Tallital for traffic arriving from the Haldwani or Bhowali direction and at Sukhatal for traffic arriving from the Kaladhungi side. Confirm the current amount locally; it should not be frozen into an evergreen guide.
+
+Once checked in, central Nainital rewards walking. Mall Road links Mallital and Tallital along one side of the lake. Thandi Road runs along the other side and does not allow vehicles, according to the district tourism page. Together they provide a simple mental map: active commercial edge on one side, quieter walking edge on the other.
+
+**Important:** Never plan a tight onward train or flight connection using a best-case descent time. Crowd-control measures, weather, road works and weekend traffic can all change the final 35–40 km. Build a buffer and check conditions on the departure day.`,
+    },
+    {
+      id: "two-day-plan",
+      title: "A realistic two-day Nainital itinerary",
+      icon: "🏞️",
+      content: `A useful itinerary groups places by geography and energy rather than treating the town as a checklist.
+
+**Arrival afternoon: understand the lake:** Check in, leave the vehicle parked if possible, and walk the lakefront. Naini Lake has boating and paddling facilities at both ends, according to the district page. Use the displayed prepaid-booth rate rather than a price quoted in an undated article. Ask about the route, duration, passenger limit and life jackets before paying.
+
+Continue toward the Flats and Mallital. The Flats is a public gathering space beside the northern end of the lake, with religious sites, markets and recreational activity around it. Naina Devi Temple is beside the lake and can be combined naturally with this walk. Keep the evening unstructured: the changing light, boats and reflections are a better introduction than rushing to another viewpoint.
+
+**Day two morning: choose one elevated experience:** Do not attempt every viewpoint. If you want a proper walk, choose Tiffin Top or Naina Peak according to fitness and current trail advice. The district describes Tiffin Top at 2,292 m and about 4 km from town. It describes Naina Peak as the town's highest point at 2,611 m and about 6 km from town. Both depend on visibility, and distances quoted by different starting points may vary.
+
+If walking is not suitable, choose an operating viewpoint attraction only after checking its current hours, fare, queue and weather. This guide deliberately avoids publishing an undated ropeway price or fixed opening time. A ticket is poor value when cloud has removed the view, and operations can be affected by weather or maintenance.
+
+**Day two afternoon: stay local or make one lake-district detour:** Bhimtal is officially listed about 22 km from Nainital, while Sattal is around 23 km away. Either can work as a separate half-day loop if you have a vehicle and are not already tired. Do not combine Bhimtal, Sattal, Mukteshwar and central Nainital into the same day merely because they look close on a map; hill-road time and stopping time add up.
+
+**Day two evening:** return to the lake rather than scheduling another transfer. This is where Nainital earns a second night: you experience the centre after day visitors begin leaving, without the pressure of immediately driving back to the plains.`,
+    },
+    {
+      id: "walks-viewpoints",
+      title: "Walks and viewpoints: pick by effort, not by popularity",
+      icon: "🥾",
+      content: `Nainital's slopes make distance deceptive. A short line on a map can involve a meaningful climb, uneven trail or slippery surface after rain. Footwear and weather matter more than the number of kilometres.
+
+Tiffin Top, also called Dorothy's Seat, is listed by the district at 2,292 m in the Ayarpatta area and about 4 km from town. The attraction is the combination of a forested approach and views of the Himalaya and surrounding countryside. Current trail condition, access and animal services should be checked locally; do not assume every route described in an old blog remains appropriate.
+
+Naina Peak is listed at 2,611 m, about 6 km from town, and is the highest peak immediately associated with Nainital. The district describes broad Himalayan and lake-town views. It is the stronger choice for travellers who want a longer outing rather than a quick photo stop. Start with enough daylight, carry water and turn back if weather closes in.
+
+Thandi Road is the lowest-effort walking option. Vehicles are not allowed, and the route follows the opposite side of the lake from Mall Road. It is useful when higher trails are unsuitable, visibility is poor or members of the group want a gentler walk.
+
+**Low effort:** lake circuit sections and Thandi Road.
+**Moderate outing:** Tiffin Top, subject to the chosen start and trail condition.
+**Longer outing:** Naina Peak, with an early start and weather check.
+**Poor visibility:** stay low; a cloud-covered viewpoint is not improved by forcing the climb.
+
+During monsoon, wet stone, mud and reduced visibility change the risk. In winter, cold surfaces and occasional snow or ice can do the same. Ask locally about the trail that morning. A hometown connection is not a substitute for a current trail report.`,
+    },
+    {
+      id: "mukteshwar",
+      title: "When Mukteshwar improves the trip—and when it does not",
+      icon: "🌲",
+      content: `Mukteshwar is not a quieter neighbourhood of Nainital; it is a separate destination. The district places it 51 km from Nainital, 40 km from Bhowali and 74 km from Kathgodam railway station. At 2,286 m, it sits among fruit orchards and conifer forest and has long Himalayan views, an old Shiva temple and the historic research presence now associated with the Indian Veterinary Research Institute.
+
+That difference should shape the itinerary. Nainital concentrates lakefront activity, shops and restaurants. Mukteshwar spreads the experience across ridge roads, viewpoints, forest and properties that may be far apart. It suits travellers who want a quieter night and are comfortable doing less.
+
+**A sensible three-night structure:**
+- Nights 1 and 2 in Nainital for the lakefront, one viewpoint or walk, and an unhurried evening
+- Night 3 in Mukteshwar for a slower arrival, temple and ridge area, followed by a weather-dependent morning view
+- Departure toward Kathgodam or Haldwani with sufficient road buffer
+
+Chauli Ki Jali is commonly paired with Mukteshwar Temple, but cliff edges and informal scrambling deserve caution. Do not repeat a photograph you see online without assessing the surface, barriers, wind and your own footwear. Adventure activities should be booked only with an operator whose safety equipment and supervision you have assessed.
+
+Avoid presenting the IVRI campus or research orchards as an open tourist attraction. Uttarakhand's tourism master-plan material notes that the institution itself is off limits to visitors. Enjoy the orchard landscape and public roads without assuming research facilities are open for casual entry.
+
+Mukteshwar is a poor add-on if you have only a few afternoon hours, need frequent restaurant choices, or expect guaranteed snow-peak visibility. It is a good add-on when an extra night, quiet surroundings and the possibility—not promise—of a clear Himalayan morning are the point.`,
+    },
+    {
+      id: "seasons",
+      title: "Season planning: choose the trade-off you can live with",
+      icon: "🌦️",
+      content: `Uttarakhand Tourism describes Nainital as an all-year destination and highlights March to June for favourable weather. The district guidance also describes late June to September as the main rainy period and December–January as the coldest part of winter, with the possibility of snow. Those broad patterns are useful; they do not predict the conditions on your dates.
+
+**March to April:** generally comfortable for walking, with spring colour in the wider hills. Nights can still feel cold to visitors arriving from the plains. Holiday weekends can be busy even outside the summer peak.
+
+**May to June:** popular because the plains are hot and school holidays increase demand. Expect pressure on rooms, road access and parking. The district publishes seasonal Mall Road restrictions for these months. Book a hotel for location and parking clarity, not merely a discounted rate.
+
+**Late June to September:** rain deepens the green landscape and brings mist like the photograph on this page, but it also means wet paths, poorer visibility and the possibility of road disruption. Check the weather forecast, district notices and road conditions immediately before departure. Keep time flexibility rather than planning a non-refundable chain of transfers.
+
+**October to November:** often attractive for clearer post-monsoon views and comfortable daytime walking, though October is also specifically included in the district's seasonal traffic restrictions. Clear mountain views remain weather-dependent.
+
+**December to February:** cold-weather travel can be beautiful and quieter outside holiday dates. Snowfall should never be promised for a booking. Heating, hot water, road access and cancellation terms matter more than a hotel's generic “winter view” description.
+
+The right month depends on the desired experience. Choose spring for walking, early summer for family-holiday convenience despite crowds, monsoon for atmosphere with flexibility, autumn for a better chance of long views, and winter only with realistic cold-weather expectations.`,
+    },
+    {
+      id: "lake-boating",
+      title: "Naini Lake and boating without outdated price claims",
+      icon: "🚣",
+      content: `The district describes Naini Lake as the centre of the town and confirms boating, yachting and paddle-boat activity. It also states that rowing and paddle boats are available at both ends and that rates are displayed at prepaid booths. That is the appropriate source of truth on the day.
+
+Before boarding, confirm the displayed fare, duration, permitted passenger count, route and life-jacket arrangement. Follow the operator's weather instructions. Wind, rain, visibility or an official direction can change operations, and no travel page can make a lake activity available on demand.
+
+The best reason to boat is perspective. From the water, the steep settlement pattern and wooded slopes become easier to read than they are from a busy road. Evening reflections can be striking, as Ash's photograph shows, but low light is not a reason to pressure an operator to extend beyond permitted hours.
+
+Swimming should not be inferred from the presence of boats. Use the lake only through authorised activities and respect local restrictions. Avoid feeding wildlife, dropping offerings or packaging into the water, and treating the shore as a disposable picnic area.`,
+    },
+    {
+      id: "corbett",
+      title: "Adding Corbett: use the real booking portal and a separate stay",
+      icon: "🐘",
+      content: `Corbett Tiger Reserve can complement Nainital, but it should be planned as a different experience around Ramnagar. The previous version of this guide linked to an outdated domain and repeated an unsupported tiger-sighting percentage. Both have been removed.
+
+The reserve currently tells visitors to use corbettgov.org as its only official website and warns about lookalike booking sites. It also publishes dated notices because booking windows and portal arrangements can change. As of the current editorial check, the official site lists Jhirna, Dhela and Garjia as year-round zones; Bijrani generally from 15 October to 30 June; and Dhikala, Durgadevi, Sonanadi and Pakhro generally from 15 November to 15 June. Weather, management decisions and current notices still control actual access.
+
+**Safe booking sequence:**
+- start at corbettgov.org and read the newest notice before choosing a zone
+- check the booking window, visitor ID requirements and entry gate for that specific zone
+- make the visitor details match the identification that will be carried
+- book accommodation near the relevant gate rather than assuming all gates are interchangeable
+- treat wildlife sightings as chance, never as a product guarantee
+
+Do not construct a tight Nainital morning followed by a same-day safari unless the confirmed entry time, gate and road plan genuinely allow it. A separate Ramnagar-area night reduces the temptation to rush and makes an early forest entry more realistic.
+
+Corbett is worthwhile for forest, birds, river landscapes and the complete ecosystem. A tiger may or may not appear. Any seller who markets a guaranteed sighting is selling certainty that a wild reserve cannot provide.`,
+    },
+    {
+      id: "stay-budget",
+      title: "Where to stay and how to build an honest budget",
+      icon: "🏨",
+      content: `Accommodation prices in Nainital fluctuate too sharply for one evergreen table to stay reliable. Season, weekend demand, parking, lake proximity, view, stairs, heating and cancellation terms all affect the rate. A useful budget starts with current quotes for the actual dates, not a number copied from last season.
+
+**Mallital:** convenient for the northern end of the lake, the Flats, temple area and access to several attractions. Check walking gradient and vehicle approach.
+**Tallital:** useful for the bus-station side and southern end of the lake. Confirm whether the room faces a busy approach road.
+**Ayarpatta and upper slopes:** potentially quieter and better for walks, but a short map distance can involve a steep climb.
+**Sukhatal side:** can be practical for certain approaches and parking, depending on the property.
+**Mukteshwar:** choose by exact location, food availability, heating and transport rather than the broad destination name.
+
+Build the budget in six lines: transport to the railhead or town, onward taxi or bus, accommodation, meals, authorised activities, and a contingency reserve. Keep Corbett separate because permits, vehicle allocation, guide arrangements and the correct entry gate create a different cost structure.
+
+When comparing rooms, check the final price after taxes and the cancellation deadline. Ask whether hot water is timed, whether heating costs extra in winter, whether the driver has accommodation if relevant, and whether “lake view” means a direct view or a distant glimpse from a shared terrace.
+
+The planning band shown at the top of this page is deliberately broad. It is not a quote. A traveller using public transport and a simple room may spend far less than a family using a private vehicle, peak-weekend hotel and several paid activities. Current booking screens and official counters should supply the final numbers.`,
+    },
+    {
+      id: "accessibility-safety",
+      title: "Families, limited mobility and basic safety planning",
+      icon: "♿",
+      content: `Central Nainital can work well for a mixed-age group because several experiences sit close to the lake, but the town is not uniformly level. Hotel stairs, steep access lanes and uphill viewpoints can matter more than the attraction list.
+
+If someone has limited mobility, ask the hotel for step-free details, lift availability, drop-off access and the slope between the entrance and room. “Near Mall Road” does not establish accessibility. Keep the plan centred on the lakefront and use verified transport rather than adding a viewpoint because it appears on every itinerary.
+
+For children, the lake and open public spaces can be engaging without over-scheduling. Adults still need to supervise near water, roads and cliff viewpoints. Confirm age, height or safety restrictions directly with an attraction operator.
+
+For medical needs, B. D. Pandey Hospital is listed by the district in Mallital. Larger hospitals are listed in Haldwani. Carry regular prescription medicine; do not assume a specific brand will be available in town. For emergencies use India's integrated emergency number 112. The district publishes 1077 for disaster control and 05942-235459 for the Nainital tehsil control room; verify directory changes before saving a number for a future trip.
+
+**Warning:** In heavy rain, snowfall, a landslide advisory or crowd-control operation, follow district and police directions even when they disrupt a prepaid itinerary. A booking is not evidence that the road or attraction is safe.`,
+    },
+    {
+      id: "responsible-visit",
+      title: "A better way to visit a small lake town",
+      icon: "🌿",
+      content: `Nainital's appeal and its pressure come from the same compact geography. Large visitor numbers collect around one lake, a limited road network and steep slopes. A responsible trip is therefore practical, not performative.
+
+Walk once you are checked in. Carry a refillable bottle and a small rubbish pouch. Use authorised parking instead of blocking a narrow approach. Avoid unnecessary horn use. Do not leave food or packaging at viewpoints. Keep music private on forest walks. Respect temple and residential spaces as places used by residents, not sets built for visitors.
+
+Spread the itinerary rather than driving between every named attraction. One lake walk and one ridge walk usually produce a better day than five vehicle stops. If central Nainital is under obvious pressure, consider a quieter second night elsewhere in the lake district—but do not simply transfer congestion to a village without respecting its road and waste limits.
+
+TravelBoa's local claim is intentionally modest: Ash was born in Nainital, and the images on this page come from his collection. Current operational facts are sourced separately. That distinction is part of the guide, because trustworthy local writing should be comfortable saying what it knows, what it remembers and what it still needs to verify.`,
+    },
   ],
   weatherPoints: [
     { location: "Haldwani", altitude: 423, temp: 28, weather: "☀️" },
@@ -56,50 +286,88 @@ export const nainital: DestinationData = {
     { location: "Mukteshwar", altitude: 2286, temp: 14, weather: "🌥️" },
   ],
   routes: [
-    { from: "Dehradun", to: "Nainital", status: "open", note: "310 km via Haridwar-Rampur, 6-7 hrs" },
-    { from: "Delhi", to: "Nainital", status: "open", note: "300 km via NH9, 6-7 hrs (or overnight train to Kathgodam)" },
-    { from: "Haldwani (Kathgodam)", to: "Nainital", status: "open", note: "35 km, 1 hr (Fri evenings 2+ hrs)" },
-    { from: "Nainital", to: "Mukteshwar", status: "open", note: "51 km via Bhimtal, 1.5-2 hrs" },
-    { from: "Nainital", to: "Jim Corbett (Dhikala)", status: "open", note: "65 km via Ramnagar, 2 hrs" },
+    { from: "Kathgodam", to: "Nainital", status: "partial", note: "About 35 km; verify traffic and same-day road conditions" },
+    { from: "Haldwani", to: "Nainital", status: "partial", note: "About 40 km; timing varies with town-entry traffic" },
+    { from: "Nainital", to: "Bhimtal", status: "partial", note: "About 22 km; reference distance, not a live status" },
+    { from: "Nainital", to: "Sattal", status: "partial", note: "About 23 km; reference distance, not a live status" },
+    { from: "Nainital", to: "Mukteshwar", status: "partial", note: "51 km; confirm preferred route with the property" },
   ],
   checklist: [
-    { category: "General Kumaon essentials", items: [
-      { name: "Mid-layer fleece or light jacket", essential: true },
-      { name: "Walking shoes (Mall Road, Tiffin Top, Chauli Ki Jali)", essential: true },
-      { name: "Cash Rs 3,000+ (Mukteshwar ATMs unreliable)", essential: true },
-      { name: "ID proof for hotel check-in", essential: true },
-    ] },
-    { category: "Monsoon (Jul-Sep)", items: [
-      { name: "Rain poncho or jacket", essential: true },
-      { name: "Waterproof bag for electronics", essential: true },
-      { name: "Buffer time (landslide delays possible)", essential: true },
-    ] },
-    { category: "Winter (Nov-Feb)", items: [
-      { name: "Thermals (top and bottom)", essential: true },
-      { name: "Warm hat and gloves", essential: true },
-      { name: "Heavier insulated jacket", essential: true },
-    ] },
-    { category: "Corbett add-on (if pairing)", items: [
-      { name: "Pre-booked safari permit (corbettonline.uk.gov.in)", essential: true },
-      { name: "Binoculars (helpful, optional)", essential: false },
-      { name: "Headlamp for early morning starts", essential: true },
-      { name: "Neutral / dull-colored clothing", essential: false },
-    ] },
+    {
+      category: "All-season essentials",
+      items: [
+        { name: "Government photo identification", essential: true },
+        { name: "Walking shoes with grip", essential: true },
+        { name: "Light warm layer", essential: true },
+        { name: "Refillable water bottle", essential: true },
+        { name: "Regular prescription medicine", essential: true },
+      ],
+    },
+    {
+      category: "Monsoon adjustments",
+      items: [
+        { name: "Rain jacket or poncho", essential: true },
+        { name: "Water protection for phone and documents", essential: true },
+        { name: "Flexible travel buffer", essential: true },
+      ],
+    },
+    {
+      category: "Winter adjustments",
+      items: [
+        { name: "Warm mid-layer and insulated outer layer", essential: true },
+        { name: "Warm hat and gloves", essential: true },
+        { name: "Confirmed heating and hot-water arrangement", essential: true },
+      ],
+    },
+    {
+      category: "Corbett add-on",
+      items: [
+        { name: "Official booking from corbettgov.org", essential: true },
+        { name: "Matching original identification", essential: true },
+        { name: "Confirmed zone, gate and reporting time", essential: true },
+        { name: "Binoculars", essential: false },
+      ],
+    },
   ],
   faq: [
-    { q: "Is Nainital good for families with kids?", a: "Yes, specifically for families with children between 6 and 14. The boating on Naini Lake is the right pace for kids, the ropeway to Snow View is fast and drama-free, and Eco Cave Gardens holds their attention for 40-45 minutes. The Mall Road is pedestrian-only, so there is no traffic anxiety. The limitation is Nainital in peak season - August weekends in particular mean waits that frustrate both kids and adults." },
-    { q: "What is the best time to see Nanda Devi from Mukteshwar?", a: "October and November mornings, before 10 AM. September mornings work too, and March on very clear days. The pattern is consistent: the view is open from sunrise until late morning, then clouds build from the valley and cover the peaks by noon at the latest. Arriving at Chauli Ki Jali by 7-8 AM gives you the best window." },
-    { q: "How far is Jim Corbett from Nainital?", a: "The Dhikala zone entrance is 65 km from Nainital, roughly 2 hours by road via Ramnagar. Corbett is worth adding as a third night if you are already in the area. Jeep safaris cost Rs 4,000-6,000 per jeep (6 seats). Book through corbettonline.uk.gov.in directly." },
-    { q: "Can I drive from Nainital to Mukteshwar in one day?", a: "Yes, and this is actually a good 3-night structure: two nights in Nainital, then drive 51 km to Mukteshwar for one final night before heading back. The drive takes about 1.5 to 2 hours depending on which road you take. Go via Bhimtal rather than back through the main Haldwani road - it is a better road and you pass the Bhimtal lake along the way." },
-    { q: "Is Naini Lake clean enough to boat in?", a: "It is cleaner than it was 10 years ago. The water is not transparent and it is a town lake with regular activity on it. Boating is fine; swimming is not advised. The views from the lake surface are the reason to go out on it, not the water quality." },
-    { q: "How many days should I spend in Nainital?", a: "Two nights is the right call. One night is rushed - you do not get the early morning Snow View window and the lake in the afternoon. Three nights in Nainital specifically starts to feel repetitive because the town is small. The better 3-night structure is two nights Nainital plus one night Mukteshwar, or two nights Nainital plus one night in Ramnagar for Corbett." },
-    { q: "What is better - Nainital or Mussoorie?", a: "Different use cases. Nainital has the lake, which Mussoorie does not. If you are based in Dehradun, Mussoorie is an easy day trip at 35 km, while Nainital requires a full weekend commitment at 310 km. For first-time Kumaon visitors, Nainital. For a Dehradun weekend escape, Mussoorie wins on convenience." },
+    {
+      q: "How many nights are enough for Nainital?",
+      a: "Two nights suit a first visit: an arrival evening around the lake and one full day for a walk or viewpoint. Add a third or fourth night only if you are including Mukteshwar, another lake-district base or a separate Corbett stay.",
+    },
+    {
+      q: "Is Mall Road permanently closed to private vehicles?",
+      a: "No. The district publishes restrictions that vary by vehicle, season and time. May, June and October have specific restrictions, with additional evening controls. Check the latest district or police notice before driving into town.",
+    },
+    {
+      q: "Where should I park in Nainital?",
+      a: "The district lists parking at the Flats in Mallital, the taxi-stand area in Tallital and KMVN parking at Sukhatal, while some hotels provide parking. Availability is not guaranteed, so confirm the hotel's arrangement and a backup before arrival.",
+    },
+    {
+      q: "What does boating on Naini Lake cost?",
+      a: "Use the current rate displayed at the authorised prepaid booths. The official district page confirms rowing and paddle boats at both ends of the lake but does not support freezing an old price into an evergreen guide.",
+    },
+    {
+      q: "Is Mukteshwar a day trip from Nainital?",
+      a: "It can be visited in a long day, but the district places it 51 km away on mountain roads. One overnight is better if quiet surroundings and a weather-dependent morning view are the reason for going.",
+    },
+    {
+      q: "Can Nainital and Corbett be combined?",
+      a: "Yes, but use separate stays. Plan Corbett around the confirmed zone, entry gate and reporting time, and book only through corbettgov.org. Do not treat a safari as a quick detour or expect a guaranteed tiger sighting.",
+    },
+    {
+      q: "When is the best time to visit Nainital?",
+      a: "March to June is the broad fair-weather period highlighted by Uttarakhand Tourism, but May and June can be crowded. Autumn can offer clearer views. Monsoon brings rain and possible road disruption; winter requires cold-weather planning. Check the forecast and district notices for the actual dates.",
+    },
+    {
+      q: "Is the page based only on Ash being born in Nainital?",
+      a: "No. Birthplace and original photographs establish the author's connection, while changeable travel facts are checked separately against district administration, Uttarakhand Tourism and relevant official operators. The page states where current confirmation is still required.",
+    },
   ],
   emergency: [
-    { name: "Nainital District Hospital", number: "05942-235012" },
-    { name: "Nainital Police", number: "05942-235424" },
-    { name: "Corbett Tiger Reserve", number: "05947-251489" },
-    { name: "Disaster Helpline", number: "112" },
+    { name: "Integrated emergency", number: "112" },
+    { name: "District disaster control", number: "1077" },
+    { name: "Nainital tehsil control room", number: "05942-235459" },
+    { name: "B. D. Pandey Hospital, Mallital", number: "05942-235012" },
   ],
   subPages: [],
 };

@@ -310,9 +310,9 @@ export function GearClient() {
                 <div className="flex gap-3.5 items-start">
                   <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                   <div>
-                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Tested by Ash</span>
+                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>Editorial review underway</span>
                     <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN</span>
-                    <p className="text-[14px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Every product linked here has been used on a real trip. I do not copy spec sheets.</p>
+                    <p className="text-[14px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Product-use, price and availability claims are being re-checked before these pages are published.</p>
                   </div>
                 </div>
               </div>

@@ -56,7 +56,7 @@ function DestSelector({ onSelect }: { onSelect: (i: number) => void }) {
       </div>
 
       <div className="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {filtered.map((d, i) => {
+        {filtered.map((d) => {
           const idx = DESTINATIONS.indexOf(d);
           return (
             <button key={d.slug} onClick={() => onSelect(idx)}
@@ -100,26 +100,37 @@ export function DashboardClient() {
     const destParam = params.get("dest");
     const stateParam = params.get("s");
 
+    let restoredIndex = -1;
+    let restoredState = getDefaultState();
+
     if (destParam) {
       const idx = DESTINATIONS.findIndex(d => d.slug === destParam);
       if (idx >= 0) {
-        setDestIndex(idx);
+        restoredIndex = idx;
         if (stateParam) {
-          try { const decoded = JSON.parse(atob(stateParam)); setState(decoded); setLoaded(true); return; } catch {}
+          try { restoredState = JSON.parse(atob(stateParam)); } catch { restoredState = loadState(destParam); }
+        } else {
+          restoredState = loadState(destParam);
         }
-        setState(loadState(destParam));
-        setLoaded(true);
-        return;
       }
     }
-    try {
+
+    if (restoredIndex < 0) try {
       const lastDest = localStorage.getItem("travelboa-dash-last");
       if (lastDest) {
         const idx = DESTINATIONS.findIndex(d => d.slug === lastDest);
-        if (idx >= 0) { setDestIndex(idx); setState(loadState(lastDest)); }
+        if (idx >= 0) { restoredIndex = idx; restoredState = loadState(lastDest); }
       }
     } catch {}
-    setLoaded(true);
+
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      setDestIndex(restoredIndex);
+      setState(restoredState);
+      setLoaded(true);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {

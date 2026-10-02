@@ -20,9 +20,19 @@ export function PackingChecklist({ destination: d }: Props) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const stateParam = params.get("s");
-    if (stateParam) { try { setChecks(JSON.parse(atob(stateParam))); setLoaded(true); return; } catch {} }
-    try { const saved = localStorage.getItem(STORAGE_PREFIX + d.slug); if (saved) setChecks(JSON.parse(saved)); } catch {}
-    setLoaded(true);
+    let restored: Record<string, boolean> = {};
+    if (stateParam) {
+      try { restored = JSON.parse(atob(stateParam)); } catch {}
+    } else {
+      try { const saved = localStorage.getItem(STORAGE_PREFIX + d.slug); if (saved) restored = JSON.parse(saved); } catch {}
+    }
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      setChecks(restored);
+      setLoaded(true);
+    });
+    return () => { cancelled = true; };
   }, [d.slug]);
 
   useEffect(() => {
@@ -36,30 +46,6 @@ export function PackingChecklist({ destination: d }: Props) {
   // hydration matches; the useEffect above then restores saved ticks.
 
   const rel = relatedForDestination(d.slug);
-
-  // ─── structured data ───
-  const pageUrl = `https://www.travelboa.com/${d.slug}/packing`;
-  const packingLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${d.name} packing checklist`,
-    description: `Gear checklist for ${d.name} at ${d.altitude}m.`,
-    url: pageUrl,
-    numberOfItems: d.checklist.reduce((n, c) => n + c.items.length, 0),
-    itemListElement: d.checklist.flatMap((cat) =>
-      cat.items.map((it) => ({ "@type": "ListItem", name: it.name }))
-    ).map((li, i) => ({ ...li, position: i + 1 })),
-  };
-  const packingBreadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
-      { "@type": "ListItem", position: 2, name: d.name, item: `https://www.travelboa.com/${d.slug}` },
-      { "@type": "ListItem", position: 3, name: "Packing list", item: pageUrl },
-    ],
-  };
-
 
   const totalItems = d.checklist.reduce((s, c) => s + c.items.length, 0);
   const checkedCount = Object.values(checks).filter(Boolean).length;
@@ -240,9 +226,6 @@ export function PackingChecklist({ destination: d }: Props) {
 
       <Footer />
 
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(packingLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(packingBreadcrumbLd) }} />
     </div>
   );
 }

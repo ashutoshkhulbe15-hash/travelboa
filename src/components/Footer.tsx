@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 
-interface FooterProps {
-  accent?: string;
-}
-
-export function Footer({ accent: _accent }: FooterProps) {
+export function Footer() {
   return (
     <footer className="relative" style={{ background: "var(--paper-warm)", color: "var(--ink-soft)", borderTop: "1.5px dashed var(--line)" }}>
       <div className="max-w-[1180px] mx-auto px-5 sm:px-6 pt-12 pb-10">
@@ -22,9 +18,9 @@ export function Footer({ accent: _accent }: FooterProps) {
               </span>
             </Link>
             <p className="text-[14.5px] font-normal leading-relaxed" style={{ maxWidth: "38ch" }}>
-              A one-person trip companion for the Indian Himalaya. Road status, altitude weather, packing lists and guides for pilgrimages and adventures across North India.
+              A one-person editorial guide to the Indian Himalaya. Destination planning, packing tools and source-linked notes for pilgrimages and adventures across North India.
             </p>
-            <span className="font-caveat text-[22px] mt-4 inline-block -rotate-2" style={{ color: "var(--terra)" }}>written and maintained from Dehradun</span>
+            <span className="font-caveat text-[22px] mt-4 inline-block -rotate-2" style={{ color: "var(--terra)" }}>Nainital roots · maintained in Uttarakhand</span>
           </div>
 
           {/* Explore */}
@@ -62,7 +58,7 @@ export function Footer({ accent: _accent }: FooterProps) {
 
         <div className="pt-4 flex justify-between items-center flex-wrap gap-3 font-mono text-[11.5px]" style={{ borderTop: "1.5px dashed var(--line)", color: "var(--ink-soft)" }}>
           <span>&copy; 2026 TRAVELBOA</span>
-          <span>MADE IN DEHRADUN &middot; 640 M ABOVE SEA LEVEL</span>
+          <span>NAINITAL ROOTS &middot; MADE IN UTTARAKHAND</span>
           <span>SOME LINKS EARN A SMALL COMMISSION &middot; IT NEVER CHANGES MY PICKS</span>
         </div>
       </div>

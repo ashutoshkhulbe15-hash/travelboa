@@ -11,13 +11,22 @@ export function useTheme() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    let savedTheme: ThemeKey = DEFAULT_THEME;
+    let savedDarkValue = false;
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as ThemeKey | null;
-      if (saved && THEMES[saved]) setThemeKey(saved);
+      if (saved && THEMES[saved]) savedTheme = saved;
       const savedDark = localStorage.getItem(DARK_KEY);
-      if (savedDark === "true") setDarkState(true);
+      savedDarkValue = savedDark === "true";
     } catch {}
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      setThemeKey(savedTheme);
+      setDarkState(savedDarkValue);
+      setMounted(true);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   const setTheme = useCallback((key: ThemeKey) => {

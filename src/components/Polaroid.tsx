@@ -12,13 +12,12 @@ interface PolaroidProps {
   temp: string;
   image?: string;
   grad: string;
-  rot: number;
   accent: string;
   selected?: boolean;
   onClick?: () => void;
 }
 
-export function Polaroid({ name, slug, info, note, temp, image, grad, rot, accent, selected, onClick }: PolaroidProps) {
+export function Polaroid({ name, slug, info, note, temp, image, grad, accent, selected, onClick }: PolaroidProps) {
   const [hovered, setHovered] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {

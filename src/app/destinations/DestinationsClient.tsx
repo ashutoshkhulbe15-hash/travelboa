@@ -7,6 +7,8 @@ import { DESTINATIONS, SEARCH_DESTINATIONS, ACTIVITIES } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 
+const PUBLISHED_SLUGS = new Set(["nainital", "kedarnath", "spiti", "lachung"]);
+
 export function DestinationsClient() {
   const [searchVal, setSearchVal] = useState("");
   const [searchFocus, setSearchFocus] = useState(false);
@@ -23,7 +25,7 @@ export function DestinationsClient() {
   }, []);
 
   const allDests = [
-    ...DESTINATIONS.map(d => ({ ...d, hasPage: true })),
+    ...DESTINATIONS.map(d => ({ ...d, hasPage: PUBLISHED_SLUGS.has(d.slug) })),
     ...SEARCH_DESTINATIONS
       .filter(sd => !DESTINATIONS.find(d => d.slug === sd.slug))
       .map(sd => ({ ...sd, note: "", hasPage: false, image: undefined as string | undefined, grad: "linear-gradient(150deg,#444,#666)", temp: "", rot: 0, wx: null, routes: [] as {route:string;status:string;note:string}[], packItems: [] as string[], emergency: [] as {name:string;number:string}[], quickFacts: [] as {icon:string;label:string;value:string}[] })),
@@ -51,9 +53,9 @@ export function DestinationsClient() {
       {/* Header */}
       <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
         <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
-          <p className="kicker mb-3">23 destinations</p>
-          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Every trip we cover, all in one place.</h1>
-          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "56ch" }}>Pilgrimages and adventures across the Indian Himalaya with full guides, packing lists, gear links and road status. Each one written first person from Dehradun.</p>
+          <p className="kicker mb-3">4 published · 19 in editorial review</p>
+          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Indian Himalayan trips, published only after review.</h1>
+          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "58ch" }}>The four finished guides include visible sources, dated checks and clear limits. The remaining destinations stay out of search and are marked in review until their claims meet the same standard.</p>
 
           {/* Search */}
           <div className="mt-8 relative" style={{ maxWidth: 540 }}>
@@ -143,7 +145,7 @@ export function DestinationsClient() {
                       <Link href={`/${d.slug}/packing`} className="text-[13px] font-semibold no-underline" style={{ color: "var(--pine)" }}>Packing list &rarr;</Link>
                     </div>
                   ) : (
-                    <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>GUIDE COMING SOON</p>
+                    <p className="text-[11px] font-mono mt-2" style={{ color: "var(--ink-soft)" }}>EDITORIAL REVIEW IN PROGRESS</p>
                   )}
                 </div>
               </div>

@@ -1,7 +1,7 @@
-import { GEAR_SLUGS, GEAR_GUIDE_META, gearGuideContent, type GearSlug } from "@/lib/gear-content";
-import { GearArticle } from "./GearArticle";
+import { GEAR_SLUGS, GEAR_GUIDE_META } from "@/lib/gear-content";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { EditorialReviewNotice } from "@/components/EditorialReviewNotice";
 
 export function generateStaticParams() {
   return GEAR_SLUGS.map((slug) => ({ slug }));
@@ -11,20 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const meta = GEAR_GUIDE_META[slug as keyof typeof GEAR_GUIDE_META];
   if (!meta) return { title: "Gear guide not found — TravelBoa" };
-  const hero = gearGuideContent[slug as GearSlug]?.heroImage?.src || "/og-default.png";
   return {
-    title: `${meta.title} — TravelBoa`,
-    description: meta.desc,
+    title: `${meta.title}: Editorial Review in Progress`,
+    description: "Product-use, price and availability claims are being verified before publication.",
     alternates: { canonical: `/gear/${slug}` },
-    openGraph: {
-      title: meta.title,
-      description: meta.desc,
-      url: `https://www.travelboa.com/gear/${slug}`,
-      type: "article",
-      siteName: "TravelBoa",
-      images: [{ url: hero, width: 1200, height: 630, alt: meta.title }],
-    },
-    twitter: { card: "summary_large_image", title: meta.title, description: meta.desc, images: [hero] },
+    robots: { index: false, follow: true },
   };
 }
 
@@ -32,5 +23,12 @@ export default async function GearGuidePage({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const meta = GEAR_GUIDE_META[slug as keyof typeof GEAR_GUIDE_META];
   if (!meta) notFound();
-  return <GearArticle slug={slug} meta={meta} />;
+  return (
+    <EditorialReviewNotice
+      title={`${meta.title} is being re-checked`}
+      description="Product use, availability, prices and recommendation claims are being verified before this guide is published."
+      backHref="/gear"
+      backLabel="Return to gear guides"
+    />
+  );
 }

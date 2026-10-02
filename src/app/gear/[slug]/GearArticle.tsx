@@ -21,50 +21,6 @@ export function GearArticle({ slug, meta }: Props) {
 
   const content = gearGuideContent[slug as GearSlug];
 
-  // ─── structured data ───
-  const pageUrl = `https://www.travelboa.com/gear/${slug}`;
-  const heroSrc = content?.heroImage?.src;
-  const articleLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: meta.title,
-    description: meta.desc,
-    ...(heroSrc ? { image: [`https://www.travelboa.com${heroSrc}`] } : {}),
-    author: { "@type": "Person", name: "Ash", url: "https://www.travelboa.com/about" },
-    publisher: {
-      "@type": "Organization",
-      name: "TravelBoa",
-      url: "https://www.travelboa.com",
-      logo: { "@type": "ImageObject", url: "https://www.travelboa.com/android-chrome-512x512.png" },
-    },
-    datePublished: "2026-05-22",
-    dateModified: "2026-07-30",
-    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
-  };
-
-  const itemListLd = content?.products?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: meta.title,
-        numberOfItems: content.products.length,
-        itemListElement: content.products.map((prod, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          name: prod.name,
-        })),
-      }
-    : null;
-
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.travelboa.com" },
-      { "@type": "ListItem", position: 2, name: "Gear", item: "https://www.travelboa.com/gear" },
-      { "@type": "ListItem", position: 3, name: meta.title, item: pageUrl },
-    ],
-  };
   const otherSlugs = Object.keys(GEAR_GUIDE_META).filter(s => s !== slug).slice(0, 4) as GearSlug[];
 
   return (
@@ -229,8 +185,8 @@ export function GearArticle({ slug, meta }: Props) {
                   <div className="flex gap-3.5 items-start">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-extrabold text-[16px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                     <div>
-                      <span className="block text-[14px] font-bold" style={{ color: "var(--ink)" }}>Tested by Ash</span>
-                      <p className="text-[13px] font-normal leading-relaxed mt-1" style={{ color: "var(--ink-soft)" }}>Every product here has been used on a real trip from Dehradun.</p>
+                      <span className="block text-[14px] font-bold" style={{ color: "var(--ink)" }}>Editorial review underway</span>
+                      <p className="text-[13px] font-normal leading-relaxed mt-1" style={{ color: "var(--ink-soft)" }}>Product-use, price and availability claims must be verified before publication.</p>
                       <a href="mailto:hello@travelboa.com" className="text-[12px] font-semibold mt-1 inline-block no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com &rarr;</a>
                     </div>
                   </div>
@@ -264,12 +220,6 @@ export function GearArticle({ slug, meta }: Props) {
 
       <Footer />
 
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      {itemListLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
-      )}
     </div>
   );
 }

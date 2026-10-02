@@ -40,7 +40,7 @@ export function GuideArticle({ guide }: { guide: Guide }) {
           <div className="flex items-center gap-4 mt-4 flex-wrap font-mono text-[12px]" style={{ color: "var(--ink-soft)" }}>
             <span>📖 {guide.min} min read</span>
             {content && <span>✍️ {content.author}</span>}
-            <span>📍 Written from Dehradun</span>
+            <span>📍 Nainital roots · Uttarakhand</span>
             {content && <span>📅 {content.lastUpdated}</span>}
           </div>
         </div>
@@ -136,9 +136,6 @@ export function GuideArticle({ guide }: { guide: Guide }) {
               )}
 
               <p className="font-mono text-[12px] mt-8 italic" style={{ color: "var(--ink-soft)" }}>Last updated: {content.lastUpdated}</p>
-              {content.schemaJson.map((schema, i) => (
-                <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-              ))}
             </div>
 
             {/* SIDEBAR */}
@@ -173,8 +170,8 @@ export function GuideArticle({ guide }: { guide: Guide }) {
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-extrabold text-[16px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                     <div>
                       <span className="block text-[14px] font-bold" style={{ color: "var(--ink)" }}>Written by Ash</span>
-                      <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN</span>
-                      <p className="text-[13px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>First-hand guides from someone who lives at the foot of these hills.</p>
+                      <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>NAINITAL ROOTS · UTTARAKHAND</span>
+                      <p className="text-[13px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Regional context, transparent sourcing and clearly labelled first-hand notes.</p>
                       <a href="mailto:hello@travelboa.com" className="text-[12px] font-semibold mt-1 inline-block no-underline" style={{ color: "var(--terra)" }}>hello@travelboa.com &rarr;</a>
                     </div>
                   </div>
@@ -186,7 +183,7 @@ export function GuideArticle({ guide }: { guide: Guide }) {
           <div className="text-center py-20 rounded-[18px] bg-white border" style={{ borderColor: "#e3e9e6" }}>
             <div className="text-5xl mb-4">✍️</div>
             <h2 className="text-[22px] font-extrabold mb-2" style={{ color: "var(--ink)" }}>This guide is being written</h2>
-            <p className="text-[16px] font-normal max-w-md mx-auto" style={{ color: "var(--ink-soft)" }}>A detailed, first-hand article based on real experience. Check back soon.</p>
+            <p className="text-[16px] font-normal max-w-md mx-auto" style={{ color: "var(--ink-soft)" }}>This page is withheld until the research, sourcing and editorial review are complete.</p>
             <Link href="/guides" className="inline-block mt-6 px-6 py-3 rounded-full text-[15px] font-bold text-white no-underline" style={{ background: "var(--terra)" }}>&larr; Back to all guides</Link>
           </div>
         )}

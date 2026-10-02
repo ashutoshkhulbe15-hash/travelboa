@@ -28,13 +28,13 @@ const ALTI_DATA = [
 
 /* ─── featured destinations for cards ─── */
 const FEATURED = [
-  { slug: "kedarnath", season: "May-Oct", dur: "4-6 days", hook: "The 16 km climb to the Jyotirlinga. I cover the route, the ponies, the weather windows and the exact shoes that survive the stone path." },
-  { slug: "spiti", season: "Jun-Oct", dur: "8-12 days", hook: "India's cold desert. Monasteries, moonscapes and roads that demand respect. My circuit, fuel stops and permit notes inside." },
-  { slug: "ladakh", season: "Jun-Sep", dur: "10-15 days", hook: "Leh, Nubra and the high passes. How I plan acclimatization days so Khardung La is a celebration, not a headache." },
-  { slug: "valley-of-flowers", season: "Jul-Sep", dur: "4-5 days", hook: "A UNESCO meadow that blooms for eight weeks a year. I keep a bloom calendar so you land in peak colour, not after it." },
-  { slug: "chopta", season: "Year-round", dur: "2-3 days", hook: "My favourite weekend escape from Dehradun. The world's highest Shiva temple, a 3.5 km trail and sunrises worth the alarm." },
-  { slug: "rishikesh", season: "Sep-Jun", dur: "2-4 days", hook: "Rafting, cafes and the Ganga at dusk. Where I send everyone for their first taste of the hills, one hour from my home." },
+  { slug: "nainital", season: "Route dependent", dur: "2-4 nights", hook: "A locally grounded Nainital plan with first-party photographs, parking guidance and a clear Mukteshwar decision." },
+  { slug: "kedarnath", season: "Temple season", dur: "4-6 days", hook: "A safety-first pilgrimage guide with confirmed 2026 information, official registration and health sources." },
+  { slug: "spiti", season: "Route dependent", dur: "8-12 days", hook: "A route-first cold-desert plan with corrected permit rules, altitude pacing and road resilience." },
+  { slug: "lachung", season: "Access dependent", dur: "3 days / 2 nights", hook: "A permit-first North Sikkim plan built around the current PAP, itinerary and road-safety rules." },
 ];
+
+const REVIEWED_SLUGS = new Set(FEATURED.map((destination) => destination.slug));
 
 const GUIDES_LIST = [
   { title: "Reading Himalayan road status before you leave", tag: "ROADS", href: "/guides/monsoon-routes" },
@@ -58,7 +58,9 @@ const TRIP_TYPES = [
 ];
 
 /* ─── search helper ─── */
-const ALL_SEARCH = DESTINATIONS.map(d => ({ name: d.name, slug: d.slug, info: d.info, type: d.type }));
+const ALL_SEARCH = DESTINATIONS
+  .filter((destination) => REVIEWED_SLUGS.has(destination.slug))
+  .map(d => ({ name: d.name, slug: d.slug, info: d.info, type: d.type }));
 
 export default function HomePage() {
   const [entered, setEntered] = useState(false);
@@ -106,11 +108,11 @@ export default function HomePage() {
         <div className="inline-block" style={{ animation: "tick 38s linear infinite" }}>
           {[...Array(2)].map((_, rep) => (
             <span key={rep}>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>FIELD NOTES FROM DEHRADUN</b></span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />Kedarnath yatra: open for the 2026 season</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "#3d9e6d" }} />NH-7 Rishikesh to Joshimath: see road status</span>
-              <span className="mx-6"><span className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-[1px]" style={{ background: "var(--terra)" }} />Manali-Kaza via Kunzum La: check before you go</span>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>23 DESTINATIONS</b> &middot; 10 GUIDES &middot; 14 GEAR REVIEWS</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>NAINITAL ROOTS · UTTARAKHAND EDITED</b></span>
+              <span className="mx-6">Rules and dates link to official sources</span>
+              <span className="mx-6">Road and weather conditions must be checked on the day</span>
+              <span className="mx-6">Corrections: hello@travelboa.com</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>4 SOURCE-REVIEWED GUIDES</b> &middot; 19 DESTINATIONS IN EDITORIAL REVIEW</span>
             </span>
           ))}
         </div>
@@ -122,12 +124,12 @@ export default function HomePage() {
       <header className="contour-bg relative overflow-hidden">
         <div className="relative z-[2] max-w-[1180px] mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-10 items-center" style={{ opacity: entered ? 1 : 0, transform: entered ? "none" : "translateY(20px)", transition: "all 0.7s cubic-bezier(0.2,0,0,1)" }}>
           <div>
-            <span className="inline-block font-mono text-[12px] tracking-[0.16em] uppercase rounded-full px-4 py-1.5 mb-6" style={{ color: "var(--pine)", border: "1px solid var(--pine)", background: "rgba(30,69,55,0.05)" }}>Field notes &middot; Dehradun, Uttarakhand</span>
+            <span className="inline-block font-mono text-[12px] tracking-[0.16em] uppercase rounded-full px-4 py-1.5 mb-6" style={{ color: "var(--pine)", border: "1px solid var(--pine)", background: "rgba(30,69,55,0.05)" }}>Nainital roots &middot; Uttarakhand edited</span>
             <h1 className="text-[clamp(38px,5.6vw,64px)] font-extrabold tracking-tighter leading-[1.06]" style={{ color: "var(--ink)", maxWidth: "16ch" }}>
               My journal of the <span className="hl">Indian Himalaya</span>, open for you
             </h1>
             <p className="text-[clamp(17px,1.8vw,19px)] font-normal leading-relaxed mt-5 mb-8" style={{ color: "var(--ink-soft)", maxWidth: "52ch" }}>
-              Every guide here starts as scribbles in my notebook on the trail. I clean them up and publish them with <b className="font-semibold" style={{ color: "var(--ink)" }}>road conditions, altitude weather, packing checklists and honest gear picks</b> for 23 pilgrimages and treks across North India.
+              TravelBoa combines regional context from growing up in Nainital with careful desk research. Guides separate <b className="font-semibold" style={{ color: "var(--ink)" }}>first-hand observations, official rules, typical conditions and details that still need a same-day check</b>.
             </p>
 
             {/* Search */}
@@ -155,7 +157,7 @@ export default function HomePage() {
 
             {/* Quick chips */}
             <div className="flex gap-2.5 flex-wrap mt-5">
-              {["kedarnath","spiti","valley-of-flowers","ladakh","vaishno-devi"].map(s => {
+              {["nainital","kedarnath","spiti","lachung"].map(s => {
                 const d = getDest(s);
                 return d ? (
                   <Link key={s} href={`/${s}`} className="text-[13.5px] rounded-full px-4 py-[7px] no-underline transition-all duration-200 bg-white" style={{ color: "var(--ink)", border: "1px solid var(--line)" }}
@@ -174,14 +176,14 @@ export default function HomePage() {
           <div className="relative hidden md:block" style={{ height: 480 }} aria-hidden="true">
             {[
               { slug: "kedarnath", cls: "absolute", st: { width: 250, top: 8, left: "4%", transform: "rotate(-5deg)", zIndex: 1 } },
-              { slug: "valley-of-flowers", cls: "absolute", st: { width: 260, top: 56, right: "2%", transform: "rotate(4deg)", zIndex: 2 } },
+              { slug: "nainital", cls: "absolute", st: { width: 260, top: 56, right: "2%", transform: "rotate(4deg)", zIndex: 2 } },
               { slug: "spiti", cls: "absolute", st: { width: 240, bottom: 0, left: "26%", transform: "rotate(-2deg)", zIndex: 3 } },
             ].map(p => {
               const d = getDest(p.slug);
               return d ? (
                 <div key={p.slug} className={p.cls} style={p.st}>
                   <span className="tape" />
-                  <Polaroid name={d.name} slug={d.slug} info={d.info} note={d.note} temp={d.temp} image={d.image} grad={d.grad} rot={0} accent="var(--terra)" />
+                  <Polaroid name={d.name} slug={d.slug} info={d.info} note={d.note} temp={d.temp} image={d.image} grad={d.grad} accent="var(--terra)" />
                 </div>
               ) : null;
             })}
@@ -217,8 +219,8 @@ export default function HomePage() {
           <div className="reveal">
             <span className="font-caveat text-[24px] block -rotate-1 mb-1" style={{ color: "var(--pine)" }}>from the notebook&hellip;</span>
             <p className="kicker mb-3">Where to next</p>
-            <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Guides written from the ground, not from a desk.</h2>
-            <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide covers the route, the season, the budget and the exact packing list. First person, because I have done these trips or I am next in line to.</p>
+            <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08]" style={{ color: "var(--ink)" }}>Useful guides, with the evidence visible.</h2>
+            <p className="text-[18px] font-normal leading-relaxed mt-3.5" style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Each guide is being rebuilt around a real planning task: route, season, budget, risks and what to verify. Personal experience is labelled as such; rules and dates point to primary sources.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {FEATURED.map(f => {
@@ -227,7 +229,7 @@ export default function HomePage() {
               return (
                 <Link key={f.slug} href={`/${f.slug}`} className="reveal group bg-white rounded-[18px] overflow-hidden border no-underline flex flex-col transition-all duration-300 hover:-translate-y-[7px] hover:shadow-2xl" style={{ borderColor: "#e3e9e6" }}>
                   <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
-                    <Image src={`/${f.slug === "valley-of-flowers" ? "valley-of-flowers" : f.slug}.jpg`} alt={d.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={d.image ?? `/${f.slug}.jpg`} alt={d.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.45))" }} />
                     <span className="absolute top-3.5 left-3.5 font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-[3px]" style={{ background: "rgba(247,249,247,0.94)", color: "var(--pine)", border: "1.5px solid var(--pine)", transform: "rotate(-2deg)" }}>{d.type}</span>
                     <span className="absolute top-3.5 right-3.5 font-mono text-[11.5px] px-3 py-1 rounded-full" style={{ background: "rgba(12,26,35,0.78)", color: "#fff", backdropFilter: "blur(4px)" }}>&#9650; {d.info.split("·")[0].trim()}</span>
@@ -265,7 +267,7 @@ export default function HomePage() {
           <div className="reveal">
             <p className="kicker mb-3" style={{ color: "var(--terra-soft)" }}>The Gear Planner</p>
             <h2 className="text-[clamp(30px,4vw,44px)] font-extrabold tracking-tight leading-[1.08] text-white">Tell me the trip.<br />I will pack the bag.</h2>
-            <p className="text-[18px] font-normal leading-relaxed mt-4" style={{ color: "#cfe4d6", maxWidth: "48ch" }}>Pick your trip type and get a checklist built for it, with the exact gear I trust and links to buy it. Tick items off as you pack. Share the list with your trip group and your ticks travel with the link.</p>
+            <p className="text-[18px] font-normal leading-relaxed mt-4" style={{ color: "#cfe4d6", maxWidth: "48ch" }}>Pick your trip type and get a practical starter checklist. Adjust it for the forecast, route, duration and your own medical needs; affiliate links are disclosed and never determine inclusion.</p>
             <Link href="/gear" className="inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-[16px] font-bold text-white no-underline mt-7 transition-all duration-200 hover:-translate-y-0.5" style={{ background: "var(--terra)" }}
               onMouseEnter={e => (e.currentTarget.style.background = "var(--terra-bright)")} onMouseLeave={e => (e.currentTarget.style.background = "var(--terra)")}>
               Open the gear planner <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
@@ -306,7 +308,7 @@ export default function HomePage() {
           </div>
           <div className="reveal">
             <p className="kicker mb-3">Gear reviews</p>
-            <h2 className="text-[clamp(26px,3vw,34px)] font-extrabold tracking-tight leading-[1.12]" style={{ color: "var(--ink)" }}>Gear I actually use</h2>
+            <h2 className="text-[clamp(26px,3vw,34px)] font-extrabold tracking-tight leading-[1.12]" style={{ color: "var(--ink)" }}>Gear notes and comparisons</h2>
             <div className="mt-6 border-t-2 flex flex-col" style={{ borderColor: "var(--ink)" }}>
               {GEAR_LIST.map((g, i) => (
                 <Link key={i} href={g.href} className="flex items-baseline gap-4 py-4 border-b text-[18px] font-medium no-underline transition-all duration-200 hover:pl-3.5 hover:bg-white" style={{ borderColor: "#e0e7e3", color: "var(--ink)" }}>

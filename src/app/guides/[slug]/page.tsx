@@ -3,15 +3,28 @@ import { guideContent } from "@/lib/guide-content";
 import { GuideArticle } from "./GuideArticle";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { EditorialReviewNotice } from "@/components/EditorialReviewNotice";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
 }
 
+// Re-enable individual guides only after their claims, sources and author
+// experience have been checked. The pages remain accessible and followable.
+const INDEXABLE_GUIDES = new Set<string>();
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const guide = GUIDES.find((g) => g.slug === slug);
   if (!guide) return { title: "Guide not found — TravelBoa" };
+  if (!INDEXABLE_GUIDES.has(slug)) {
+    return {
+      title: `${guide.title}: Editorial Review in Progress`,
+      description: "This planning guide is being source-checked before publication.",
+      alternates: { canonical: `/guides/${slug}` },
+      robots: { index: false, follow: true },
+    };
+  }
   const hero = guideContent[slug]?.heroImage?.src || "/og-default.png";
   return {
     title: guide.metaTitle,
@@ -33,5 +46,15 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const guide = GUIDES.find((g) => g.slug === slug);
   if (!guide) notFound();
+  if (!INDEXABLE_GUIDES.has(slug)) {
+    return (
+      <EditorialReviewNotice
+        title={`${guide.title} is being re-checked`}
+        description="The source, safety and experience claims in this planning guide are being reviewed before publication."
+        backHref="/guides"
+        backLabel="Return to guides"
+      />
+    );
+  }
   return <GuideArticle guide={guide} />;
 }
