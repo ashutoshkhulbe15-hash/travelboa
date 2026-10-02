@@ -18,6 +18,8 @@ const LAST_UPDATED: Record<string, string> = {
   "/spiti": "2026-10-02",
   "/lachung": "2026-10-02",
   "/nainital": "2026-10-02",
+  "/valley-of-flowers": "2026-10-03",
+  "/kasol": "2026-10-03",
 };
 
 const lm = (path: string) => new Date(LAST_UPDATED[path] ?? SITE_DEFAULT);

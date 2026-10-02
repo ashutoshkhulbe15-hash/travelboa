@@ -161,6 +161,56 @@ const DESTINATION_EDITORIAL: Record<string, DestinationEditorialRecord> = {
       },
     ],
   },
+  "valley-of-flowers": {
+    searchIndexable: true,
+    deskVerified: "3 October 2026",
+    modifiedISO: "2026-10-03",
+    reviewNote:
+      "Updated using Uttarakhand Tourism and UNESCO sources, with variable fees, transport prices, bloom promises and fixed operating times left for current local confirmation.",
+    sources: [
+      {
+        label: "Uttarakhand Tourism — Valley of Flowers trek itinerary",
+        url: "https://www.uttarakhandtourism.gov.in/treks-details/THE%20VALLEY%20OF%20FLOWERS",
+      },
+      {
+        label: "Uttarakhand Tourism — Ghangaria destination guide",
+        url: "https://uttarakhandtourism.gov.in/destination/ghangaria",
+      },
+      {
+        label: "UNESCO — Nanda Devi and Valley of Flowers National Parks",
+        url: "https://whc.unesco.org/en/list/335",
+      },
+    ],
+  },
+  kasol: {
+    searchIndexable: true,
+    deskVerified: "3 October 2026",
+    modifiedISO: "2026-10-03",
+    reviewNote:
+      "Planning details use official Himachal Pradesh tourism, trekking and safety resources. Travellers should still confirm live road, trail, registration and accommodation conditions before departure.",
+    sources: [
+      {
+        label: "Himachal Tourism — Kullu, Kasol and Manikaran",
+        url: "https://himachaltourism.gov.in/destination/kullu-2/",
+      },
+      {
+        label: "Himachal Tourism — protected landscapes and Kanwar Sanctuary",
+        url: "https://himachaltourism.gov.in/destination/sanctuaries/",
+      },
+      {
+        label: "Himachal Pradesh — identified trekking routes",
+        url: "https://himachalecotourism.hp.gov.in/Upload/MediaGallery/PDF/sa/Identified_Trekking_Routes_in_Himachal_Pradesh_pdf-2024-Sep-09-16-5-51.pdf",
+      },
+      {
+        label: "Himachal Pradesh — official Trekking Management System",
+        url: "https://trekking.hp.gov.in/",
+      },
+      {
+        label: "Himachal Tourism — visitor do's and don'ts",
+        url: "https://himachaltourism.gov.in/dos-and-donts/",
+      },
+    ],
+  },
 };
 
 export function editorialForDestination(slug: string): DestinationEditorialRecord {

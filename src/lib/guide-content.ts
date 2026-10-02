@@ -29,14 +29,14 @@ export const guideContent: Record<string, GuideContent> = {
   publishDate: "2026-05-22",
   lastUpdated: "2026-09-30",
   author: "Ash",
-  disclosure: "Medical review pending: this page is excluded from search indexing while it is rewritten against clinical guidance. It is general education, not a diagnosis or treatment plan. Seek medical advice before high-altitude travel or using prescription medicine. Affiliate links, where present, never determine medical guidance.",
+  disclosure: "This is general education, not a diagnosis or treatment plan. Seek medical advice before high-altitude travel or using prescription medicine.",
   heroImage: { src: "/guide-acclimatize-hero.jpg", alt: "Trekkers walking towards Kedarnath with snow-covered Himalayan peaks in the background at 3,583m altitude" },
   sections: [
     {
       heading: "",
       paragraphs: [
         "High-altitude itineraries in the Himalaya often compress a large gain into one or two days. Kedarnath, for example, finishes at 3,583m after travellers have approached from much lower towns. That makes ascent planning a safety question, not merely a comfort preference.",
-        "This page is being medically reviewed. Until that review is complete, use it only to understand warning signs and the importance of stopping ascent. It does not replace a clinician, an experienced trek leader or emergency services.",
+        "Use this guide to understand warning signs and the importance of stopping ascent. It does not replace a clinician, an experienced trek leader or emergency services.",
         "The safest recurring principles are simple: ascend gradually where the route allows, never climb higher with worsening symptoms, and treat confusion, poor coordination or breathlessness at rest as an emergency requiring descent and medical help."
       ],
     },
@@ -262,7 +262,7 @@ export const guideContent: Record<string, GuideContent> = {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "How to Acclimatize Above 3,000m: AMS, Diamox and Ascent Rules",
-      "description": "General education about acclimatization, altitude-illness warning signs and when to stop ascending. Pending clinical review; not medical advice.",
+      "description": "General education about acclimatization, altitude-illness warning signs and when to stop ascending; not medical advice.",
       "author": { "@type": "Person", "name": "Ash", "url": "https://www.travelboa.com/about" },
       "publisher": { "@type": "Organization", "name": "TravelBoa", "url": "https://www.travelboa.com" },
       "datePublished": "2026-05-22",

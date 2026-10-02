@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
   openGraph: {
     title: "Himalaya Travel Guides: Permits, Altitude & Budget",
-    description: "Practical Indian mountain planning guides are coming soon to TravelBoa.",
+    description: "Practical Indian mountain planning guides for permits, altitude, routes and seasonal decisions.",
   },
 };
 

@@ -7,8 +7,6 @@ import { DESTINATIONS, SEARCH_DESTINATIONS, ACTIVITIES } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 
-const PUBLISHED_SLUGS = new Set(["nainital", "kedarnath", "spiti", "lachung"]);
-
 export function DestinationsClient() {
   const [searchVal, setSearchVal] = useState("");
   const [searchFocus, setSearchFocus] = useState(false);
@@ -25,7 +23,7 @@ export function DestinationsClient() {
   }, []);
 
   const allDests = [
-    ...DESTINATIONS.map(d => ({ ...d, hasPage: PUBLISHED_SLUGS.has(d.slug) })),
+    ...DESTINATIONS.map(d => ({ ...d, hasPage: true })),
     ...SEARCH_DESTINATIONS
       .filter(sd => !DESTINATIONS.find(d => d.slug === sd.slug))
       .map(sd => ({ ...sd, note: "", hasPage: false, image: undefined as string | undefined, grad: "linear-gradient(150deg,#444,#666)", temp: "", rot: 0, wx: null, routes: [] as {route:string;status:string;note:string}[], packItems: [] as string[], emergency: [] as {name:string;number:string}[], quickFacts: [] as {icon:string;label:string;value:string}[] })),
@@ -53,9 +51,9 @@ export function DestinationsClient() {
       {/* Header */}
       <div className="contour-bg py-12 sm:py-16 border-b" style={{ borderColor: "#e3e9e6" }}>
         <div className="max-w-[1180px] mx-auto px-5 sm:px-6">
-          <p className="kicker mb-3">4 complete guides · more coming soon</p>
-          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Indian Himalayan trips, published only after review.</h1>
-          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "58ch" }}>Start with four complete guides to Nainital, Kedarnath, Spiti and Lachung. More Himalayan destinations will be added here over time.</p>
+          <p className="kicker mb-3">23 Himalayan destinations</p>
+          <h1 className="text-[clamp(30px,4.5vw,48px)] font-extrabold tracking-tight leading-[1.06]" style={{ color: "var(--ink)" }}>Choose your next Himalayan trip.</h1>
+          <p className="text-[18px] font-normal leading-relaxed mt-3" style={{ color: "var(--ink-soft)", maxWidth: "58ch" }}>Compare routes, altitude, seasons, trip length and packing needs across pilgrimage towns, treks, valleys and road trips.</p>
 
           {/* Search */}
           <div className="mt-8 relative" style={{ maxWidth: 540 }}>
@@ -116,7 +114,7 @@ export function DestinationsClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((d) => (
               <div key={d.slug}
-                className={`reveal group block rounded-[18px] overflow-hidden transition-all duration-300 hover:-translate-y-[6px] hover:shadow-2xl ${!d.hasPage ? "opacity-70" : ""}`}
+                className="reveal group block rounded-[18px] overflow-hidden transition-all duration-300 hover:-translate-y-[6px] hover:shadow-2xl"
                 style={{ border: "1px solid #e3e9e6", background: "#fff" }}>
                 <Link href={d.hasPage ? `/${d.slug}` : "#"} className="block no-underline" tabIndex={d.hasPage ? 0 : -1}>
                   <div className="aspect-[16/10] relative overflow-hidden" style={{ background: d.grad }}>

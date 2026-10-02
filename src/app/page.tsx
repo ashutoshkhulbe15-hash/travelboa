@@ -32,9 +32,9 @@ const FEATURED = [
   { slug: "kedarnath", season: "Temple season", dur: "4-6 days", hook: "A safety-first pilgrimage guide with confirmed 2026 information, official registration and health sources." },
   { slug: "spiti", season: "Route dependent", dur: "8-12 days", hook: "A route-first cold-desert plan with clear permit rules, altitude pacing and road resilience." },
   { slug: "lachung", season: "Access dependent", dur: "3 days / 2 nights", hook: "A permit-first North Sikkim plan built around the current PAP, itinerary and road-safety rules." },
+  { slug: "valley-of-flowers", season: "June-September", dur: "5-7 days", hook: "A monsoon trek built around Ghangaria, protected-park rules, altitude and a realistic weather margin." },
+  { slug: "kasol", season: "Route dependent", dur: "3-5 days", hook: "A responsible Parvati Valley plan covering Manikaran, mountain-road buffers and current trek-safety checks." },
 ];
-
-const REVIEWED_SLUGS = new Set(FEATURED.map((destination) => destination.slug));
 
 const GUIDES_LIST = [
   { title: "Reading Himalayan road status before you leave", tag: "ROADS", href: "/guides/monsoon-routes" },
@@ -58,9 +58,7 @@ const TRIP_TYPES = [
 ];
 
 /* ─── search helper ─── */
-const ALL_SEARCH = DESTINATIONS
-  .filter((destination) => REVIEWED_SLUGS.has(destination.slug))
-  .map(d => ({ name: d.name, slug: d.slug, info: d.info, type: d.type }));
+const ALL_SEARCH = DESTINATIONS.map(d => ({ name: d.name, slug: d.slug, info: d.info, type: d.type }));
 
 export default function HomePage() {
   const [entered, setEntered] = useState(false);
@@ -112,7 +110,7 @@ export default function HomePage() {
               <span className="mx-6">Rules and dates link to official sources</span>
               <span className="mx-6">Road and weather conditions must be checked on the day</span>
               <span className="mx-6">Corrections: hello@travelboa.com</span>
-              <span className="mx-6"><b style={{ color: "var(--pine)" }}>4 IN-DEPTH HIMALAYAN GUIDES</b> &middot; MORE DESTINATIONS COMING SOON</span>
+              <span className="mx-6"><b style={{ color: "var(--pine)" }}>23 HIMALAYAN DESTINATIONS</b> &middot; ROUTES, SEASONS AND PACKING</span>
             </span>
           ))}
         </div>

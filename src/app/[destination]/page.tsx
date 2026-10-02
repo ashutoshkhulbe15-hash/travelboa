@@ -3,7 +3,6 @@ import { getDestination, getAllDestinationSlugs } from "@/lib/destinations";
 import type { Metadata } from "next";
 import { DestinationGuide } from "./DestinationGuide";
 import { editorialForDestination } from "@/lib/editorial";
-import { EditorialReviewNotice } from "@/components/EditorialReviewNotice";
 
 interface Props {
   params: Promise<{ destination: string }>;
@@ -18,18 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dest = getDestination(slug);
   if (!dest) return {};
   const editorial = editorialForDestination(slug);
-  if (!editorial.searchIndexable) {
-    return {
-      title: `${dest.name} Travel Guide: Coming Soon`,
-      description: `${dest.name} destination guide coming soon to TravelBoa.`,
-      alternates: { canonical: `/${dest.slug}` },
-      robots: { index: false, follow: true },
-    };
-  }
   return {
     title: dest.metaTitle,
     description: dest.metaDescription,
     alternates: { canonical: `/${dest.slug}` },
+    robots: editorial.searchIndexable ? undefined : { index: false, follow: true },
     openGraph: {
       title: dest.metaTitle,
       description: dest.metaDescription,
@@ -47,17 +39,6 @@ export default async function DestinationPage({ params }: Props) {
   const dest = getDestination(slug);
   if (!dest) notFound();
   const editorial = editorialForDestination(slug);
-
-  if (!editorial.searchIndexable) {
-    return (
-      <EditorialReviewNotice
-        title={`${dest.name} guide coming soon`}
-        description="We are preparing a practical destination guide for this route. In the meantime, browse the complete guides currently available on TravelBoa."
-        backHref="/destinations"
-        backLabel="Browse published guides"
-      />
-    );
-  }
 
   const travelGuideLd = {
     "@context": "https://schema.org",
@@ -105,9 +86,13 @@ export default async function DestinationPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(travelGuideLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {editorial.searchIndexable && (
+        <>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(travelGuideLd) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+        </>
+      )}
       <DestinationGuide destination={dest} />
     </>
   );

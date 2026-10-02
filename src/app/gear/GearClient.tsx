@@ -310,9 +310,9 @@ export function GearClient() {
                 <div className="flex gap-3.5 items-start">
                   <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-extrabold text-[18px] shrink-0" style={{ background: "var(--terra)" }}>A</div>
                   <div>
-                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>More gear guides coming soon</span>
+                    <span className="block text-[15px] font-bold" style={{ color: "var(--ink)" }}>TravelBoa gear guides</span>
                     <span className="block font-mono text-[11px] mt-0.5" style={{ color: "var(--ink-soft)" }}>DEHRADUN</span>
-                    <p className="text-[14px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>New destination-specific packing and gear guides will appear here.</p>
+                    <p className="text-[14px] font-normal leading-relaxed mt-2" style={{ color: "var(--ink-soft)" }}>Compare specifications, route needs and current seller information before buying.</p>
                   </div>
                 </div>
               </div>
